@@ -1,0 +1,11 @@
+{
+  "FloatOptions": {
+    "masterVolume": 0.47414133,
+    "musicVolume": 0.227357909,
+    "sfxVolume": 0.267223746,
+    "shouldAutosave": 1.0
+  },
+  "StringOptions": {
+    "language": "English.json"
+  }
+}

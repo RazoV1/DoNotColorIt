@@ -1,0 +1,392 @@
+using Assets._Scripts.Interaction_System.Interfaces;
+using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.Rendering;
+using Assets._Scripts.Delivery;
+using Assets._Scripts.Interaction_System.Objects;
+using TMPro;
+using System.Linq;
+
+public class PlayerGrabber : MonoBehaviour
+{
+	[Header("Grab stats")]
+	[SerializeField] private float grabStrenght;
+	[SerializeField] private float grabpStability;
+	[SerializeField] private float fixedAxisStability;
+	[SerializeField] private float maxGrabDistance;
+	[SerializeField] private float minGrabDistance;
+	[Header("MonsterStats")]
+	[SerializeField] private GameObject monsterStats;
+	[SerializeField] private List<TextMeshProUGUI> monsterStatsField;
+	[Header("PigmentStats")]
+	[SerializeField] private GameObject pigmentStats;
+	[SerializeField] private List<TextMeshProUGUI> pigmentFields;
+	[Header("ItemStats")]
+	[SerializeField] private GameObject itemStats;
+	[SerializeField] private TextMeshProUGUI itemStat;
+	[SerializeField] private bool shouldShowItemStat;
+	[Header("Misc")]
+	[SerializeField] private CameraController cameraController;
+	[SerializeField] private Transform grabPivot;
+	[SerializeField] private Transform fixedRotatorPivot;
+	[SerializeField] private List<string> interactableTags = new List<string>();
+	[SerializeField] private Rigidbody playerRb;
+	private int preservedLayer;
+	private Transform jointTransform;
+	private Transform cameraPivotTransform;
+
+	private bool isGrabbing = false;
+	[SerializeField] private InteractableObject grabbedObject;
+
+	public bool GetIsGrabbing() => isGrabbing;
+
+	public Transform getGrabPivot() => grabPivot;
+
+	public InteractableObject GetGrabbedObject() => grabbedObject;
+
+	private void Start()
+	{
+		cameraPivotTransform = cameraController.transform;
+	}
+
+	private void CastHint()
+	{
+		if (shouldShowItemStat)
+		{
+			itemStats.SetActive(false);
+		}
+		if (isGrabbing)
+		{
+			return;
+		}
+		RaycastHit hit;
+		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
+		{
+			if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
+			{
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.GetIn);
+				}
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 4)
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.EnterPocket);
+				}
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Npc")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Talk);
+				}
+				else
+				{
+					GameManager.Instance.GetCursorHint().ClearHint();
+				}
+				return;
+			}
+			else
+			{
+				if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
+				{
+					GameManager.Instance.GetCursorHint().ClearHint();
+					return;
+				}
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Interactable")
+				{
+					if (hit.collider.GetComponent<FixedAxis>())
+					{
+						if (hit.collider.GetComponent<FixedAxis>().GetRotationAxis() == new Vector3(1, 0, 0))
+						{
+							GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
+							return;
+						}
+						else
+						{
+							GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Circular);
+							return;
+						}
+					}
+					else
+					{
+						GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Default);
+						if (!shouldShowItemStat) return;
+						string itemNameKey = $"ui.item.{hit.collider.GetComponent<BasicItem>().GetPrefabName()}";
+						string itemName = LanguageManager.Instance.GetTranslatable(itemNameKey);
+						if (itemName == itemNameKey)
+						{
+							return;
+						}
+						itemStat.text = itemName;
+						itemStats.SetActive(true);
+					}
+				}
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Axe")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
+				}
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Pounder")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
+				}
+				else
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Default);
+					if (!shouldShowItemStat) return;
+					string itemNameKey = $"ui.item.{hit.collider.GetComponent<BasicItem>().GetPrefabName()}";
+					string itemName = LanguageManager.Instance.GetTranslatable(itemNameKey);
+					if (itemName == itemNameKey)
+					{
+						return;
+					}
+					itemStat.text = itemName;
+					itemStats.SetActive(true);
+				}
+			}
+		}
+		else
+		{
+			GameManager.Instance.GetCursorHint().ClearHint();
+		}
+	}
+
+	private void TryGrab()
+	{
+		if (isGrabbing)
+		{
+			return;
+		}
+		RaycastHit hit;
+		//Debug.Log("Cast!");
+		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
+		{
+			//Debug.Log("Hit!");
+			if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
+			{
+				return;
+			}
+
+			//Debug.Log("Target!");
+			InteractableObject target = hit.collider.GetComponent<InteractableObject>();
+			if (target is FixedAxis)
+			{
+				grabbedObject = target;
+				isGrabbing = true;
+				((IGrabbable)grabbedObject).SetIsGrabbed(true, cameraPivotTransform);
+				((IGrabbable)grabbedObject).SetMaintainDirection(true);
+				jointTransform = AttachJoint(target.GetRigidbody(), hit.point, fixedRotatorPivot, true);
+			}
+			else if (target is IGrabbable)
+			{
+				grabbedObject = target;
+				isGrabbing = true;
+				((IGrabbable)grabbedObject).SetIsGrabbed(true, cameraPivotTransform);
+				((IGrabbable)grabbedObject).SetMaintainDirection(true);
+				preservedLayer = grabbedObject.gameObject.layer;
+				grabbedObject.gameObject.layer = grabbedObject.gameObject.layer == 3 ? 8 : 2;
+				//jointTransform = AttachJoint(target.GetRigidbody(), target.GetRigidbody().worldCenterOfMass);
+
+				var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
+				if (monsterObj != null)
+				{
+					monsterStats.SetActive(true);
+				}
+				var pigmentobj = grabbedObject.GetComponent<ColorPigment>();
+				if (pigmentobj != null)
+				{
+					pigmentStats.SetActive(true);
+				}
+				jointTransform = AttachJoint(target.GetRigidbody(), hit.point, grabPivot, false);
+			}
+		}
+	}
+
+	private void TryEnter()
+	{
+		if (isGrabbing)
+		{
+			return;
+		}
+		RaycastHit hit;
+		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
+		{
+			if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
+			{
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat")
+				{
+					cameraController.MountFiat(hit.collider.GetComponent<MetlaController>());
+				}
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 4)
+				{
+					GameManager.Instance.GetTutorial().ProgressTutorial(4);
+					GameManager.Instance.ChangeDimensions(2);
+
+				}
+				return;
+			}
+		}
+	}
+
+	private void HandleInput()
+	{
+		if (Input.GetMouseButtonDown(0))
+		{
+			TryGrab();
+		}
+		else if (isGrabbing && Input.GetMouseButton(0))
+		{
+			HandleObjectHolding();
+		}
+		else if (Input.GetKeyDown(KeyCode.E))
+		{
+			TryEnter();
+		}
+		else
+		{
+			StopGrabbing();
+		}
+		GrabbableFrameCheck();
+	}
+
+	private void GrabbableFrameCheck()
+	{
+		if (grabbedObject == null)
+		{
+			return;
+		}
+		if (!((IGrabbable)grabbedObject).GetIsGrabbed())
+		{
+			((IGrabbable)grabbedObject).SetIsGrabbed(false);
+			StopGrabbing();
+		}
+	}
+
+	public void StopGrabbing()
+	{
+		if (grabbedObject == null)
+		{
+			isGrabbing = false;
+			return;
+		}
+		//grabbedObject.GetRigidbody().useGravity = true;
+		((IGrabbable)grabbedObject).SetIsGrabbed(false);
+		((IGrabbable)grabbedObject).SetMaintainDirection(false);
+		grabbedObject.gameObject.layer = preservedLayer;
+		try
+		{
+			Destroy(jointTransform.gameObject);
+			var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
+			if (monsterObj != null)
+			{
+				monsterStats.SetActive(false);
+			}
+			var pigmentObj = grabbedObject.GetComponent<ColorPigment>();
+			if (pigmentObj != null)
+			{
+				pigmentStats.SetActive(false);
+			}
+
+		}
+		catch { }
+		Physics.IgnoreCollision(GetComponent<Collider>(), grabbedObject.GetRigidbody().GetComponent<Collider>(), false);
+		grabbedObject = null;
+		isGrabbing = false;
+		Destroy(jointTransform.gameObject);
+	}
+
+	private void Update()
+	{
+		HandleInput();
+		CastHint();
+	}
+
+	private JointDrive CreateJoint(bool useFixed)
+	{
+		JointDrive drive = new JointDrive();
+		drive.positionSpring = grabStrenght;
+		drive.positionDamper = useFixed ? fixedAxisStability : grabpStability;
+		drive.maximumForce = Mathf.Infinity;
+		return drive;
+	}
+
+	private Transform AttachJoint(Rigidbody rb, Vector3 attachmentPosition, Transform goParent, bool useFixed)
+	{
+		//GameObject go = new GameObject("Attachment Point");
+		GameObject go = new GameObject("Attachment Point");
+		//go.hideFlags = HideFlags.HideInHierarchy;
+
+		goParent.position = attachmentPosition;
+		grabPivot.transform.position = attachmentPosition;
+		if (useFixed)
+		{
+			Vector3 rotAxis = ((FixedAxis)grabbedObject).GetRotationAxis();
+			Vector3 rotCenter = ((FixedAxis)grabbedObject).GetRotationCenter();
+			Plane rotationPlane = new Plane(grabbedObject.transform.TransformDirection(rotAxis), rotCenter);
+			fixedRotatorPivot.position = rotCenter + ((rotationPlane.ClosestPointOnPlane(grabPivot.position) - rotCenter).normalized * ((FixedAxis)grabbedObject).GetRotationRadius());
+			//fixedRotatorPivot.eulerAngles = new Vector3(fixedRotatorPivot.eulerAngles.x * rotAxis.x,fixedRotatorPivot.eulerAngles.y * rotAxis.y,fixedRotatorPivot.eulerAngles.z * rotAxis.z);
+			fixedRotatorPivot.rotation = Quaternion.LookRotation((fixedRotatorPivot.position - rotCenter).normalized, grabbedObject.transform.up);
+		}
+		go.transform.parent = goParent;
+		go.transform.localPosition = Vector3.zero;
+		try
+		{
+			var newRb = go.GetComponent<Rigidbody>();
+			newRb.isKinematic = true;
+		}
+		catch
+		{
+			var newRb = go.AddComponent<Rigidbody>();
+			newRb.isKinematic = true;
+		}
+		var joint = go.AddComponent<ConfigurableJoint>();
+		joint.connectedBody = rb;
+		joint.configuredInWorldSpace = true;
+		joint.breakForce = 10f;
+		joint.xDrive = CreateJoint(useFixed);
+		joint.yDrive = CreateJoint(useFixed);
+		joint.zDrive = CreateJoint(useFixed);
+		joint.slerpDrive = CreateJoint(useFixed);
+		joint.rotationDriveMode = RotationDriveMode.Slerp;
+
+		return go.transform;
+	}
+
+	private void HandleObjectHolding()
+	{
+		//Rigidbody rb = grabbedObject.GetRigidbody();
+		//rb.useGravity = false;
+		//Vector3 direction = (grabPivot.position - grabbedObject.transform.position);
+		//rb.AddForce(direction * grabStrenght * Time.deltaTime, ForceMode.Force);
+		//grabbedObject.transform.position = Vector3.Lerp(grabbedObject.transform.position,grabPivot.position, Time.deltaTime * Mathf.Clamp(grabStrenght - rb.mass,0,grabStrenght));
+		if (grabbedObject is FixedAxis)
+		{
+			Vector3 rotAxis = ((FixedAxis)grabbedObject).GetRotationAxis();
+			Vector3 rotCenter = ((FixedAxis)grabbedObject).GetRotationCenter();
+			Plane rotationPlane = new Plane(grabbedObject.transform.TransformDirection(rotAxis), rotCenter);
+			fixedRotatorPivot.position = rotCenter + ((rotationPlane.ClosestPointOnPlane(grabPivot.position) - rotCenter).normalized * ((FixedAxis)grabbedObject).GetRotationRadius());
+			//fixedRotatorPivot.eulerAngles = new Vector3(fixedRotatorPivot.eulerAngles.x * rotAxis.x,fixedRotatorPivot.eulerAngles.y * rotAxis.y,fixedRotatorPivot.eulerAngles.z * rotAxis.z);
+			fixedRotatorPivot.rotation = Quaternion.LookRotation((fixedRotatorPivot.position - rotCenter).normalized, grabbedObject.transform.up);
+		}
+		else
+		{
+			jointTransform.position = grabPivot.position;
+		}
+
+	    if (grabbedObject == null) { return; }
+		Physics.IgnoreCollision(GetComponent<Collider>(), grabbedObject.GetRigidbody().GetComponent<Collider>(), true);
+		var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
+		if (monsterObj != null)
+		{
+			Dictionary<string, float> stats = monsterObj.GetMonsterStats();
+			List<string> list = stats.Keys.ToList();
+			for (int i = 0; i < monsterStatsField.Count; i++)
+			{
+				monsterStatsField[i].text = LanguageManager.Instance.GetTranslatable($"ui.monster_stats.{list[i]}") + $"{Mathf.Clamp((int)(stats[list[i]] * 100), 0, 100f)}%";
+			}
+		}
+		var colorPig = grabbedObject.GetComponent<ColorPigment>();
+		if (colorPig != null)
+		{
+			pigmentFields[0].text = LanguageManager.Instance.GetTranslatable("ui.pigment_stats.color") + $"{colorPig.GetColor().maxColorComponent}";
+			pigmentFields[1].text = LanguageManager.Instance.GetTranslatable("ui.pigment_stats.volume") + $"{colorPig.GetVolume()}";
+		}
+	}
+
+}

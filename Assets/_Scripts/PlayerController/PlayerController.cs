@@ -1,0 +1,97 @@
+using Assets._Scripts.Events;
+using Assets._Scripts.Game.SaveSystem;
+using NUnit.Framework;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour, ISavable
+{
+	[SerializeField] private float walkingSpeed;
+	[SerializeField] private float acceleration;
+	[SerializeField] private CameraController cameraController;
+	[SerializeField] private bool shouldSave;
+	[SerializeField] private LayerMask layerMask;
+
+	public void SetCanWalk(bool isWalking) { this.canWalk = isWalking; }
+
+	private Rigidbody rb;
+
+	private Transform cameraPivotTransform;
+
+	private bool canWalk = true;
+	private float currentSpeed;
+
+	private void LateUpdate()
+	{
+		if (!canWalk) return;
+		HandleMovementByInput();
+	}
+
+	private void Start()
+	{
+		SubscribeToSaveEvent();
+		rb = GetComponent<Rigidbody>();
+		SyncData(new SavablePrefab());
+		cameraPivotTransform = cameraController.transform.parent;
+	}
+
+	private void HandleMovementByInput()
+	{
+		float horizontalInput = Input.GetAxis("Horizontal");
+		float verticalInput = Input.GetAxis("Vertical");
+
+		Vector2 direction = new Vector2(horizontalInput, verticalInput).normalized;
+		Vector3 forward = cameraPivotTransform.forward * direction.y;
+		Vector3 right = cameraPivotTransform.right * direction.x;
+		Vector3 movement = (forward + right) * walkingSpeed;
+		movement.y = 0;
+		transform.rotation = Quaternion.LookRotation(movement, Vector3.up);
+		RaycastHit hit;
+		if (!Physics.Raycast(transform.position + movement/4f, Vector3.down * 10, out hit,3f,~layerMask) || hit.collider.gameObject.layer == 4 || hit.collider.gameObject.tag == "Interactable")
+		{
+
+			rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+			return;
+		}
+
+		//rb.linearVelocity = new Vector3(movement.x,rb.linearVelocity.y,movement.z);
+		rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
+	}
+
+	private void OnDestroy()
+	{
+		SaveEvents.OnSaveEvent.RemoveListener(SaveData);
+	}
+
+	public void SubscribeToSaveEvent()
+	{
+		SaveEvents.OnSaveEvent.AddListener(SaveData);
+	}
+
+	public void SaveData()
+	{
+		if (!shouldSave) return;
+		SaveManager saveManager = SaveManager.Instance;
+
+		saveManager.SaveFloat("playerX",transform.position.x);
+		saveManager.SaveFloat("playerY", transform.position.y);
+		saveManager.SaveFloat("playerZ", transform.position.z);
+	}
+
+	public void SyncData(SavablePrefab data)
+	{
+		if (!shouldSave) return;
+		SaveManager saveManager = SaveManager.Instance;
+
+		float x = saveManager.GetFloat("playerX");
+		float y = saveManager.GetFloat("playerY");
+		float z = saveManager.GetFloat("playerZ");
+
+		if (x == y && x == z && z == 0)
+		{
+			return;
+		}
+
+		rb.MovePosition(new Vector3(x,y,z));
+	}
+}

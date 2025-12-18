@@ -1,0 +1,92 @@
+fileFormatVersion: 2
+guid: d1b4dc2eebe0d0741848734d68ef4e1f
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PBRGraph
+    second: {fileID: 2100000, guid: 9fc667a76f0756e4d9e26b445a75babf, type: 2}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 804e1ce4c496647cfa3f1a1134187c71, type: 3}
+  _removeEmptyRootObjects: 1
+  _scaleFactor: 1
+  _deduplicateResources: 0
+  _maximumLod: 300
+  _readWriteEnabled: 1
+  _generateColliders: 0
+  _addColliders: 0
+  _swapUvs: 0
+  _generateLightmapUVs: 0
+  _importBlendShapeNames: 1
+  _blendShapeFrameWeight:
+    _option: 0
+    _multiplier: 1
+  _importNormals: 0
+  _importTangents: 0
+  _importCamera: 2
+  _importAnimations: 2
+  _mecanimHumanoidFlip: 0
+  _addAnimatorComponent: 0
+  _animationLoopTime: 1
+  _animationLoopPose: 0
+  _importMaterials: 1
+  _enableGpuInstancing: 0
+  _texturesReadWriteEnabled: 1
+  _generateMipMaps: 1
+  _useSceneNameIdentifier: 1
+  _textureCompression: -50
+  _gltfAsset: '<b>Generator: </b>Blockbench 5.0.4 glTF exporter
+
+    <b>Version:
+    </b>2.0
+
+    
+
+    <b>Extras: </b>
+
+'
+  optimizeGameObjects: 0
+  materials:
+  - {fileID: 4758309174586462558, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  - {fileID: -5646530764462240107, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  - {fileID: -7844039657895055965, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  - {fileID: 5407048100447482462, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  - {fileID: -1136953195951189969, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  textures:
+  - {fileID: 2132853323777086461, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  - {fileID: -3060025475151056701, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  - {fileID: 6286903058675201381, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  - {fileID: 8717654587716927461, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  - {fileID: 8732529900238324548, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+  hasSceneData: 1
+  hasAnimationData: 1
+  hasMaterialData: 1
+  hasTextureData: 1
+  animations:
+  - name: idle
+  - name: idk
+  - name: hi
+  _extensions: []
+  _textures:
+  - texture: {fileID: 2132853323777086461, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+    shouldBeLinear: 0
+    shouldBeNormalMap: 0
+  - texture: {fileID: -3060025475151056701, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+    shouldBeLinear: 0
+    shouldBeNormalMap: 0
+  - texture: {fileID: 6286903058675201381, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+    shouldBeLinear: 0
+    shouldBeNormalMap: 0
+  - texture: {fileID: 8717654587716927461, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+    shouldBeLinear: 0
+    shouldBeNormalMap: 0
+  - texture: {fileID: 8732529900238324548, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+    shouldBeLinear: 0
+    shouldBeNormalMap: 0
+  _mainAssetIdentifier: scenes/blockbench_export
+  _importPlugins: []

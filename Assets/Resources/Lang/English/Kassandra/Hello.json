@@ -1,0 +1,11 @@
+{
+  "characterA": "Cassandra",
+  "characterB": "Artem",
+  "replics": [
+    "Cassandra: Hello, boy. What brings you here?",
+    "Artem: I'm Artem, I fly around here in my strange machine. Tell me about yourself.",
+    "Cassandra: I run this place. But the problem is, since the flooding, I've been getting almost no results.",
+    "Artem: What do you think this is connected to?",
+    "Cassandra: I can't figure it out yet, but this is really troubling me: I had a falling out with Zakhar, my engineer, and rejected his project without properly explaining its shortcomings. Now I'm not even sure of my calculations, because I can't logically justify my refusal. If I can't trust my own logic, how am I supposed to run it, and what will people think?"
+  ]
+}

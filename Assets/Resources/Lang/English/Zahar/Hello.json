@@ -1,0 +1,12 @@
+{
+  "characterA": "Zakhar",
+  "characterB": "Artem",
+  "replics": [
+    "Zakhar: Good afternoon, or whatever it is now. The weather's unclear, but that's beside the point. What are you doing here?",
+    "Artem: I'm Artem, I want to understand what happened. My grandfather left me a strange flying machine. What about you?",
+    "Zakhar: I'm actually an engineer; I create blueprints for Cassandra. You could call me her right-hand woman.",
+    "Artem: What do you think caused everything to lose its color? I have some guesses, but nothing confirmed yet.",
+    "Zakhar: I've been working on the same blueprint the whole time, so I don't know. I took the blueprint to Cassandra because her approval has always been more important to me than any calculations.",
+    "Zakhar: When she didn't approve the project, I was so disappointed that I lost my ability to calculate coldly and blamed her in my anger. I need to apologize to her: without working together, we can't help anyone."
+  ]
+}
