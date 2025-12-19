@@ -15,6 +15,7 @@ public class Mortar : MonoBehaviour
 	[SerializeField] private float stompByForceCoef;
 
 	[SerializeField] private float progress = 0f;
+	[SerializeField] private float neededProgress;
 
 	private void CalculateParticleColors()
 	{
@@ -28,9 +29,9 @@ public class Mortar : MonoBehaviour
 		{
 			CalculateParticleColors();
 			particleSystem.Play();
-			progress = Mathf.Clamp(progress + stompByForceCoef, 0, 1f);
+			progress = Mathf.Clamp(progress + stompByForceCoef, 0, neededProgress);
 		}
-		if (progress == 1f)
+		if (progress == neededProgress)
 		{
 			Transmutate();
 		}

@@ -41713,8 +41713,9 @@ MonoBehaviour:
   componentsPivot: {fileID: 1569400982}
   forceThreashhold: 1
   particleSystem: {fileID: 40611218}
-  stompByForceCoef: 0.1
+  stompByForceCoef: 0.2
   progress: 0
+  neededProgress: 1
 --- !u!4 &1268365687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4799812465412518121, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
