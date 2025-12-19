@@ -126,6 +126,10 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
 				}
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Kapot")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
+				}
 				else
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Default);
