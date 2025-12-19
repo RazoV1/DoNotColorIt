@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour, ISavable
 		rb = GetComponent<Rigidbody>();
 		SyncData(new SavablePrefab());
 		cameraPivotTransform = cameraController.transform.parent;
+		rb.inertiaTensor = Vector3.zero;
 	}
 
 	private void HandleMovementByInput()
@@ -47,9 +48,8 @@ public class PlayerController : MonoBehaviour, ISavable
 		movement.y = 0;
 		transform.rotation = Quaternion.LookRotation(movement, Vector3.up);
 		RaycastHit hit;
-		if (!Physics.Raycast(transform.position + movement/4f, Vector3.down * 10, out hit,3f,~layerMask) || hit.collider.gameObject.layer == 4 || hit.collider.gameObject.tag == "Interactable")
+		if (!Physics.Raycast(transform.position + movement/4f, Vector3.down * 10, out hit,3f,~layerMask) || hit.collider.gameObject.layer == 4 || hit.collider.gameObject.tag == "Interactable" )
 		{
-
 			rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
 			return;
 		}

@@ -22778,6 +22778,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 258668341805637919, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 258668341805637919, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 258668341805637919, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
+      propertyPath: m_LinearDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 258668341805637919, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 367110539120798566, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: m_Name
       value: Player
@@ -32363,7 +32379,7 @@ PrefabInstance:
       objectReference: {fileID: 1268365687}
     - target: {fileID: 7325232860444937025, guid: 95ec348389afa5e409db0c268b2a54df, type: 3}
       propertyPath: followSpeed
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7325232860444937025, guid: 95ec348389afa5e409db0c268b2a54df, type: 3}
       propertyPath: horizontalStrength
