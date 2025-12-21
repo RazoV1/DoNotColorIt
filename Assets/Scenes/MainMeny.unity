@@ -14359,6 +14359,7 @@ GameObject:
   - component: {fileID: 1399077749}
   - component: {fileID: 1399077748}
   - component: {fileID: 1399077747}
+  - component: {fileID: 1399077750}
   m_Layer: 5
   m_Name: BackPause
   m_TagString: Untagged
@@ -14540,6 +14541,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399077745}
   m_CullTransparentMesh: 1
+--- !u!114 &1399077750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399077745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd6dc4f78e46f44c8fcc7babaa74117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EscScreenCloser
+  closeButton: {fileID: 1399077747}
 --- !u!1 &1419339857
 GameObject:
   m_ObjectHideFlags: 0
@@ -16718,6 +16732,7 @@ GameObject:
   - component: {fileID: 1612506162}
   - component: {fileID: 1612506161}
   - component: {fileID: 1612506160}
+  - component: {fileID: 1612506163}
   m_Layer: 5
   m_Name: BackMenu
   m_TagString: Untagged
@@ -16875,6 +16890,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612506158}
   m_CullTransparentMesh: 1
+--- !u!114 &1612506163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612506158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd6dc4f78e46f44c8fcc7babaa74117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EscScreenCloser
+  closeButton: {fileID: 1612506160}
 --- !u!1 &1614483841
 GameObject:
   m_ObjectHideFlags: 0
