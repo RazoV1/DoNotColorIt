@@ -215,7 +215,7 @@ public class PlayerGrabber : MonoBehaviour
 			{
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat")
 				{
-					cameraController.MountFiat(hit.collider.GetComponent<MetlaController>());
+					cameraController.MountFiat(hit.collider.GetComponentInParent<MetlaController>());
 				}
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 4)
 				{
