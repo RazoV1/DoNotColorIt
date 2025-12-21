@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5374079307361941208}
   - component: {fileID: 4329016402185638446}
   - component: {fileID: -1974629905383771600}
+  - component: {fileID: 6733019678821946659}
   m_Layer: 0
   m_Name: Pound
   m_TagString: Pounder
@@ -160,6 +161,7 @@ MonoBehaviour:
   rb: {fileID: 5374079307361941208}
   shouldBeSaved: 1
   prefabName: pounder
+  shouldUseGravity: 0
   shouldPlayAudio: 0
   source: {fileID: -1974629905383771600}
 --- !u!82 &-1974629905383771600
@@ -259,6 +261,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6733019678821946659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5955553979759390364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5934a0e24f62bae45940f8fdbe3f48a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectReturner
+  rb: {fileID: 5374079307361941208}
+  minY: -200
+  mirrorPoint: {fileID: 0}
+  upY: 200
 --- !u!1001 &4980583517450362559
 PrefabInstance:
   m_ObjectHideFlags: 0

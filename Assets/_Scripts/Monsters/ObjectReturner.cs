@@ -12,7 +12,8 @@ public class ObjectReturner : MonoBehaviour
     {
         if (transform.position.y < minY)
         {
-            transform.position = new Vector3(-2,upY,8)- new Vector3(rb.linearVelocity.x * upY /10f,0,rb.linearVelocity.z * upY /10f);
+            rb.linearVelocity = Vector3.zero;
+            transform.position = new Vector3(-2,upY,8);
         }
     }
 	private void Update()

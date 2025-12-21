@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9015326981827935993}
   - component: {fileID: 8377531195018505114}
   - component: {fileID: 7216621590717445856}
+  - component: {fileID: 5527336854975984206}
   m_Layer: 0
   m_Name: Bucket
   m_TagString: Bucket
@@ -276,6 +277,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5527336854975984206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591547977648372155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5934a0e24f62bae45940f8fdbe3f48a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectReturner
+  rb: {fileID: 9015326981827935993}
+  minY: -200
+  mirrorPoint: {fileID: 0}
+  upY: 200
 --- !u!1001 &2302904778674361369
 PrefabInstance:
   m_ObjectHideFlags: 0
