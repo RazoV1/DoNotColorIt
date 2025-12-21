@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour, ISavable
 		HandleMovementByInput();
 	}
 
+
 	private void Start()
 	{
 		SubscribeToSaveEvent();

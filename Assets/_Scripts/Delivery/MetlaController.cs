@@ -119,10 +119,16 @@ namespace Assets._Scripts.Delivery
 			preferredRotation = Input.mousePositionDelta;
 
 
+			
+		}
+
+		private void CheckUnmount()
+		{
+			if (!isMounted) return;
 			if (Input.GetKeyDown(KeyCode.E) && rb.linearVelocity.magnitude < 2f)
 			{
 				RaycastHit h;
-				if (!Physics.Raycast(transform.position, Vector3.down * 10, out h) || h.collider.gameObject.layer == 4)
+				if (!Physics.Raycast(transform.position, Vector3.down * 3, out h) || h.collider.gameObject.layer == 4)
 				{
 					return;
 				}
@@ -137,6 +143,11 @@ namespace Assets._Scripts.Delivery
 			if (!isMounted) return;
 			HandleInput();
 			HandleFlight();
+		}
+
+		private void Update()
+		{
+			CheckUnmount();
 		}
 
 		public void SubscribeToSaveEvent()
