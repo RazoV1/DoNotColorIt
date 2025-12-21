@@ -6804,6 +6804,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 71399958}
+  sound: {fileID: 0}
   rotationAxis: {x: 0, y: 0, z: 1}
   rotationRadius: 0.25
 --- !u!65 &73181152
@@ -7426,6 +7427,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 112632100}
+  sound: {fileID: 0}
 --- !u!54 &112632097
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12121,6 +12123,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 363136036}
+  sound: {fileID: 0}
 --- !u!54 &363136033
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18604,6 +18607,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ostrov_lp
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d392f694521db2b4cbbd372b615c577a, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19018,79 +19025,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.005594202, y: 0.0064923223, z: 0.007511737}
   m_Center: {x: 0.000000014901161, y: 0.0000000037252903, z: 0}
---- !u!1001 &451449000
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 9.840138
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 9.840138
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 9.840138
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.6172
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.385
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.0992
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 13905be2096d8644794b5432039a246d, type: 2}
-    - target: {fileID: 919132149155446097, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
-      propertyPath: m_Name
-      value: egg_lp
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 14243161d1eb21c409ad3c9987fe621e, type: 3}
 --- !u!1 &452579558
 GameObject:
   m_ObjectHideFlags: 0
@@ -21769,6 +21703,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 558662968}
+  sound: {fileID: 0}
 --- !u!82 &558662968
 AudioSource:
   m_ObjectHideFlags: 0
@@ -22871,7 +22806,7 @@ PrefabInstance:
       objectReference: {fileID: 318547312}
     - target: {fileID: 7115549368494984859, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: walkingSpeed
-      value: 20
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7115549368494984859, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: cameraController
@@ -29097,6 +29032,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 720777708}
+  sound: {fileID: 0}
   rotationAxis: {x: 1, y: 0, z: 0}
   rotationRadius: 0.4
 --- !u!65 &720777707
@@ -30752,6 +30688,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 774446794}
+  sound: {fileID: 0}
 --- !u!54 &774446791
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30952,6 +30889,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 777812393}
+  sound: {fileID: 0}
 --- !u!54 &777812390
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31745,6 +31683,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 799116262}
+  sound: {fileID: 0}
 --- !u!54 &799116259
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32314,7 +32253,7 @@ PrefabInstance:
       objectReference: {fileID: 1268365687}
     - target: {fileID: 7325232860444937025, guid: 95ec348389afa5e409db0c268b2a54df, type: 3}
       propertyPath: followSpeed
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7325232860444937025, guid: 95ec348389afa5e409db0c268b2a54df, type: 3}
       propertyPath: horizontalStrength
@@ -41762,6 +41701,10 @@ MonoBehaviour:
   rb: {fileID: 605916473}
   minY: -200
   mirrorPoint: {fileID: 0}
+  smokeParticle: {fileID: 0}
+  impactParticle: {fileID: 0}
+  source: {fileID: 0}
+  impactSfx: {fileID: 0}
   upY: 101
 --- !u!65 &1269440452
 BoxCollider:
@@ -63724,4 +63667,3 @@ SceneRoots:
   - {fileID: 256709857}
   - {fileID: 27950623}
   - {fileID: 1201951753}
-  - {fileID: 451449000}

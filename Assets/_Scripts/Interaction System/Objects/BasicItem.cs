@@ -12,6 +12,7 @@ using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 using static UnityEngine.UI.GridLayoutGroup;
 
 namespace Assets._Scripts.Interaction_System.Objects
@@ -27,6 +28,7 @@ namespace Assets._Scripts.Interaction_System.Objects
 
 		[SerializeField] protected bool shouldPlayAudio = false;
 		[SerializeField] private AudioSource source;
+		[SerializeField] private AudioClip sound;
 
 		public bool GetIsGrabbed() => isGrabbed;
 
@@ -49,6 +51,11 @@ namespace Assets._Scripts.Interaction_System.Objects
 			if (rb.gameObject.tag == "Kapot" && isGrabbed)
 			{
 				source.PlayOneShot(AudioManager.Instance.KapotMovement);
+			}
+			else if (sound != null)
+			{
+				source.pitch = Random.Range(0.95f, 1.15f);
+				source.PlayOneShot(sound);
 			}
 			else if (shouldPlayAudio)
 			{
@@ -83,8 +90,8 @@ namespace Assets._Scripts.Interaction_System.Objects
 			{
 				source.PlayOneShot(AudioManager.Instance.PounderHit);
 			}
+			
 		}
-
 		
 		private void OnTriggerEnter(Collider other)
 		{

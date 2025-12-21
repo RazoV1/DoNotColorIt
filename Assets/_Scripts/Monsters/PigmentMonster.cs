@@ -21,7 +21,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
     [SerializeField] private string monsterName;
     [SerializeField] private Animator animator;
     [SerializeField] private BasicItem monsterItem;
-
+    [SerializeField] private AudioSource monsterSound;
     private float workProgress;
     private bool isInTheFence;
     private Rigidbody rb;
@@ -40,6 +40,11 @@ public class PigmentMonster : MonoBehaviour, ISavable
     [SerializeField] private ParticleSystem hungry;
     [SerializeField] private ParticleSystem lowHP;
     [SerializeField] private ParticleSystem fearful;
+    [Header("Sounds")]
+    [SerializeField] private List<AudioClip> laughs;
+    [SerializeField] private AudioClip brush;
+    [SerializeField] private AudioClip purr;
+    [SerializeField] private AudioClip eat;
     private PigmentMonster neigbour;
     [Header("Config Values")]
     private float surprise = 0.0f;
@@ -320,7 +325,13 @@ public class PigmentMonster : MonoBehaviour, ISavable
         else
         {
             Debug.Log("<color=green>Кайфарик");
-            workProgress += force;
+            monsterSound.pitch = Random.Range(0.95f,1.15f);
+            monsterSound.PlayOneShot(brush);
+
+			monsterSound.pitch = Random.Range(0.95f, 1.15f);
+			monsterSound.PlayOneShot(purr);
+
+			workProgress += force;
             surprise = 0.3f;
         }
         if (workProgress >= neededWork)
@@ -356,7 +367,11 @@ public class PigmentMonster : MonoBehaviour, ISavable
         hunger = Mathf.Clamp(hunger - saturationPerFood, 0.0f, 1.0f);
         surprise = 1.0f;
         happiness = Mathf.Clamp(happiness + feedHappinessBonus, 0.0f, 1.0f);
-        if (happy != null)
+		
+        monsterSound.pitch = Random.Range(0.95f, 1.15f);
+		monsterSound.PlayOneShot(eat);
+
+		if (happy != null)
         {
             happy.Play();
         }
