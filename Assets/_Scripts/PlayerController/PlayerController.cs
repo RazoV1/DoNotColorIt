@@ -2,6 +2,7 @@ using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, ISavable
@@ -47,8 +48,8 @@ public class PlayerController : MonoBehaviour, ISavable
 		Vector3 movement = (forward + right) * walkingSpeed;
 		movement.y = 0;
 		transform.rotation = Quaternion.LookRotation(movement, Vector3.up);
-		RaycastHit hit;
-		if (!Physics.Raycast(transform.position + movement/4f, Vector3.down * 10, out hit,3f,~layerMask) || hit.collider.gameObject.layer == 4 || hit.collider.gameObject.tag == "Interactable" )
+		RaycastHit[] hit = Physics.RaycastAll(transform.position + movement / 4f, Vector3.down * 10, 3f, ~layerMask);
+		if (hit.Where(x => x.collider.gameObject.tag == "Ground").ToList().Count == 0)
 		{
 			rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
 			return;
