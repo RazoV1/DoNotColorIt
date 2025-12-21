@@ -872,21 +872,6 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-  - m_Index: 51
-    m_Metrics:
-      m_Width: 40.78125
-      m_Height: 63.28125
-      m_HorizontalBearingX: -0.265625
-      m_HorizontalBearingY: 63.015625
-      m_HorizontalAdvance: 44.90625
-    m_GlyphRect:
-      m_X: 69
-      m_Y: 318
-      m_Width: 42
-      m_Height: 65
-    m_Scale: 1
-    m_AtlasIndex: 0
-    m_ClassDefinitionType: 0
   - m_Index: 50
     m_Metrics:
       m_Width: 62.265625
@@ -899,6 +884,21 @@ MonoBehaviour:
       m_Y: 263
       m_Width: 63
       m_Height: 63
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 51
+    m_Metrics:
+      m_Width: 40.78125
+      m_Height: 63.28125
+      m_HorizontalBearingX: -0.265625
+      m_HorizontalBearingY: 63.015625
+      m_HorizontalAdvance: 44.90625
+    m_GlyphRect:
+      m_X: 69
+      m_Y: 318
+      m_Width: 42
+      m_Height: 65
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -1108,12 +1108,12 @@ MonoBehaviour:
     m_GlyphIndex: 36
     m_Scale: 1
   - m_ElementType: 1
-    m_Unicode: 80
-    m_GlyphIndex: 51
-    m_Scale: 1
-  - m_ElementType: 1
     m_Unicode: 79
     m_GlyphIndex: 50
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 80
+    m_GlyphIndex: 51
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: -5882337220191411780}
@@ -1326,14 +1326,14 @@ MonoBehaviour:
     m_Y: 242
     m_Width: 71
     m_Height: 82
-  - m_X: 59
-    m_Y: 308
-    m_Width: 61
-    m_Height: 84
   - m_X: 392
     m_Y: 253
     m_Width: 82
     m_Height: 82
+  - m_X: 59
+    m_Y: 308
+    m_Width: 61
+    m_Height: 84
   m_FreeGlyphRects:
   - m_X: 29
     m_Y: 59
@@ -1487,22 +1487,6 @@ MonoBehaviour:
     m_Y: 217
     m_Width: 21
     m_Height: 806
-  - m_X: 0
-    m_Y: 392
-    m_Width: 1023
-    m_Height: 631
-  - m_X: 0
-    m_Y: 336
-    m_Width: 59
-    m_Height: 687
-  - m_X: 59
-    m_Y: 274
-    m_Width: 32
-    m_Height: 34
-  - m_X: 120
-    m_Y: 308
-    m_Width: 5
-    m_Height: 715
   - m_X: 392
     m_Y: 205
     m_Width: 21
@@ -1527,6 +1511,22 @@ MonoBehaviour:
     m_Y: 292
     m_Width: 196
     m_Height: 731
+  - m_X: 0
+    m_Y: 392
+    m_Width: 1023
+    m_Height: 631
+  - m_X: 0
+    m_Y: 336
+    m_Width: 59
+    m_Height: 687
+  - m_X: 59
+    m_Y: 274
+    m_Width: 32
+    m_Height: 34
+  - m_X: 120
+    m_Y: 308
+    m_Width: 5
+    m_Height: 715
   - m_X: 120
     m_Y: 335
     m_Width: 903

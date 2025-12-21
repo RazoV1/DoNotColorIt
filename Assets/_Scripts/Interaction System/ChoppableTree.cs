@@ -37,9 +37,10 @@ public class ChoppableTree : MonoBehaviour
 			audio.PlayOneShot(AudioManager.Instance.WoodHit);
 			Instantiate(chopParticle, collision.contacts[0].point,Quaternion.Inverse(collision.transform.rotation));
 		}
-		if (chopProgress >= neededProgress && rb.constraints != RigidbodyConstraints.None)
+		if (chopProgress >= neededProgress && rb.constraints != RigidbodyConstraints.FreezeRotationY)
 		{
 			rb.constraints = RigidbodyConstraints.None;
+			rb.constraints = RigidbodyConstraints.FreezeRotationY;
 			rb.isKinematic = false;
 			audio.PlayOneShot(AudioManager.Instance.TreeFall2);
 			StartCoroutine(FallApart());
