@@ -128,7 +128,7 @@ public class CameraController : MonoBehaviour
 	private void HandleCameraRotationByMouse()
 	{
 		if (!shouldRotateCamera) return;
-		pivot.localRotation = GetRotationFromMouseInput(true);
+		pivot.localRotation = Quaternion.Lerp(pivot.localRotation, GetRotationFromMouseInput(true),Time.deltaTime * 50f);
 		HandleWobbleByMouse();
 	}
 }

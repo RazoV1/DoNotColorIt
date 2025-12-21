@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour, ISavable
 
 	private void HandleMovementByInput()
 	{
-		float horizontalInput = Input.GetAxis("Horizontal");
-		float verticalInput = Input.GetAxis("Vertical");
+		float horizontalInput = Input.GetAxisRaw("Horizontal");
+		float verticalInput = Input.GetAxisRaw("Vertical");
 
 		Vector2 direction = new Vector2(horizontalInput, verticalInput).normalized;
 		Vector3 forward = cameraPivotTransform.forward * direction.y;

@@ -22707,7 +22707,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 258668341805637919, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 258668341805637919, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: m_Interpolate
@@ -22871,7 +22871,7 @@ PrefabInstance:
       objectReference: {fileID: 318547312}
     - target: {fileID: 7115549368494984859, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: walkingSpeed
-      value: 3.6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7115549368494984859, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: cameraController
