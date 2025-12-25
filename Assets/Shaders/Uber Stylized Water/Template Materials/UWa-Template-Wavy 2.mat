@@ -391,7 +391,7 @@ Material:
     - _ShoreFadeHardness: 0.641
     - _ShoreFadeSmoothness: 0.047
     - _ShoreFade_1: 0
-    - _ShoreFade_Smoothness: 0.005
+    - _ShoreFade_Smoothness: 0
     - _ShoreLineAmmount: 4
     - _ShoreLineCenterMask: 2.01
     - _ShoreLineCutoff: 0.66
@@ -443,7 +443,7 @@ Material:
     - _Underwater_Fade: 15
     - _WORLDSPACEDEPTH: 1
     - _WaterDepth: 0.3
-    - _Water_Depth: 9.09
+    - _Water_Depth: 37.73
     - _WaveHeight: 0.01
     - _WaveHeight2nd: 0.01
     - _WaveLength: 10
@@ -482,8 +482,8 @@ Material:
     - _1st_Wave_Direction: {r: 1, g: 0, b: 0, a: 0}
     - _2nd_Wave_Direction: {r: -1, g: 0, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color_Deep: {r: 0, g: 0.20331088, b: 0.461, a: 1}
-    - _Color_Shallow: {r: 0.080322154, g: 0.8962264, b: 0.87848926, a: 0}
+    - _Color_Deep: {r: 0.31621572, g: 0.3207547, b: 0.3207547, a: 1}
+    - _Color_Shallow: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
     - _Deep_Color: {r: 0, g: 0.084048375, b: 0.341, a: 1}
     - _DistanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
@@ -528,7 +528,7 @@ Material:
     - _WaveDirection: {r: 1, g: 0, b: 0, a: 0}
     - _WaveDirection2nd: {r: 0.64, g: 0, b: 1, a: 0}
     - _WaveTopColor: {r: 0, g: 1, b: 0.2200641, a: 0}
-    - _Wave_Top_Color: {r: 0.5424528, g: 0.85063356, b: 1, a: 1}
+    - _Wave_Top_Color: {r: 1, g: 0.9386792, b: 0.9386792, a: 0.38431373}
     - _maskMinMax: {r: 0, g: 0.78, b: 0, a: 0}
     - _shoreTexSpeed: {r: 0.1, g: 0.1, b: 0, a: 0}
     - _shoreTexTile: {r: 1, g: 1, b: 0, a: 0}
