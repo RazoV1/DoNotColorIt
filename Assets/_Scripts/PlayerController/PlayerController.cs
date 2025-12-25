@@ -49,8 +49,8 @@ public class PlayerController : MonoBehaviour, ISavable
 		Vector3 movement = (forward + right) * walkingSpeed;
 		movement.y = 0;
 		transform.rotation = Quaternion.LookRotation(movement, Vector3.up);
-		RaycastHit[] hit = Physics.RaycastAll(transform.position + movement / 4f, Vector3.down * 10, 3f, ~layerMask);
-		if (hit.Where(x => x.collider.gameObject.tag == "Ground").ToList().Count == 0)
+		RaycastHit[] hit = Physics.RaycastAll(transform.position + movement / 4f, Vector3.down, 2f, ~layerMask);
+		if (hit.Where(x => x.collider.gameObject.tag == "Ground").ToList().Count == 0 || hit.Where(x => x.collider.gameObject.tag == "Water").ToList().Count >= 1)
 		{
 			rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
 			return;

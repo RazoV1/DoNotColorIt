@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour, ISavable
 			}
 			if (!npc.GetGaveTask() && npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count > 0)
 			{
-				if (npc.GetName() == "DedMiron")
+				if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
 				{
 					tutorialManager.ProgressTutorial(1);
 				}
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour, ISavable
 		else if (IsCorrectColor(color, bucket.GetColor()))
 		{
 			Destroy(bucket.gameObject);
-			if (npc.GetName() == "DedMiron")
+			if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
 			{
 				GameManager.Instance.GetTutorial().ProgressTutorial(11);
 			}
@@ -136,9 +136,8 @@ public class GameManager : MonoBehaviour, ISavable
 		else
 		{
 			Destroy(bucket.gameObject);
-			if (npc.GetName() == "DedMiron")
+			if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
 			{
-
 				GameManager.Instance.GetTutorial().ProgressTutorial(11);
 			}
 			dialogue.InvokeDialogue(npc.GetName(), "incorrect");
