@@ -16,5 +16,7 @@ namespace Assets._Scripts.Events
 		public static UnityEvent OnWaterLevelChanged = new UnityEvent();
 
 		public static UnityEvent OnMount = new UnityEvent();
+
+		public static UnityEvent OnTaskIndexChanged = new UnityEvent();
 	}
 }

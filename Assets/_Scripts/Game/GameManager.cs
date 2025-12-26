@@ -130,8 +130,10 @@ public class GameManager : MonoBehaviour, ISavable
 			dialogue.InvokeDialogue(npc.GetName(), $"{clusterIndex}");
 			npc.SetCompleted(true);
 			currentTaskIndex++;
+			GameplayEvents.OnTaskIndexChanged.Invoke();
 			book.RemoveTask();
 			npc.PaintHouse();
+
 		}
 		else
 		{
