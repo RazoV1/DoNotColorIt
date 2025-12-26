@@ -19,7 +19,6 @@ public class TutorialManager : MonoBehaviour, ISavable
 
 	public void SetTutorialIndex(int index) { tutorialIndex = index; }
 	public int GetTutorialIndex() => tutorialIndex;
-
 	private bool hasPickedUpMonster = false;
 
 	public void Start()
@@ -65,7 +64,8 @@ public class TutorialManager : MonoBehaviour, ISavable
 		{
 			questLinesByIndex[index].SetActive(true);
 		}
-		catch {
+		catch
+		{
 			tutorialIndicator.SetActive(false);
 			HideAllTutorials();
 		};
@@ -88,7 +88,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 		}
 		else
 		{
-			if (questLinesByIndex[Mathf.Clamp(tutorialIndex-1,0,999)].activeSelf)
+			if (questLinesByIndex[Mathf.Clamp(tutorialIndex - 1, 0, 999)].activeSelf)
 			{
 				ShowTutorialByIndex(tutorialIndex);
 			}
@@ -117,6 +117,11 @@ public class TutorialManager : MonoBehaviour, ISavable
 		}
 		try
 		{
+			if (id == 0)
+			{
+				if (hasPickedUpMonster) return;
+				hasPickedUpMonster = true;
+			}
 			additionalTutorials[id].SetActive(true);
 		}
 		catch

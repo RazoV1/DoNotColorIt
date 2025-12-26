@@ -6,6 +6,7 @@ using Assets._Scripts.Delivery;
 using Assets._Scripts.Interaction_System.Objects;
 using TMPro;
 using System.Linq;
+using Assets._Scripts.Events;
 
 public class PlayerGrabber : MonoBehaviour
 {
@@ -191,6 +192,16 @@ public class PlayerGrabber : MonoBehaviour
 				if (monsterObj != null)
 				{
 					monsterStats.SetActive(true);
+					TutorialEvents.OnAdditionalTutorialTriggered.Invoke(0);
+					if (monsterObj.GetMonsterStats()["hunger"] >= 0.5f)
+					{
+
+						TutorialEvents.OnAdditionalTutorialTriggered.Invoke(1);
+					}
+					else if (monsterObj.GetMonsterStats()["disruptance"] >= 0.5f)
+					{
+						TutorialEvents.OnAdditionalTutorialTriggered.Invoke(2);
+					}
 				}
 				var pigmentobj = grabbedObject.GetComponent<ColorPigment>();
 				if (pigmentobj != null)

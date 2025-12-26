@@ -143,6 +143,8 @@ public class GameManager : MonoBehaviour, ISavable
 				GameManager.Instance.GetTutorial().ProgressTutorial(11);
 			}
 			dialogue.InvokeDialogue(npc.GetName(), "incorrect");
+
+			TutorialEvents.OnAdditionalTutorialTriggered.Invoke(5);
 		}
 	}
 
