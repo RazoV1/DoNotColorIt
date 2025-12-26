@@ -1,5 +1,6 @@
 using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class TutorialManager : MonoBehaviour, ISavable
 {
 	[SerializeField] private List<GameObject> questLinesByIndex;
+	[SerializeField] private List<GameObject> additionalTutorials;
 	[SerializeField] private GameObject tutorialIndicator;
 
 	private bool shouldShowTutorial;
@@ -17,6 +19,8 @@ public class TutorialManager : MonoBehaviour, ISavable
 
 	public void SetTutorialIndex(int index) { tutorialIndex = index; }
 	public int GetTutorialIndex() => tutorialIndex;
+
+	private bool hasPickedUpMonster = false;
 
 	public void Start()
 	{
@@ -70,6 +74,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 	public void HideAllTutorials()
 	{
 		questLinesByIndex.ForEach(list => list.SetActive(false));
+		additionalTutorials.ForEach(list => list.SetActive(false));
 	}
 
 	public void ProgressTutorial(int index)
@@ -99,6 +104,27 @@ public class TutorialManager : MonoBehaviour, ISavable
 	{
 		SaveEvents.OnSaveEvent.AddListener(SaveData);
 		SaveEvents.OnLoadEvent.AddListener(SyncDataEmpty);
+		TutorialEvents.OnAdditionalTutorialTriggered.AddListener(ShowAdditionalTutorial);
+	}
+
+	private void ShowAdditionalTutorial(int id)
+	{
+		if (tutorialIndex >= questLinesByIndex.Count) return;
+		HideAllTutorials();
+		if (SceneManager.GetActiveScene().buildIndex == 0)
+		{
+			return;
+		}
+		try
+		{
+			additionalTutorials[id].SetActive(true);
+		}
+		catch
+		{
+			tutorialIndicator.SetActive(false);
+			HideAllTutorials();
+		};
+
 	}
 
 	public void SaveData()

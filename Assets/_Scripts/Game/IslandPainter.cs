@@ -24,7 +24,7 @@ public class IslandPainter : MonoBehaviour
 	{
 		int trueId = Mathf.FloorToInt(GameManager.Instance.GetCurrentTaskIndex() / 2f);
 
-		if (trueId < 1) return;
+		if (GameManager.Instance.GetCurrentTaskIndex() < 1) return;
 		foreach (IslandGroup group in islandGroups.GetRange(0, trueId-1))
 		{
 			group.group.ForEach(house =>
