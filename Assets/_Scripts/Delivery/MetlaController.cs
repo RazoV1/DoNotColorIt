@@ -39,7 +39,7 @@ namespace Assets._Scripts.Delivery
 		private float preferedSpeed;
 		private Vector2 preferredRotation;
 
-		private bool isMounted = false;
+		[SerializeField]private bool isMounted = false;
 
 		public Transform GetPivot() => pivot;
 
