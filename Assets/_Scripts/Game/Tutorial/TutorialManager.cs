@@ -111,6 +111,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 	{
 		if (tutorialIndex >= questLinesByIndex.Count) return;
 		HideAllTutorials();
+		tutorialIndicator.SetActive(true);
 		if (SceneManager.GetActiveScene().buildIndex == 0)
 		{
 			return;

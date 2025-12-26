@@ -22,10 +22,14 @@ public class Fence : MonoBehaviour
 			monsterInside = monster;
 			monster.SetInTheFence(true);
 			monster.SetNeighbour(neighboursForCalculations[0].GetMonsterInside());
-			if (monsterInside.GetIdealColor() != neighboursForCalculations[0].GetMonsterInside().GetIdealColor())
+			try
 			{
-				TutorialEvents.OnAdditionalTutorialTriggered.Invoke(3);
+				if (monsterInside.GetIdealColor() != neighboursForCalculations[0].GetMonsterInside().GetIdealColor())
+				{
+					TutorialEvents.OnAdditionalTutorialTriggered.Invoke(3);
+				}
 			}
+			catch { }
 		}
 	}
 
