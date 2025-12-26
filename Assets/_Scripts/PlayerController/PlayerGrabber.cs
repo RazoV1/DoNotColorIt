@@ -295,7 +295,7 @@ public class PlayerGrabber : MonoBehaviour
 		Destroy(jointTransform.gameObject);
 	}
 
-	private void Update()
+	private void LateUpdate()
 	{
 		HandleInput();
 		CastHint();
