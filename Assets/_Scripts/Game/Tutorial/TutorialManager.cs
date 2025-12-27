@@ -36,20 +36,24 @@ public class TutorialManager : MonoBehaviour, ISavable
 
 		if (Input.GetKeyDown(KeyCode.T))
 		{
-			if (SceneManager.GetActiveScene().buildIndex == 0)
+			try
 			{
-				HideAllTutorials();
-				return;
+				if (SceneManager.GetActiveScene().buildIndex == 0)
+				{
+					HideAllTutorials();
+					return;
+				}
+				if (questLinesByIndex[tutorialIndex].activeSelf)
+				{
+					HideAllTutorials();
+					ProgressTutorial(12);
+				}
+				else
+				{
+					ShowTutorialByIndex(tutorialIndex);
+				}
 			}
-			if (questLinesByIndex[tutorialIndex].activeSelf)
-			{
-				HideAllTutorials();
-				ProgressTutorial(12);
-			}
-			else
-			{
-				ShowTutorialByIndex(tutorialIndex);
-			}
+			catch { HideAllTutorials(); }
 		}
 	}
 
@@ -109,7 +113,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 
 	private void ShowAdditionalTutorial(int id)
 	{
-		if (tutorialIndex >= questLinesByIndex.Count) return;
+		if (tutorialIndex < questLinesByIndex.Count) return;
 		HideAllTutorials();
 		tutorialIndicator.SetActive(true);
 		if (SceneManager.GetActiveScene().buildIndex == 0)
