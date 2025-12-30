@@ -146,12 +146,12 @@ public class PocketTicker : MonoBehaviour, ISavable
 
 	public int GetTicksForCalculations()
 	{
-		if (ticks > 1)
-		{
-			int toReturn = ticks;
-			ticks = 1;
-			return toReturn;
-		}
+		//if (ticks > 1)
+		//{
+		//	int toReturn = ticks;
+		//	ticks = 1;
+		//	return toReturn;
+		//}
 		return ticks;
 	}
 

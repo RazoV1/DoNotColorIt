@@ -3,6 +3,7 @@ using Assets._Scripts.Game.SaveSystem;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class Book : MonoBehaviour, ISavable
 	[SerializeField] private GameObject taskObject;
 	[SerializeField] private GameObject bookCanvas;
 	[SerializeField] private Image taskImage;
+	[SerializeField] private TextMeshProUGUI taskHeader;
+	[SerializeField] private TextMeshProUGUI taskText;
 	[SerializeField] private bool shouldShowTask = false;
 
 	[SerializeField] private List<ColorTask> orderedTasks;
@@ -49,7 +52,9 @@ public class Book : MonoBehaviour, ISavable
 	{
 		int index = GameManager.Instance.GetCurrentTaskIndex();
 		GameplayEvents.OnWaterLevelChanged.Invoke();
-		
+		taskHeader.text = "";
+		taskText.text = "";
+		LanguageManager languageManager = LanguageManager.Instance;
 		try
 		{
 			var objescts = Resources.FindObjectsOfTypeAll<NPCWaiter>();
@@ -58,6 +63,8 @@ public class Book : MonoBehaviour, ISavable
 				Sprite taskImagery = objescts.Where(x => x.GetName()==npcName).ToList()[0].GetImage();
 			    
 				taskImage.sprite = taskImagery;
+				taskHeader.text = $"{languageManager.GetTranslatable("book.task.header")}: <mark>{languageManager.GetTranslatable("npc."+npcName+".name")}";
+				taskText.text = $"{languageManager.GetTranslatable("book.task.asked")}: {languageManager.GetTranslatable("npc."+npcName+".task")}";
 			}
 		}
 		catch { }
