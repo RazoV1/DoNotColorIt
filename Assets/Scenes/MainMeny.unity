@@ -15300,27 +15300,35 @@ MonoBehaviour:
   - id: 0
     color: {r: 0.39215687, g: 0.5882353, b: 0.3137255, a: 1}
     image: {fileID: 21300000, guid: c626f518ab6dce74f92bcc0929449692, type: 3}
+    npcName: DedMiron
   - id: 1
     color: {r: 1, g: 1, b: 0, a: 1}
     image: {fileID: 21300000, guid: f83b96630f1d39b47814d8f2c32da3d0, type: 3}
+    npcName: Lev
   - id: 2
     color: {r: 1, g: 0.6901961, b: 0.6901961, a: 1}
     image: {fileID: 21300000, guid: 5158c719263ce6340979ebd36a210056, type: 3}
+    npcName: Aglaya
   - id: 3
     color: {r: 0.21960784, g: 0.8784314, b: 0.9882353, a: 1}
     image: {fileID: 21300000, guid: 57498dfb7e85c644a9ab7d876397fb7c, type: 3}
+    npcName: Daria
   - id: 4
     color: {r: 0.7058824, g: 0, b: 0, a: 1}
     image: {fileID: 21300000, guid: b756fd489e603dc4d89792025fec51a7, type: 3}
+    npcName: Matvey
   - id: 5
     color: {r: 0.78431374, g: 0.39215687, b: 0, a: 1}
     image: {fileID: 21300000, guid: bbc6c6f2d07a4554697d9ad11601f290, type: 3}
+    npcName: Nadeshda
   - id: 6
     color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     image: {fileID: 21300000, guid: c4c72262d75c10c46a90fd8a505dc817, type: 3}
+    npcName: Zahar
   - id: 7
     color: {r: 0.078431375, g: 0.20392157, b: 0.39607844, a: 1}
     image: {fileID: 21300000, guid: bd52e7e39f4d02f4c853f65382669255, type: 3}
+    npcName: Kassandra
 --- !u!114 &1084572525
 MonoBehaviour:
   m_ObjectHideFlags: 0

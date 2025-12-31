@@ -13,6 +13,7 @@ public struct ColorTask
 	public int id;
 	public Color color;
 	public Sprite image;
+	public string npcName;
 }
 
 public class NPCWaiter : MonoBehaviour, ISavable

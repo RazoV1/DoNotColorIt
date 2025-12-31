@@ -1,6 +1,7 @@
 using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -57,17 +58,16 @@ public class Book : MonoBehaviour, ISavable
 		LanguageManager languageManager = LanguageManager.Instance;
 		try
 		{
-			var objescts = Resources.FindObjectsOfTypeAll<NPCWaiter>();
 			if (shouldShowTask)
 			{
-				Sprite taskImagery = objescts.Where(x => x.GetName()==npcName).ToList()[0].GetImage();
+				Sprite taskImagery = orderedTasks.Where(x => x.npcName==npcName).ToList()[0].image;
 			    
 				taskImage.sprite = taskImagery;
 				taskHeader.text = $"{languageManager.GetTranslatable("book.task.header")}: <mark>{languageManager.GetTranslatable("npc."+npcName+".name")}";
 				taskText.text = $"{languageManager.GetTranslatable("book.task.asked")}: {languageManager.GetTranslatable("npc."+npcName+".task")}";
 			}
 		}
-		catch { }
+		catch (Exception e){ Debug.Log(e); }
 		taskObject.SetActive(shouldShowTask);
 	}
 
