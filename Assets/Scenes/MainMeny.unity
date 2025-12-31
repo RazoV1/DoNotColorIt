@@ -8784,7 +8784,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &588370005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9708,7 +9708,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.60375, y: 0.202}
   m_AnchorMax: {x: 0.845, y: 0.25317475}
-  m_AnchoredPosition: {x: -0.519989, y: 1.3499908}
+  m_AnchoredPosition: {x: -0.519989, y: 1.3500061}
   m_SizeDelta: {x: -1.1000061, y: -0.83000183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &694941954
@@ -15389,7 +15389,7 @@ GameObject:
   - component: {fileID: 1084572525}
   - component: {fileID: 1084572522}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: BookCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23978,10 +23978,10 @@ MonoBehaviour:
   hintSprite: {fileID: 488966459}
   currentHint: 0
   director: {fileID: 0}
-  interactCircular: {fileID: 21300000, guid: 14608ce5c2e118746be659c45e67de01, type: 3}
-  interactSprite: {fileID: 21300000, guid: a5fb2c0bd6db1ab4eae50f88e7799942, type: 3}
-  interactHorizontal: {fileID: 21300000, guid: 2f46e6f962633c142bc2fbc99574ebf9, type: 3}
-  interactVertical: {fileID: 21300000, guid: 638795f48e03d4a46ac9e806c8a122c2, type: 3}
+  interactCircular: {fileID: 21300000, guid: 7b12557f8b005af4b8d6952486590317, type: 3}
+  interactSprite: {fileID: 21300000, guid: 62fd1196b84129b49ae66e4a91688a02, type: 3}
+  interactHorizontal: {fileID: 21300000, guid: 8d31ced59d4207c4ab24bac7f6b087e2, type: 3}
+  interactVertical: {fileID: 21300000, guid: fbbb369f13e961d4095b4777cf3ee163, type: 3}
 --- !u!1 &1645111176
 GameObject:
   m_ObjectHideFlags: 0
