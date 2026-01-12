@@ -109,6 +109,14 @@ public class TutorialManager : MonoBehaviour, ISavable
 		SaveEvents.OnSaveEvent.AddListener(SaveData);
 		SaveEvents.OnLoadEvent.AddListener(SyncDataEmpty);
 		TutorialEvents.OnAdditionalTutorialTriggered.AddListener(ShowAdditionalTutorial);
+		CommandEvents.OnTutorialSkip.AddListener(SkipTutorial);
+	}
+
+	private void SkipTutorial(int placeholder)
+	{
+		HideAllTutorials();
+		tutorialIndex = 12;
+		ProgressTutorial(12);
 	}
 
 	private void ShowAdditionalTutorial(int id)
