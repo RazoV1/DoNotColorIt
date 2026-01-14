@@ -24,6 +24,7 @@ public class Mortar : MonoBehaviour
 
 	public void Stomp(float force)
 	{
+		force = Mathf.Abs(force);
 		Debug.Log($"Stomp with force {force}!");
 		if (force >= forceThreashhold)
 		{
@@ -99,7 +100,7 @@ public class Mortar : MonoBehaviour
 		return new Color(outputR, outputG, outputB);
 	}
 
-	private void OnCollisionEnter(Collision collision)
+	public void OnCollisionEnter(Collision collision)
 	{
 		if (collision.collider.tag == "Pounder" && pigmentInside.Count >= 1)
 		{
@@ -112,6 +113,7 @@ public class Mortar : MonoBehaviour
 		{
 			pigmentInside.Add(pigment);
 			pigment.transform.parent = transform;
+			pigment.SetListenForPound(true,this);
 			pigment.GetRigidbody().constraints = RigidbodyConstraints.FreezePositionX;
 			pigment.GetRigidbody().constraints = RigidbodyConstraints.FreezePositionZ;
 		}
@@ -127,6 +129,8 @@ public class Mortar : MonoBehaviour
 		if (pigmentInside.Contains(pigment))
 		{
 			pigmentInside.Remove(pigment);
+
+			pigment.SetListenForPound(false);
 			pigment.transform.parent = null;
 			progress = 0;
 			pigment.GetRigidbody().constraints = RigidbodyConstraints.None;

@@ -14,6 +14,8 @@ public class ColorPigment : BasicItem
 	[SerializeField] protected MeshRenderer meshRenderer;
 	private float scaleFactor = 0.1f;
 	protected Material pigmentMaterial;
+	private bool listenForPound = false;
+	private Mortar mortar;
 
 	public Color GetColor() => color;
 	public float GetVolume() => volume;
@@ -29,7 +31,7 @@ public class ColorPigment : BasicItem
 		pigmentMaterial = Instantiate(meshRenderer.material);
 		this.color = color;
 		this.volume = volume;
-		transform.localScale = new Vector3(MathF.Pow(volume,0.3f)*scaleFactor, MathF.Pow(volume, 0.3f)*scaleFactor, MathF.Pow(volume, 0.3f) * scaleFactor);
+		transform.localScale = new Vector3(MathF.Pow(volume, 0.3f) * scaleFactor, MathF.Pow(volume, 0.3f) * scaleFactor, MathF.Pow(volume, 0.3f) * scaleFactor);
 		pigmentMaterial.color = color;
 		meshRenderer.material = pigmentMaterial;
 	}
@@ -39,6 +41,19 @@ public class ColorPigment : BasicItem
 		Destroy(pigmentMaterial);
 	}
 
+	public void SetListenForPound(bool listenForPound, Mortar mortar = null)
+	{
+		this.listenForPound = listenForPound;
+		this.mortar = mortar;
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (!listenForPound || collision.collider.GetComponent<Mortar>()) return;
+
+		mortar.OnCollisionEnter(collision);
+	}
+
 	public override void SaveData()
 	{
 		SavablePrefab pref = new SavablePrefab
@@ -46,13 +61,13 @@ public class ColorPigment : BasicItem
 			prefabName = $"pigment",
 			dimension = SceneManager.GetActiveScene().buildIndex,
 			worldPosition = Mapper.VectorToFloatData(transform.position),// new List<float> { transform.position.x, transform.position.y, transform.position.z },
-			quaternionRotation =Mapper.QuaternionToFloatData(transform.rotation), //new List<float> { transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w },
+			quaternionRotation = Mapper.QuaternionToFloatData(transform.rotation), //new List<float> { transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w },
 			floatData = new Dictionary<string, float>
 			{
-				{ "colorR",color.r},
+				{"colorR",color.r},
 				{"colorG", color.g},
-				{"colorB",color.b },
-				{"volume",volume }
+				{"colorB",color.b},
+				{"volume",volume}
 			}
 		};
 		SaveManager.Instance.SavePrefab(pref);

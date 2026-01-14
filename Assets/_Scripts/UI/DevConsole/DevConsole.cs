@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DevConsole : MonoBehaviour
@@ -18,6 +19,7 @@ public class DevConsole : MonoBehaviour
 	{
 		CommandEvents.Register();
 		CommandEvents.OnHelp.AddListener(HelpCommand);
+		CommandEvents.OnSmolaGive.AddListener(AddSmolaCommand);
 	}
 
 	private void Update()
@@ -29,7 +31,12 @@ public class DevConsole : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.BackQuote))
 		{
-		   console.SetActive(!console.activeInHierarchy);
+			console.SetActive(!console.activeInHierarchy);
+			if (SceneManager.GetActiveScene().buildIndex != 0)
+			{
+				Cursor.visible = console.activeInHierarchy;
+				Cursor.lockState = console.activeInHierarchy ? CursorLockMode.None : CursorLockMode.Locked;
+			}
 		}
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
@@ -52,12 +59,17 @@ public class DevConsole : MonoBehaviour
 		int commandArgument = 0;
 		if (splittedCommand.Count > 1)
 		{
-			int.TryParse(splittedCommand[1], out commandArgument);
+			Debug.Log(splittedCommand[1]);
+			if (int.TryParse(splittedCommand[1], out commandArgument))
+			{
+				Debug.Log("Parsed!");
+				commandArgument = int.Parse(splittedCommand[1]);
+			}
 		}
 		string commandBody = splittedCommand[0];
 		string response = "";
 
-		bool wasSuccsesful = CommandEvents.TryInvokeEvent(command, commandArgument);
+		bool wasSuccsesful = CommandEvents.TryInvokeEvent(commandBody, commandArgument != 0 ? commandArgument : 0);
 
 		if (wasSuccsesful)
 		{
@@ -74,7 +86,7 @@ public class DevConsole : MonoBehaviour
 	{
 		TextMeshProUGUI log = Instantiate(logPrefab, contentObject).GetComponent<TextMeshProUGUI>();
 		log.text = "------------------------";
-		
+
 		log = Instantiate(logPrefab, contentObject).GetComponent<TextMeshProUGUI>();
 		log.text = "/skipTutorial - Пропустить туториал";
 
@@ -89,6 +101,14 @@ public class DevConsole : MonoBehaviour
 
 		log = Instantiate(logPrefab, contentObject).GetComponent<TextMeshProUGUI>();
 		log.text = "------------------------";
+	}
+
+	private void AddSmolaCommand(int amount)
+	{
+		for (int i = 0; i < amount; i++)
+		{
+			PocketTicker.Instance.AddSmola();
+		}
 	}
 
 	private void Clear(int placeholder)

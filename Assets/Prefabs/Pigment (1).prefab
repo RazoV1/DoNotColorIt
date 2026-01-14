@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813578752216205196}
-  m_Mesh: {fileID: -2839306496682189011, guid: a2374ef97efbe644bb87a7b4bc5860fd, type: 3}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &4032718184280983271
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53,7 +53,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813578752216205196}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -117,7 +117,7 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 1}
   volume: 1
   baseVibrancy: 0
-  meshRenderer: {fileID: 375067105756616229}
+  meshRenderer: {fileID: 4032718184280983271}
 --- !u!54 &7138567082384157848
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a2374ef97efbe644bb87a7b4bc5860fd, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a2374ef97efbe644bb87a7b4bc5860fd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -344,11 +344,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2374ef97efbe644bb87a7b4bc5860fd, type: 3}
---- !u!23 &375067105756616229 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a2374ef97efbe644bb87a7b4bc5860fd, type: 3}
-  m_PrefabInstance: {fileID: 1366020234597370529}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1549147386173025610 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a2374ef97efbe644bb87a7b4bc5860fd, type: 3}

@@ -1,5 +1,7 @@
+using Assets._Scripts.Events;
 using System;
 using System.Collections;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class PrefabSpawner : MonoBehaviour
@@ -36,6 +38,27 @@ public class PrefabSpawner : MonoBehaviour
 	public void Awake()
 	{
 		StartCoroutine(SpawnObjects());
+		if (mode == SpawnMode.Logs)
+		{
+			Debug.Log("Listening to getLogs");
+			CommandEvents.OnLogGive.AddListener(SpawnOnCommand);
+		}
+	}
+
+	private void OnDestroy()
+	{
+		if (mode == SpawnMode.Logs)
+		{
+			CommandEvents.OnLogGive.RemoveListener(SpawnOnCommand);
+ 		}
+	}
+
+	private void SpawnOnCommand(int amount)
+	{
+		for (int i = 0; i < amount; i++)
+		{
+			Instantiate(prefab, transform.position, Quaternion.identity);
+		}
 	}
 
 	[Serializable]
