@@ -65,6 +65,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8630829673230707118}
   - {fileID: 7010354554851436417}
   - {fileID: 588325576895178728}
   m_Father: {fileID: 0}
@@ -110,6 +111,8 @@ MonoBehaviour:
   neededProgress: 25
   logsPrefab: {fileID: 1480589718653635216, guid: 7381122c504f3804a8d09b5591cbe8f1, type: 3}
   chopParticle: {fileID: 7612997193582050880, guid: 5077260fe45ad9c47999f23105bdf148, type: 3}
+  leavesParticle: {fileID: 153458290027318273}
+  shakeDuration: 0.2
   rb: {fileID: 783814998080500381}
 --- !u!54 &783814998080500381
 Rigidbody:
@@ -389,4 +392,91 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -3500460014136483016, guid: fc5d81e7d31552f458934a7365edc684, type: 3}
   m_PrefabInstance: {fileID: 5134658654325343440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8253420395508962587
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 475603124987610874}
+    m_Modifications:
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 757378574202506843, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: m_Name
+      value: fallingPineLeaves
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118648309375850778, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118648309375850778, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118648309375850778, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118648309375850778, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8118648309375850778, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 2.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+--- !u!198 &153458290027318273 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8118648309375850778, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+  m_PrefabInstance: {fileID: 8253420395508962587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8630829673230707118 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 381917301434727605, guid: 430cd09a671e87e4bb0c4b0d6ba54592, type: 3}
+  m_PrefabInstance: {fileID: 8253420395508962587}
   m_PrefabAsset: {fileID: 0}

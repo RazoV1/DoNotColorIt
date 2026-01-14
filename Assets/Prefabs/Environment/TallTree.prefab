@@ -35,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 8334552479652863840}
   - {fileID: 4708600940735680399}
+  - {fileID: 3348541671492881763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3789357423438634167
@@ -78,6 +79,8 @@ MonoBehaviour:
   neededProgress: 25
   logsPrefab: {fileID: 1480589718653635216, guid: 7381122c504f3804a8d09b5591cbe8f1, type: 3}
   chopParticle: {fileID: 7612997193582050880, guid: 5077260fe45ad9c47999f23105bdf148, type: 3}
+  leavesParticle: {fileID: 6602141490763720908}
+  shakeDuration: 0.2
   rb: {fileID: 7051072477630865575}
 --- !u!54 &7051072477630865575
 Rigidbody:
@@ -272,6 +275,73 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -3500460014136483016, guid: d6cc947409678e64d91256ecdc7316c7, type: 3}
   m_PrefabInstance: {fileID: 1023321735903145143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3113323436801962454
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4475247792515455850}
+    m_Modifications:
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 757378574202506843, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+      propertyPath: m_Name
+      value: fallingPineLeaves 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+--- !u!4 &3348541671492881763 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 381917301434727605, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+  m_PrefabInstance: {fileID: 3113323436801962454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6602141490763720908 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8118648309375850778, guid: eb7664c33fa594245a28681ba05d963f, type: 3}
+  m_PrefabInstance: {fileID: 3113323436801962454}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4377949069383892056
 PrefabInstance:

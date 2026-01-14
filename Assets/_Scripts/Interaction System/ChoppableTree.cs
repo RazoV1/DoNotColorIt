@@ -10,6 +10,10 @@ public class ChoppableTree : MonoBehaviour
 	[SerializeField] private float neededProgress;
 	[SerializeField] private GameObject logsPrefab;
 	[SerializeField] private GameObject chopParticle;
+	[SerializeField] private ParticleSystem leavesParticle;
+	[SerializeField] private float shakeDuration;
+	private Vector3 startPosition;
+	private Coroutine shakeRoutine;
 	private AudioSource audio;
 
 	[SerializeField] private Rigidbody rb;
@@ -17,13 +21,26 @@ public class ChoppableTree : MonoBehaviour
 	private void Start()
 	{
 		audio = GetComponent<AudioSource>();
+		startPosition = transform.position;
+	}
+
+	private IEnumerator Shake()
+	{
+		float time = 0;
+		while (time < shakeDuration)
+		{
+			time += Time.deltaTime;
+			transform.position = startPosition + Random.insideUnitSphere/15f;
+			yield return null;
+		}
+		transform.position = startPosition;
 	}
 
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.collider.tag == "Axe")
 		{
-			StrikeWithForce(collision.impulse.magnitude,collision);
+			StrikeWithForce(collision.impulse.magnitude, collision);
 		}
 	}
 
@@ -33,9 +50,17 @@ public class ChoppableTree : MonoBehaviour
 		if (force > neededForce)
 		{
 			chopProgress += force;
-			audio.pitch = Random.Range(0.75f,1f);
+			audio.pitch = Random.Range(0.75f, 1f);
 			audio.PlayOneShot(AudioManager.Instance.WoodHit);
-			Instantiate(chopParticle, collision.contacts[0].point,Quaternion.Inverse(collision.transform.rotation));
+			Instantiate(chopParticle, collision.contacts[0].point, Quaternion.Inverse(collision.transform.rotation));
+
+		    if (shakeRoutine != null)
+			{
+				StopCoroutine(shakeRoutine);
+			}
+			shakeRoutine = StartCoroutine(Shake());
+
+			leavesParticle.Play();
 		}
 		if (chopProgress >= neededProgress && rb.constraints != RigidbodyConstraints.FreezeRotationY)
 		{
