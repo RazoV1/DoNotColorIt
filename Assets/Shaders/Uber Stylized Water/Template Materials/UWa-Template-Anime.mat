@@ -404,7 +404,7 @@ Material:
     - _WaveSpeed: 0.3
     - _WaveSpeed2nd: 0.2
     - _WorkflowMode: 1
-    - _WorldSpaceDepth: 1
+    - _WorldSpaceDepth: 0
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
