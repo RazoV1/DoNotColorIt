@@ -22,6 +22,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
     [SerializeField] private Animator animator;
     [SerializeField] private BasicItem monsterItem;
     [SerializeField] private AudioSource monsterSound;
+    [SerializeField] private MonsterNameTag nameTag;
     private float workProgress;
     private bool isInTheFence;
     private Rigidbody rb;
@@ -413,7 +414,11 @@ public class PigmentMonster : MonoBehaviour, ISavable
         {"health",health },
         {"disruptance",disruptance },
         {"curiosity",curiosity }
-      }
+      },
+            stringData = new Dictionary<string, string>
+            {
+                {"nameTag", nameTag.GetNameTag()}
+            }
         };
 
         SaveManager.Instance.SavePrefab(monsterSave);
@@ -427,5 +432,6 @@ public class PigmentMonster : MonoBehaviour, ISavable
         health = data.floatData["health"];
         disruptance = data.floatData["disruptance"];
         curiosity = data.floatData["curiosity"];
+        nameTag.SetNameTag(data.stringData["nameTag"]);
     }
 }
