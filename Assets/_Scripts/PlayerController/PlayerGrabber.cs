@@ -165,6 +165,10 @@ public class PlayerGrabber : MonoBehaviour
 			//Debug.Log("Hit!");
 			if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
 			{
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Egg")
+				{
+					hit.collider.GetComponent<MonsterEgg>().TryOpeningHatchMenu();
+				}
 				return;
 			}
 

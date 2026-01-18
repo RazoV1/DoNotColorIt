@@ -3,13 +3,17 @@ using Assets._Scripts.Game.SaveSystem;
 using Assets._Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class MonsterEgg : MonoBehaviour, ISavable
 {
 	[SerializeField] private GameObject monsterInside;
 	[SerializeField] private float timeToHatch;
+	[SerializeField] private GameObject monsterNameGui;
+	[SerializeField] private TextMeshProUGUI inputFieldText;
 
 	public void SaveData()
 	{
@@ -31,9 +35,31 @@ public class MonsterEgg : MonoBehaviour, ISavable
 			yield return new WaitForSeconds(2);
 			timeToHatch -= PocketTicker.Instance.GetTicksForCalculations();
 		}
-		Instantiate(monsterInside,transform.position,Quaternion.identity);
-		
+	}
+
+	public void SetNameFromInput()
+	{
+		SpawnMonster(inputFieldText.text);
+	}
+
+	public void SetRandomName()
+	{
+		SpawnMonster("");
+	}
+
+	public void SpawnMonster(string name)
+	{
+		Instantiate(monsterInside, transform.position, Quaternion.identity).GetComponent<PigmentMonster>().Initialize(name);
+
 		Destroy(gameObject);
+	}
+
+	public void TryOpeningHatchMenu()
+	{
+		if (timeToHatch <= 0f)
+		{
+		   monsterNameGui.SetActive(true);
+		}
 	}
 
 	private void Start()

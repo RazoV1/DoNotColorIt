@@ -1,4 +1,5 @@
 using Assets._Scripts.Events;
+using Assets._Scripts.Game.Config.Models;
 using Assets._Scripts.Game.SaveSystem;
 using Assets._Scripts.Models;
 using Newtonsoft.Json;
@@ -13,6 +14,8 @@ public class LanguageManager : MonoBehaviour,ISavable
 {
 	public static LanguageManager Instance;
 	private Dictionary<string, Dictionary<string, string>> languages = new Dictionary<string, Dictionary<string, string>>();
+	private Dictionary<string,List<string>> nameTagLists = new Dictionary<string, List<string>>();
+
 	private string path = Application.isEditor ? Application.dataPath + "/Resources/Lang" : Directory.GetCurrentDirectory() + "/Lang";
 
 	[SerializeField] private string currentLanguage = "Русский.json";
@@ -38,6 +41,8 @@ public class LanguageManager : MonoBehaviour,ISavable
 		GameplayEvents.ChangeDimensionsEvent.AddListener(ApplyLanguage);
 		DontDestroyOnLoad(this);
 	}
+
+	public List<string> GetPresetNametags() => nameTagLists[currentLanguage];
 
 	public void ChangeLanguage(string newLang)
 	{
@@ -129,7 +134,9 @@ public class LanguageManager : MonoBehaviour,ISavable
 			{
 				Debug.Log($"Ищем пакет по пути {path + '/' + languagePackName.Split('\\')[1]}");
 				LanguagePackModel newModel = JsonConvert.DeserializeObject<LanguagePackModel>(File.ReadAllText(path + '/' + languagePackName.Split('\\')[1]));
+				NameTagListModel nameTagListModel = JsonConvert.DeserializeObject<NameTagListModel>(File.ReadAllText(path + '/' + languagePackName.Split('\\')[1].Split('.')[0] + '/' + "Names.json"));
 				languages.Add(languagePackName.Split('\\')[1], newModel.Lines);
+				nameTagLists.Add(languagePackName.Split('\\')[1],nameTagListModel.Names);
 				Debug.Log($"Добавили пакет с именем {languagePackName.Split('\\')[1]}");
 			}
 			catch (Exception e)
