@@ -22,7 +22,7 @@ public class MonsterEgg : MonoBehaviour, ISavable
 	{
 		SavablePrefab pref = new SavablePrefab
 		{
-			prefabName = $"monsterEgg{monsterInside.name}",
+			prefabName = $"egg",
 			dimension = SceneManager.GetActiveScene().buildIndex,
 			worldPosition = Mapper.VectorToFloatData(transform.position), //new List<float> {transform.position.x,transform.position.y,transform.position.z},
 			quaternionRotation = Mapper.QuaternionToFloatData(transform.rotation),//new List<float> { transform.rotation.x,transform.rotation.y,transform.rotation.z, transform.rotation.w },

@@ -12996,12 +12996,6 @@ MonoBehaviour:
     Prefab: {fileID: 1813578752216205196, guid: d64c6acf779ada94385f4437a10d784f, type: 3}
   - Name: Carrot
     Prefab: {fileID: 6375254350082075694, guid: 13aa506faea85b947ba2f7c98ec9e018, type: 3}
-  - Name: Egg_red(Clone)
-    Prefab: {fileID: 7528853975306272020, guid: 04e3ebefc1b7de74d97867166df02786, type: 3}
-  - Name: Egg_green(Clone)
-    Prefab: {fileID: 6628445201189605019, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-  - Name: Egg_blue(Clone)
-    Prefab: {fileID: 4436827652627677744, guid: 82a2402b93d310e4297622765fa1f328, type: 3}
   - Name: monsterEggvidra_Hungry
     Prefab: {fileID: 4436827652627677744, guid: 82a2402b93d310e4297622765fa1f328, type: 3}
   - Name: monsterEggAksolotl
@@ -13010,6 +13004,8 @@ MonoBehaviour:
     Prefab: {fileID: 6628445201189605019, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
   - Name: filledBucket
     Prefab: {fileID: 591547977648372155, guid: a66eb46bc762856409c2d7a88498a348, type: 3}
+  - Name: egg
+    Prefab: {fileID: 6628445201189605019, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
 --- !u!4 &390428944
 Transform:
   m_ObjectHideFlags: 0
@@ -45117,67 +45113,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504770621}
   m_CullTransparentMesh: 1
---- !u!1001 &1505655793
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 603903852950816578, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: timeToHatch
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.037539482
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.469
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.031555
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3118874674448140909, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6628445201189605019, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
-      propertyPath: m_Name
-      value: Egg_green
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0237b0afdf3ae0d46b7064a51994acb0, type: 3}
 --- !u!64 &1506870702
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -71863,4 +71798,3 @@ SceneRoots:
   - {fileID: 32619272}
   - {fileID: 1927655456}
   - {fileID: 543450653303046447}
-  - {fileID: 1505655793}

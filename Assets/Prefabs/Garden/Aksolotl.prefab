@@ -14610,8 +14610,8 @@ GameObject:
   - component: {fileID: 3281281385725150801}
   - component: {fileID: 5225518645578258654}
   - component: {fileID: 5336862799596294701}
-  - component: {fileID: 6208564310162467819}
   - component: {fileID: 5223595367207271703}
+  - component: {fileID: 6208564310162467819}
   - component: {fileID: 298708891034168970}
   - component: {fileID: 2535589345558434699}
   - component: {fileID: 4834536839252107065}
@@ -14752,26 +14752,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
---- !u!114 &6208564310162467819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4671158348087543555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 816ab3d9c3326ec459932cad07cd2eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mass: 0
-  rb: {fileID: 5336862799596294701}
-  shouldBeSaved: 0
-  prefabName: red
-  shouldUseGravity: 0
-  shouldPlayAudio: 1
-  source: {fileID: 2535589345558434699}
-  sound: {fileID: 8300000, guid: f80bd81970ae0cd408ba5e31d5513e5f, type: 3}
 --- !u!114 &5223595367207271703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14813,6 +14793,26 @@ MonoBehaviour:
   brush: {fileID: 8300000, guid: 3262877e915c0c44d864f934bef64af6, type: 3}
   purr: {fileID: 8300000, guid: 4eae391d8e770da49895e3451039b686, type: 3}
   eat: {fileID: 8300000, guid: cfb0af6f6d63f9141b3ece1f37e25fa9, type: 3}
+--- !u!114 &6208564310162467819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671158348087543555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816ab3d9c3326ec459932cad07cd2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 0
+  rb: {fileID: 5336862799596294701}
+  shouldBeSaved: 0
+  prefabName: red
+  shouldUseGravity: 0
+  shouldPlayAudio: 1
+  source: {fileID: 2535589345558434699}
+  sound: {fileID: 8300000, guid: f80bd81970ae0cd408ba5e31d5513e5f, type: 3}
 --- !u!114 &298708891034168970
 MonoBehaviour:
   m_ObjectHideFlags: 0

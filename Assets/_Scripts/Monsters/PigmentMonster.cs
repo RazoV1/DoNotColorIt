@@ -439,6 +439,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	public void SaveData()
 	{
+		Debug.Log($"<color=green>SAVING NAMETAG {nameTag.GetNameTag()}");
 		SavablePrefab monsterSave = new SavablePrefab
 		{
 			prefabName = monsterName,
@@ -466,6 +467,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	public void SyncData(SavablePrefab data)
 	{
+		Debug.Log($"<color=yellow>Syncing {monsterName} data..");
 		fear = data.floatData["fear"];
 		happiness = data.floatData["happiness"];
 		hunger = data.floatData["hunger"];
@@ -473,6 +475,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		disruptance = data.floatData["disruptance"];
 		curiosity = data.floatData["curiosity"];
 		hasLaidEgg = data.floatData["hasLaidEgg"] == 1;
+		Debug.Log($"<color=green>LOADED NAMETAG {data.stringData["nameTag"]}");
 		nameTag.SetNameTag(data.stringData["nameTag"]);
 	}
 }
