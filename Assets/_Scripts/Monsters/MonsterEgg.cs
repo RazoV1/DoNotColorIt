@@ -16,6 +16,8 @@ public class MonsterEgg : MonoBehaviour, ISavable
 	[SerializeField] private GameObject monsterNameGui;
 	[SerializeField] private TextMeshProUGUI inputFieldText;
 
+	private Coroutine ticker;
+
 	public void SaveData()
 	{
 		SavablePrefab pref = new SavablePrefab
@@ -27,6 +29,27 @@ public class MonsterEgg : MonoBehaviour, ISavable
 			floatData = new Dictionary<string, float> { { "timeToHatch", timeToHatch } }
 		};
 		SaveManager.Instance.SavePrefab(pref);
+	}
+
+	public void SetMonsterInside(GameObject monsterInside)
+	{
+		this.monsterInside = monsterInside;
+	}
+
+	public void StartTickingInFence()
+	{
+		if (ticker != null)
+		{
+			return;
+		}
+	    
+		ticker = StartCoroutine(TickHatch());
+	}
+
+	public void StopTicking()
+	{
+		StopCoroutine(ticker);
+		ticker = null;
 	}
 
 	private IEnumerator TickHatch()
@@ -74,10 +97,10 @@ public class MonsterEgg : MonoBehaviour, ISavable
 	private void Start()
 	{
 		SubscribeToSaveEvent();
-		if (SceneManager.GetActiveScene().buildIndex == 2)
-		{
-			StartCoroutine(TickHatch());
-		}
+		//if (SceneManager.GetActiveScene().buildIndex == 2)
+		//{
+		//	StartCoroutine(TickHatch());
+		//}
 	}
 
 	public void SubscribeToSaveEvent()

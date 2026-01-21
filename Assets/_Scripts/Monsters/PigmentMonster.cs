@@ -24,6 +24,9 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	[SerializeField] private BasicItem monsterItem;
 	[SerializeField] private AudioSource monsterSound;
 	[SerializeField] private MonsterNameTag nameTag;
+	[SerializeField] private MonsterAge age;
+	[SerializeField] private GameObject eggPrefab;
+	private bool hasLaidEgg = false;
 	private float workProgress;
 	private bool isInTheFence;
 	private Rigidbody rb;
@@ -95,6 +98,26 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		}
 	}
 
+	public void ResetLaidEgg()
+	{
+		hasLaidEgg = false;
+	}
+
+	public void Die()
+	{
+        if (!hasLaidEgg)
+        {
+			LayEgg();
+        }
+        Destroy(gameObject);
+	}
+
+	private void LayEgg()
+	{
+		if (hasLaidEgg) return;
+		hasLaidEgg = true;
+		Instantiate(eggPrefab, transform.position, Quaternion.identity);
+	}
 
 	public void SetInTheFence(bool isInTheFence)
 	{
@@ -263,6 +286,8 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 		CalculateHappiness(ticks);
 		CalculateHealthRecovery(ticks);
+
+		age.CalculateAge(ticks);
 	}
 
 	private void SpawnPigment()
@@ -427,7 +452,8 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		{"hunger",hunger },
 		{"health",health },
 		{"disruptance",disruptance },
-		{"curiosity",curiosity }
+		{"curiosity",curiosity },
+		{"hasLaidEgg",hasLaidEgg ? 1 : 0}
 	  },
 			stringData = new Dictionary<string, string>
 			{
@@ -446,6 +472,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		health = data.floatData["health"];
 		disruptance = data.floatData["disruptance"];
 		curiosity = data.floatData["curiosity"];
+		hasLaidEgg = data.floatData["hasLaidEgg"] == 1;
 		nameTag.SetNameTag(data.stringData["nameTag"]);
 	}
 }

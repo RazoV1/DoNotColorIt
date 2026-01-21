@@ -122,6 +122,9 @@
     "ui.hatch.title": "Назову Монстрика...",
     "ui.hatch.random": "Случайное Имя",
     "ui.hatch.save": "Готово!",
-    "inputfield.placeholder.text":"Введите текст..."
+    "inputfield.placeholder.text":"Введите текст...",
+    "monster.age.Young":"<color=green>Молодой",
+    "monster.age.Mature":"<color=yellow>Спелый",
+    "monster.age.Old":"<color=red>Просроченный"
   }
 }
