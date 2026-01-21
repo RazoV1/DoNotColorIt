@@ -1,5 +1,6 @@
 using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
+using Assets._Scripts.Monsters;
 using Assets._Scripts.Utils;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,14 +24,14 @@ public class MonsterEgg : MonoBehaviour, ISavable
 			dimension = SceneManager.GetActiveScene().buildIndex,
 			worldPosition = Mapper.VectorToFloatData(transform.position), //new List<float> {transform.position.x,transform.position.y,transform.position.z},
 			quaternionRotation = Mapper.QuaternionToFloatData(transform.rotation),//new List<float> { transform.rotation.x,transform.rotation.y,transform.rotation.z, transform.rotation.w },
-			floatData = new Dictionary<string, float> { { "timeToHatch",timeToHatch} }
+			floatData = new Dictionary<string, float> { { "timeToHatch", timeToHatch } }
 		};
 		SaveManager.Instance.SavePrefab(pref);
 	}
 
 	private IEnumerator TickHatch()
 	{
-	    while (timeToHatch > 0)
+		while (timeToHatch > 0)
 		{
 			yield return new WaitForSeconds(2);
 			timeToHatch -= PocketTicker.Instance.GetTicksForCalculations();
@@ -49,8 +50,14 @@ public class MonsterEgg : MonoBehaviour, ISavable
 
 	public void SpawnMonster(string name)
 	{
-		Instantiate(monsterInside, transform.position, Quaternion.identity).GetComponent<PigmentMonster>().Initialize(name);
-
+		GameObject newMonster = Instantiate(monsterInside, transform.position, Quaternion.identity);
+		newMonster.GetComponent<PigmentMonster>().Initialize(name);
+		if (name != "")
+		{
+			newMonster.GetComponentInChildren<MonsterNameTag>().SetNameTag(name);
+		}
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
 		Destroy(gameObject);
 	}
 
@@ -58,7 +65,9 @@ public class MonsterEgg : MonoBehaviour, ISavable
 	{
 		if (timeToHatch <= 0f)
 		{
-		   monsterNameGui.SetActive(true);
+			monsterNameGui.SetActive(true);
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
 		}
 	}
 

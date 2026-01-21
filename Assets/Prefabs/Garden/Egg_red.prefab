@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8303090309315865775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -958,7 +958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MonsterEgg
   monsterInside: {fileID: 4671158348087543555, guid: 4a8f7dfef00078f419f85cb580be279a, type: 3}
   timeToHatch: 150
-  monsterNameGui: {fileID: 0}
+  monsterNameGui: {fileID: 2723992707405201989}
+  inputFieldText: {fileID: 0}
 --- !u!64 &2836176687651363182
 MeshCollider:
   m_ObjectHideFlags: 0
