@@ -7,6 +7,8 @@ public class Fence : MonoBehaviour
 	[SerializeField] private PigmentMonster monsterInside;
 	[SerializeField] private List<Fence> neighboursForCalculations = new List<Fence>();
 
+	[SerializeField] private GameObject nativeMonsterPrefab;
+
 
 	public PigmentMonster GetMonsterInside() => monsterInside;
 
@@ -14,6 +16,8 @@ public class Fence : MonoBehaviour
 	{
 		if (other.tag == "Egg")
 		{
+			other.GetComponent<MonsterEgg>().SetMonsterInside(nativeMonsterPrefab);
+			other.GetComponent<MonsterEgg>().StartTickingInFence();
 			TutorialEvents.OnAdditionalTutorialTriggered.Invoke(4);
 		}
 		PigmentMonster monster = other.GetComponent<PigmentMonster>();
@@ -36,6 +40,12 @@ public class Fence : MonoBehaviour
 	private void OnTriggerExit(Collider other)
 	{
 		PigmentMonster monster = other.GetComponent<PigmentMonster>();
+
+		if (other.tag == "Egg")
+		{
+			other.GetComponent<MonsterEgg>().StopTicking();
+		}
+
 		if (monster != null && monsterInside == monster)
 		{
 			monsterInside = null;

@@ -289,98 +289,13 @@ public class SaveManager : MonoBehaviour
 		-0.75326556f,
 		0.0010480528f)
 		   },
-		   new SavablePrefab
-		   {
-			   prefabName = "green",
+			new SavablePrefab
+			{
+				prefabName = "egg",
 				dimension= 2,
-				worldPosition =  Mapper.VectorToFloatData( 1.042611f, 0.412878484f, 12.8476286f),
-				quaternionRotation = Mapper.QuaternionToFloatData( 0.08223763f, 0.7095113f, -0.0839767158f, -0.6948228f),
-				floatData = new Dictionary<string, float>
-				{
-					{"fear",0f },
-					{"happiness", 1f },
-					{"hunger",0f },
-					{"health",1f},
-					{"disruptance",0f },
-					{"curiosity",0f },
-					{"anger",0f }
-				}
-		   },
-		  new SavablePrefab
-		  {
-			 prefabName = "red",
-				dimension= 2,
-				worldPosition =  Mapper.VectorToFloatData(
-					1.97757328f,
-					0.276677728f,
-					3.37711525f
-				),
-				quaternionRotation = Mapper.QuaternionToFloatData(0.0f,0.0f,0.0f,1.0f),
-				floatData = new Dictionary<string, float>
-				{
-					{"fear",0f },
-					{"happiness", 1f },
-					{"hunger",0f },
-					{"health",1f},
-					{"disruptance",0f },
-					{"curiosity",0f },
-					{"anger",0f }
-				}
-		  },
-		  new SavablePrefab
-		  {
-			 prefabName = "blue",
-				dimension= 2,
-				worldPosition =  Mapper.VectorToFloatData(
-					1.990426f,
-					0.399288535f,
-					8.42200851f
-				),
-				quaternionRotation = Mapper.QuaternionToFloatData(0.0f,0.0f,0.0f,1.0f),
-				floatData = new Dictionary<string, float>
-				{
-					{"fear",0f },
-					{"happiness", 1f },
-					{"hunger",0f },
-					{"health",1f},
-					{"disruptance",0f },
-					{"curiosity",0f },
-					{"anger",0f }
-				}
-		  },
-		  new SavablePrefab
-		  {
-			  prefabName = "monsterEggvidra_Hungry",
-			  dimension = 1,
-			  worldPosition = Mapper.VectorToFloatData(
-				 346.389221f,
-				4.52749252f,
-				-72.21328f
-			  ),
-			  quaternionRotation = Mapper.QuaternionToFloatData(0.0f,0.0f,0.0f,1.0f),
-			  floatData = new Dictionary<string, float>{{"timeToHatch",150f}} },
-		  new SavablePrefab
-		  {
-			  prefabName = "monsterEggSkufidron",
-			  dimension = 1,
-			  worldPosition =  Mapper.VectorToFloatData(
-				 -121f,
-				11f,
-				-225f
-			  ),
-			  quaternionRotation = Mapper.QuaternionToFloatData(0.0f,0.0f,0.0f,1.0f),
-			  floatData = new Dictionary<string, float>{{"timeToHatch",150f}} },
-		  new SavablePrefab
-		  {
-			  prefabName = "monsterEggAksolotl",
-			  dimension = 1,
-			  worldPosition =  Mapper.VectorToFloatData(
-				 -151.5438f,
-				4.465236f,
-				370.797272f
-			  ),
-			  quaternionRotation = Mapper.QuaternionToFloatData(0.0f,0.0f,0.0f,1.0f),
-			  floatData = new Dictionary<string, float>{{"timeToHatch",150f}} }
+				worldPosition = Mapper.VectorToFloatData(new Vector3(-0.0900000036f,0.469000012f,9.14999962f)),
+				quaternionRotation = Mapper.QuaternionToFloatData(Quaternion.identity)
+			}
 		};
 	}
 
