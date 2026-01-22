@@ -165,6 +165,10 @@ public class PlayerGrabber : MonoBehaviour
 			//Debug.Log("Hit!");
 			if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
 			{
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Egg")
+				{
+					hit.collider.GetComponent<MonsterEgg>().TryOpeningHatchMenu();
+				}
 				return;
 			}
 
@@ -180,10 +184,6 @@ public class PlayerGrabber : MonoBehaviour
 			}
 			else if (target is IGrabbable)
 			{
-				if (hit.collider.tag == "Egg")
-				{
-					hit.collider.GetComponent<MonsterEgg>().TryOpeningHatchMenu();
-				}
 				grabbedObject = target;
 				isGrabbing = true;
 				((IGrabbable)grabbedObject).SetIsGrabbed(true, cameraPivotTransform);
