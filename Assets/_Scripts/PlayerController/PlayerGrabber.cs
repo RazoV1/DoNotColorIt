@@ -190,7 +190,6 @@ public class PlayerGrabber : MonoBehaviour
 				((IGrabbable)grabbedObject).SetMaintainDirection(true);
 				preservedLayer = grabbedObject.gameObject.layer;
 				grabbedObject.gameObject.layer = grabbedObject.gameObject.layer == 3 ? 8 : 2;
-				//jointTransform = AttachJoint(target.GetRigidbody(), target.GetRigidbody().worldCenterOfMass);
 
 				var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
 				if (monsterObj != null)
@@ -212,7 +211,8 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					pigmentStats.SetActive(true);
 				}
-				jointTransform = AttachJoint(target.GetRigidbody(), hit.point, grabPivot, false);
+				//jointTransform = AttachJoint(target.GetRigidbody(), hit.point, grabPivot, false);
+				jointTransform = AttachJoint(target.GetRigidbody(),target.GetRigidbody().worldCenterOfMass, grabPivot,false);
 			}
 		}
 	}
@@ -319,8 +319,8 @@ public class PlayerGrabber : MonoBehaviour
 	private JointDrive CreateJoint(bool useFixed)
 	{
 		JointDrive drive = new JointDrive();
-		drive.positionSpring = grabStrenght;
-		drive.positionDamper = useFixed ? fixedAxisStability : grabpStability;
+		drive.positionSpring = grabStrenght * 10;
+		drive.positionDamper = useFixed ? fixedAxisStability : grabpStability * 10;
 		drive.maximumForce = Mathf.Infinity;
 		return drive;
 	}
@@ -330,11 +330,11 @@ public class PlayerGrabber : MonoBehaviour
 		//GameObject go = new GameObject("Attachment Point");
 		GameObject go = new GameObject("Attachment Point");
 		//go.hideFlags = HideFlags.HideInHierarchy;
-
-		goParent.position = attachmentPosition;
-		grabPivot.transform.position = attachmentPosition;
-		if (useFixed)
+		
+		if (useFixed || rb.gameObject.tag == "Kapot") //O sorrow
 		{
+			goParent.position = attachmentPosition;
+			grabPivot.transform.position = attachmentPosition;
 			Vector3 rotAxis = ((FixedAxis)grabbedObject).GetRotationAxis();
 			Vector3 rotCenter = ((FixedAxis)grabbedObject).GetRotationCenter();
 			Plane rotationPlane = new Plane(grabbedObject.transform.TransformDirection(rotAxis), rotCenter);
