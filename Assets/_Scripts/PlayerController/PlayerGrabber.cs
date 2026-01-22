@@ -330,11 +330,14 @@ public class PlayerGrabber : MonoBehaviour
 		//GameObject go = new GameObject("Attachment Point");
 		GameObject go = new GameObject("Attachment Point");
 		//go.hideFlags = HideFlags.HideInHierarchy;
-		goParent.position = attachmentPosition;
-		grabPivot.transform.position = attachmentPosition;
+		
 		bool isKapot = rb.gameObject.tag == "Kapot";
 		Debug.Log(isKapot);
-
+	    if (isKapot)
+		{
+			goParent.position = attachmentPosition;
+			grabPivot.transform.position = attachmentPosition;
+		}
 		if (useFixed) //O sorrow
 		{
 			goParent.position = attachmentPosition;
@@ -358,6 +361,7 @@ public class PlayerGrabber : MonoBehaviour
 			var newRb = go.AddComponent<Rigidbody>();
 			newRb.isKinematic = true;
 		}
+		go.transform.position = attachmentPosition;
 		var joint = go.AddComponent<ConfigurableJoint>();
 		joint.connectedBody = rb;
 		joint.configuredInWorldSpace = true;
@@ -367,7 +371,7 @@ public class PlayerGrabber : MonoBehaviour
 		joint.zDrive = CreateJoint(useFixed, isKapot);
 		joint.slerpDrive = CreateJoint(useFixed, isKapot);
 		joint.rotationDriveMode = RotationDriveMode.Slerp;
-
+		go.transform.localPosition = Vector3.zero;
 		return go.transform;
 	}
 
