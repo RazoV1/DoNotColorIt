@@ -58671,7 +58671,7 @@ GameObject:
   - component: {fileID: 1873818771}
   - component: {fileID: 1873818770}
   - component: {fileID: 1873818769}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LavaFence (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58741,7 +58741,7 @@ Transform:
   m_GameObject: {fileID: 1873818768}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.649372, z: -0, w: 0.760471}
-  m_LocalPosition: {x: 9.04, y: 0.47, z: 9.56}
+  m_LocalPosition: {x: 9.04, y: 0.42, z: 9.56}
   m_LocalScale: {x: 0.93201035, y: 0.93201035, z: 0.93201035}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59877,7 +59877,7 @@ GameObject:
   - component: {fileID: 1927655455}
   - component: {fileID: 1927655457}
   - component: {fileID: 1927655458}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LavaFence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59910,7 +59910,7 @@ Transform:
   m_GameObject: {fileID: 1927655454}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.46118665, z: -0, w: 0.8873031}
-  m_LocalPosition: {x: 7.5, y: 0.47, z: 4.97}
+  m_LocalPosition: {x: 7.5, y: 0.42, z: 4.97}
   m_LocalScale: {x: 0.93201035, y: 0.93201035, z: 0.93201035}
   m_ConstrainProportionsScale: 0
   m_Children:

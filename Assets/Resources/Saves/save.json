@@ -1,57 +1,6 @@
 {
   "SavedPrefabs": [
     {
-      "prefabName": "pounder",
-      "dimension": 2,
-      "worldPosition": {
-        "x": -6.455711,
-        "y": 0.4209881,
-        "z": 9.447125
-      },
-      "quaternionRotation": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 1.0
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "brush",
-      "dimension": 2,
-      "worldPosition": {
-        "x": -3.58660316,
-        "y": 1.00101018,
-        "z": 15.0310478
-      },
-      "quaternionRotation": {
-        "x": -0.6577148,
-        "y": 0.00112816214,
-        "z": -0.75326556,
-        "w": 0.0010480528
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "egg",
-      "dimension": 2,
-      "worldPosition": {
-        "x": -0.09,
-        "y": 0.469,
-        "z": 9.15
-      },
-      "quaternionRotation": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 1.0
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
       "prefabName": "seed",
       "dimension": 1,
       "worldPosition": {
@@ -645,11 +594,64 @@
       },
       "floatData": null,
       "stringData": null
+    },
+    {
+      "prefabName": "pounder",
+      "dimension": 2,
+      "worldPosition": {
+        "x": -6.455711,
+        "y": 0.4209881,
+        "z": 9.447125
+      },
+      "quaternionRotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "brush",
+      "dimension": 2,
+      "worldPosition": {
+        "x": -3.58656931,
+        "y": 1.00103354,
+        "z": 15.0310526
+      },
+      "quaternionRotation": {
+        "x": -0.65771234,
+        "y": 0.00131929247,
+        "z": -0.7532675,
+        "w": 0.0008889121
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "egg",
+      "dimension": 2,
+      "worldPosition": {
+        "x": -0.09000077,
+        "y": 0.348209023,
+        "z": 9.150033
+      },
+      "quaternionRotation": {
+        "x": 0.00014585405,
+        "y": 8.344649E-07,
+        "z": 1.27030671E-05,
+        "w": 1.0
+      },
+      "floatData": {
+        "timeToHatch": 150.0
+      },
+      "stringData": null
     }
   ],
   "SavedFloats": {
     "shouldShowTask": 0.0,
-    "dimension": 2.0,
+    "dimension": 1.0,
     "currentTaskIndex": 0.0,
     "shouldShowTutorial": 0.0,
     "tutorialIndex": 13.0,
@@ -690,7 +692,8 @@
     "KassandraIntroduced": 0.0,
     "playerX": 105.077133,
     "playerY": 14.515152,
-    "playerZ": -317.800537
+    "playerZ": -317.800537,
+    "infuserSmola": 0.0
   },
   "SavedStrings": {
     "currentNpcTaskName": ""
