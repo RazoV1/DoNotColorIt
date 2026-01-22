@@ -24,6 +24,10 @@ namespace Assets._Scripts.Monsters
 			UpdateUI();
 		}
 
+		public MonsterAgePhases GetCurrentAge() { return age; }
+
+		public float GetTimeLived() => timeLived;
+
 		private void UpdateUI()
 		{
 
@@ -46,7 +50,10 @@ namespace Assets._Scripts.Monsters
 			ageField.text = LanguageManager.Instance.GetTranslatable($"monster.age.{age.ToString()}");
 		}
 
-
+	    public void SetTimeLived(float time)
+		{
+			timeLived = time;
+		}
 	}
 
 	public enum MonsterAgePhases

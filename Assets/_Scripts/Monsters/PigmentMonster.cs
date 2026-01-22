@@ -292,6 +292,30 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	private void SpawnPigment()
 	{
+		switch (age.GetCurrentAge())
+		{
+			case MonsterAgePhases.Young:
+				if (Random.Range(0, 100) <= 50)
+				{
+					LayEgg();
+					return;
+				}
+				break;
+			case MonsterAgePhases.Mature:
+				if (Random.Range(0, 100) <= 35)
+				{
+					LayEgg();
+					return;
+				}
+				break;
+			case MonsterAgePhases.Old:
+				if (Random.Range(0, 100) <= 20)
+				{
+					LayEgg();
+					return;
+				}
+				break;
+		}
 		float r = Mathf.Clamp(Mathf.Clamp(idealColor.r + ((10 * (1 - happiness)) / 255f), 0, 1f) - (fadeFactor * hunger), 0.1f, 1f);
 		float g = Mathf.Clamp(Mathf.Clamp(idealColor.g + ((10 * (1 - happiness)) / 255f), 0, 1f) - (fadeFactor * hunger), 0.1f, 1f);
 		float b = Mathf.Clamp(Mathf.Clamp(idealColor.b + ((10 * (1 - happiness)) / 255f), 0, 1f) - (fadeFactor * hunger), 0.1f, 1f);
@@ -454,7 +478,8 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		{"health",health },
 		{"disruptance",disruptance },
 		{"curiosity",curiosity },
-		{"hasLaidEgg",hasLaidEgg ? 1 : 0}
+		{"hasLaidEgg",hasLaidEgg ? 1 : 0},
+		{"timeLived",age.GetTimeLived() }
 	  },
 			stringData = new Dictionary<string, string>
 			{
@@ -475,6 +500,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		disruptance = data.floatData["disruptance"];
 		curiosity = data.floatData["curiosity"];
 		hasLaidEgg = data.floatData["hasLaidEgg"] == 1;
+		age.SetTimeLived(data.floatData["timeLived"]);
 		Debug.Log($"<color=green>LOADED NAMETAG {data.stringData["nameTag"]}");
 		nameTag.SetNameTag(data.stringData["nameTag"]);
 	}
