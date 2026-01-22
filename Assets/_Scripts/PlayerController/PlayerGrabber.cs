@@ -212,7 +212,7 @@ public class PlayerGrabber : MonoBehaviour
 					pigmentStats.SetActive(true);
 				}
 				//jointTransform = AttachJoint(target.GetRigidbody(), hit.point, grabPivot, false);
-				jointTransform = AttachJoint(target.GetRigidbody(),target.GetRigidbody().worldCenterOfMass, grabPivot,false);
+				jointTransform = AttachJoint(target.GetRigidbody(), (target.tag.Equals( "Kapot") ? hit.point : target.GetRigidbody().worldCenterOfMass), grabPivot,false);
 			}
 		}
 	}
@@ -316,11 +316,11 @@ public class PlayerGrabber : MonoBehaviour
 		CastHint();
 	}
 
-	private JointDrive CreateJoint(bool useFixed)
+	private JointDrive CreateJoint(bool useFixed,bool isKapot = false)
 	{
 		JointDrive drive = new JointDrive();
-		drive.positionSpring = grabStrenght * 10;
-		drive.positionDamper = useFixed ? fixedAxisStability : grabpStability * 10;
+		drive.positionSpring = grabStrenght * (isKapot ? 1 : 10);
+		drive.positionDamper = useFixed ? fixedAxisStability : grabpStability * (isKapot ? 1 : 10);
 		drive.maximumForce = Mathf.Infinity;
 		return drive;
 	}
@@ -330,8 +330,12 @@ public class PlayerGrabber : MonoBehaviour
 		//GameObject go = new GameObject("Attachment Point");
 		GameObject go = new GameObject("Attachment Point");
 		//go.hideFlags = HideFlags.HideInHierarchy;
-		
-		if (useFixed || rb.gameObject.tag == "Kapot") //O sorrow
+		goParent.position = attachmentPosition;
+		grabPivot.transform.position = attachmentPosition;
+		bool isKapot = rb.gameObject.tag == "Kapot";
+		Debug.Log(isKapot);
+
+		if (useFixed) //O sorrow
 		{
 			goParent.position = attachmentPosition;
 			grabPivot.transform.position = attachmentPosition;
@@ -358,10 +362,10 @@ public class PlayerGrabber : MonoBehaviour
 		joint.connectedBody = rb;
 		joint.configuredInWorldSpace = true;
 		joint.breakForce = 10f;
-		joint.xDrive = CreateJoint(useFixed);
-		joint.yDrive = CreateJoint(useFixed);
-		joint.zDrive = CreateJoint(useFixed);
-		joint.slerpDrive = CreateJoint(useFixed);
+		joint.xDrive = CreateJoint(useFixed, isKapot);
+		joint.yDrive = CreateJoint(useFixed, isKapot);
+		joint.zDrive = CreateJoint(useFixed, isKapot);
+		joint.slerpDrive = CreateJoint(useFixed, isKapot);
 		joint.rotationDriveMode = RotationDriveMode.Slerp;
 
 		return go.transform;
