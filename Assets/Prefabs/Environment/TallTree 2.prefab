@@ -165,7 +165,7 @@ MonoBehaviour:
   logsInside: 0
   neededForce: 3.5
   chopProgress: 0
-  neededProgress: 25
+  neededProgress: 50
   logsPrefab: {fileID: 1480589718653635216, guid: 7381122c504f3804a8d09b5591cbe8f1, type: 3}
   chopParticle: {fileID: 7612997193582050880, guid: 5077260fe45ad9c47999f23105bdf148, type: 3}
   leavesParticle: {fileID: 7145440796517099304}

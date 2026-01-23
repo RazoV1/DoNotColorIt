@@ -190,7 +190,6 @@ public class PlayerGrabber : MonoBehaviour
 				((IGrabbable)grabbedObject).SetMaintainDirection(true);
 				preservedLayer = grabbedObject.gameObject.layer;
 				grabbedObject.gameObject.layer = grabbedObject.gameObject.layer == 3 ? 8 : 2;
-				//jointTransform = AttachJoint(target.GetRigidbody(), target.GetRigidbody().worldCenterOfMass);
 
 				var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
 				if (monsterObj != null)
@@ -212,7 +211,8 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					pigmentStats.SetActive(true);
 				}
-				jointTransform = AttachJoint(target.GetRigidbody(), hit.point, grabPivot, false);
+				//jointTransform = AttachJoint(target.GetRigidbody(), hit.point, grabPivot, false);
+				jointTransform = AttachJoint(target.GetRigidbody(), (target.tag.Equals( "Kapot") ? hit.point : target.GetRigidbody().worldCenterOfMass), grabPivot,false);
 			}
 		}
 	}
@@ -316,11 +316,11 @@ public class PlayerGrabber : MonoBehaviour
 		CastHint();
 	}
 
-	private JointDrive CreateJoint(bool useFixed)
+	private JointDrive CreateJoint(bool useFixed,bool isKapot = false)
 	{
 		JointDrive drive = new JointDrive();
-		drive.positionSpring = grabStrenght;
-		drive.positionDamper = useFixed ? fixedAxisStability : grabpStability;
+		drive.positionSpring = grabStrenght * (isKapot ? 1 : 10);
+		drive.positionDamper = useFixed ? fixedAxisStability : grabpStability * (isKapot ? 1 : 10);
 		drive.maximumForce = Mathf.Infinity;
 		return drive;
 	}
@@ -330,11 +330,18 @@ public class PlayerGrabber : MonoBehaviour
 		//GameObject go = new GameObject("Attachment Point");
 		GameObject go = new GameObject("Attachment Point");
 		//go.hideFlags = HideFlags.HideInHierarchy;
-
-		goParent.position = attachmentPosition;
-		grabPivot.transform.position = attachmentPosition;
-		if (useFixed)
+		
+		bool isKapot = rb.gameObject.tag == "Kapot";
+		Debug.Log(isKapot);
+	    if (isKapot)
 		{
+			goParent.position = attachmentPosition;
+			grabPivot.transform.position = attachmentPosition;
+		}
+		if (useFixed) //O sorrow
+		{
+			goParent.position = attachmentPosition;
+			grabPivot.transform.position = attachmentPosition;
 			Vector3 rotAxis = ((FixedAxis)grabbedObject).GetRotationAxis();
 			Vector3 rotCenter = ((FixedAxis)grabbedObject).GetRotationCenter();
 			Plane rotationPlane = new Plane(grabbedObject.transform.TransformDirection(rotAxis), rotCenter);
@@ -354,16 +361,17 @@ public class PlayerGrabber : MonoBehaviour
 			var newRb = go.AddComponent<Rigidbody>();
 			newRb.isKinematic = true;
 		}
+		go.transform.position = attachmentPosition;
 		var joint = go.AddComponent<ConfigurableJoint>();
 		joint.connectedBody = rb;
 		joint.configuredInWorldSpace = true;
 		joint.breakForce = 10f;
-		joint.xDrive = CreateJoint(useFixed);
-		joint.yDrive = CreateJoint(useFixed);
-		joint.zDrive = CreateJoint(useFixed);
-		joint.slerpDrive = CreateJoint(useFixed);
+		joint.xDrive = CreateJoint(useFixed, isKapot);
+		joint.yDrive = CreateJoint(useFixed, isKapot);
+		joint.zDrive = CreateJoint(useFixed, isKapot);
+		joint.slerpDrive = CreateJoint(useFixed, isKapot);
 		joint.rotationDriveMode = RotationDriveMode.Slerp;
-
+		go.transform.localPosition = Vector3.zero;
 		return go.transform;
 	}
 
