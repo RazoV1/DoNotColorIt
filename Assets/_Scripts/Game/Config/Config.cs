@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets._Scripts.Game.Config
 {
-	internal class Config
+	public class Config
 	{
 		public static float MonsterLifetime = 10 * 60 * 3;
 	}
