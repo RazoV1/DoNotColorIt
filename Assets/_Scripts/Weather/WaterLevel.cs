@@ -7,6 +7,7 @@ using UnityEngine;
 public class WaterLevel : MonoBehaviour
 {
 	[SerializeField] private List<float> yByTaskIndex = new List<float>();
+	[SerializeField] private List<GameObject> barrierModels = new List<GameObject>();
 	[SerializeField] private float waterSpeed;
 	private Coroutine waterLevelChangeRoutine;
 
@@ -42,5 +43,7 @@ public class WaterLevel : MonoBehaviour
 			StopCoroutine(waterLevelChangeRoutine);
 		}
 		waterLevelChangeRoutine = StartCoroutine(LowerWater(GameManager.Instance.GetCurrentTaskIndex()));
+		barrierModels.ForEach(gameObject => gameObject.SetActive(false));
+		barrierModels[GameManager.Instance.GetCurrentTaskIndex()].SetActive(true);
 	}
 }

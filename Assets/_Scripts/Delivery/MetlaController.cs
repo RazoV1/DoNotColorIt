@@ -173,7 +173,7 @@ namespace Assets._Scripts.Delivery
 		public void SyncData(SavablePrefab data)
 		{
 			SaveManager saveManager = SaveManager.Instance;
-
+		    
 			float x = saveManager.GetFloat("fiatX");
 			float y = saveManager.GetFloat("fiatY");
 			float z = saveManager.GetFloat("fiatZ");
@@ -183,6 +183,13 @@ namespace Assets._Scripts.Delivery
 			float qz = saveManager.GetFloat("fiatQZ");
 			float qw = saveManager.GetFloat("fiatQW");
 
+			Vector3 savedPos = new Vector3(x, y, z);
+			Quaternion savedRotation = new Quaternion(qx, qy, qz, qw);
+
+			if (qx == qw && qz == qy && qw == qy)
+			{
+				savedRotation = new Quaternion(0f, -0.0026346636f, 0, 0.999996603f);
+			}
 			if (x == y && x == z && z == 0)
 			{
 				return;
@@ -193,8 +200,6 @@ namespace Assets._Scripts.Delivery
 				GameObject.FindObjectOfType<CameraController>().MountFiat(this);
 			}
 
-			Vector3 savedPos = new Vector3(x, y, z);
-			Quaternion savedRotation = new Quaternion(qx, qy, qz, qw);
 
 			try
 			{
