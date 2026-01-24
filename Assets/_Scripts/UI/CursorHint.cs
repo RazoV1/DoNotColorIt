@@ -17,6 +17,7 @@ public class CursorHint : MonoBehaviour
 
 	private string lmb;
 	private string talk;
+	private string talkNext;
 	private string getOut;
 	private string getIn;
 	private string enterPocket;
@@ -30,6 +31,7 @@ public class CursorHint : MonoBehaviour
 	{
 		lmb = LanguageManager.Instance.GetTranslatable("ui.hint.lmb");
 		talk = LanguageManager.Instance.GetTranslatable("ui.hint.talk");
+		talkNext = LanguageManager.Instance.GetTranslatable("ui.hint.talk_next");
 		getIn = LanguageManager.Instance.GetTranslatable("ui.hint.get_in");
 		enterPocket = LanguageManager.Instance.GetTranslatable("ui.hint.enter_pocket");
 	}
@@ -69,6 +71,10 @@ public class CursorHint : MonoBehaviour
 				hintSprite.sprite = null;
 				hintSprite.enabled = false;
 				break;
+			case MouseHints.TalkMouse:
+				hintSprite.sprite = null;
+				hintText.text = talkNext;
+				break;
 
 		}
 	}
@@ -90,5 +96,6 @@ public enum MouseHints
 	Circular,
 	Default,
 	horizontal,
-	vertical
+	vertical,
+	TalkMouse
 }

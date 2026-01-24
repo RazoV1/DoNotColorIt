@@ -75,6 +75,7 @@ A/D — roll, W — forward, S — backward, mouse — turn, Space — up, Ctrl 
     "ui.validator.info": "An error occured during save loading. Current sessinon will be terminated :( \nTip of the day: don't touch game files please",
     "ui.validator.title": "!!!WARNING!!!",
     "ui.validator.leave": "To menu",
-    "ui.book.close": "Tab - close book"
+    "ui.book.close": "Tab - close book",
+    "ui.hint.talk_next":"Talk: LMB"
   }
 }

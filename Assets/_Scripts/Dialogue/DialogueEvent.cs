@@ -65,6 +65,8 @@ public class DialogueEvent : MonoBehaviour
         //rightCharacterName.gameObject.SetActive(true);
         characterLeftImage.sprite = Resources.Load<Sprite>($"DialogueSprites/{model.characterA}");
         characterRightImage.sprite = Resources.Load<Sprite>($"DialogueSprites/{model.characterB}");
+        PlayerGrabber grabber = GameObject.Find("Player").GetComponent<PlayerGrabber>();
+        grabber.SetIsTalking(true);
         textAnimations.StartMoveText(leftTextPos, leftCharacterName.transform, 10f);
         textAnimations.StartMoveImage(rightPivotPos, imagesPivot, 10f);
         for (int i = 0; i < replics.Count; i++)
@@ -99,5 +101,6 @@ public class DialogueEvent : MonoBehaviour
         dialogueText.gameObject.SetActive(false);
         leftCharacterName.gameObject.SetActive(false);
         rightCharacterName.gameObject.SetActive(false);
+        grabber.SetIsTalking(false);
     }
 }

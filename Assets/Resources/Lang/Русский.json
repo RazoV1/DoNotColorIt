@@ -125,6 +125,7 @@
     "inputfield.placeholder.text":"Введите текст...",
     "monster.age.Young":"<color=green>Молодой",
     "monster.age.Mature":"<color=yellow>Спелый",
-    "monster.age.Old":"<color=red>Просроченный"
+    "monster.age.Old":"<color=red>Просроченный",
+    "ui.hint.talk_next":"Говорить: ЛКМ"
   }
 }

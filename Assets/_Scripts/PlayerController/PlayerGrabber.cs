@@ -33,6 +33,7 @@ public class PlayerGrabber : MonoBehaviour
 	[SerializeField] private List<string> interactableTags = new List<string>();
 	[SerializeField] private Rigidbody playerRb;
 	private int preservedLayer;
+	private bool isTalking = false;
 	private Transform jointTransform;
 	private Transform cameraPivotTransform;
 
@@ -44,6 +45,8 @@ public class PlayerGrabber : MonoBehaviour
 	public Transform getGrabPivot() => grabPivot;
 
 	public InteractableObject GetGrabbedObject() => grabbedObject;
+
+	public void SetIsTalking(bool isTalking) { this.isTalking = isTalking; }
 
 	private void Start()
 	{
@@ -75,7 +78,7 @@ public class PlayerGrabber : MonoBehaviour
 				}
 				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Npc")
 				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Talk);
+					GameManager.Instance.GetCursorHint().ShowHint(isTalking ? MouseHints.TalkMouse : MouseHints.Talk);
 				}
 				else
 				{
