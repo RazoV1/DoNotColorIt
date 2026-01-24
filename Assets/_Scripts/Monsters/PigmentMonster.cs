@@ -54,12 +54,12 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	[Header("Config Values")]
 	private float surprise = 0.0f;
 	private float hungerCoef = 0.0015f;
-	private float weatherCoef = 0.01f;
-	private float disruptanceCoef = 0.02f;
+	private float weatherCoef = 0.005f;
+	private float disruptanceCoef = 0.01f;
 	private float surpriseCoef = 0.3f;
 	private float fearCoef = 0.01f;
 	private float curiosityCoef = 0.35f;
-	private float hungerGrowthPerTick = 0.005f;
+	private float hungerGrowthPerTick = 0.002f;
 	private float tolerance;
 	private float saturationPerFood = 0.3f;
 	private float fadeFactor = 1.5f;
@@ -68,7 +68,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	private float exitFenceHealthBonus = 0.15f;
 	private float exitFenceHappinessBonus = 0.2f;
 
-	private float hungerToStatCoef = 0.04f;
+	private float hungerToStatCoef = 0.02f;
 	private float healthBonusCoef = 0.003f;
 	private float neighbourHappinessCoef = 0.005f;
 
