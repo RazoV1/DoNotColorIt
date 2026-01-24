@@ -30,7 +30,7 @@ public class ChoppableTree : MonoBehaviour
 		while (time < shakeDuration)
 		{
 			time += Time.deltaTime;
-			transform.position = startPosition + Random.insideUnitSphere/15f;
+			transform.position = startPosition + Random.insideUnitSphere/20f;
 			yield return null;
 		}
 		transform.position = startPosition;
@@ -74,7 +74,7 @@ public class ChoppableTree : MonoBehaviour
 
 	private IEnumerator FallApart()
 	{
-		yield return new WaitForSeconds(10);
+		yield return new WaitForSeconds(3);
 		Instantiate(logsPrefab, transform.position, transform.rotation);
 		Destroy(gameObject);
 	}
