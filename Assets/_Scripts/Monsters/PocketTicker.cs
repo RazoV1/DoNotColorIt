@@ -42,11 +42,19 @@ public class PocketTicker : MonoBehaviour, ISavable
 	public void AddLog()
 	{
 		logs++;
+		if (logs >= 3)
+		{
+			GameManager.Instance.GetTutorial().ProgressTutorial(2);
+		}
 	}
 
 	public void AddSmola()
 	{
 		smolaVolume++;
+		if (smolaVolume >= 2f)
+		{
+			GameManager.Instance.GetTutorial().ProgressTutorial(3);
+		}
 	}
 
 	public void PutBucket(Color color)

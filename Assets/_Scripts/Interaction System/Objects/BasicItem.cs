@@ -105,13 +105,11 @@ namespace Assets._Scripts.Interaction_System.Objects
 				if (transform.tag == "Log")
 				{
 					PocketTicker.Instance.AddLog();
-					GameManager.Instance.GetTutorial().ProgressTutorial(2);
 					Destroy(gameObject);
 				}
 				if (transform.tag == "Smola")
 				{
 					PocketTicker.Instance.AddSmola();
-					GameManager.Instance.GetTutorial().ProgressTutorial(3);
 					Destroy(gameObject);
 				}
 				if (transform.tag == "Bucket")
