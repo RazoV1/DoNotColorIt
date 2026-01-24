@@ -293,8 +293,23 @@ public class SaveManager : MonoBehaviour
 			{
 				prefabName = "egg",
 				dimension= 2,
-				worldPosition = Mapper.VectorToFloatData(new Vector3(-0.0900000036f,0.469000012f,9.14999962f)),
-				quaternionRotation = Mapper.QuaternionToFloatData(Quaternion.identity)
+				worldPosition = Mapper.VectorToFloatData(new Vector3(1.9963963f,0.588f,2.30291414f)),
+				quaternionRotation = Mapper.QuaternionToFloatData(Quaternion.identity),
+				floatData = new Dictionary<string, float>()
+				{
+					{ "timeToHatch", 0}
+				}
+			},
+			new SavablePrefab
+			{
+				prefabName = "egg",
+				dimension= 2,
+				worldPosition = Mapper.VectorToFloatData(new Vector3(7.71000004f,0.588f,4.42000008f)),
+				quaternionRotation = Mapper.QuaternionToFloatData(Quaternion.identity),
+				floatData = new Dictionary<string, float>()
+				{
+					{ "timeToHatch", 0}
+				}
 			}
 		};
 	}

@@ -128,7 +128,7 @@ namespace Assets._Scripts.Delivery
 			if (Input.GetKeyDown(KeyCode.E) && rb.linearVelocity.magnitude < 2f)
 			{
 				RaycastHit h;
-				if (!Physics.Raycast(transform.position, Vector3.down * 3, out h) || h.collider.gameObject.layer == 4)
+				if (!Physics.Raycast(transform.position, transform.up * -3, out h) || h.collider.gameObject.layer == 4)
 				{
 					return;
 				}
