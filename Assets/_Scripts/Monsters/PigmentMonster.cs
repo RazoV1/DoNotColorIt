@@ -53,17 +53,17 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	private PigmentMonster neigbour;
 	[Header("Config Values")]
 	private float surprise = 0.0f;
-	private float hungerCoef = 0.0015f;
+	private float hungerCoef = 0.0007f;
 	private float weatherCoef = 0.005f;
 	private float disruptanceCoef = 0.01f;
 	private float surpriseCoef = 0.3f;
 	private float fearCoef = 0.01f;
 	private float curiosityCoef = 0.35f;
-	private float hungerGrowthPerTick = 0.002f;
+	private float hungerGrowthPerTick = 0.001f;
 	private float tolerance;
 	private float saturationPerFood = 0.3f;
 	private float fadeFactor = 1.5f;
-	private float harvestCoef = 0.2f;
+	private float harvestCoef = 0.3f;
 	private float healthRecoveryBase = 0.02f;
 	private float exitFenceHealthBonus = 0.15f;
 	private float exitFenceHappinessBonus = 0.2f;
@@ -295,14 +295,14 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		switch (age.GetCurrentAge())
 		{
 			case MonsterAgePhases.Young:
-				if (Random.Range(0, 100) <= 50)
+				if (Random.Range(0, 100) <= 40)
 				{
 					LayEgg();
 					return;
 				}
 				break;
 			case MonsterAgePhases.Mature:
-				if (Random.Range(0, 100) <= 35)
+				if (Random.Range(0, 100) <= 30)
 				{
 					LayEgg();
 					return;
@@ -382,7 +382,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		Debug.Log($"<color=green>Pat with force {force}");
 		if (force >= painSensitivity)
 		{
-			health -= patCoef;
+			//health -= patCoef;
 			health = Mathf.Clamp(health, 0, 1f);
 			Debug.Log("<color=yellow>Больна");
 		}

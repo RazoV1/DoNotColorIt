@@ -54,53 +54,66 @@ public class Mortar : MonoBehaviour
 		progress = 0;
 	}
 
-	private Color GetMiddleColor()
-	{
-		float outputR = 0f;
-		float outputG = 0f;
-		float outputB = 0f;
-		float combinedVolume = 0f;
-		float totalBlackVolume = 0f;
+    private Color GetMiddleColor()
+    {
+        float outputR = 0f;
+        float outputG = 0f;
+        float outputB = 0f;
 
-		foreach (ColorPigment pigment in pigmentInside)
-		{
-			Color pigmentColor = pigment.GetColor();
-			float volume = pigment.GetVolume();
+        float combinedVolume = 0f;
+        float totalBlackVolume = 0f;
 
-			if (pigmentColor.r < 0.01f && pigmentColor.g < 0.01f && pigmentColor.b < 0.01f)
-			{
-				totalBlackVolume += volume;
-			}
+        foreach (ColorPigment pigment in pigmentInside)
+        {
+            Color pigmentColor = pigment.GetColor();
+            float volume = pigment.GetVolume();
 
-			outputR += pigmentColor.r * volume;
-			outputG += pigmentColor.g * volume;
-			outputB += pigmentColor.b * volume;
+            // 1. Смягчение влияния объема
+            float softenedVolume = Mathf.Pow(volume, 0.6f);
 
-			combinedVolume += volume;
-		}
+            // Учет черного пигмента
+            if (pigmentColor.r < 0.01f && pigmentColor.g < 0.01f && pigmentColor.b < 0.01f)
+            {
+                totalBlackVolume += softenedVolume;
+            }
 
-		float avgR = outputR / combinedVolume;
-		float avgG = outputG / combinedVolume;
-		float avgB = outputB / combinedVolume;
+            outputR += pigmentColor.r * softenedVolume;
+            outputG += pigmentColor.g * softenedVolume;
+            outputB += pigmentColor.b * softenedVolume;
 
-		float maxAvgChannel = Mathf.Max(avgR, avgG, avgB);
+            combinedVolume += softenedVolume;
+        }
 
-		float factor = 1.0f / maxAvgChannel;
+        if (combinedVolume <= 0f)
+            return Color.black;
+        float avgR = outputR / combinedVolume;
+        float avgG = outputG / combinedVolume;
+        float avgB = outputB / combinedVolume;
 
-		outputR = avgR * factor;
-		outputG = avgG * factor;
-		outputB = avgB * factor;
+        float maxAvgChannel = Mathf.Max(avgR, avgG, avgB);
+        if (maxAvgChannel > 0f)
+        {
+            float softNormalizeFactor = Mathf.Lerp(1f, 1f / maxAvgChannel, 0.4f);
+            avgR *= softNormalizeFactor;
+            avgG *= softNormalizeFactor;
+            avgB *= softNormalizeFactor;
+        }
+        float blackVolumeRatio = 1f - (totalBlackVolume / combinedVolume);
+        float blackInfluence = Mathf.Pow(blackVolumeRatio, 0.7f);
 
-		float blackVolumeRatio = 1 - (totalBlackVolume / combinedVolume);
+        avgR *= blackInfluence;
+        avgG *= blackInfluence;
+        avgB *= blackInfluence;
 
-		outputR *= blackVolumeRatio;
-		outputG *= blackVolumeRatio;
-		outputB *= blackVolumeRatio;
+        return new Color(
+            Mathf.Clamp01(avgR),
+            Mathf.Clamp01(avgG),
+            Mathf.Clamp01(avgB)
+        );
+    }
 
-		return new Color(outputR, outputG, outputB);
-	}
 
-	public void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
 	{
 		if (collision.collider.tag == "Pounder" && pigmentInside.Count >= 1)
 		{
