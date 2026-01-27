@@ -190,6 +190,7 @@ public class GameManager : MonoBehaviour, ISavable
 		GameplayEvents.ChangeDimensionsEvent.Invoke(index);
 		SaveManager.Instance.LoadSave();
 		book.GetComponent<Canvas>().worldCamera = Camera.main.GetComponentsInChildren<Camera>().First(cam => cam.gameObject.tag == "UI_cam");
+		dialogue.GetComponent<Canvas>().worldCamera = Camera.main.GetComponentsInChildren<Camera>().First(cam => cam.gameObject.tag == "UI_cam");
 		ClearRoutine();
 	}
 
