@@ -36,6 +36,7 @@ public class PlayerGrabber : MonoBehaviour
 	private bool isTalking = false;
 	private Transform jointTransform;
 	private Transform cameraPivotTransform;
+	private PigmentMonster monsterObj;
 
 	private bool isGrabbing = false;
 	[SerializeField] private InteractableObject grabbedObject;
@@ -82,6 +83,10 @@ public class PlayerGrabber : MonoBehaviour
 				}
 				else
 				{
+					if (monsterStats != null)
+					{
+						monsterStats.SetActive(false);
+					}
 					GameManager.Instance.GetCursorHint().ClearHint();
 				}
 				return;
@@ -91,10 +96,36 @@ public class PlayerGrabber : MonoBehaviour
 				if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
 				{
 					GameManager.Instance.GetCursorHint().ClearHint();
+					if (monsterStats != null)
+					{
+						monsterStats.SetActive(false);
+					}
 					return;
 				}
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Interactable")
 				{
+					monsterObj = hit.collider.GetComponent<PigmentMonster>();
+					if (monsterObj != null)
+					{
+						monsterStats.SetActive(true);
+						TutorialEvents.OnAdditionalTutorialTriggered.Invoke(0);
+						if (monsterObj.GetMonsterStats()["hunger"] >= 0.5f)
+						{
+							TutorialEvents.OnAdditionalTutorialTriggered.Invoke(1);
+						}
+						else if (monsterObj.GetMonsterStats()["disruptance"] >= 0.5f)
+						{
+							TutorialEvents.OnAdditionalTutorialTriggered.Invoke(2);
+						}
+						return;
+					}
+					else
+					{
+						if (monsterStats != null)
+						{
+							monsterStats.SetActive(false);
+						}
+					}
 					if (hit.collider.GetComponent<FixedAxis>())
 					{
 						if (hit.collider.GetComponent<FixedAxis>().GetRotationAxis() == new Vector3(1, 0, 0))
@@ -152,6 +183,10 @@ public class PlayerGrabber : MonoBehaviour
 		else
 		{
 			GameManager.Instance.GetCursorHint().ClearHint();
+			if (monsterStats != null)
+			{
+				monsterStats.SetActive(false);
+			}
 		}
 	}
 
@@ -194,28 +229,13 @@ public class PlayerGrabber : MonoBehaviour
 				preservedLayer = grabbedObject.gameObject.layer;
 				grabbedObject.gameObject.layer = grabbedObject.gameObject.layer == 3 ? 8 : 2;
 
-				var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
-				if (monsterObj != null)
-				{
-					monsterStats.SetActive(true);
-					TutorialEvents.OnAdditionalTutorialTriggered.Invoke(0);
-					if (monsterObj.GetMonsterStats()["hunger"] >= 0.5f)
-					{
-
-						TutorialEvents.OnAdditionalTutorialTriggered.Invoke(1);
-					}
-					else if (monsterObj.GetMonsterStats()["disruptance"] >= 0.5f)
-					{
-						TutorialEvents.OnAdditionalTutorialTriggered.Invoke(2);
-					}
-				}
 				var pigmentobj = grabbedObject.GetComponent<ColorPigment>();
 				if (pigmentobj != null)
 				{
 					pigmentStats.SetActive(true);
 				}
 				//jointTransform = AttachJoint(target.GetRigidbody(), hit.point, grabPivot, false);
-				jointTransform = AttachJoint(target.GetRigidbody(), (target.tag.Equals( "Kapot") ? hit.point : target.GetRigidbody().worldCenterOfMass), grabPivot,false);
+				jointTransform = AttachJoint(target.GetRigidbody(), (target.tag.Equals("Kapot") ? hit.point : target.GetRigidbody().worldCenterOfMass), grabPivot, false);
 			}
 		}
 	}
@@ -294,11 +314,11 @@ public class PlayerGrabber : MonoBehaviour
 		try
 		{
 			Destroy(jointTransform.gameObject);
-			var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
-			if (monsterObj != null)
-			{
-				monsterStats.SetActive(false);
-			}
+			//var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
+			//if (monsterObj != null)
+			//{
+			//	monsterStats.SetActive(false);
+			//}
 			var pigmentObj = grabbedObject.GetComponent<ColorPigment>();
 			if (pigmentObj != null)
 			{
@@ -317,9 +337,10 @@ public class PlayerGrabber : MonoBehaviour
 	{
 		HandleInput();
 		CastHint();
+		HandleMonsterStatsUpdate();
 	}
 
-	private JointDrive CreateJoint(bool useFixed,bool isKapot = false)
+	private JointDrive CreateJoint(bool useFixed, bool isKapot = false)
 	{
 		JointDrive drive = new JointDrive();
 		drive.positionSpring = grabStrenght * (isKapot ? 1 : 10);
@@ -333,10 +354,10 @@ public class PlayerGrabber : MonoBehaviour
 		//GameObject go = new GameObject("Attachment Point");
 		GameObject go = new GameObject("Attachment Point");
 		//go.hideFlags = HideFlags.HideInHierarchy;
-		
+
 		bool isKapot = rb.gameObject.tag == "Kapot";
 		Debug.Log(isKapot);
-	    if (isKapot)
+		if (isKapot)
 		{
 			goParent.position = attachmentPosition;
 			grabPivot.transform.position = attachmentPosition;
@@ -378,6 +399,19 @@ public class PlayerGrabber : MonoBehaviour
 		return go.transform;
 	}
 
+	private void HandleMonsterStatsUpdate()
+	{
+		if (monsterObj != null)
+		{
+			Dictionary<string, float> stats = monsterObj.GetMonsterStats();
+			List<string> list = stats.Keys.ToList();
+			for (int i = 0; i < monsterStatsField.Count; i++)
+			{
+				monsterStatsField[i].text = LanguageManager.Instance.GetTranslatable($"ui.monster_stats.{list[i]}") + $"{Mathf.Clamp((int)(stats[list[i]] * 100), 0, 100f)}%";
+			}
+		}
+	}
+
 	private void HandleObjectHolding()
 	{
 		//Rigidbody rb = grabbedObject.GetRigidbody();
@@ -398,19 +432,11 @@ public class PlayerGrabber : MonoBehaviour
 		{
 			jointTransform.position = grabPivot.position;
 		}
-
-	    if (grabbedObject == null) { return; }
+		
+		if (grabbedObject == null) { return; }
 		Physics.IgnoreCollision(GetComponent<Collider>(), grabbedObject.GetRigidbody().GetComponent<Collider>(), true);
-		var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
-		if (monsterObj != null)
-		{
-			Dictionary<string, float> stats = monsterObj.GetMonsterStats();
-			List<string> list = stats.Keys.ToList();
-			for (int i = 0; i < monsterStatsField.Count; i++)
-			{
-				monsterStatsField[i].text = LanguageManager.Instance.GetTranslatable($"ui.monster_stats.{list[i]}") + $"{Mathf.Clamp((int)(stats[list[i]] * 100), 0, 100f)}%";
-			}
-		}
+		//var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
+
 		var colorPig = grabbedObject.GetComponent<ColorPigment>();
 		if (colorPig != null)
 		{

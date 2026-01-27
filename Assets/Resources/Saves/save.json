@@ -1,154 +1,90 @@
 {
   "SavedPrefabs": [
     {
-      "prefabName": "seed",
-      "dimension": 1,
+      "prefabName": "pounder",
+      "dimension": 2,
       "worldPosition": {
-        "x": -135.531387,
-        "y": 14.86388,
-        "z": -407.118469
+        "x": -6.455711,
+        "y": 0.4209881,
+        "z": 9.447125
       },
       "quaternionRotation": {
-        "x": -4.58866054E-07,
-        "y": -0.779799461,
-        "z": 2.24034284E-06,
-        "w": 0.6260294
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
       },
       "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "brush",
+      "dimension": 2,
+      "worldPosition": {
+        "x": -3.58660316,
+        "y": 1.00101018,
+        "z": 15.0310478
+      },
+      "quaternionRotation": {
+        "x": -0.6577148,
+        "y": 0.00112816214,
+        "z": -0.75326556,
+        "w": 0.0010480528
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "egg",
+      "dimension": 2,
+      "worldPosition": {
+        "x": 1.9963963,
+        "y": 0.588,
+        "z": 2.30291414
+      },
+      "quaternionRotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "floatData": {
+        "timeToHatch": 0.0
+      },
+      "stringData": null
+    },
+    {
+      "prefabName": "egg",
+      "dimension": 2,
+      "worldPosition": {
+        "x": 7.71,
+        "y": 0.588,
+        "z": 4.42
+      },
+      "quaternionRotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+      },
+      "floatData": {
+        "timeToHatch": 0.0
+      },
       "stringData": null
     },
     {
       "prefabName": "seed",
       "dimension": 1,
       "worldPosition": {
-        "x": -134.51,
-        "y": 14.86388,
-        "z": -400.1093
-      },
-      "quaternionRotation": {
-        "x": -2.410469E-06,
-        "y": -0.779800951,
-        "z": 1.80713835E-06,
-        "w": 0.6260275
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -56.91903,
+        "x": 250.36145,
         "y": 14.863883,
-        "z": -502.205017
+        "z": -174.176636
       },
       "quaternionRotation": {
-        "x": 8.380621E-07,
-        "y": 0.448979825,
-        "z": 3.00131342E-06,
-        "w": 0.893542
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -40.8795166,
-        "y": 14.8638868,
-        "z": -513.107361
-      },
-      "quaternionRotation": {
-        "x": -5.02571957E-08,
-        "y": 0.448981762,
-        "z": -4.23204654E-08,
-        "w": 0.893541
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -136.177185,
-        "y": 14.86388,
-        "z": -405.192261
-      },
-      "quaternionRotation": {
-        "x": -2.80901168E-06,
-        "y": -0.7798009,
-        "z": 2.77328149E-06,
-        "w": 0.626027644
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": 240.82,
-        "y": 14.8638849,
-        "z": -178.61
-      },
-      "quaternionRotation": {
-        "x": -2.773384E-07,
-        "y": -0.7377968,
-        "z": 3.216698E-06,
-        "w": 0.67502296
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": 245.618942,
-        "y": 14.863883,
-        "z": -178.320465
-      },
-      "quaternionRotation": {
-        "x": -8.51907E-07,
-        "y": -0.7377966,
-        "z": 2.952785E-06,
-        "w": 0.6750232
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -139.955353,
-        "y": 14.86388,
-        "z": -405.2906
-      },
-      "quaternionRotation": {
-        "x": -4.295414E-08,
-        "y": -0.779797435,
-        "z": 9.545386E-09,
-        "w": 0.626031935
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": 253.131927,
-        "y": 14.863883,
-        "z": -170.295746
-      },
-      "quaternionRotation": {
-        "x": 1.52510324E-08,
-        "y": -0.7377926,
-        "z": 1.98798352E-06,
-        "w": 0.6750275
+        "x": -4.2658985E-07,
+        "y": -0.737792432,
+        "z": 1.86378907E-06,
+        "w": 0.675027668
       },
       "floatData": null,
       "stringData": null
@@ -162,315 +98,9 @@
         "z": -513.797852
       },
       "quaternionRotation": {
-        "x": 2.16259969E-06,
-        "y": 0.448978722,
-        "z": 1.02051786E-06,
-        "w": 0.893542469
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": 258.148834,
-        "y": 14.863883,
-        "z": -169.954285
-      },
-      "quaternionRotation": {
-        "x": -2.83916933E-07,
-        "y": -0.7377933,
-        "z": 2.34038839E-06,
-        "w": 0.6750268
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -134.27066,
-        "y": 14.86388,
-        "z": -408.159943
-      },
-      "quaternionRotation": {
-        "x": 1.66906671E-06,
-        "y": -0.779798448,
-        "z": -2.0027162E-06,
-        "w": 0.6260306
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -134.477859,
-        "y": 14.86388,
-        "z": -404.645264
-      },
-      "quaternionRotation": {
-        "x": -2.73581122E-07,
-        "y": -0.779799342,
-        "z": 1.709848E-06,
-        "w": 0.626029551
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -140.58934,
-        "y": 14.8638887,
-        "z": -407.515472
-      },
-      "quaternionRotation": {
-        "x": -1.15611044E-07,
-        "y": -0.7797849,
-        "z": -4.887047E-07,
-        "w": 0.6260476
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -139.130737,
-        "y": 14.863884,
-        "z": -406.2683
-      },
-      "quaternionRotation": {
-        "x": -2.500034E-06,
-        "y": -0.779800832,
-        "z": 3.87923046E-06,
-        "w": 0.6260277
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -55.8960342,
-        "y": 14.8638849,
-        "z": -499.56488
-      },
-      "quaternionRotation": {
-        "x": 3.54560029E-06,
-        "y": 0.448979259,
-        "z": 2.98714212E-06,
-        "w": 0.89354223
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -138.4316,
-        "y": 14.86388,
-        "z": -403.751251
-      },
-      "quaternionRotation": {
-        "x": 4.76997855E-08,
-        "y": -0.779797435,
-        "z": -9.166877E-08,
-        "w": 0.626031935
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": 243.63,
-        "y": 14.863883,
-        "z": -177.28
-      },
-      "quaternionRotation": {
-        "x": -2.89733839E-06,
-        "y": -0.7377966,
-        "z": 3.93509072E-06,
-        "w": 0.6750232
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -57.5757637,
-        "y": 14.8638868,
-        "z": -505.8867
-      },
-      "quaternionRotation": {
-        "x": -3.632972E-07,
-        "y": 0.448981762,
-        "z": 2.93334949E-07,
-        "w": 0.893541
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -137.389648,
-        "y": 14.8638811,
-        "z": -408.914978
-      },
-      "quaternionRotation": {
-        "x": -1.46235993E-06,
-        "y": -0.779800951,
-        "z": 5.268649E-06,
-        "w": 0.6260276
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -136.90976,
-        "y": 14.8638792,
-        "z": -402.9671
-      },
-      "quaternionRotation": {
-        "x": -2.96866665E-06,
-        "y": -0.779801,
-        "z": 3.60930881E-06,
-        "w": 0.6260276
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -59.2783,
-        "y": 14.8638868,
-        "z": -504.000763
-      },
-      "quaternionRotation": {
-        "x": 1.22477809E-06,
-        "y": 0.44898,
-        "z": 8.99572058E-07,
-        "w": 0.8935418
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -36.69972,
-        "y": 14.8638868,
-        "z": -523.337036
-      },
-      "quaternionRotation": {
-        "x": 2.05862771E-10,
-        "y": 0.448981762,
-        "z": 7.040135E-09,
-        "w": 0.893541
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -50.86159,
-        "y": 14.8638868,
-        "z": -501.162842
-      },
-      "quaternionRotation": {
-        "x": 1.41942758E-06,
-        "y": 0.448980361,
-        "z": 4.299965E-07,
-        "w": 0.893541634
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -41.79222,
-        "y": 14.863883,
-        "z": -516.1059
-      },
-      "quaternionRotation": {
-        "x": 4.47729E-06,
-        "y": 0.448978782,
-        "z": 2.517125E-06,
-        "w": 0.893542469
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -34.37,
-        "y": 11.415185,
-        "z": -519.04
-      },
-      "quaternionRotation": {
-        "x": -1.02644542E-07,
-        "y": 0.448997825,
-        "z": -1.37342749E-06,
-        "w": 0.893532932
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -53.9260826,
-        "y": 14.8638868,
-        "z": -504.933655
-      },
-      "quaternionRotation": {
-        "x": 3.73793455E-06,
-        "y": 0.44897905,
-        "z": 3.27855446E-06,
-        "w": 0.8935423
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -40.9116249,
-        "y": 14.8638868,
-        "z": -519.692566
-      },
-      "quaternionRotation": {
-        "x": 1.53425745E-07,
-        "y": 0.448978841,
-        "z": 2.957142E-06,
+        "x": 2.26605084E-06,
+        "y": 0.4489788,
+        "z": 9.37666471E-07,
         "w": 0.893542469
       },
       "floatData": null,
@@ -497,15 +127,32 @@
       "prefabName": "seed",
       "dimension": 1,
       "worldPosition": {
-        "x": 252.235153,
+        "x": -34.37,
+        "y": 13.0151806,
+        "z": -519.04
+      },
+      "quaternionRotation": {
+        "x": -1.00719411E-07,
+        "y": 0.4489858,
+        "z": -1.3742067E-06,
+        "w": 0.893538952
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -40.9116249,
         "y": 14.8638868,
-        "z": -173.450409
+        "z": -519.692566
       },
       "quaternionRotation": {
-        "x": -5.28544547E-07,
-        "y": -0.7377959,
-        "z": 2.86322188E-06,
-        "w": 0.6750239
+        "x": 1.56553611E-07,
+        "y": 0.448978841,
+        "z": 2.963397E-06,
+        "w": 0.893542469
       },
       "floatData": null,
       "stringData": null
@@ -514,49 +161,15 @@
       "prefabName": "seed",
       "dimension": 1,
       "worldPosition": {
-        "x": 250.36145,
-        "y": 14.863883,
-        "z": -174.176636
+        "x": -139.955353,
+        "y": 14.86388,
+        "z": -405.2906
       },
       "quaternionRotation": {
-        "x": -4.289318E-07,
-        "y": -0.737792432,
-        "z": 1.85590432E-06,
-        "w": 0.675027668
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": -136.640137,
-        "y": 14.863883,
-        "z": -407.110229
-      },
-      "quaternionRotation": {
-        "x": -2.29641523E-06,
-        "y": -0.77980113,
-        "z": 2.29762213E-06,
-        "w": 0.6260274
-      },
-      "floatData": null,
-      "stringData": null
-    },
-    {
-      "prefabName": "seed",
-      "dimension": 1,
-      "worldPosition": {
-        "x": 243.509659,
-        "y": 14.863883,
-        "z": -175.880081
-      },
-      "quaternionRotation": {
-        "x": -8.840099E-07,
-        "y": -0.7377965,
-        "z": 2.21086316E-06,
-        "w": 0.6750233
+        "x": -3.6348812E-08,
+        "y": -0.779797435,
+        "z": 6.96025948E-09,
+        "w": 0.626031935
       },
       "floatData": null,
       "stringData": null
@@ -582,6 +195,74 @@
       "prefabName": "seed",
       "dimension": 1,
       "worldPosition": {
+        "x": -136.177185,
+        "y": 14.8638792,
+        "z": -405.192261
+      },
+      "quaternionRotation": {
+        "x": -2.332193E-06,
+        "y": -0.779801,
+        "z": 2.848033E-06,
+        "w": 0.6260276
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -56.91903,
+        "y": 14.863883,
+        "z": -502.205017
+      },
+      "quaternionRotation": {
+        "x": 8.38040364E-07,
+        "y": 0.448979825,
+        "z": 3.001297E-06,
+        "w": 0.893542
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -138.4316,
+        "y": 14.86388,
+        "z": -403.751251
+      },
+      "quaternionRotation": {
+        "x": 4.76997855E-08,
+        "y": -0.779797435,
+        "z": -9.166877E-08,
+        "w": 0.626031935
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -36.69972,
+        "y": 14.8638868,
+        "z": -523.337036
+      },
+      "quaternionRotation": {
+        "x": 2.05862771E-10,
+        "y": 0.448981762,
+        "z": 7.040135E-09,
+        "w": 0.893541
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
         "x": -141.735641,
         "y": 14.86388,
         "z": -409.8818
@@ -596,315 +277,404 @@
       "stringData": null
     },
     {
-      "prefabName": "log",
+      "prefabName": "seed",
       "dimension": 1,
       "worldPosition": {
-        "x": -54.0444679,
-        "y": 14.0458508,
-        "z": -403.7468
+        "x": -53.9260826,
+        "y": 14.8638868,
+        "z": -504.933655
       },
       "quaternionRotation": {
-        "x": -0.470628083,
-        "y": -0.6385756,
-        "z": 0.487760574,
-        "w": 0.3644448
+        "x": 3.74234628E-06,
+        "y": 0.44897905,
+        "z": 3.277819E-06,
+        "w": 0.8935423
       },
       "floatData": null,
       "stringData": null
     },
     {
-      "prefabName": "log",
+      "prefabName": "seed",
       "dimension": 1,
       "worldPosition": {
-        "x": -54.8641853,
-        "y": 14.04585,
-        "z": -404.146118
+        "x": -140.58934,
+        "y": 14.8638878,
+        "z": -407.515472
       },
       "quaternionRotation": {
-        "x": -0.6066095,
-        "y": -0.7236696,
-        "z": 0.3023686,
-        "w": 0.130001873
+        "x": -1.8030633E-08,
+        "y": -0.7797849,
+        "z": -5.654914E-07,
+        "w": 0.6260476
       },
       "floatData": null,
       "stringData": null
     },
     {
-      "prefabName": "log",
+      "prefabName": "seed",
       "dimension": 1,
       "worldPosition": {
-        "x": -54.95477,
-        "y": 14.0455084,
-        "z": -405.129639
+        "x": 245.618942,
+        "y": 14.8638849,
+        "z": -178.320465
       },
       "quaternionRotation": {
-        "x": -0.287098527,
-        "y": 0.2965569,
-        "z": -0.484329343,
-        "w": 0.7713971
+        "x": -1.59008925E-06,
+        "y": -0.7377967,
+        "z": 2.67999212E-06,
+        "w": 0.675023
       },
       "floatData": null,
       "stringData": null
     },
     {
-      "prefabName": "log",
+      "prefabName": "seed",
       "dimension": 1,
       "worldPosition": {
-        "x": -56.2226563,
-        "y": 14.041873,
-        "z": -403.523651
+        "x": -137.389648,
+        "y": 14.8638811,
+        "z": -408.914978
       },
       "quaternionRotation": {
-        "x": 0.4353814,
-        "y": 0.08132372,
-        "z": -0.858044267,
-        "w": -0.259979874
+        "x": -1.47281582E-06,
+        "y": -0.779800951,
+        "z": 5.25911764E-06,
+        "w": 0.6260276
       },
       "floatData": null,
       "stringData": null
     },
     {
-      "prefabName": "pigment",
-      "dimension": 2,
+      "prefabName": "seed",
+      "dimension": 1,
       "worldPosition": {
-        "x": -6.03241873,
-        "y": 1.02521694,
-        "z": 9.644931
+        "x": -139.130737,
+        "y": 14.863884,
+        "z": -406.2683
       },
       "quaternionRotation": {
-        "x": -0.07821313,
-        "y": 0.011882483,
-        "z": -0.19479537,
-        "w": 0.9776483
-      },
-      "floatData": {
-        "colorR": 0.5557091,
-        "colorG": 0.3914356,
-        "colorB": 0.851051331,
-        "volume": 59.1566734
-      },
-      "stringData": null
-    },
-    {
-      "prefabName": "pounder",
-      "dimension": 2,
-      "worldPosition": {
-        "x": -6.60230064,
-        "y": 0.82918787,
-        "z": 8.88843
-      },
-      "quaternionRotation": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 1.0
+        "x": -3.30977628E-06,
+        "y": -0.7798009,
+        "z": 4.299264E-06,
+        "w": 0.626027644
       },
       "floatData": null,
       "stringData": null
     },
     {
-      "prefabName": "brush",
-      "dimension": 2,
+      "prefabName": "seed",
+      "dimension": 1,
       "worldPosition": {
-        "x": 1.87391508,
-        "y": 0.3751258,
-        "z": 2.8033843
+        "x": -59.2783,
+        "y": 14.8638868,
+        "z": -504.000763
       },
       "quaternionRotation": {
-        "x": 0.119907171,
-        "y": -0.9593685,
-        "z": -0.0865380242,
-        "w": 0.2403028
+        "x": 1.22374286E-06,
+        "y": 0.44898,
+        "z": 9.08777054E-07,
+        "w": 0.8935418
       },
       "floatData": null,
       "stringData": null
     },
     {
-      "prefabName": "green",
-      "dimension": 2,
+      "prefabName": "seed",
+      "dimension": 1,
       "worldPosition": {
-        "x": 2.16775846,
-        "y": 0.359186351,
-        "z": 1.99446726
+        "x": -50.86159,
+        "y": 14.8638868,
+        "z": -501.162842
       },
       "quaternionRotation": {
-        "x": 0.0009585806,
-        "y": 0.692702,
-        "z": 0.07816794,
-        "w": -0.7169748
+        "x": 1.413376E-06,
+        "y": 0.448980361,
+        "z": 4.2740254E-07,
+        "w": 0.893541634
       },
-      "floatData": {
-        "fear": 0.0,
-        "happiness": 0.7020811,
-        "hunger": 0.4019988,
-        "health": 0.772060156,
-        "disruptance": 0.0,
-        "curiosity": 0.0,
-        "hasLaidEgg": 1.0,
-        "timeLived": 514.0
-      },
-      "stringData": {
-        "nameTag": "Масло"
-      }
-    },
-    {
-      "prefabName": "red",
-      "dimension": 2,
-      "worldPosition": {
-        "x": 7.402407,
-        "y": 0.239111036,
-        "z": 6.35333252
-      },
-      "quaternionRotation": {
-        "x": 8.398666E-06,
-        "y": 0.008600081,
-        "z": 0.000191365645,
-        "w": -0.999963045
-      },
-      "floatData": {
-        "fear": 0.0,
-        "happiness": 1.0,
-        "hunger": 0.391998768,
-        "health": 1.0,
-        "disruptance": 0.644999564,
-        "curiosity": 1.0,
-        "hasLaidEgg": 1.0,
-        "timeLived": 504.0
-      },
-      "stringData": {
-        "nameTag": "Извив"
-      }
-    },
-    {
-      "prefabName": "red",
-      "dimension": 2,
-      "worldPosition": {
-        "x": 8.061982,
-        "y": 0.2477093,
-        "z": 9.141248
-      },
-      "quaternionRotation": {
-        "x": 0.0009010909,
-        "y": 0.9546623,
-        "z": 0.02121007,
-        "w": -0.296933085
-      },
-      "floatData": {
-        "fear": 0.0,
-        "happiness": 1.0,
-        "hunger": 0.335999042,
-        "health": 1.0,
-        "disruptance": 0.6899995,
-        "curiosity": 1.0,
-        "hasLaidEgg": 1.0,
-        "timeLived": 448.0
-      },
-      "stringData": {
-        "nameTag": "Щенок"
-      }
-    },
-    {
-      "prefabName": "blue",
-      "dimension": 2,
-      "worldPosition": {
-        "x": 4.840943,
-        "y": 0.3581798,
-        "z": 13.8712749
-      },
-      "quaternionRotation": {
-        "x": -9.73853957E-08,
-        "y": -0.9595641,
-        "z": 1.70348756E-07,
-        "w": 0.281490237
-      },
-      "floatData": {
-        "fear": 0.0,
-        "happiness": 1.0,
-        "hunger": 0.232000127,
-        "health": 0.94816,
-        "disruptance": 0.0,
-        "curiosity": 1.0,
-        "hasLaidEgg": 1.0,
-        "timeLived": 344.0
-      },
-      "stringData": {
-        "nameTag": "Колючка"
-      }
-    },
-    {
-      "prefabName": "blue",
-      "dimension": 2,
-      "worldPosition": {
-        "x": 1.8010031,
-        "y": 0.442017227,
-        "z": 12.2545662
-      },
-      "quaternionRotation": {
-        "x": 5.73907244E-07,
-        "y": 0.123200357,
-        "z": -8.55536655E-08,
-        "w": 0.9923819
-      },
-      "floatData": {
-        "fear": 0.0,
-        "happiness": 1.0,
-        "hunger": 0.184000209,
-        "health": 1.0,
-        "disruptance": 0.0,
-        "curiosity": 1.0,
-        "hasLaidEgg": 1.0,
-        "timeLived": 296.0
-      },
-      "stringData": {
-        "nameTag": "Загадка"
-      }
-    },
-    {
-      "prefabName": "egg",
-      "dimension": 2,
-      "worldPosition": {
-        "x": 7.09573936,
-        "y": 0.341956228,
-        "z": 4.539373
-      },
-      "quaternionRotation": {
-        "x": -0.556194,
-        "y": 0.444030046,
-        "z": 0.509337664,
-        "w": 0.483798265
-      },
-      "floatData": {
-        "timeToHatch": 0.0
-      },
+      "floatData": null,
       "stringData": null
     },
     {
-      "prefabName": "egg",
-      "dimension": 2,
+      "prefabName": "seed",
+      "dimension": 1,
       "worldPosition": {
-        "x": 1.46610129,
-        "y": 0.557127535,
-        "z": 12.3110561
+        "x": -134.51,
+        "y": 14.86388,
+        "z": -400.1093
       },
       "quaternionRotation": {
-        "x": 0.462874979,
-        "y": 0.6871516,
-        "z": -0.502781332,
-        "w": 0.246536821
+        "x": -2.86508771E-06,
+        "y": -0.7798011,
+        "z": 2.29180228E-06,
+        "w": 0.6260275
       },
-      "floatData": {
-        "timeToHatch": 0.0
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -57.5757637,
+        "y": 14.8638868,
+        "z": -505.8867
       },
+      "quaternionRotation": {
+        "x": -3.632972E-07,
+        "y": 0.448981762,
+        "z": 2.93334949E-07,
+        "w": 0.893541
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -135.531387,
+        "y": 14.86388,
+        "z": -407.118469
+      },
+      "quaternionRotation": {
+        "x": -4.60879278E-07,
+        "y": -0.779799461,
+        "z": 2.24105838E-06,
+        "w": 0.6260294
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": 253.131927,
+        "y": 14.863883,
+        "z": -170.295746
+      },
+      "quaternionRotation": {
+        "x": 1.49549919E-08,
+        "y": -0.7377926,
+        "z": 1.98331759E-06,
+        "w": 0.6750275
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -136.90976,
+        "y": 14.8638792,
+        "z": -402.9671
+      },
+      "quaternionRotation": {
+        "x": -2.96585677E-06,
+        "y": -0.779801,
+        "z": 3.60966919E-06,
+        "w": 0.6260276
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -134.27066,
+        "y": 14.86388,
+        "z": -408.159943
+      },
+      "quaternionRotation": {
+        "x": 1.669071E-06,
+        "y": -0.779798448,
+        "z": -2.00271484E-06,
+        "w": 0.6260306
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": 240.82,
+        "y": 14.8638849,
+        "z": -178.61
+      },
+      "quaternionRotation": {
+        "x": -8.473096E-07,
+        "y": -0.7377967,
+        "z": 5.008251E-06,
+        "w": 0.67502296
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -136.640137,
+        "y": 14.863883,
+        "z": -407.110229
+      },
+      "quaternionRotation": {
+        "x": -2.29642023E-06,
+        "y": -0.77980113,
+        "z": 2.297628E-06,
+        "w": 0.6260274
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": 243.509659,
+        "y": 14.863883,
+        "z": -175.880081
+      },
+      "quaternionRotation": {
+        "x": -8.830551E-07,
+        "y": -0.7377965,
+        "z": 2.207161E-06,
+        "w": 0.6750233
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": 243.63,
+        "y": 14.863883,
+        "z": -177.28
+      },
+      "quaternionRotation": {
+        "x": -2.90194112E-06,
+        "y": -0.7377966,
+        "z": 3.931111E-06,
+        "w": 0.6750232
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -41.79222,
+        "y": 14.863883,
+        "z": -516.1059
+      },
+      "quaternionRotation": {
+        "x": 3.164388E-06,
+        "y": 0.4489787,
+        "z": 3.17396348E-06,
+        "w": 0.893542469
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": 252.235153,
+        "y": 14.8638868,
+        "z": -173.450409
+      },
+      "quaternionRotation": {
+        "x": -5.415166E-07,
+        "y": -0.7377959,
+        "z": 2.86891532E-06,
+        "w": 0.6750239
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -134.477859,
+        "y": 14.86388,
+        "z": -404.645264
+      },
+      "quaternionRotation": {
+        "x": -2.73581122E-07,
+        "y": -0.779799342,
+        "z": 1.709848E-06,
+        "w": 0.626029551
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -40.8795166,
+        "y": 14.8638868,
+        "z": -513.107361
+      },
+      "quaternionRotation": {
+        "x": -5.02623152E-08,
+        "y": 0.448981762,
+        "z": -4.232776E-08,
+        "w": 0.893541
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": 258.148834,
+        "y": 14.863883,
+        "z": -169.954285
+      },
+      "quaternionRotation": {
+        "x": -4.19806668E-07,
+        "y": -0.737793267,
+        "z": 1.44537159E-06,
+        "w": 0.675026834
+      },
+      "floatData": null,
+      "stringData": null
+    },
+    {
+      "prefabName": "seed",
+      "dimension": 1,
+      "worldPosition": {
+        "x": -55.8960342,
+        "y": 14.8638849,
+        "z": -499.56488
+      },
+      "quaternionRotation": {
+        "x": 2.055729E-06,
+        "y": 0.448979378,
+        "z": 1.9899926E-07,
+        "w": 0.8935422
+      },
+      "floatData": null,
       "stringData": null
     }
   ],
   "SavedFloats": {
     "shouldShowTask": 0.0,
     "dimension": 2.0,
-    "currentTaskIndex": 1.0,
+    "currentTaskIndex": 0.0,
     "shouldShowTutorial": 0.0,
-    "tutorialIndex": 9.0,
-    "smola": 1.38525772,
+    "tutorialIndex": 13.0,
+    "smola": 0.0,
     "logs": 0.0,
     "seeds": 0.0,
     "Lev": 0.0,
@@ -919,17 +689,17 @@
     "Matvey": 0.0,
     "MatveyCompleted": 0.0,
     "MatveyIntroduced": 0.0,
-    "fiatX": -25.66879,
-    "fiatY": 14.3077555,
-    "fiatZ": -266.50827,
-    "fiatQX": 1.75609568E-06,
-    "fiatQY": 0.713294446,
-    "fiatQZ": 7.385852E-07,
-    "fiatQW": 0.7008646,
+    "fiatX": -137.780029,
+    "fiatY": 15.2433987,
+    "fiatZ": -394.78,
+    "fiatQX": 6.80159928E-09,
+    "fiatQY": -0.7814444,
+    "fiatQZ": -2.09547579E-08,
+    "fiatQW": 0.623975,
     "isMounted": 0.0,
-    "DedMiron": 1.0,
-    "DedMironCompleted": 1.0,
-    "DedMironIntroduced": 1.0,
+    "DedMiron": 0.0,
+    "DedMironCompleted": 0.0,
+    "DedMironIntroduced": 0.0,
     "Aglaya": 0.0,
     "AglayaCompleted": 0.0,
     "AglayaIntroduced": 0.0,
@@ -939,12 +709,11 @@
     "Kassandra": 0.0,
     "KassandraCompleted": 0.0,
     "KassandraIntroduced": 0.0,
-    "playerX": -26.9629555,
-    "playerY": 14.91305,
-    "playerZ": -265.5907,
-    "infuserSmola": 0.0
+    "playerX": -135.953812,
+    "playerY": 15.8487005,
+    "playerZ": -395.210144
   },
   "SavedStrings": {
-    "currentNpcTaskName": "DedMiron"
+    "currentNpcTaskName": ""
   }
 }
