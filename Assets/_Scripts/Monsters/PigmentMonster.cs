@@ -383,19 +383,19 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		if (force >= painSensitivity)
 		{
 			//health -= patCoef;
-			health = Mathf.Clamp(health, 0, 1f);
+			//health = Mathf.Clamp(health, 0, 1f);
 			Debug.Log("<color=yellow>Больна");
 		}
 		else
 		{
-			Debug.Log("<color=green>Кайфарик");
+			Debug.Log($"<color=green>{force*Time.deltaTime}");
 			monsterSound.pitch = Random.Range(0.95f, 1.15f);
 			monsterSound.PlayOneShot(brush);
 
 			monsterSound.pitch = Random.Range(0.95f, 1.15f);
 			monsterSound.PlayOneShot(purr);
 
-			workProgress += force;
+			workProgress += force * Time.deltaTime;
 			surprise = 0.3f;
 		}
 		if (workProgress >= neededWork)
@@ -405,7 +405,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		}
 	}
 
-	private void OnCollisionEnter(Collision collision)
+	private void OnCollisionStay(Collision collision)
 	{
 		if (!isInTheFence) return;
 		if (collision.collider.tag == "Sponge")
