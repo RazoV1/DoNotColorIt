@@ -17,21 +17,15 @@ public class FillBucketlever : MonoBehaviour
 
 	private bool isReturning = false;
 	float rotationalDelta;
-	float neededDelta;
+	
 
-	private void Start()
-	{
-		neededDelta = activationAngle - startAngle;
-	}
+	
 
 	void Update()
 	{
 		if (Quaternion.Angle(transform.localRotation, activationParent.localRotation) < 5f)
 		{
-			infuser.TryCook();
-			lever.SetIsGrabbed(false);
-			isReturning = true;
-			rb.angularVelocity = new Vector3 (0f, 0f, 0f);
+		   Activate();
 		}
 		if (isReturning)
 		{
@@ -44,5 +38,13 @@ public class FillBucketlever : MonoBehaviour
 				Debug.Log("<color=green>READY");
 			}
 		}
+	}
+
+	protected virtual void Activate()
+	{
+		infuser.TryCook();
+		lever.SetIsGrabbed(false);
+		isReturning = true;
+		rb.angularVelocity = new Vector3(0f, 0f, 0f);
 	}
 }

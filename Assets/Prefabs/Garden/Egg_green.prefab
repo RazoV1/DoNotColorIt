@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterEgg
   monsterInside: {fileID: 3921067645917435596, guid: 1e0505ee7b175f44a83c92031f2204b2, type: 3}
-  timeToHatch: 75
+  timeToHatch: 15
   monsterNameGui: {fileID: 1966974245645380043}
   inputFieldText: {fileID: 4604967936236810328}
 --- !u!64 &1947091622477183324
