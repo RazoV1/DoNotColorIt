@@ -395,7 +395,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 			monsterSound.pitch = Random.Range(0.95f, 1.15f);
 			monsterSound.PlayOneShot(purr);
 
-			workProgress += force * Time.deltaTime;
+			workProgress += force;
 			surprise = 0.3f;
 		}
 		if (workProgress >= neededWork)
@@ -405,7 +405,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		}
 	}
 
-	private void OnCollisionStay(Collision collision)
+	private void OnCollisionEnter(Collision collision)
 	{
 		if (!isInTheFence) return;
 		if (collision.collider.tag == "Sponge")
