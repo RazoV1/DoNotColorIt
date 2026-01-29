@@ -23404,7 +23404,7 @@ MonoBehaviour:
   shouldShowTask: 0
   orderedTasks:
   - id: 0
-    color: {r: 0.39215687, g: 0.5882353, b: 0.3137255, a: 1}
+    color: {r: 0, g: 0.901, b: 0, a: 1}
     image: {fileID: 21300000, guid: c626f518ab6dce74f92bcc0929449692, type: 3}
     npcName: DedMiron
   - id: 1
