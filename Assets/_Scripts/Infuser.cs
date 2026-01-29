@@ -163,7 +163,7 @@ public class Infuser : MonoBehaviour, ISavable
 	{
 
 		Debug.Log("<color=yellow>TryCook");
-		if (currrentTemperature == neededTemperature && bucket != null && dustInside != null)
+		if (currrentTemperature >= neededTemperature-10 && bucket != null && dustInside != null)
 		{
 			bucket.Fill(TryCalculateColor());
 			colorSource.PlayOneShot(AudioManager.Instance.ColorCooked);
