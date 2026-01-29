@@ -105,11 +105,11 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	public void Die()
 	{
-        if (!hasLaidEgg)
-        {
+		if (!hasLaidEgg)
+		{
 			LayEgg();
-        }
-        Destroy(gameObject);
+		}
+		Destroy(gameObject);
 	}
 
 	private void LayEgg()
@@ -386,18 +386,18 @@ public class PigmentMonster : MonoBehaviour, ISavable
 			//health = Mathf.Clamp(health, 0, 1f);
 			Debug.Log("<color=yellow>Больна");
 		}
-		else
-		{
-			Debug.Log($"<color=green>{force*Time.deltaTime}");
-			monsterSound.pitch = Random.Range(0.95f, 1.15f);
-			monsterSound.PlayOneShot(brush);
+		//else
+		//{
+		Debug.Log($"<color=green>{force * Time.deltaTime}");
+		monsterSound.pitch = Random.Range(0.95f, 1.15f);
+		monsterSound.PlayOneShot(brush);
 
-			monsterSound.pitch = Random.Range(0.95f, 1.15f);
-			monsterSound.PlayOneShot(purr);
+		monsterSound.pitch = Random.Range(0.95f, 1.15f);
+		monsterSound.PlayOneShot(purr);
 
-			workProgress += force;
-			surprise = 0.3f;
-		}
+		workProgress += force;
+		surprise = 0.3f;
+		//}
 		if (workProgress >= neededWork)
 		{
 			workProgress = 0;

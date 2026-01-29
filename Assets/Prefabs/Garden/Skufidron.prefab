@@ -9842,8 +9842,8 @@ MonoBehaviour:
   shouldBeWorkable: 0
   idealColor: {r: 0, g: 1, b: 0, a: 1}
   pigmentPrefab: {fileID: 1813578752216205196, guid: d64c6acf779ada94385f4437a10d784f, type: 3}
-  painSensitivity: 1
-  neededWork: 1
+  painSensitivity: 10
+  neededWork: 0.5
   patCoef: 0.1
   monsterName: green
   animator: {fileID: 2166052875958375707}
