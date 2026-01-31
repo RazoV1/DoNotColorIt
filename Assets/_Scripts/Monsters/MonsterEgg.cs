@@ -79,6 +79,7 @@ public class MonsterEgg : MonoBehaviour, ISavable
 		{
 			newMonster.GetComponentInChildren<MonsterNameTag>().SetNameTag(name);
 		}
+		GameObject.FindFirstObjectByType<CameraController>().SetShouldRotate(true);
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 		Destroy(gameObject);
@@ -91,6 +92,7 @@ public class MonsterEgg : MonoBehaviour, ISavable
 			monsterNameGui.SetActive(true);
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.None;
+			GameObject.FindFirstObjectByType<CameraController>().SetShouldRotate(false);
 		}
 	}
 
