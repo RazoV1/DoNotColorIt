@@ -2,12 +2,13 @@ using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour, ISavable
 {
-	[SerializeField] private List<GameObject> questLinesByIndex;
+	[SerializeField] private List<QuestLine> questLinesByIndex;
 	[SerializeField] private List<GameObject> additionalTutorials;
 	[SerializeField] private GameObject tutorialIndicator;
 
@@ -21,6 +22,16 @@ public class TutorialManager : MonoBehaviour, ISavable
 	public int GetTutorialIndex() => tutorialIndex;
 	private bool hasPickedUpMonster = false;
 
+	[Serializable]
+	public struct QuestLine
+	{
+		public string tutorialName;
+		/// <summary>
+		/// “”“ œ≈–≈ƒ¿®Ã —œ»—Œ  Œ¡⁄≈ “Œ¬ ƒÀﬂ œŒ ¿«¿, ¬ Àﬁ◊¿ﬂ œÀ¿ÿ ” — “≈ —“ŒÃ “”“Œ–»¿À¿
+		/// </summary>
+		public List<GameObject> toShow;
+	}
+
 	public void Start()
 	{
 		SubscribeToSaveEvent();
@@ -30,6 +41,13 @@ public class TutorialManager : MonoBehaviour, ISavable
 	{
 		HandleInput();
 	}
+
+	private void SetVisibleForLine(QuestLine line,bool visibility)
+	{
+		line.toShow.ForEach(x => x.SetActive(visibility));
+	}
+
+	private bool IsVisibleLine(QuestLine line) => line.toShow.All(x => x.activeSelf);
 
 	public void HandleInput()
 	{
@@ -43,10 +61,10 @@ public class TutorialManager : MonoBehaviour, ISavable
 					HideAllTutorials();
 					return;
 				}
-				if (questLinesByIndex[tutorialIndex].activeSelf)
+				if (IsVisibleLine(questLinesByIndex[tutorialIndex]))
 				{
 					HideAllTutorials();
-					ProgressTutorial(12);
+					ProgressTutorial("last");
 				}
 				else
 				{
@@ -66,7 +84,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 		}
 		try
 		{
-			questLinesByIndex[index].SetActive(true);
+			SetVisibleForLine(questLinesByIndex[index],true);
 		}
 		catch
 		{
@@ -77,13 +95,13 @@ public class TutorialManager : MonoBehaviour, ISavable
 
 	public void HideAllTutorials()
 	{
-		questLinesByIndex.ForEach(list => list.SetActive(false));
+		questLinesByIndex.ForEach(list => SetVisibleForLine(list,false));
 		additionalTutorials.ForEach(list => list.SetActive(false));
 	}
 
-	public void ProgressTutorial(int index)
+	public void ProgressTutorial(string lineName)
 	{
-		if (index != tutorialIndex) return;
+		if (lineName != questLinesByIndex[tutorialIndex].tutorialName) return;
 		tutorialIndex++;
 		if (tutorialIndex >= questLinesByIndex.Count)
 		{
@@ -92,7 +110,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 		}
 		else
 		{
-			if (questLinesByIndex[Mathf.Clamp(tutorialIndex - 1, 0, 999)].activeSelf)
+			if (IsVisibleLine(questLinesByIndex[Mathf.Clamp(tutorialIndex - 1, 0, 999)]))
 			{
 				ShowTutorialByIndex(tutorialIndex);
 			}
@@ -116,7 +134,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 	{
 		HideAllTutorials();
 		tutorialIndex = 12;
-		ProgressTutorial(12);
+		ProgressTutorial("last");
 	}
 
 	private void ShowAdditionalTutorial(int id)
