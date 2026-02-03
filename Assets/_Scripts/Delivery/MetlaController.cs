@@ -48,7 +48,7 @@ namespace Assets._Scripts.Delivery
 			if (isMounted)
 			{
 				GameplayEvents.OnMount.Invoke();
-				GameManager.Instance.GetTutorial().ProgressTutorial(0);
+				//GameManager.Instance.GetTutorial().ProgressTutorial(0);
 			}
 			rb.useGravity = !isMounted;
 			this.isMounted = isMounted;

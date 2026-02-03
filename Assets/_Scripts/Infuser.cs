@@ -82,9 +82,9 @@ public class Infuser : MonoBehaviour, ISavable
 					if (currrentTemperature >= neededTemperature)
 					{
 
-						GameManager.Instance.GetTutorial().ProgressTutorial(9);
-					}
-					yield return null;
+                        //GameManager.Instance.GetTutorial().ProgressTutorial(9);
+                    }
+                    yield return null;
 				}
 				logs--;
 			}
@@ -123,7 +123,7 @@ public class Infuser : MonoBehaviour, ISavable
 	{
 		if (dustInside == null)
 		{
-			GameManager.Instance.GetTutorial().ProgressTutorial(8);
+			//GameManager.Instance.GetTutorial().ProgressTutorial(8);
 			dustInside = dust;
 			volume = dust.GetVolume();
 			color = dust.GetColor();
@@ -170,8 +170,8 @@ public class Infuser : MonoBehaviour, ISavable
 			dustInside = null;
 			smolaVolume = 0f;
 
-			GameManager.Instance.GetTutorial().ProgressTutorial(10);
-			Debug.Log("<color=green>Cook");
+            //GameManager.Instance.GetTutorial().ProgressTutorial(10);
+            Debug.Log("<color=green>Cook");
 		}
 	}
 

@@ -47,7 +47,7 @@ public class Mortar : MonoBehaviour
 			Destroy(p.gameObject);
 		}
 
-		GameManager.Instance.GetTutorial().ProgressTutorial(7);
+		//GameManager.Instance.GetTutorial().ProgressTutorial(7);
 		pigmentInside.Clear();
 		GameObject dust = Instantiate(dustPrefab, componentsPivot.position, Quaternion.identity);
 		dust.GetComponent<DustedColorPigment>().InitializePigment(outputColor, volume);
