@@ -104,7 +104,14 @@ public class TutorialManager : MonoBehaviour, ISavable
 
 	public void ProgressTutorial(string lineName)
 	{
-		if (lineName != questLinesByIndex[tutorialIndex].tutorialName) return;
+		try
+		{
+			if (lineName != questLinesByIndex[tutorialIndex].tutorialName) return;
+		}
+		catch
+		{
+			return;
+		}
 		tutorialIndex++;
 		if (tutorialIndex >= questLinesByIndex.Count)
 		{
