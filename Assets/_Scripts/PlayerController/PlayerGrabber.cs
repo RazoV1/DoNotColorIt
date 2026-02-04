@@ -1,6 +1,5 @@
 using Assets._Scripts.Interaction_System.Interfaces;
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 using Assets._Scripts.Delivery;
@@ -20,8 +19,7 @@ public class PlayerGrabber : MonoBehaviour
 	[Header("MonsterStats")]
 	[SerializeField] private GameObject monsterStats;
 	[SerializeField] private List<TextMeshProUGUI> monsterStatsField;
-    [SerializeField] private List<Slider> monsterStatsSliders;
-    [Header("PigmentStats")]
+	[Header("PigmentStats")]
 	[SerializeField] private GameObject pigmentStats;
 	[SerializeField] private List<TextMeshProUGUI> pigmentFields;
 	[Header("ItemStats")]
@@ -223,6 +221,19 @@ public class PlayerGrabber : MonoBehaviour
 				if (hit.collider.tag == "Egg")
 				{
 					hit.collider.GetComponent<MonsterEgg>().TryOpeningHatchMenu();
+					GameManager.Instance.GetTutorial().ProgressTutorial("eggPress");
+				}
+				else if (hit.collider.tag == "Kapot")
+				{
+					GameManager.Instance.GetTutorial().ProgressTutorial("back");
+				}
+				else if (hit.collider.tag == "Axe")
+				{
+					GameManager.Instance.GetTutorial().ProgressTutorial("axe");
+				}
+				else if (hit.collider.tag == "Sponge")
+				{
+					GameManager.Instance.GetTutorial().ProgressTutorial("brushPick");
 				}
 				grabbedObject = target;
 				isGrabbing = true;
@@ -259,8 +270,9 @@ public class PlayerGrabber : MonoBehaviour
 				}
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 4)
 				{
-                    //GameManager.Instance.GetTutorial().ProgressTutorial(4);
-                    GameManager.Instance.ChangeDimensions(2);
+					//GameManager.Instance.GetTutorial().ProgressTutorial(4);
+					GameManager.Instance.GetTutorial().ProgressTutorial("inside");
+					GameManager.Instance.ChangeDimensions(2);
 
 				}
 				return;
@@ -409,10 +421,8 @@ public class PlayerGrabber : MonoBehaviour
 			List<string> list = stats.Keys.ToList();
 			for (int i = 0; i < monsterStatsField.Count; i++)
 			{
-				monsterStatsField[i].text = LanguageManager.Instance.GetTranslatable($"ui.monster_stats.{list[i]}");
-				monsterStatsSliders[i].value = Mathf.Clamp((int)(stats[list[i]] * 100), 0, 100f);
-
-            }
+				monsterStatsField[i].text = LanguageManager.Instance.GetTranslatable($"ui.monster_stats.{list[i]}") + $"{Mathf.Clamp((int)(stats[list[i]] * 100), 0, 100f)}%";
+			}
 		}
 	}
 
