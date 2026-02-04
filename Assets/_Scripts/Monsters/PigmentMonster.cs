@@ -324,6 +324,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 		health = Mathf.Clamp(health - harvestCoef, 0f, 1f);
 		Debug.Log("<color=blue>Лутай пигмент");
+		GameManager.Instance.GetTutorial().ProgressTutorial("pigmentDrop");
 
 		bool emojiShown = false;
 

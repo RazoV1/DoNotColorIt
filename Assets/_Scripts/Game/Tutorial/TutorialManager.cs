@@ -63,7 +63,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 					HideAllTutorials();
 					return;
 				}
-				if (IsVisibleLine(questLinesByIndex[tutorialIndex]))
+				if (IsVisibleLine(questLinesByIndex[0]))
 				{
 					HideAllTutorials();
 					ProgressTutorial("last");
@@ -123,7 +123,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 				HideAllTutorials();
 			}
 		}
-		TutorialEvents.OnTutorialIndexChanged.Invoke(tutorialIndex);
+		TutorialEvents.OnTutorialIndexChanged.Invoke(questLinesByIndex[tutorialIndex].tutorialName);
 	}
 
 	public void SubscribeToSaveEvent()

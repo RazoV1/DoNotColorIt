@@ -48,6 +48,7 @@ public class Mortar : MonoBehaviour
 		}
 
 		//GameManager.Instance.GetTutorial().ProgressTutorial(7);
+		GameManager.Instance.GetTutorial().ProgressTutorial("dusted");
 		pigmentInside.Clear();
 		GameObject dust = Instantiate(dustPrefab, componentsPivot.position, Quaternion.identity);
 		dust.GetComponent<DustedColorPigment>().InitializePigment(outputColor, volume);
@@ -124,6 +125,7 @@ public class Mortar : MonoBehaviour
 		ColorPigment pigment = collision.collider.GetComponent<ColorPigment>();
 		if (pigment != null && progress == 0)
 		{
+			GameManager.Instance.GetTutorial().ProgressTutorial("pigmentMortar");
 			pigmentInside.Add(pigment);
 			pigment.transform.parent = transform;
 			pigment.SetListenForPound(true,this);

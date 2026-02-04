@@ -221,6 +221,19 @@ public class PlayerGrabber : MonoBehaviour
 				if (hit.collider.tag == "Egg")
 				{
 					hit.collider.GetComponent<MonsterEgg>().TryOpeningHatchMenu();
+					GameManager.Instance.GetTutorial().ProgressTutorial("eggPress");
+				}
+				else if (hit.collider.tag == "Kapot")
+				{
+					GameManager.Instance.GetTutorial().ProgressTutorial("back");
+				}
+				else if (hit.collider.tag == "Axe")
+				{
+					GameManager.Instance.GetTutorial().ProgressTutorial("axe");
+				}
+				else if (hit.collider.tag == "Sponge")
+				{
+					GameManager.Instance.GetTutorial().ProgressTutorial("brushPick");
 				}
 				grabbedObject = target;
 				isGrabbing = true;
@@ -258,6 +271,7 @@ public class PlayerGrabber : MonoBehaviour
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 4)
 				{
 					//GameManager.Instance.GetTutorial().ProgressTutorial(4);
+					GameManager.Instance.GetTutorial().ProgressTutorial("inside");
 					GameManager.Instance.ChangeDimensions(2);
 
 				}

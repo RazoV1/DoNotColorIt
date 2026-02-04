@@ -30,6 +30,7 @@ public class SmolaAccessor : MonoBehaviour
 		{
 			delta = PocketTicker.Instance.ChangeSmola(rb.angularVelocity.z * speed * -1);
 			//Debug.Log(delta);
+			GameManager.Instance.GetTutorial().ProgressTutorial("valveSpin");
 			infuser.ChangeSmole(delta * -1);
 		}
 		else

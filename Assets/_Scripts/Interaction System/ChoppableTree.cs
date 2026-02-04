@@ -74,6 +74,7 @@ public class ChoppableTree : MonoBehaviour
 
 	private IEnumerator FallApart()
 	{
+		GameManager.Instance.GetTutorial().ProgressTutorial("treeCut");
 		yield return new WaitForSeconds(3);
 		Instantiate(logsPrefab, transform.position, transform.rotation);
 		Destroy(gameObject);

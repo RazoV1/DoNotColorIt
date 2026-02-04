@@ -10,7 +10,7 @@ namespace Assets._Scripts.Game.Tutorial
 {
 	public class TutorialHighlight : MonoBehaviour
 	{
-		[SerializeField] private List<int> order;
+		[SerializeField] private List<string> order;
 		[SerializeField] private GameObject highlight;
 		[SerializeField] private Transform player;
 
@@ -21,7 +21,7 @@ namespace Assets._Scripts.Game.Tutorial
 
 		private void Start()
 		{
-			ShowIfOrder(GameManager.Instance.GetTutorial().GetTutorialIndex());
+			//ShowIfOrder(GameManager.Instance.GetTutorial().GetTutorialIndex());
 		}
 
 		private void OnDestroy()
@@ -29,7 +29,7 @@ namespace Assets._Scripts.Game.Tutorial
 			TutorialEvents.OnTutorialIndexChanged.RemoveListener(ShowIfOrder);
 		}
 
-		public void ShowIfOrder(int currentIndex)
+		public void ShowIfOrder(string currentIndex)
 		{
 			highlight.SetActive(order.Contains(currentIndex));
 		}
