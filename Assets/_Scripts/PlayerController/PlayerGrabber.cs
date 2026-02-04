@@ -227,7 +227,7 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					GameManager.Instance.GetTutorial().ProgressTutorial("back");
 				}
-				else if (hit.collider.tag == "Axe")
+				else if (hit.collider.name.ToLower().Contains("axe"))
 				{
 					GameManager.Instance.GetTutorial().ProgressTutorial("axe");
 				}
