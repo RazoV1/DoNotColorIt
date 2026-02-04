@@ -30,7 +30,7 @@ public class Book : MonoBehaviour, ISavable
 	{
 		bookCanvas.SetActive(!bookCanvas.activeSelf);
 
-		GameManager.Instance.GetTutorial().ProgressTutorial(6);
+		//GameManager.Instance.GetTutorial().ProgressTutorial(6);
 		Time.timeScale = bookCanvas.activeSelf ? 0.0001f : 1f;
 		Cursor.lockState = bookCanvas.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
 		Cursor.visible = bookCanvas.activeSelf;

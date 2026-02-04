@@ -360,7 +360,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		try
 		{
 
-			GameManager.Instance.GetTutorial().ProgressTutorial(5);
+			//GameManager.Instance.GetTutorial().ProgressTutorial(5);
 			animator.SetTrigger("Worked");
 		}
 		catch

@@ -257,7 +257,7 @@ public class PlayerGrabber : MonoBehaviour
 				}
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 4)
 				{
-					GameManager.Instance.GetTutorial().ProgressTutorial(4);
+					//GameManager.Instance.GetTutorial().ProgressTutorial(4);
 					GameManager.Instance.ChangeDimensions(2);
 
 				}

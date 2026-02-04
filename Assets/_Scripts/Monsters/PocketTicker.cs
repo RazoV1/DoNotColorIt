@@ -44,7 +44,7 @@ public class PocketTicker : MonoBehaviour, ISavable
 		logs++;
 		if (logs >= 3)
 		{
-			GameManager.Instance.GetTutorial().ProgressTutorial(2);
+			//GameManager.Instance.GetTutorial().ProgressTutorial(2);
 		}
 	}
 
@@ -53,7 +53,7 @@ public class PocketTicker : MonoBehaviour, ISavable
 		smolaVolume++;
 		if (smolaVolume >= 2f)
 		{
-			GameManager.Instance.GetTutorial().ProgressTutorial(3);
+			//GameManager.Instance.GetTutorial().ProgressTutorial(3);
 		}
 	}
 

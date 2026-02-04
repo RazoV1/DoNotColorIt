@@ -3,6 +3,7 @@ using Assets._Scripts.Game.SaveSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 	[SerializeField] private List<QuestLine> questLinesByIndex;
 	[SerializeField] private List<GameObject> additionalTutorials;
 	[SerializeField] private GameObject tutorialIndicator;
+	[SerializeField] private TextMeshProUGUI tutorialOutput;
 
 	private bool shouldShowTutorial;
 	private int tutorialIndex;
@@ -85,6 +87,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 		try
 		{
 			SetVisibleForLine(questLinesByIndex[index],true);
+			Reload();
 		}
 		catch
 		{
@@ -113,6 +116,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 			if (IsVisibleLine(questLinesByIndex[Mathf.Clamp(tutorialIndex - 1, 0, 999)]))
 			{
 				ShowTutorialByIndex(tutorialIndex);
+				
 			}
 			else
 			{
@@ -126,8 +130,22 @@ public class TutorialManager : MonoBehaviour, ISavable
 	{
 		SaveEvents.OnSaveEvent.AddListener(SaveData);
 		SaveEvents.OnLoadEvent.AddListener(SyncDataEmpty);
+		GameSetupEvents.OnTranslationLoaded.AddListener(Reload);
 		TutorialEvents.OnAdditionalTutorialTriggered.AddListener(ShowAdditionalTutorial);
 		CommandEvents.OnTutorialSkip.AddListener(SkipTutorial);
+	}
+
+	private void Reload()
+	{
+		try
+		{
+			string currentTutorialString = LanguageManager.Instance.GetTranslatable("tutorial.output."+questLinesByIndex[tutorialIndex].tutorialName);
+			tutorialOutput.text = currentTutorialString;
+		}
+		catch
+		{
+			Debug.Log("<color=red>Ошибка во время загрузки перевода туториала!");
+		}
 	}
 
 	private void SkipTutorial(int placeholder)
@@ -169,6 +187,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 
 		saveManager.SaveFloat("shouldShowTutorial", shouldShowTutorial ? 1f : 0f);
 		saveManager.SaveFloat("tutorialIndex", tutorialIndex);
+		
 
 		if (SceneManager.GetActiveScene().buildIndex == 0)
 		{

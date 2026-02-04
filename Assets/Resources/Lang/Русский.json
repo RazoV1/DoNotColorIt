@@ -126,6 +126,32 @@
     "monster.age.Young":"<color=green>Молодой",
     "monster.age.Mature":"<color=yellow>Спелый",
     "monster.age.Old":"<color=red>Просроченный",
-    "ui.hint.talk_next":"Говорить: ЛКМ"
+    "ui.hint.talk_next":"Говорить: ЛКМ",
+    "tutorial.output.carSit":"Привет, внучок! Знаю, вы с отцом повздорили и ты пропал.
+Но просто так тебе не вернуться. <color=orange>Садись в машину на Е.",
+    "tutorial.output.space":" Теперь зажми <color=orange>Пробел</color>, чтобы подняться в воздух.",
+    "tutorial.output.w":"Теперь попробуй полететь <color=orange>вперёд на W",
+    "tutorial.output.ad":"Теперь попробуй повернуть машину <color=orange>Мышкой",
+    "tutorial.output.ctrl":"<color=orange>Приземлиться</color> можно, зажав <color=orange>CTRL</color>
+Найди Деда Мирона или Льва и поговори с ним.",
+    "tutorial.output.back":"Человек хочет цвет, приготовь его. Нужны ресурсы, открой багажник, <color=orange>зажав ЛКМ и потянув вверх.",
+    "tutorial.output.axe":"Найди <color=orange>Топор</color>. Возьми его, зажав ЛКМ",
+    "tutorial.output.treeCut":"Сруби дерево",
+    "tutorial.output.logs":"Закинь <color=orange>3 бревна</color> в багажник",
+    "tutorial.output.resin":"Теперь закинь <color=orange>2 смолы</color> по такому же принципу",
+    "tutorial.output.inside":"А теперь сам запрыгивай! Просто прыгни, без лишних вопросов!",
+    "tutorial.output.smalWalk":"Ну вот ты и познал секрет этого драндулета, молодец! Осмотрись немного",
+    "tutorial.output.eggPress":"Найди <color=orange>яйцо</color> в зелёном загоне и нажми на него, чтобы получить монстрика",
+    "tutorial.output.brushPick":"Теперь давай готовить цвет! Возьми <color=orange>щётку в хранилище</color>",
+    "tutorial.output.pigmentDrop":"<color=orange>Погладь монстра щёткой</color> чтобы выпал пигмент</color>
+Его размер зависит от <color=green>Здоровья</color>, а насыщенность от <color=green>Счастья",
+    "tutorial.output.pigmentMortar":"Отнеси пигмент в ступку",
+    "tutorial.output.dusted":"Перемоли его с помощью <color=orange>пестика",
+    "tutorial.output.infuserPut":"Закинь перемолотый пигмент в <color=orange>окошко на инфьюзере",
+    "tutorial.output.valveSpin":"Если тебе нужен цвет немного потемнее, <color=orange>добавь смолы вентилем справа",
+    "tutorial.output.logsBurn":"Теперь нужно поддать жару, <color=orange>положи в топку дрова</color>,они тоже в хранилище",
+    "tutorial.output.leverPull":"А теперь дёргай <color=orange>рычаг</color>!",
+    "tutorial.output.leave":"Отнеси готовую <color=orange>краску</color> заказчику через <color=orange>портал</color>",
+    "tutorial.output.last":"Вот и все основы. Если появляются вопросы, то смотри в <color=orange>книге</color> (нажми <color=orange>ТАВ</color>)"
   }
 }
