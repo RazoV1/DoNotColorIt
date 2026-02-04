@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour, ISavable
 			{
 				if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
 				{
-					tutorialManager.ProgressTutorial("ctrl");
+					//tutorialManager.ProgressTutorial(1);
 				}
 				if (book.GetShowTask()) { return; }
 				npc.SetGaveTask(true);
@@ -126,7 +126,6 @@ public class GameManager : MonoBehaviour, ISavable
 			if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
 			{
 				//GameManager.Instance.GetTutorial().ProgressTutorial(11);
-				GameManager.Instance.GetTutorial().ProgressTutorial("leave");
 			}
 			dialogue.InvokeDialogue(npc.GetName(), $"{clusterIndex}");
 			npc.SetCompleted(true);
@@ -142,7 +141,6 @@ public class GameManager : MonoBehaviour, ISavable
 			if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
 			{
 				//GameManager.Instance.GetTutorial().ProgressTutorial(11);
-				GameManager.Instance.GetTutorial().ProgressTutorial("leave");
 			}
 			dialogue.InvokeDialogue(npc.GetName(), "incorrect");
 
