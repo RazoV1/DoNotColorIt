@@ -80,7 +80,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	private float minPigmentVolume = 1f;
 	private float maxPigmentVolume = 5f;
 
-	public Dictionary<string, float> GetMonsterStats() => new Dictionary<string, float> { { "happiness", happiness }, { "fear", fear }, { "hunger", hunger }, { "health", health }, { "disruptance", disruptance }, { "curiosity", curiosity } };
+	public Dictionary<string, float> GetMonsterStats() => new Dictionary<string, float> { { "happiness", happiness }, { "health", health }, { "hunger", hunger }, { "disruptance", disruptance }, { "curiosity", curiosity },{ "fear", fear }, };
 
 	public bool GetShouldBeWorkable() => shouldBeWorkable;
 
