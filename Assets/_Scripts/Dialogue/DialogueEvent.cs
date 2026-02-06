@@ -29,7 +29,7 @@ public class DialogueEvent : MonoBehaviour
     [SerializeField] private Vector2 rightPivotPos;
     private Coroutine dialogueRoutine;
     [SerializeField] private TextAnimations textAnimations;
-
+    [SerializeField] private VoicePlayer voicePlayer;
     public void Cancel()
     {
         try
@@ -73,6 +73,8 @@ public class DialogueEvent : MonoBehaviour
         {
             string[] fullString = replics[i].Split(":");
             dialogueText.text = fullString[1];
+            string speaker = fullString[0];
+            voicePlayer.PlayNext(speaker);
             if (fullString[0] == model.characterA)
             {
                 leftCharacterName.text = model.characterA;
