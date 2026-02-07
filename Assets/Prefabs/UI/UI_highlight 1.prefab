@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8963346425227969131
 RectTransform:
   m_ObjectHideFlags: 0
@@ -297,6 +297,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0f2d49932f8d4d345b2072b9a6b5376c, type: 2}
+    - target: {fileID: -7778215723715694337, guid: 6ed19e3f9e1f7014ebbc80df18381e57, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: -3500460014136483016, guid: 6ed19e3f9e1f7014ebbc80df18381e57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -337,9 +341,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4160762724338124769, guid: 6ed19e3f9e1f7014ebbc80df18381e57, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4357118449180629203, guid: 6ed19e3f9e1f7014ebbc80df18381e57, type: 3}
       propertyPath: m_Name
       value: Hand_model
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357118449180629203, guid: 6ed19e3f9e1f7014ebbc80df18381e57, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7984828532448189407, guid: 6ed19e3f9e1f7014ebbc80df18381e57, type: 3}
       propertyPath: m_SortingLayer
