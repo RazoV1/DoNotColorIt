@@ -82,12 +82,16 @@ public class PocketTicker : MonoBehaviour, ISavable
 
 	public float GetSmola() => smolaVolume;
 
-	public float ChangeSmola(float angle)
+	public float ChangeSmola(float angle,Infuser infuser)
 	{
 		float newSmola = Mathf.Clamp(smolaVolume + angle, 0, 1000000000f);
 		float delta = newSmola - smolaVolume;
-		//Debug.Log(delta);    
-		if (delta != Mathf.NegativeInfinity && delta != Mathf.Infinity)
+        if (infuser.IsEmpty())
+        {
+			return 0;
+        }
+        //Debug.Log(delta);    
+        if (delta != Mathf.NegativeInfinity && delta != Mathf.Infinity)
 		{
 			smolaVolume += delta;
 			smolaVolume = Mathf.Clamp(smolaVolume, 0, 1000);

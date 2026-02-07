@@ -36,6 +36,8 @@ public class Infuser : MonoBehaviour, ISavable
 
 	public void SetBucket(Bucket bucket) { this.bucket = bucket; }
 
+	public bool IsEmpty() => dustInside == null;
+
 	private void HandleSound()
 	{
 		if (logs > 0)

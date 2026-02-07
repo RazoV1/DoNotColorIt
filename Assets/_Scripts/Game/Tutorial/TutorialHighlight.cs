@@ -14,6 +14,7 @@ namespace Assets._Scripts.Game.Tutorial
 		[SerializeField] private GameObject highlight;
 		[SerializeField] private Transform player;
 		[SerializeField] private bool shouldRotate = true;
+
 		private void Awake()
 		{
 			TutorialEvents.OnTutorialIndexChanged.AddListener(ShowIfOrder);
