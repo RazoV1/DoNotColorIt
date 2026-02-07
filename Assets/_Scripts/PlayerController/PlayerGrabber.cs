@@ -1,5 +1,6 @@
 using Assets._Scripts.Interaction_System.Interfaces;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.Rendering;
 using Assets._Scripts.Delivery;
@@ -19,6 +20,7 @@ public class PlayerGrabber : MonoBehaviour
 	[Header("MonsterStats")]
 	[SerializeField] private GameObject monsterStats;
 	[SerializeField] private List<TextMeshProUGUI> monsterStatsField;
+	[SerializeField] private List<Slider> monstersStats;
 	[Header("PigmentStats")]
 	[SerializeField] private GameObject pigmentStats;
 	[SerializeField] private List<TextMeshProUGUI> pigmentFields;
@@ -422,6 +424,7 @@ public class PlayerGrabber : MonoBehaviour
 			for (int i = 0; i < monsterStatsField.Count; i++)
 			{
 				monsterStatsField[i].text = LanguageManager.Instance.GetTranslatable($"ui.monster_stats.{list[i]}") + $"{Mathf.Clamp((int)(stats[list[i]] * 100), 0, 100f)}%";
+				monstersStats[i].value = Mathf.Clamp((int)(stats[list[i]] * 100), 0, 100f);
 			}
 		}
 	}

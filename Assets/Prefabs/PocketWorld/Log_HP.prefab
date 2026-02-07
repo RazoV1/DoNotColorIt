@@ -104,10 +104,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8562378843291556590}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -143,6 +143,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 7004886487351092168}
+  sound: {fileID: 0}
 --- !u!65 &1295040849794435268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -177,7 +178,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: f029dba5b152ce84aae5b8273e048d53, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.772
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -276,4 +277,8 @@ MonoBehaviour:
   rb: {fileID: 3531760449750919695}
   minY: -200
   mirrorPoint: {fileID: 0}
+  smokeParticle: {fileID: 0}
+  impactParticle: {fileID: 0}
+  source: {fileID: 0}
+  impactSfx: {fileID: 0}
   upY: 200
