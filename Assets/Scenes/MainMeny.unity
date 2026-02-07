@@ -7032,6 +7032,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9034795627388581737, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
+      propertyPath: voicePlayer
+      value: 
+      objectReference: {fileID: 547135154}
     - target: {fileID: 9222170877100580279, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1906.1069
