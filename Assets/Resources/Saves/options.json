@@ -1,9 +1,9 @@
 {
   "FloatOptions": {
-    "masterVolume": 0.268650979,
-    "musicVolume": 0.2004326,
+    "masterVolume": 0.6720291,
+    "musicVolume": 0.4762719,
     "sfxVolume": 0.5,
-    "shouldAutosave": 0.0
+    "shouldAutosave": 1.0
   },
   "StringOptions": {
     "language": "Русский.json"
