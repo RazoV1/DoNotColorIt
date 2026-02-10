@@ -14616,6 +14616,8 @@ GameObject:
   - component: {fileID: 2535589345558434699}
   - component: {fileID: 4834536839252107065}
   - component: {fileID: 8796317266052843761}
+  - component: {fileID: 1649210372658656946}
+  - component: {fileID: -3468630930892843193}
   m_Layer: 0
   m_Name: Aksolotl
   m_TagString: Interactable
@@ -14749,7 +14751,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!114 &5223595367207271703
@@ -14960,6 +14962,41 @@ MonoBehaviour:
   timeLived: 0
   monster: {fileID: 5223595367207271703}
   ageField: {fileID: 8186152215679132202}
+--- !u!195 &1649210372658656946
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671158348087543555}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.42562783
+  m_Speed: 1
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.85
+  m_BaseOffset: -0.04
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-3468630930892843193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671158348087543555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63294750f55cfee4c8d5ad2e6f4fa25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterWalk
+  pointPickingRange: 10
 --- !u!1 &7053378226612014641
 GameObject:
   m_ObjectHideFlags: 0
