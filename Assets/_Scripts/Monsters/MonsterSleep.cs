@@ -26,7 +26,7 @@ namespace Assets._Scripts.Monsters
 		public IEnumerator Sleep()
 		{
 			float strenght = monster.GetStrenght();
-			//sleepParticles.Play();
+			sleepParticles.Play();
 			//animator.SetBool("Sleeping",true);
 			while (strenght != 1)
 			{
@@ -36,7 +36,7 @@ namespace Assets._Scripts.Monsters
 				strenght = Mathf.Clamp(deltaStrenght+strenght,0,1f);
 				yield return null;
 			}
-			//sleepParticles.Stop();
+			sleepParticles.Stop();
 			//animator.SetBool("Sleeping", false);
 		}
 	}
