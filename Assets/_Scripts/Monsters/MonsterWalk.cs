@@ -11,7 +11,7 @@ public class MonsterWalk : MonoBehaviour
 {
 	[Header("Settings")]
 	[SerializeField] private float pointPickingRange;
-	[SerializeField] private float strengthExpenditure = 0.05f;
+	[SerializeField] private float strengthExpenditure = 0.016f;
 	[Header("Weights")]
 	[SerializeField] private float monsterWeight;
 	[SerializeField] private float wanderingWeight;
@@ -58,7 +58,8 @@ public class MonsterWalk : MonoBehaviour
 			if (!isWandering)
 			{
 				animator.SetBool("Walking", false);
-				yield return sleep.Sleep();
+				StartCoroutine(sleep.Sleep());
+				yield return new WaitForSeconds(10);
 			}
 		}
 	}
@@ -158,6 +159,7 @@ public class MonsterWalk : MonoBehaviour
 		{
 			agent.enabled = false;
 			rb.isKinematic = false;
+			rb.interpolation = RigidbodyInterpolation.Interpolate;
 			animator.SetBool("Walking", false);
 		}
 	}
@@ -168,6 +170,7 @@ public class MonsterWalk : MonoBehaviour
 		{
 			agent.enabled = true;
 			rb.isKinematic = true;
+			rb.interpolation = RigidbodyInterpolation.None;
 			if (isWandering)
 			{
 				TrySetupWanderingTarget();

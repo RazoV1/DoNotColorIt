@@ -27,10 +27,11 @@ namespace Assets._Scripts.Monsters
 		{
 			float strenght = monster.GetStrenght();
 			sleepParticles.Play();
+			float deltaStrenght;
 			//animator.SetBool("Sleeping",true);
 			while (strenght != 1)
 			{
-				float deltaStrenght = sleepStrenghtPerSec * Time.deltaTime;
+				deltaStrenght = sleepStrenghtPerSec * Time.deltaTime;
 				monster.AddStenght(deltaStrenght);
 				//Debug.Log($"<color=green>SLEEPING {strenght}");
 				strenght = Mathf.Clamp(deltaStrenght+strenght,0,1f);
