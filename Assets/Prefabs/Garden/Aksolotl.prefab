@@ -14618,6 +14618,7 @@ GameObject:
   - component: {fileID: 8796317266052843761}
   - component: {fileID: 1649210372658656946}
   - component: {fileID: -3468630930892843193}
+  - component: {fileID: 3249167937277297379}
   m_Layer: 0
   m_Name: Aksolotl
   m_TagString: Interactable
@@ -14785,6 +14786,7 @@ MonoBehaviour:
   health: 1
   disruptance: 0
   curiosity: 0
+  strenght: 0
   preferredWeather: 1
   happy: {fileID: 8263343876058914203}
   sad: {fileID: 379803354700256789}
@@ -14972,8 +14974,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.42562783
-  m_Speed: 0.5
-  m_Acceleration: 8
+  m_Speed: 1
+  m_Acceleration: 1000
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -14997,6 +14999,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterWalk
   pointPickingRange: 10
+  monsterWeight: 0.6
+  wanderingWeight: 0.8
+  home: {fileID: 0}
+--- !u!114 &3249167937277297379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671158348087543555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75da08966f4d924a874c1ebfeedb139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets._Scripts.Monsters.MonsterSleep
+  sleepStrenghtPerSec: 0.1
+  sleepParticles: {fileID: 0}
 --- !u!1 &7053378226612014641
 GameObject:
   m_ObjectHideFlags: 0

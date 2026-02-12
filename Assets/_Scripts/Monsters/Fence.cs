@@ -1,4 +1,5 @@
 using Assets._Scripts.Events;
+using Assets._Scripts.Monsters;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class Fence : MonoBehaviour
 {
 	[SerializeField] private PigmentMonster monsterInside;
 	[SerializeField] private List<Fence> neighboursForCalculations = new List<Fence>();
+	[SerializeField] private Transform homePoint;
 
 	[SerializeField] private GameObject nativeMonsterPrefab;
 
@@ -25,6 +27,7 @@ public class Fence : MonoBehaviour
 		{
 			monsterInside = monster;
 			monster.SetInTheFence(true);
+			monster.GetComponent<MonsterWalk>().SetHome(homePoint);
 			monster.SetNeighbour(neighboursForCalculations[0].GetMonsterInside());
 			try
 			{

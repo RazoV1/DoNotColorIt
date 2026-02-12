@@ -465,6 +465,8 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	public float GetStrenght() => strenght;
 
+	public void ChangeStrength(float delta) { strenght = Mathf.Clamp(strenght + delta,0f,1f); }
+
 	public void AddStenght(float delta) { strenght += delta; }
 
 	public void SaveData()
