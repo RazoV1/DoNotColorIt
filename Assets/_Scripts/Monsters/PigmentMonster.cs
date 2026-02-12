@@ -38,6 +38,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	[SerializeField] private float health;
 	[SerializeField] private float disruptance;
 	[SerializeField] private float curiosity;
+	[SerializeField] private float strenght;
 	[SerializeField] WeatherType preferredWeather;
 	[Header("Particles")]
 	[SerializeField] private ParticleSystem happy;
@@ -80,7 +81,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	private float minPigmentVolume = 1f;
 	private float maxPigmentVolume = 5f;
 
-	public Dictionary<string, float> GetMonsterStats() => new Dictionary<string, float> { { "happiness", happiness }, { "health", health }, { "hunger", hunger }, { "disruptance", disruptance }, { "curiosity", curiosity },{ "fear", fear }, };
+	public Dictionary<string, float> GetMonsterStats() => new Dictionary<string, float> { { "happiness", happiness }, { "health", health }, { "hunger", hunger }, { "disruptance", disruptance }, { "curiosity", curiosity }, { "fear", fear }, { "strenght", strenght } };
 
 	public bool GetShouldBeWorkable() => shouldBeWorkable;
 
@@ -462,6 +463,12 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		SaveEvents.OnSaveEvent.RemoveListener(SaveData);
 	}
 
+	public float GetStrenght() => strenght;
+
+	public void ChangeStrength(float delta) { strenght = Mathf.Clamp(strenght + delta,0f,1f); }
+
+	public void AddStenght(float delta) { strenght += delta; }
+
 	public void SaveData()
 	{
 		Debug.Log($"<color=green>SAVING NAMETAG {nameTag.GetNameTag()}");
@@ -479,6 +486,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		{"health",health },
 		{"disruptance",disruptance },
 		{"curiosity",curiosity },
+		{"strenght",strenght },
 		{"hasLaidEgg",hasLaidEgg ? 1 : 0},
 		{"timeLived",age.GetTimeLived() }
 	  },
@@ -501,6 +509,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		disruptance = data.floatData["disruptance"];
 		curiosity = data.floatData["curiosity"];
 		hasLaidEgg = data.floatData["hasLaidEgg"] == 1;
+		strenght = data.floatData["strenght"];
 		age.SetTimeLived(data.floatData["timeLived"]);
 		Debug.Log($"<color=green>LOADED NAMETAG {data.stringData["nameTag"]}");
 		nameTag.SetNameTag(data.stringData["nameTag"]);

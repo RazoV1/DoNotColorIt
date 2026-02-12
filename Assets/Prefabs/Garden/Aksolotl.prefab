@@ -14616,6 +14616,9 @@ GameObject:
   - component: {fileID: 2535589345558434699}
   - component: {fileID: 4834536839252107065}
   - component: {fileID: 8796317266052843761}
+  - component: {fileID: 1649210372658656946}
+  - component: {fileID: -3468630930892843193}
+  - component: {fileID: 3249167937277297379}
   m_Layer: 0
   m_Name: Aksolotl
   m_TagString: Interactable
@@ -14642,6 +14645,7 @@ Transform:
   - {fileID: 6495945359743789833}
   - {fileID: 8188195935319541460}
   - {fileID: 4861475794219840720}
+  - {fileID: 7810916331330499182}
   - {fileID: 8028782673714686386}
   - {fileID: 1776804443907377292}
   - {fileID: 712398255090656614}
@@ -14749,7 +14753,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!114 &5223595367207271703
@@ -14783,6 +14787,7 @@ MonoBehaviour:
   health: 1
   disruptance: 0
   curiosity: 0
+  strenght: 0
   preferredWeather: 1
   happy: {fileID: 8263343876058914203}
   sad: {fileID: 379803354700256789}
@@ -14960,6 +14965,59 @@ MonoBehaviour:
   timeLived: 0
   monster: {fileID: 5223595367207271703}
   ageField: {fileID: 8186152215679132202}
+--- !u!195 &1649210372658656946
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671158348087543555}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.42562783
+  m_Speed: 1
+  m_Acceleration: 1000
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.85
+  m_BaseOffset: -0.04
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &-3468630930892843193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671158348087543555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63294750f55cfee4c8d5ad2e6f4fa25c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterWalk
+  pointPickingRange: 10
+  strengthExpenditure: 0.05
+  monsterWeight: 0.6
+  wanderingWeight: 0.8
+  home: {fileID: 0}
+--- !u!114 &3249167937277297379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4671158348087543555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75da08966f4d924a874c1ebfeedb139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets._Scripts.Monsters.MonsterSleep
+  sleepStrenghtPerSec: 0.1
+  sleepParticles: {fileID: 1105106372820839835}
 --- !u!1 &7053378226612014641
 GameObject:
   m_ObjectHideFlags: 0
@@ -24632,6 +24690,73 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1001 &689942995325315865
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7481035982667872345}
+    m_Modifications:
+    - target: {fileID: 3521045338703439300, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_Name
+      value: Zzz
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.046114508
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8656028
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24229756
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+--- !u!198 &1105106372820839835 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 487808348329330306, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+  m_PrefabInstance: {fileID: 689942995325315865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7810916331330499182 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7347297866452441463, guid: fbe9e9e1a9af5eb41bea19e979fb70e7, type: 3}
+  m_PrefabInstance: {fileID: 689942995325315865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2243570274845994855
 PrefabInstance:
   m_ObjectHideFlags: 0
