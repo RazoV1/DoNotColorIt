@@ -52,6 +52,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	[SerializeField] private AudioClip purr;
 	[SerializeField] private AudioClip eat;
 	[SerializeField] private AudioClip scream;
+	
 	private PigmentMonster neigbour;
 	[Header("Config Values")]
 	private float surprise = 0.0f;

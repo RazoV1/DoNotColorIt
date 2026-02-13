@@ -27697,6 +27697,7 @@ MonoBehaviour:
   TreeFall2: {fileID: 8300000, guid: 4d38f9cd7d8652b4187b53ab879f032d, type: 3}
   TreeFall3: {fileID: 8300000, guid: 72f53758ffe8e9a438394d8373637e32, type: 3}
   PortalTransfer: {fileID: 8300000, guid: fa30f8e1e2dff184fb802e404a753f6a, type: 3}
+  MonsterSleep: {fileID: 8300000, guid: daeb6a9d761252a44b710dcfe64e90f6, type: 3}
 --- !u!1 &1434809774
 GameObject:
   m_ObjectHideFlags: 0

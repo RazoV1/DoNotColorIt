@@ -35,7 +35,7 @@ namespace Assets._Scripts.Audio
 		public AudioClip TreeFall2;
 		public AudioClip TreeFall3;
 		public AudioClip PortalTransfer;
-
+		public AudioClip MonsterSleep;
 		//private float masterVolume = 0.5f;
 		//private float musicVolume = 0.5f;
 		//private float soundEffectsVolume = 0.5f;

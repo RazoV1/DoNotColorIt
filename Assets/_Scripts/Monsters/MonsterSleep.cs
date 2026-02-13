@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets._Scripts.Audio;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,16 @@ namespace Assets._Scripts.Monsters
 		[Header("VFX")]
 		[SerializeField] private ParticleSystem sleepParticles;
 
+
+
+		private AudioSource source;
 		private Animator animator;
 		private PigmentMonster monster;
 
 		private void Start()
 		{
 			monster = GetComponent<PigmentMonster>();
+			source = GetComponent<AudioSource>();	
 		}
 
 		public IEnumerator Sleep()
@@ -29,6 +34,7 @@ namespace Assets._Scripts.Monsters
 			sleepParticles.Play();
 			float deltaStrenght;
 			//animator.SetBool("Sleeping",true);
+			source.PlayOneShot(AudioManager.Instance.MonsterSleep);
 			while (strenght != 1)
 			{
 				deltaStrenght = sleepStrenghtPerSec * Time.deltaTime;
@@ -37,6 +43,7 @@ namespace Assets._Scripts.Monsters
 				strenght = Mathf.Clamp(deltaStrenght+strenght,0,1f);
 				yield return null;
 			}
+			source.Stop();
 			sleepParticles.Stop();
 			//animator.SetBool("Sleeping", false);
 		}
