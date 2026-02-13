@@ -44,6 +44,7 @@ public class MonsterWalk : MonoBehaviour
 
 	private IEnumerator WanderCycle()
 	{
+		yield return new WaitForSeconds(1f);
 		while (true)
 		{
 			animator.SetBool("Walking", false);
