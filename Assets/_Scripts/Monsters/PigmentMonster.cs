@@ -424,7 +424,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (!isInTheFence) return;
+		//if (!isInTheFence) return;
 		if (collision.collider.tag == "Sponge")
 		{
 			CalculateWork(collision.impulse.magnitude);
