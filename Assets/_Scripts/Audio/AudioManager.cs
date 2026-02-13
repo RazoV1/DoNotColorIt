@@ -34,6 +34,7 @@ namespace Assets._Scripts.Audio
 		public AudioClip TreeFall1;
 		public AudioClip TreeFall2;
 		public AudioClip TreeFall3;
+		public AudioClip PortalTransfer;
 
 		//private float masterVolume = 0.5f;
 		//private float musicVolume = 0.5f;

@@ -51,6 +51,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	[SerializeField] private AudioClip brush;
 	[SerializeField] private AudioClip purr;
 	[SerializeField] private AudioClip eat;
+	[SerializeField] private AudioClip scream;
 	private PigmentMonster neigbour;
 	[Header("Config Values")]
 	private float surprise = 0.0f;
@@ -80,6 +81,8 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	private float minPigmentVolume = 1f;
 	private float maxPigmentVolume = 5f;
+
+	private bool hasScreamed = false;
 
 	public Dictionary<string, float> GetMonsterStats() => new Dictionary<string, float> { { "happiness", happiness }, { "health", health }, { "hunger", hunger }, { "disruptance", disruptance }, { "curiosity", curiosity }, { "fear", fear }, { "strenght", strenght } };
 
@@ -212,8 +215,20 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	private void GroundCheck()
 	{
 		RaycastHit hit;
-		isOnGround = Physics.Raycast(transform.position, Vector3.down, out hit) && hit.distance < 0.2f;
+		isOnGround = Physics.Raycast(transform.position, Vector3.down, out hit) && hit.distance < 0.2f && hit.collider != GetComponent<Collider>();
 		animator.SetBool("Falling", !isOnGround && !monsterItem.GetIsGrabbed());
+		if (isOnGround && !monsterItem.GetIsGrabbed())
+		{
+			hasScreamed = false;
+		}
+		else
+		{
+			if (!hasScreamed && !monsterItem.GetIsGrabbed() && ((Physics.Raycast(transform.position, Vector3.down, out hit) && (hit.distance > 5f && hit.distance <10f) && hit.collider != GetComponent<Collider>()) || (!Physics.Raycast(transform.position, Vector3.down))))
+			{
+				hasScreamed = true;
+				monsterSound.PlayOneShot(scream);
+			}
+		}
 	}
 
 	private void CalculateCuriosity(int ticks)
@@ -465,7 +480,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	public float GetStrenght() => strenght;
 
-	public void ChangeStrength(float delta) { strenght = Mathf.Clamp(strenght + delta,0f,1f); }
+	public void ChangeStrength(float delta) { strenght = Mathf.Clamp(strenght + delta, 0f, 1f); }
 
 	public void AddStenght(float delta) { strenght += delta; }
 

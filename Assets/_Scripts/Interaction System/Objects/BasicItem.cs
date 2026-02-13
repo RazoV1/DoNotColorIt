@@ -123,6 +123,7 @@ namespace Assets._Scripts.Interaction_System.Objects
 					PocketTicker.Instance.AddEgg(name);
 					Destroy(gameObject);
 				}
+				source.PlayOneShot(AudioManager.Instance.PortalTransfer);
 			}
 		}
 

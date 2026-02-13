@@ -25015,6 +25015,7 @@ MonoBehaviour:
   brush: {fileID: 8300000, guid: 3262877e915c0c44d864f934bef64af6, type: 3}
   purr: {fileID: 8300000, guid: 4eae391d8e770da49895e3451039b686, type: 3}
   eat: {fileID: 8300000, guid: cfb0af6f6d63f9141b3ece1f37e25fa9, type: 3}
+  scream: {fileID: 8300000, guid: 1d6f5e1cb156c6c49b9f1e72a32783d7, type: 3}
 --- !u!114 &658971857919190870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25228,7 +25229,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.53
-  m_BaseOffset: -0.04
+  m_BaseOffset: 0.01
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4127541806909072774
