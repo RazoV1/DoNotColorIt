@@ -27,6 +27,8 @@ public class MonsterWalk : MonoBehaviour
 	private Dictionary<string, float> stats;
 	private bool isWandering = false;
 
+	private Coroutine tryWanderRoutine;
+
 	private void Start()
 	{
 		agent = GetComponent<NavMeshAgent>();
@@ -47,9 +49,8 @@ public class MonsterWalk : MonoBehaviour
 			animator.SetBool("Walking", false);
 
 			agent.isStopped = true;
-			yield return new WaitForSeconds(5f);
 			DesideBehaviour();
-			animator.SetBool("Walking", true);
+			yield return new WaitForSeconds(4f);
 			while (agent.destination != null && Vector3.Distance(agent.destination, transform.position) > 1f)
 			{
 				monster.ChangeStrength(-Time.deltaTime * strengthExpenditure);
@@ -76,6 +77,8 @@ public class MonsterWalk : MonoBehaviour
 	private void GoHome()
 	{
 		agent.SetDestination(ProjectTarget(home.position));
+
+		animator.SetBool("Walking", true);
 		agent.isStopped = false;
 	}
 
@@ -104,7 +107,8 @@ public class MonsterWalk : MonoBehaviour
 		if (maxWeight == wanderWeight)
 		{
 			Debug.Log("√ул€ю");
-			TrySetupWanderingTarget();
+			if (tryWanderRoutine != null) { StopCoroutine(tryWanderRoutine); }
+			tryWanderRoutine = StartCoroutine(TrySetupWanderingTarget());
 			isWandering = true;
 			return;
 		}
@@ -135,8 +139,9 @@ public class MonsterWalk : MonoBehaviour
 	private List<PigmentMonster> FindAllMonsters() => GameObject.FindObjectsByType<PigmentMonster>(FindObjectsSortMode.InstanceID).Where(x => x != monster).ToList();
 	
 
-	private void TrySetupWanderingTarget()
+	private IEnumerator TrySetupWanderingTarget()
 	{
+		yield return new WaitForSeconds(3);
 		pointInPlane = (Vector3)(Random.insideUnitSphere * pointPickingRange) + transform.position;
 		Debug.Log($"<color=green>Picking point in circle: {pointInPlane}");
 		agent.SetDestination(ProjectTarget(pointInPlane));
@@ -173,7 +178,8 @@ public class MonsterWalk : MonoBehaviour
 			rb.interpolation = RigidbodyInterpolation.None;
 			if (isWandering)
 			{
-				TrySetupWanderingTarget();
+				if (tryWanderRoutine != null) { StopCoroutine(tryWanderRoutine); }
+				tryWanderRoutine = StartCoroutine(TrySetupWanderingTarget());
 			}
 		}
 	}
