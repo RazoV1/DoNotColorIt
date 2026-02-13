@@ -17480,7 +17480,7 @@ GameObject:
   - component: {fileID: 306601238}
   m_Layer: 0
   m_Name: pPlane1 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 3
@@ -36906,6 +36906,10 @@ PrefabInstance:
       value: gnezdo_lp (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
       objectReference: {fileID: 0}
@@ -37969,6 +37973,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
       propertyPath: m_Name
       value: gnezdo_lp (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -43429,6 +43437,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 54eb5dc1f87246f46b9cd9ef3a755d00, type: 2}
     - target: {fileID: -6238283086997179416, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: -6238283086997179416, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
       objectReference: {fileID: 0}
@@ -43567,6 +43579,10 @@ PrefabInstance:
     - target: {fileID: -2017429887330309195, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1908382027443640507, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: -1908382027443640507, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -47632,6 +47648,10 @@ PrefabInstance:
       value: gnezdo_lp
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
       objectReference: {fileID: 0}
@@ -49358,6 +49378,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 21759ffd42680364dbc6a5fdd1dfe6f7, type: 2}
     - target: {fileID: -5877984972384729022, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: -5877984972384729022, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
       objectReference: {fileID: 0}
@@ -49620,6 +49644,10 @@ PrefabInstance:
     - target: {fileID: 1451935517972898092, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508653680135020037, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 1508653680135020037, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -50908,6 +50936,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
       propertyPath: m_Name
       value: gnezdo_lp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 67c7945ee08c70a4b82aca3fa745f525, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -56225,6 +56257,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 21759ffd42680364dbc6a5fdd1dfe6f7, type: 2}
     - target: {fileID: -5877984972384729022, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: -5877984972384729022, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
       objectReference: {fileID: 0}
@@ -56487,6 +56523,10 @@ PrefabInstance:
     - target: {fileID: 1451935517972898092, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508653680135020037, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 1508653680135020037, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -74425,6 +74465,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 54eb5dc1f87246f46b9cd9ef3a755d00, type: 2}
     - target: {fileID: -6238283086997179416, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: -6238283086997179416, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
       objectReference: {fileID: 0}
@@ -74555,6 +74599,10 @@ PrefabInstance:
     - target: {fileID: -2017429887330309195, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1908382027443640507, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: -1908382027443640507, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -75159,7 +75207,7 @@ GameObject:
   - component: {fileID: 2098298625}
   m_Layer: 2
   m_Name: Fence (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2
@@ -75488,6 +75536,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 33ccc18b36bb3f2449ed25fc306b83d8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006424655296247611, guid: 33ccc18b36bb3f2449ed25fc306b83d8, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 1006424655296247611, guid: 33ccc18b36bb3f2449ed25fc306b83d8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -78934,7 +78986,7 @@ GameObject:
   - component: {fileID: 1776452389}
   m_Layer: 0
   m_Name: osnova
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2

@@ -166,7 +166,7 @@ public class MonsterWalk : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		if (collision.collider.gameObject == baseMesh && !basicItem.GetIsGrabbed())
+		if ((collision.collider.gameObject == baseMesh || collision.collider.tag == "Ground") && !basicItem.GetIsGrabbed())
 		{
 			agent.enabled = true;
 			rb.isKinematic = true;
