@@ -18135,31 +18135,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &348900048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2101240382}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshLink
-  m_SerializedVersion: 1
-  m_AgentTypeID: 0
-  m_StartPoint: {x: 0, y: 0.60786283, z: 1.219795}
-  m_EndPoint: {x: 0, y: 0.4106624, z: 2.805681}
-  m_StartTransform: {fileID: 0}
-  m_EndTransform: {fileID: 0}
-  m_Activated: 1
-  m_Width: 0.93
-  m_CostModifier: 1
-  m_IsOverridingCost: 0
-  m_Bidirectional: 1
-  m_AutoUpdatePosition: 0
-  m_Area: 0
 --- !u!1001 &357051789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36056,7 +36031,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7468973945168811463, guid: 33ccc18b36bb3f2449ed25fc306b83d8, type: 3}
 --- !u!1 &754562497
@@ -50101,7 +50076,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1376419348210125738, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
 --- !u!64 &1319744655
@@ -61234,7 +61209,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1376419348210125738, guid: c7cd2a225328419409f9c7202a0f75e5, type: 3}
 --- !u!65 &1740235962
@@ -62056,7 +62031,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7468973945168811463, guid: 33ccc18b36bb3f2449ed25fc306b83d8, type: 3}
 --- !u!64 &1776452390
@@ -75826,9 +75801,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1006424655296247611, guid: 33ccc18b36bb3f2449ed25fc306b83d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1390754295}
-    - targetCorrespondingSourceObject: {fileID: 1006424655296247611, guid: 33ccc18b36bb3f2449ed25fc306b83d8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 348900048}
     - targetCorrespondingSourceObject: {fileID: -7555632094650682541, guid: 33ccc18b36bb3f2449ed25fc306b83d8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1889148811}

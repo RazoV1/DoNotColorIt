@@ -116,7 +116,14 @@ public class MonsterWalk : MonoBehaviour
 		else if (maxWeight == homeWeight)
 		{
 			Debug.Log("По домам");
-			GoHome();
+			try
+			{
+				GoHome();
+			}
+			catch
+			{
+				return;
+			}
 			isWandering = false;
 			return;
 		}
