@@ -385,7 +385,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		{
 
 		}
-		GameObject pigment = Instantiate(pigmentPrefab, transform.position, Quaternion.identity);
+		GameObject pigment = Instantiate(pigmentPrefab, transform.position + Vector3.up, Quaternion.identity);
 
 		pigment.GetComponent<ColorPigment>().InitializePigment(new Color(r, g, b), volume);
 	}
