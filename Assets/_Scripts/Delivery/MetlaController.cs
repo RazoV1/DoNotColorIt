@@ -14,6 +14,7 @@ namespace Assets._Scripts.Delivery
 	{
 		[Header("!!!ЛЮТИЙ ДРИФТ МОД!!!")]
 		[SerializeField] private bool lutiiDrift;
+		[SerializeField] private bool shouldAutocorrect;
 		[Header("Настройки")]
 		[SerializeField] private Rigidbody kapot;
 		[SerializeField] private float maxSpeed;
@@ -34,12 +35,14 @@ namespace Assets._Scripts.Delivery
 		[SerializeField] private float pitchAmount;
 		[SerializeField] private Color color;
 
+		[SerializeField] private float autocorrectAmount;
+
 		private Rigidbody rb;
 		private float verticalInput;
 		private float preferedSpeed;
 		private Vector2 preferredRotation;
 
-		[SerializeField]private bool isMounted = false;
+		[SerializeField] private bool isMounted = false;
 
 		public Transform GetPivot() => pivot;
 
@@ -70,6 +73,15 @@ namespace Assets._Scripts.Delivery
 		private void Awake()
 		{
 			SubscribeToSaveEvent();
+		}
+
+		private void TiltAutocorrect()
+		{
+			if (!shouldAutocorrect) return;
+			Quaternion currentQuaternion = transform.rotation;
+			Quaternion neededQuaternion = Quaternion.Euler(currentQuaternion.eulerAngles.x, currentQuaternion.eulerAngles.y, 0);
+
+		    transform.rotation = Quaternion.Lerp(currentQuaternion, neededQuaternion, Time.deltaTime * autocorrectAmount);
 		}
 
 		private void Start()
@@ -119,7 +131,7 @@ namespace Assets._Scripts.Delivery
 			preferredRotation = Input.mousePositionDelta;
 
 
-			
+
 		}
 
 		private void CheckUnmount()
@@ -138,11 +150,12 @@ namespace Assets._Scripts.Delivery
 
 		private void FixedUpdate()
 		{
-			kapot.transform.localEulerAngles = new Vector3(kapot.transform.localEulerAngles.x,0,0);
+			kapot.transform.localEulerAngles = new Vector3(kapot.transform.localEulerAngles.x, 0, 0);
 			HandleSound();
 			if (!isMounted) return;
 			HandleInput();
 			HandleFlight();
+			TiltAutocorrect();
 		}
 
 		private void Update()
@@ -173,7 +186,7 @@ namespace Assets._Scripts.Delivery
 		public void SyncData(SavablePrefab data)
 		{
 			SaveManager saveManager = SaveManager.Instance;
-		    
+
 			float x = saveManager.GetFloat("fiatX");
 			float y = saveManager.GetFloat("fiatY");
 			float z = saveManager.GetFloat("fiatZ");
@@ -213,7 +226,7 @@ namespace Assets._Scripts.Delivery
 
 				kapot.transform.localEulerAngles = Vector3.zero;
 				kapot.isKinematic = false;
-			    
+
 				rb.interpolation = RigidbodyInterpolation.Interpolate;
 
 				collidersToCull.ForEach(x => x.enabled = true);
