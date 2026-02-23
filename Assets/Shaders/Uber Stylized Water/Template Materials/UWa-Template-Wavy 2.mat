@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Caustics_Map:
-        m_Texture: {fileID: 2800000, guid: db0ab741d2715f74ebb7fff35e6d5008, type: 3}
+        m_Texture: {fileID: 2800000, guid: 57096ddb09de959428aa1a0ad0fb48c2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _CausticticsMap:
@@ -324,7 +324,7 @@ Material:
     - _InterSec_Foam_Distortion: 0
     - _InterSec_Foam_Invert: 1
     - _InterSec_Foam_Scale: 10
-    - _InterSec_Foam_Smooth: 1
+    - _InterSec_Foam_Smooth: 0.686
     - _InterSec_GradientDissolve: 1
     - _InterSec_Width: 0.76
     - _IntersectionDistanceCutoff: 2.5
@@ -373,16 +373,16 @@ Material:
     - _RefrectionPan: 0.1
     - _RefrectionTile: 5.58
     - _SL_Ammount: 0.1
-    - _SL_CenterMask: 0.5
-    - _SL_CenterMaskFade: 0.042
+    - _SL_CenterMask: 0.235
+    - _SL_CenterMaskFade: 0
     - _SL_Depth: 0.3
     - _SL_Dissolve: 0
     - _SL_EnableTrail: 1
     - _SL_ExplandNearShore: 1
-    - _SL_GradientDissolve: 0
+    - _SL_GradientDissolve: -0.1
     - _SL_MaskScale: 4
     - _SL_Speed: 3.97
-    - _SL_Thickness: 0.745
+    - _SL_Thickness: 0.902
     - _SL_TrailFade: 1
     - _SL_Trail_Fade: 0.824
     - _SL_WaterDepth: 0.39
@@ -410,7 +410,7 @@ Material:
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Specular_Hardness: 1
+    - _Specular_Hardness: 0.608
     - _Specular_Size: 0.077
     - _Specular_Spread: 0.412
     - _Specular_Strength: 100
@@ -436,7 +436,7 @@ Material:
     - _UnderWaterScaleIncrease: 0.7
     - _UnderWaterScaleModifier: 1.3
     - _UnderWater_Depth: -4
-    - _UnderWater_ScaleModifier: 0
+    - _UnderWater_ScaleModifier: 1.84
     - _UnderWater_Start: 5
     - _UnderwaterLayerFade: 15
     - _Underwater_Fade: 15
