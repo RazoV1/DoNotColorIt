@@ -21,9 +21,22 @@ public class Book : MonoBehaviour, ISavable
 
 	public bool GetShowTask() => shouldShowTask;
 
+	public bool IsBookOpen() => bookCanvas.activeSelf;
+
 	private void Awake()
 	{
 		SubscribeToSaveEvent();
+	}
+
+	public void CloseBook()
+	{
+		bookCanvas.SetActive(false);
+
+		//GameManager.Instance.GetTutorial().ProgressTutorial(6);
+		Time.timeScale = bookCanvas.activeSelf ? 0.0001f : 1f;
+		Cursor.lockState = bookCanvas.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
+		Cursor.visible = bookCanvas.activeSelf;
+		GameplayEvents.OnPauseToggled.Invoke(bookCanvas.activeSelf);
 	}
 
 	public void ToggleBook()

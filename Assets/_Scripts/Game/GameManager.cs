@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour, ISavable
 
 	public void HandlePauseInput()
 	{
-		if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0 && !menuManager.gameObject.activeSelf)
+		if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0 && !menuManager.gameObject.activeSelf && !book.IsBookOpen())
 		{
 			pauseScreen.SetActive(!pauseScreen.activeSelf);
 			Time.timeScale = pauseScreen.activeSelf ? 0.0001f : 1f;
