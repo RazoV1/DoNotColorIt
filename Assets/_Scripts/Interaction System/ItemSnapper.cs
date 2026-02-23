@@ -29,10 +29,11 @@ public class ItemSnapper : MonoBehaviour
 			snappedItem.transform.localRotation = Quaternion.identity;
 			yield return null;
 		}
+		Debug.Log("<color=blue>GrabbedItem");
 		snappedItem.GetComponent<Rigidbody>().isKinematic = false;
 		snappedItem.transform.parent = null;
 		snappedItem = null;
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(2f);
 		waitorRoutine = null;
 	}
 

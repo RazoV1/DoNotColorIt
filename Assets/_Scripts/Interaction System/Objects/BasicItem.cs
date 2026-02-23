@@ -44,9 +44,10 @@ namespace Assets._Scripts.Interaction_System.Objects
 			throw new NotImplementedException();
 		}
 
-		public bool SetIsGrabbed(bool isGrabbed, Transform target = null)
+		public virtual bool SetIsGrabbed(bool isGrabbed, Transform target = null)
 		{
 			this.isGrabbed = isGrabbed;
+			Debug.Log($"Grabbed? {isGrabbed}");
 			//rb.freezeRotation = isGrabbed;
 			if (rb.gameObject.tag == "Kapot" && isGrabbed)
 			{
