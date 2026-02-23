@@ -402,9 +402,14 @@ public class PlayerGrabber : MonoBehaviour
 		}
 		go.transform.position = attachmentPosition;
 		var joint = go.AddComponent<ConfigurableJoint>();
-		
-		go.transform.rotation = rb.transform.rotation;
 
+		PivotedItem pivoted = rb.GetComponent<PivotedItem>();
+
+		if (pivoted != null) 
+		{
+			go.transform.position = rb.transform.position;
+			go.transform.rotation = rb.transform.rotation;
+		}
 		joint.connectedBody = rb;
 		joint.configuredInWorldSpace = true;
 		joint.breakForce = 10f;
@@ -414,10 +419,12 @@ public class PlayerGrabber : MonoBehaviour
 		joint.slerpDrive = CreateJoint(useFixed, isKapot);
 		joint.rotationDriveMode = RotationDriveMode.Slerp;
 		go.transform.localPosition = Vector3.zero;
-		if (rb.GetComponent<PivotedItem>())
+		if (pivoted != null)
 		{
 			Debug.Log("Grabbing Pivoted");
-			go.transform.localRotation = rb.GetComponent<PivotedItem>().GetPivot().localRotation;
+			Transform pivot = pivoted.GetPivot();
+			go.transform.localRotation = pivot.localRotation;
+			go.transform.position = pivot.position;
 		}
 		return go.transform;
 	}
