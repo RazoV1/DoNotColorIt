@@ -104,5 +104,7 @@ public class DialogueEvent : MonoBehaviour
         leftCharacterName.gameObject.SetActive(false);
         rightCharacterName.gameObject.SetActive(false);
         grabber.SetIsTalking(false);
-    }
+        grabber.GetComponent<PlayerController>().SetCanWalk(true);
+		GameObject.FindFirstObjectByType<CameraController>().SetShouldRotate(true);
+	}
 }
