@@ -28,8 +28,6 @@ public class NPCWaiter : MonoBehaviour, ISavable
 	private bool isCompleted = false;
 	private bool wasIntroduced = false;
 
-	private CameraController cameraController;
-	private PlayerController playerController;
 
 	private Bucket bucketInTrigger;
 
@@ -80,8 +78,6 @@ public class NPCWaiter : MonoBehaviour, ISavable
 	{
 		SubscribeToSaveEvent();
 		GameplayEvents.OnMount.AddListener(DropPlayer);
-		playerController = GameObject.FindFirstObjectByType<PlayerController>();
-		cameraController = GameObject.FindFirstObjectByType<CameraController>();
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -130,8 +126,6 @@ public class NPCWaiter : MonoBehaviour, ISavable
 		if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
 		{
 			GameManager.Instance.StartDialogueForCurrentIndex(this, tasks[0].color, bucketInTrigger);
-			cameraController.SetShouldRotate(false);
-			playerController.SetCanWalk(false);
 		}
 	}
 

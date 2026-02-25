@@ -59,7 +59,14 @@ public class DialogueEvent : MonoBehaviour
 
     private IEnumerator DialogueCycle(DialogueModel model, string dialogueName, string currentEventFolder)
     {
-        var replics = model.replics;
+
+		PlayerController playerController = GameObject.FindFirstObjectByType<PlayerController>();
+		CameraController cameraController = GameObject.FindFirstObjectByType<CameraController>();
+
+		playerController.SetCanWalk(false);
+		cameraController.SetShouldRotate(false);
+
+		var replics = model.replics;
         leftCharacterName.text = model.characterA;
         //rightCharacterName.text = model.characterB;
         //rightCharacterName.gameObject.SetActive(true);
@@ -104,7 +111,7 @@ public class DialogueEvent : MonoBehaviour
         leftCharacterName.gameObject.SetActive(false);
         rightCharacterName.gameObject.SetActive(false);
         grabber.SetIsTalking(false);
-        grabber.GetComponent<PlayerController>().SetCanWalk(true);
-		GameObject.FindFirstObjectByType<CameraController>().SetShouldRotate(true);
+        playerController.SetCanWalk(true);
+		cameraController.SetShouldRotate(true);
 	}
 }
