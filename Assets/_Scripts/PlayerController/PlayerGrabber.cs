@@ -64,6 +64,7 @@ public class PlayerGrabber : MonoBehaviour
 		}
 		if (isGrabbing)
 		{
+			GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Circular);
 			return;
 		}
 		RaycastHit hit;
