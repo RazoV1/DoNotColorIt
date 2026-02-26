@@ -64,7 +64,7 @@ public class DialogueEvent : MonoBehaviour
 		CameraController cameraController = GameObject.FindFirstObjectByType<CameraController>();
 
 		playerController.SetCanWalk(false);
-		cameraController.SetShouldRotate(false);
+		//cameraController.SetShouldRotate(false);
 
 		var replics = model.replics;
         leftCharacterName.text = model.characterA;
@@ -112,6 +112,6 @@ public class DialogueEvent : MonoBehaviour
         rightCharacterName.gameObject.SetActive(false);
         grabber.SetIsTalking(false);
         playerController.SetCanWalk(true);
-		cameraController.SetShouldRotate(true);
+		//cameraController.SetShouldRotate(true);
 	}
 }
