@@ -4,6 +4,7 @@ using UnityEngine;
 using Assets._Scripts.Events;
 using System.Linq;
 using System.Collections;
+using Assets._Scripts.NPC;
 
 public class NPCRouitine : MonoBehaviour
 {
@@ -17,12 +18,18 @@ public class NPCRouitine : MonoBehaviour
 	}
 	[SerializeField] private List<NpcAction> availableActions;
 	[SerializeField] private NpcAction fallbackAction;
+
+	private Animator animator;
+	private NPCNavigation navigation;
 	private Coroutine coroutine;
 
 	private void Awake()
 	{
 		GameplayEvents.OnNpcTick.AddListener(DecideAction);
 		Debug.Log("Added npc tick listener");
+
+		navigation = GetComponent<NPCNavigation>();
+		animator = GetComponent<Animator>();
 	}
 
 	private void OnDestroy()
@@ -53,6 +60,10 @@ public class NPCRouitine : MonoBehaviour
 
 	private IEnumerator ActionRoutine(NpcAction action)
 	{
-
+		yield return navigation.StartCoroutine(navigation.TraverseToPoint(action.point.position));
+		if (action.animationTrigger != "")
+		{
+			animator.SetTrigger(action.animationTrigger);
+		}
 	}
 }

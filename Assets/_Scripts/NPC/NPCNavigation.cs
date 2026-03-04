@@ -19,16 +19,8 @@ namespace Assets._Scripts.NPC
 		private Coroutine routine;
 
 
-		public void MoveToPoint(Transform point)
-		{
-			if (routine != null)
-			{
-				StopCoroutine(routine);
-			}
-			routine = StartCoroutine(TraverseToPoint(point.position));
-		}
 
-		private IEnumerator TraverseToPoint(Vector3 point)
+		public IEnumerator TraverseToPoint(Vector3 point)
 		{
 			agent.SetDestination(point);
 			animator.SetBool("Walking",true);
