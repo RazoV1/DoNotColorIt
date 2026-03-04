@@ -18,5 +18,7 @@ namespace Assets._Scripts.Events
 		public static UnityEvent OnMount = new UnityEvent();
 
 		public static UnityEvent OnTaskIndexChanged = new UnityEvent();
+
+		public static UnityEvent<int> OnNpcTick = new UnityEvent<int>();
 	}
 }
