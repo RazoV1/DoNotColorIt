@@ -15,6 +15,10 @@ public class MonsterEgg : MonoBehaviour, ISavable
 	[SerializeField] private float timeToHatch;
 	[SerializeField] private GameObject monsterNameGui;
 	[SerializeField] private TextMeshProUGUI inputFieldText;
+	[SerializeField] private GameObject timer_prefab;
+	[SerializeField] private Vector3 timer_offset;
+	[SerializeField] private AudioSource beforeHatchSound;
+	[SerializeField] private AudioSource afterHatchSound;
 
 	private Coroutine ticker;
 
@@ -59,7 +63,8 @@ public class MonsterEgg : MonoBehaviour, ISavable
 			yield return new WaitForSeconds(2);
 			timeToHatch -= PocketTicker.Instance.GetTicksForCalculations();
 		}
-	}
+		EndofTimeToHatch();
+    }
 
 	public void SetNameFromInput()
 	{
@@ -103,9 +108,16 @@ public class MonsterEgg : MonoBehaviour, ISavable
 		//{
 		//	StartCoroutine(TickHatch());
 		//}
-	}
+		timer_prefab.transform.SetParent(null);
+        timer_prefab.transform.position = transform.position + timer_offset;
+    }
 
-	public void SubscribeToSaveEvent()
+    private void LateUpdate()
+    {
+		timer_prefab.transform.position = transform.position + timer_offset;
+    }
+
+    public void SubscribeToSaveEvent()
 	{
 		SaveEvents.OnSaveEvent.AddListener(SaveData);
 	}
@@ -119,4 +131,11 @@ public class MonsterEgg : MonoBehaviour, ISavable
 	{
 		timeToHatch = data.floatData["timeToHatch"];
 	}
+
+	private void EndofTimeToHatch()
+	{
+        beforeHatchSound.Stop();
+        afterHatchSound.Play();
+        Destroy(timer_prefab);
+    }
 }
