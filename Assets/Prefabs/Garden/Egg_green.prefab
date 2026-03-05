@@ -921,7 +921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonsterEgg
   monsterInside: {fileID: 3921067645917435596, guid: 1e0505ee7b175f44a83c92031f2204b2, type: 3}
-  timeToHatch: 15
+  timeToHatch: 5
   monsterNameGui: {fileID: 1966974245645380043}
   inputFieldText: {fileID: 4604967936236810328}
   timer_prefab: {fileID: 8472527906181584831}
@@ -1106,7 +1106,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 1cb1dd10c9a11d946b0555b3327af44b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.477
   m_Pitch: 1
   Loop: 0
@@ -1905,6 +1905,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bd8f2bde123b64e4ca0fe3de4c8a4eb4, type: 3}
       propertyPath: m_Name
       value: taimer_lp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd8f2bde123b64e4ca0fe3de4c8a4eb4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

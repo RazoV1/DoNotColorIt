@@ -42,7 +42,9 @@ public class MonsterEgg : MonoBehaviour, ISavable
 
 	public void StartTickingInFence()
 	{
-		if (ticker != null)
+        beforeHatchSound.Play();
+        timer_prefab.SetActive(true);
+        if (ticker != null)
 		{
 			return;
 		}
