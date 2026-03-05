@@ -28,7 +28,6 @@ public class NPCWaiter : MonoBehaviour, ISavable
 	private bool isCompleted = false;
 	private bool wasIntroduced = false;
 
-
 	private Bucket bucketInTrigger;
 
 	public bool GetWasIntroduced() => wasIntroduced;

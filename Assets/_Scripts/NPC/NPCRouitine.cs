@@ -5,8 +5,9 @@ using Assets._Scripts.Events;
 using System.Linq;
 using System.Collections;
 using Assets._Scripts.NPC;
+using Assets._Scripts.Game.SaveSystem;
 
-public class NPCRouitine : MonoBehaviour
+public class NPCRouitine : MonoBehaviour, ISavable
 {
 	[Serializable]
 	public struct NpcAction
@@ -23,11 +24,16 @@ public class NPCRouitine : MonoBehaviour
 	private NPCNavigation navigation;
 	private Coroutine coroutine;
 
+	[Header("Savable")]
+	private string npcName; //Used to give a name to currentActionIndex in the save file.
+	private int currentActionIndex = 0;
+
 	private void Awake()
 	{
 		GameplayEvents.OnNpcTick.AddListener(DecideAction);
 		Debug.Log("Added npc tick listener");
 
+		npcName = GetComponent<NPCWaiter>().GetName();
 		navigation = GetComponent<NPCNavigation>();
 		animator = GetComponent<Animator>();
 	}
@@ -35,6 +41,8 @@ public class NPCRouitine : MonoBehaviour
 	private void OnDestroy()
 	{
 		GameplayEvents.OnNpcTick.RemoveListener(DecideAction);
+		SaveEvents.OnSaveEvent.RemoveListener(SaveData);
+		SaveEvents.OnLoadEvent.RemoveListener(SyncDataPlaceholder);
 		Debug.Log("Removed npc tick listener");
 	}
 
@@ -66,4 +74,35 @@ public class NPCRouitine : MonoBehaviour
 			animator.SetTrigger(action.animationTrigger);
 		}
 	}
+	#region Save System
+	public void SubscribeToSaveEvent()
+	{
+		SaveEvents.OnSaveEvent.AddListener(SaveData);
+		SaveEvents.OnLoadEvent.AddListener(SyncDataPlaceholder);
+	}
+
+	private void SyncDataPlaceholder() { SyncData(new SavablePrefab()); }
+
+	public void SaveData()
+	{
+		SaveManager saveManager = SaveManager.Instance;
+
+		saveManager.SaveFloat($"{npcName}currentAction",currentActionIndex);
+	}
+
+	public void SyncData(SavablePrefab data)
+	{
+		SaveManager saveManager = SaveManager.Instance;
+
+		try
+		{
+			currentActionIndex = (int)saveManager.GetFloat($"{npcName}currentAction");
+			Act(availableActions[currentActionIndex]);
+		}
+		catch
+		{
+			Debug.Log($"<color=yellow>Error during sync of npc with name {npcName}! K.Y.S.");
+		}
+	}
+	#endregion
 }

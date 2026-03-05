@@ -18,8 +18,6 @@ namespace Assets._Scripts.NPC
 		private NavMeshAgent agent;
 		private Coroutine routine;
 
-
-
 		public IEnumerator TraverseToPoint(Vector3 point)
 		{
 			agent.SetDestination(point);
