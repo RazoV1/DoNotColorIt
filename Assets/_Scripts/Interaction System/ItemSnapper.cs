@@ -54,4 +54,22 @@ public class ItemSnapper : MonoBehaviour
 			waitorRoutine = StartCoroutine(Waitor());
 		}
 	}
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (snappableTags.Contains(collision.gameObject.tag) && snapPlace.childCount == 0 && waitorRoutine == null)
+        {
+            if (collision.gameObject.GetComponent<BasicItem>().GetIsGrabbed())
+            {
+                grabber.StopGrabbing();
+            }
+            collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+            snappedItem = collision.gameObject.GetComponent<BasicItem>();
+            collision.transform.parent = snapPlace;
+            collision.transform.position = snapPlace.position;
+            collision.transform.rotation = snapPlace.transform.rotation;
+            waitorRoutine = StartCoroutine(Waitor());
+        }
+    }
 }
