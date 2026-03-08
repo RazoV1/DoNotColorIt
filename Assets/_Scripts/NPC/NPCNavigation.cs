@@ -18,15 +18,25 @@ namespace Assets._Scripts.NPC
 		private NavMeshAgent agent;
 		private Coroutine routine;
 
-		public IEnumerator TraverseToPoint(Vector3 point)
+		private void Awake()
 		{
-			agent.SetDestination(point);
+			animator = GetComponent<Animator>();
+			agent = GetComponent<NavMeshAgent>();
+		}
+
+	public IEnumerator TraverseToPoint(Transform point)
+		{
+
+			agent.isStopped = false;
+			agent.SetDestination(point.position);
 			animator.SetBool("Walking",true);
-			while (Vector3.Distance(point, transform.position) > destinationFluct)
+			while (Vector3.Distance(point.position, transform.position) > destinationFluct)
 			{
 				yield return null;
 			}
+			
 			agent.isStopped = true;
+			transform.rotation  =point.rotation;
 			animator.SetBool("Walking", false);
 			yield break;
 		}

@@ -48,30 +48,44 @@ public class NPCRouitine : MonoBehaviour, ISavable
 
 	private void DecideAction(int time)
 	{
-		List<NpcAction> actionOnTime = availableActions.Where(x => x.time == time && x.progressionIndexContdition <= GameManager.Instance.GetCurrentTaskIndex()).ToList();
+		List<NpcAction> actionOnTime = availableActions.Where(x => x.time <= time && x.progressionIndexContdition <= GameManager.Instance.GetCurrentTaskIndex()).ToList();
 		if (actionOnTime.Count == 0)
 		{
+			Debug.Log("Fallback action!");
 			Act(fallbackAction);
 			return;
 		}
+		
 		Act(actionOnTime[0]);
 	}
 
 	private void Act(NpcAction action)
 	{
-		if (coroutine != null)
+		try
 		{
-			StopCoroutine(coroutine);
+			Debug.Log(action.point.name);
+			if (coroutine != null)
+			{
+				StopCoroutine(coroutine);
+			}
+			coroutine = StartCoroutine(ActionRoutine(action));
 		}
-		coroutine = StartCoroutine(ActionRoutine(action));
+		catch
+		{
+
+		}
 	}
 
 	private IEnumerator ActionRoutine(NpcAction action)
 	{
-		yield return navigation.StartCoroutine(navigation.TraverseToPoint(action.point.position));
-		if (action.animationTrigger != "")
+		yield return navigation.StartCoroutine(navigation.TraverseToPoint(action.point));
+		if (action.animationTrigger != "" && !animator.GetBool("Walking"))
 		{
 			animator.SetTrigger(action.animationTrigger);
+		}
+		else
+		{
+			Debug.Log("FallbackAnimation");
 		}
 	}
 	#region Save System

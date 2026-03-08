@@ -1,4 +1,5 @@
 ﻿using Assets._Scripts.Game;
+using Assets._Scripts.NPC;
 using System.Collections;
 using System.IO;
 using TMPro;
@@ -30,6 +31,7 @@ public class DialogueEvent : MonoBehaviour
     private Coroutine dialogueRoutine;
     [SerializeField] private TextAnimations textAnimations;
     [SerializeField] private VoicePlayer voicePlayer;
+
     public void Cancel()
     {
         try
@@ -63,8 +65,11 @@ public class DialogueEvent : MonoBehaviour
 		PlayerController playerController = GameObject.FindFirstObjectByType<PlayerController>();
 		CameraController cameraController = GameObject.FindFirstObjectByType<CameraController>();
 
+        NPCTicker npcTicker = PocketTicker.Instance.gameObject.GetComponent<NPCTicker>();
+
 		playerController.SetCanWalk(false);
 		//cameraController.SetShouldRotate(false);
+        npcTicker.SetShouldTick(false);
 
 		var replics = model.replics;
         leftCharacterName.text = model.characterA;
@@ -110,7 +115,8 @@ public class DialogueEvent : MonoBehaviour
         dialogueText.gameObject.SetActive(false);
         leftCharacterName.gameObject.SetActive(false);
         rightCharacterName.gameObject.SetActive(false);
-        grabber.SetIsTalking(false);
+		npcTicker.SetShouldTick(true);
+		grabber.SetIsTalking(false);
         playerController.SetCanWalk(true);
 		//cameraController.SetShouldRotate(true);
 	}
