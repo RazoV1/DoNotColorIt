@@ -136,8 +136,8 @@ public class MonsterEgg : MonoBehaviour, ISavable
 
 	private void EndofTimeToHatch()
 	{
-        beforeHatchSound.Stop();
-        afterHatchSound.Play();
         Destroy(timer_prefab);
+		Destroy(beforeHatchSound);
+		Destroy(afterHatchSound);
     }
 }

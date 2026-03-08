@@ -19,7 +19,7 @@ public class Fence : MonoBehaviour
 		if (other.tag == "Egg")
 		{
 			other.GetComponent<MonsterEgg>().SetMonsterInside(nativeMonsterPrefab);
-			other.GetComponent<MonsterEgg>().StartTickingInFence();
+			//other.GetComponent<MonsterEgg>().StartTickingInFence();
 			TutorialEvents.OnAdditionalTutorialTriggered.Invoke(4);
 		}
 		PigmentMonster monster = other.GetComponent<PigmentMonster>();
@@ -46,7 +46,7 @@ public class Fence : MonoBehaviour
 
 		if (other.tag == "Egg")
 		{
-			other.GetComponent<MonsterEgg>().StopTicking();
+			//other.GetComponent<MonsterEgg>().StopTicking();
 		}
 
 		if (monster != null && monsterInside == monster)
