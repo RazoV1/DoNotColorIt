@@ -20,6 +20,8 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 		private bool isLocked = false;
 		private Coroutine routine;
 
+		public bool GetIsLocked() => isLocked;
+
 		public void SetLocked(bool isLocked)
 		{
 			this.isLocked = isLocked;
