@@ -96,7 +96,7 @@ public class NPCWaiter : MonoBehaviour, ISavable
 
 		//if (tasks.Where(x => x.id == currentTaskIndex).ToList().Count > 0)
 		//{
-		npcAnimator.SetTrigger("Wave");
+		//npcAnimator.SetTrigger("Wave");
 		//isPlayerInTrigger = true;
 		//}
 		//else
@@ -131,12 +131,16 @@ public class NPCWaiter : MonoBehaviour, ISavable
 			GameManager.Instance.StartDialogueForCurrentIndex(this, tasks[0].color, bucketInTrigger);
 			DialogStateIn();
         }
-	}
+		if (!isPlayerInTrigger)
+        {
+            
+        }
+    }
 
 	public void Update()
 	{
 		HandleInput();
-	}
+    }
 
 	public void SubscribeToSaveEvent()
 	{
@@ -188,10 +192,12 @@ public class NPCWaiter : MonoBehaviour, ISavable
 
     public void DialogStateOut()
     {
+        var anim = GetComponent<Animator>();
         if (agent != null)
         {
             agent.isStopped = false;
         }
 		transform.LookAt(agent.destination);
+        anim.SetBool("Walking", true);
     }
 }

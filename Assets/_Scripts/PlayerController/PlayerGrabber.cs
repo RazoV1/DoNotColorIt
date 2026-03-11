@@ -85,7 +85,16 @@ public class PlayerGrabber : MonoBehaviour
 					GameManager.Instance.GetCursorHint().ShowHint(isTalking ? MouseHints.TalkMouse : MouseHints.Talk);
 					hit.collider.GetComponentInParent<NPCWaiter>().isPlayerInTrigger = true;
 
+				}
+				else if (cameraController.GetShouldRotate() && hit.collider.tag != "Npc")
+				{
+                    NPCWaiter npc = hit.collider.GetComponentInParent<NPCWaiter>();
+                    if (npc != null)
+                    {
+                        npc.isPlayerInTrigger = false;
+                    }
                 }
+
 				else
 				{
 					if (monsterStats != null)
@@ -93,8 +102,8 @@ public class PlayerGrabber : MonoBehaviour
 						monsterStats.SetActive(false);
 					}
 					GameManager.Instance.GetCursorHint().ClearHint();
-                    hit.collider.GetComponentInParent<NPCWaiter>().isPlayerInTrigger = false;
-                }
+					
+				}
 				return;
 			}
 			else

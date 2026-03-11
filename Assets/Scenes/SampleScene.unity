@@ -17877,6 +17877,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4357118449180629203, guid: 99ea35f0b1be35c47b0f8cc3aaf77939, type: 3}
       insertIndex: -1
       addedObject: {fileID: 765633982}
+    - targetCorrespondingSourceObject: {fileID: 4357118449180629203, guid: 99ea35f0b1be35c47b0f8cc3aaf77939, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 765633983}
   m_SourcePrefab: {fileID: 8686905464242370237, guid: 99ea35f0b1be35c47b0f8cc3aaf77939, type: 3}
 --- !u!1 &372731740 stripped
 GameObject:
@@ -24886,11 +24889,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCRouitine
   availableActions:
-  - time: 40
+  - time: 30
     point: {fileID: 259420573}
     animationTrigger: 
-    progressionIndexContdition: 3
-  - time: 35
+    progressionIndexContdition: 2
+  - time: 25
     point: {fileID: 1035962620}
     animationTrigger: 
     progressionIndexContdition: 0
@@ -24943,6 +24946,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &765633983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372731740}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.0086298, y: 1.844733, z: 2.8693874}
+  m_Center: {x: 0.12477733, y: 0.4223667, z: -0.31677654}
 --- !u!1001 &773728779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29072,6 +29096,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6368997144547454493, guid: e9342c4d9cd90fc4a99d835ce5645da5, type: 3}
   m_PrefabInstance: {fileID: 982044188}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &983318093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 983318094}
+  m_Layer: 0
+  m_Name: Point3
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &983318094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983318093}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.47620094, z: -0, w: 0.8793365}
+  m_LocalPosition: {x: -11.899998, y: 0.9540005, z: 7.5699997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1970673285}
+  m_LocalEulerAnglesHint: {x: 0, y: -56.875, z: 0}
 --- !u!1001 &987060809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32451,6 +32506,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCRouitine
   availableActions:
+  - time: 30
+    point: {fileID: 1374645355}
+    animationTrigger: 
+    progressionIndexContdition: 4
+  - time: 20
+    point: {fileID: 983318094}
+    animationTrigger: 
+    progressionIndexContdition: 0
   - time: 10
     point: {fileID: 1963055213}
     animationTrigger: Work
@@ -38412,6 +38475,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 475603124987610874, guid: 418925ac74f9c0b4488be2045aa855a2, type: 3}
   m_PrefabInstance: {fileID: 1254818602}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1260837153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1260837154}
+  m_Layer: 0
+  m_Name: Meetpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1260837154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260837153}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.756951, z: -0, w: 0.6534717}
+  m_LocalPosition: {x: 56.770004, y: -6.6529994, z: 34.519997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1881984261}
+  m_LocalEulerAnglesHint: {x: 0, y: 98.392, z: 0}
 --- !u!4 &1275291251 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1591305592262698269, guid: 95ec348389afa5e409db0c268b2a54df, type: 3}
@@ -39975,6 +40069,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1307093137}
   m_LocalEulerAnglesHint: {x: 0, y: 46.246, z: 0}
+--- !u!1 &1374645354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1374645355}
+  m_Layer: 0
+  m_Name: MeetPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1374645355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374645354}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.55245906, z: -0, w: 0.83354}
+  m_LocalPosition: {x: -69.42, y: -6.39, z: 6.3699875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1970673285}
+  m_LocalEulerAnglesHint: {x: 0, y: -67.072, z: 0}
 --- !u!1001 &1381277244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41629,7 +41754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 514699112980349527, guid: 36875fd1d993f1846bcb9230e9824afe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 896010379377203437, guid: 36875fd1d993f1846bcb9230e9824afe, type: 3}
       propertyPath: m_LocalScale.x
@@ -41919,6 +42044,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4683986261461036423, guid: 3f3102fea5a091948a9387b1dc0ff7e0, type: 3}
   m_PrefabInstance: {fileID: 1510032400}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1512635001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1512635002}
+  m_Layer: 0
+  m_Name: Point3
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1512635002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512635001}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.16075389, z: -0, w: 0.98699456}
+  m_LocalPosition: {x: -0.63, y: -1.5400004, z: 21.32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1881984261}
+  m_LocalEulerAnglesHint: {x: 0, y: 18.501, z: 0}
 --- !u!1001 &1513040684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47236,6 +47392,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4357118449180629203, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1718095947}
+    - targetCorrespondingSourceObject: {fileID: 4357118449180629203, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1718095948}
   m_SourcePrefab: {fileID: 8686905464242370237, guid: d1b4dc2eebe0d0741848734d68ef4e1f, type: 3}
 --- !u!4 &1676664586 stripped
 Transform:
@@ -47973,7 +48132,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.84
+  m_Radius: 0.69
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 1.63, z: 0.15}
@@ -48018,11 +48177,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCRouitine
   availableActions:
-  - time: 45
+  - time: 25
     point: {fileID: 1370350459}
     animationTrigger: 
-    progressionIndexContdition: 3
-  - time: 40
+    progressionIndexContdition: 2
+  - time: 20
     point: {fileID: 1909433972}
     animationTrigger: 
     progressionIndexContdition: 0
@@ -48075,6 +48234,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1718095948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718095939}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.1815677, y: 1.9454215, z: 4.377009}
+  m_Center: {x: 0.012099033, y: 0.47271064, z: -0.53613615}
 --- !u!1001 &1719153410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52780,6 +52960,8 @@ Transform:
   m_Children:
   - {fileID: 2066800687}
   - {fileID: 1280575121}
+  - {fileID: 1512635002}
+  - {fileID: 1260837154}
   m_Father: {fileID: 797891599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1886489366
@@ -53607,6 +53789,8 @@ Transform:
   m_Children:
   - {fileID: 1719713398}
   - {fileID: 1963055213}
+  - {fileID: 983318094}
+  - {fileID: 1374645355}
   m_Father: {fileID: 797891599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1971657286 stripped
@@ -61542,6 +61726,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCRouitine
   availableActions:
+  - time: 16
+    point: {fileID: 1260837154}
+    animationTrigger: 
+    progressionIndexContdition: 4
+  - time: 15
+    point: {fileID: 1512635002}
+    animationTrigger: 
+    progressionIndexContdition: 0
   - time: 6
     point: {fileID: 1280575121}
     animationTrigger: Work
