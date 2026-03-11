@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 [Serializable]
@@ -22,8 +23,9 @@ public class NPCWaiter : MonoBehaviour, ISavable
 	[SerializeField] private Animator npcAnimator;
 	[SerializeField] private List<ColorTask> tasks;
 	[SerializeField] private List<GameObject> houseToPaint;
+	private NavMeshAgent agent;
 
-	private bool isPlayerInTrigger = false;
+	public bool isPlayerInTrigger = false;
 	private bool gaveTask = false;
 	private bool isCompleted = false;
 	private bool wasIntroduced = false;
@@ -77,7 +79,8 @@ public class NPCWaiter : MonoBehaviour, ISavable
 	{
 		SubscribeToSaveEvent();
 		GameplayEvents.OnMount.AddListener(DropPlayer);
-	}
+		agent = GetComponent<NavMeshAgent>();
+    }
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -94,7 +97,7 @@ public class NPCWaiter : MonoBehaviour, ISavable
 		//if (tasks.Where(x => x.id == currentTaskIndex).ToList().Count > 0)
 		//{
 		npcAnimator.SetTrigger("Wave");
-		isPlayerInTrigger = true;
+		//isPlayerInTrigger = true;
 		//}
 		//else
 		//{
@@ -118,14 +121,16 @@ public class NPCWaiter : MonoBehaviour, ISavable
 	{
 		isPlayerInTrigger = false;
 		GameManager.Instance.DisruptDialogue();
-	}
+		DialogStateOut();
+    }
 
 	private void HandleInput()
 	{
 		if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
 		{
 			GameManager.Instance.StartDialogueForCurrentIndex(this, tasks[0].color, bucketInTrigger);
-		}
+			DialogStateIn();
+        }
 	}
 
 	public void Update()
@@ -166,4 +171,27 @@ public class NPCWaiter : MonoBehaviour, ISavable
 			PaintHouse();
 		}
 	}
+
+	public void DialogStateIn()
+	{
+        if (agent != null)
+        {
+            agent.isStopped = true;
+        }
+        var anim = GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.SetBool("Walking", false);
+			transform.LookAt(GameObject.Find("Player").transform);
+        }
+    }
+
+    public void DialogStateOut()
+    {
+        if (agent != null)
+        {
+            agent.isStopped = false;
+        }
+		transform.LookAt(agent.destination);
+    }
 }
