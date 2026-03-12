@@ -111,10 +111,10 @@ public class NPCWaiter : MonoBehaviour, ISavable
 		{
 			bucketInTrigger = null;
 		}
-		if (other.tag == "Player")
+		/*if (other.tag == "Player")
 		{
 			DropPlayer();
-		}
+		}*/
 	}
 
 	private void DropPlayer()
@@ -198,6 +198,6 @@ public class NPCWaiter : MonoBehaviour, ISavable
             agent.isStopped = false;
         }
 		transform.LookAt(agent.destination);
-        anim.SetBool("Walking", true);
+        
     }
 }

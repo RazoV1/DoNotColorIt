@@ -41,6 +41,15 @@ public class DialogueEvent : MonoBehaviour
             dialogueText.gameObject.SetActive(false);
             leftCharacterName.gameObject.SetActive(false);
             rightCharacterName.gameObject.SetActive(false);
+
+            NPCTicker npcTicker = PocketTicker.Instance.gameObject.GetComponent<NPCTicker>();
+            npcTicker.SetShouldTick(true);
+
+            PlayerController playerController = GameObject.FindFirstObjectByType<PlayerController>();
+            playerController.SetCanWalk(true);
+
+            PlayerGrabber grabber = GameObject.Find("Player").GetComponent<PlayerGrabber>();
+            grabber.SetIsTalking(false);
         }
         catch { }
     }

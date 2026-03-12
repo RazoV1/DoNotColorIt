@@ -24,7 +24,12 @@ namespace Assets._Scripts.NPC
 			agent = GetComponent<NavMeshAgent>();
 		}
 
-	public IEnumerator TraverseToPoint(Transform point)
+        private void Update()
+        {
+            animator.SetBool("Walking", !agent.isStopped && agent.remainingDistance > agent.stoppingDistance);
+        }
+
+        public IEnumerator TraverseToPoint(Transform point)
 		{
 
 			agent.isStopped = false;
