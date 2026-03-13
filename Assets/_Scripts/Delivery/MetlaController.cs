@@ -41,8 +41,9 @@ namespace Assets._Scripts.Delivery
 		private float verticalInput;
 		private float preferedSpeed;
 		private Vector2 preferredRotation;
+        private float mouseVerticalInput;
 
-		[SerializeField] private bool isMounted = false;
+        [SerializeField] private bool isMounted = false;
 
 		public Transform GetPivot() => pivot;
 
@@ -103,14 +104,21 @@ namespace Assets._Scripts.Delivery
 
 		private void HandleFlight()
 		{
-			rb.AddForce(-transform.forward * currentSpeed);
-			rb.AddTorque(transform.up * yawAmount * preferredRotation.x * responsiveness);
-			rb.AddTorque(transform.right * pitchAmount * preferredRotation.y * responsiveness);
-			rb.AddTorque(transform.forward * rollAmoutn * Input.GetAxis("Horizontal") * responsiveness);
-			rb.AddForce(-transform.forward * maxSpeed * (verticalInput < 0 ? verticalInput : 0));
-			//rb.linearDamping = currentSpeed / maxSpeed;
+            rb.AddForce(-transform.forward * currentSpeed);
+            rb.AddTorque(transform.up * yawAmount * preferredRotation.x * responsiveness);
+            rb.AddTorque(transform.right * pitchAmount * preferredRotation.y * responsiveness);
+            rb.AddForce(-transform.forward * maxSpeed * (verticalInput < 0 ? verticalInput : 0));
 
-			if (lutiiDrift)
+            rb.AddForce(transform.up * (Input.GetKey(KeyCode.Space) ? 1f : 0f) * upAmount);
+            rb.AddForce(-transform.up * (Input.GetKey(KeyCode.LeftControl) ? 1f : 0f) * upAmount);
+            //rb.AddForce(-transform.forward * currentSpeed);
+            //rb.AddTorque(transform.up * yawAmount * preferredRotation.x * responsiveness);
+            //rb.AddTorque(transform.right * pitchAmount * preferredRotation.y * responsiveness);
+            //rb.AddTorque(transform.forward * rollAmoutn * Input.GetAxis("Horizontal") * responsiveness);
+            //rb.AddForce(-transform.forward * maxSpeed * (verticalInput < 0 ? verticalInput : 0));
+            //rb.linearDamping = currentSpeed / maxSpeed;
+
+            if (lutiiDrift)
 			{
 				rb.linearDamping = currentSpeed / maxSpeed;
 				rb.AddForce(transform.up * (currentSpeed / maxSpeed) * lift);
@@ -128,11 +136,9 @@ namespace Assets._Scripts.Delivery
 			verticalInput = Input.GetAxis("Vertical");
 			preferedSpeed = Mathf.Clamp(maxSpeed * verticalInput, 0, maxSpeed);
 			currentSpeed = Mathf.Lerp(currentSpeed, preferedSpeed, Time.deltaTime * acceleration);
-			preferredRotation = Input.mousePositionDelta;
-
-
-
-		}
+            mouseVerticalInput = Input.GetAxis("Mouse Y");
+            preferredRotation = new Vector2(Input.GetAxis("Horizontal"), mouseVerticalInput * 10);
+        }
 
 		private void CheckUnmount()
 		{

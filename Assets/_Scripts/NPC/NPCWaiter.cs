@@ -119,27 +119,25 @@ public class NPCWaiter : MonoBehaviour, ISavable
 
 	private void DropPlayer()
 	{
-		isPlayerInTrigger = false;
+        if (!isPlayerInTrigger) return;
+        isPlayerInTrigger = false;
 		GameManager.Instance.DisruptDialogue();
 		DialogStateOut();
     }
 
 	private void HandleInput()
 	{
-		if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
-		{
-			GameManager.Instance.StartDialogueForCurrentIndex(this, tasks[0].color, bucketInTrigger);
-			DialogStateIn();
-        }
-		if (!isPlayerInTrigger)
+        if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            
+            GameManager.Instance.StartDialogueForCurrentIndex(this, tasks[0].color, bucketInTrigger);
+            DialogStateIn();
         }
     }
 
 	public void Update()
 	{
 		HandleInput();
+		Debug.Log("!!!!!!!!!!!isPlayerInTrigger" + isPlayerInTrigger);
     }
 
 	public void SubscribeToSaveEvent()

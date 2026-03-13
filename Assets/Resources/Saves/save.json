@@ -78,7 +78,10 @@
     "dimension": 1.0,
     "currentTaskIndex": 0.0,
     "shouldShowTutorial": 0.0,
-    "tutorialIndex": 0.0
+    "tutorialIndex": 0.0,
+    "smola": 0.0,
+    "logs": 0.0,
+    "seeds": 0.0
   },
   "SavedStrings": {
     "currentNpcTaskName": ""
