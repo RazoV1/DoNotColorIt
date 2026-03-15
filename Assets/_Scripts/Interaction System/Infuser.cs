@@ -90,12 +90,7 @@ public class Infuser : MonoBehaviour, ISavable
 				}
 				logs--;
 			}
-			while (logs == 0)
-			{
-				currrentTemperature = currrentTemperature = Mathf.Clamp(currrentTemperature - Time.deltaTime, 0, neededTemperature);
-				logsBar.fillAmount = currrentTemperature / neededTemperature;
-				yield return null;
-			}
+			yield return null;
 		}
 	}
 	#endregion
@@ -174,6 +169,8 @@ public class Infuser : MonoBehaviour, ISavable
 			smolaVolume = 0f;
 			GameManager.Instance.GetTutorial().ProgressTutorial("leverPull");
 			//GameManager.Instance.GetTutorial().ProgressTutorial(10);
+			currrentTemperature = 0;
+
 			Debug.Log("<color=green>Cook");
 		}
 	}

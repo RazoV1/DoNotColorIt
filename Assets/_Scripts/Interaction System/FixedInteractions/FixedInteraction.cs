@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets._Scripts.Interaction_System.Objects;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 	{
 		[SerializeField] private Transform cameraPoint;
 		[SerializeField] private float transitionTime;
+		[SerializeField] private List<ConditionalGrabbable> grabbables;
+		[SerializeField] private List<string> grabbablesToFindByName;
 
 		private Transform cameraPivot;
 		private CameraController cameraController;
@@ -30,6 +33,7 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 			cameraController.SetShouldRotate(!isLocked);
 			Cursor.lockState = isLocked ?  CursorLockMode.None : CursorLockMode.Locked;
 			Cursor.visible = isLocked;
+			SetGrabbables(isLocked);	
 			cameraController.SetFollowBody(isLocked ? cameraPoint : null);
 
 			//if (routine != null)  StopCoroutine(routine);
@@ -39,12 +43,28 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 			//}
 		}
 
+	    private void SetGrabbables(bool shouldBeGrabbed)
+		{
+			if (grabbables.Count == 0) return;
+			grabbables.ForEach(x => x.SetCanBeGrabbed(shouldBeGrabbed));
+		}
+
+		private void FindGrabbablesByName()
+		{
+			grabbables = FindObjectsByType<ConditionalGrabbable>(FindObjectsSortMode.InstanceID).ToList().Where(x => grabbablesToFindByName.Contains(x.GetPrefabName())).ToList();
+		}
+
 		private void FindCameraComponents()
 		{
 			cameraController = FindObjectOfType<CameraController>();
 			cameraPivot = cameraController.transform.parent;
 
 			playerController = FindObjectOfType<PlayerController>();
+		}
+
+		private void Start()
+		{
+			FindGrabbablesByName();
 		}
 
 		//private IEnumerator MoveCameraToPoint(Transform point)

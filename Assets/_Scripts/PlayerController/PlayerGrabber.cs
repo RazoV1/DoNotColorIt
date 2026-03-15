@@ -66,13 +66,18 @@ public class PlayerGrabber : MonoBehaviour
 		}
 		if (isGrabbing)
 		{
-			GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
+			//GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
 			return;
 		}
 		RaycastHit hit;
 		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
 		{
             Debug.Log("Tag of gameobj " + hit.collider.tag);
+			ConditionalGrabbable g = hit.collider.GetComponent<ConditionalGrabbable>();
+			if (g != null && !g.GetCanBeGrabbed())
+			{
+				return;
+			}
             if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
 			{
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat")
@@ -175,7 +180,7 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
 				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Pounder")
+				else if (!cameraController.GetShouldRotate() && hit.collider.tag == "Pounder")
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
 				}
@@ -223,6 +228,11 @@ public class PlayerGrabber : MonoBehaviour
 		if (Physics.Raycast(ray, out hit))
 		{
 			//Debug.Log("Hit!");
+			ConditionalGrabbable conditional = hit.collider.GetComponent<ConditionalGrabbable>();
+			if (conditional != null)
+			{
+				if (!conditional.GetCanBeGrabbed()) return;
+			}
 			if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
 			{
 				return;

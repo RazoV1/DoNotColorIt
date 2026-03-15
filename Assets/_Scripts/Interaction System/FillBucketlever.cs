@@ -30,11 +30,13 @@ public class FillBucketlever : MonoBehaviour
 		if (isReturning)
 		{
 			Debug.Log($"<color=yellow>Return: {transform.localEulerAngles.x}");
+			rb.isKinematic = true;
 			transform.localRotation = Quaternion.RotateTowards(transform.localRotation, rotationParent.localRotation, Time.deltaTime * stiffness);
 			if (Quaternion.Angle(transform.localRotation, rotationParent.localRotation) < 0.2f)
 			{
 				transform.localRotation = rotationParent.localRotation;
 				isReturning = false;
+				rb.isKinematic = false;
 				Debug.Log("<color=green>READY");
 			}
 		}
@@ -46,5 +48,6 @@ public class FillBucketlever : MonoBehaviour
 		lever.SetIsGrabbed(false);
 		isReturning = true;
 		rb.angularVelocity = new Vector3(0f, 0f, 0f);
+		rb.linearVelocity = Vector3.zero;
 	}
 }
