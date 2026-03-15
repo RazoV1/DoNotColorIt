@@ -183,8 +183,9 @@ public class NPCWaiter : MonoBehaviour, ISavable
         var anim = GetComponent<Animator>();
         if (anim != null)
         {
+			if(anim.GetBool("Walking"))
+            transform.LookAt(GameObject.Find("Player").transform);
             anim.SetBool("Walking", false);
-			transform.LookAt(GameObject.Find("Player").transform);
         }
     }
 
