@@ -127,12 +127,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 591547977648372155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84baf891144639c479f1d6968d23c3d7, type: 3}
+  m_Script: {fileID: 11500000, guid: 228ca55cfad737441aa1bc8910deb1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialPrefab: {fileID: 2100000, guid: ae2415dceb7ddc940866e4021f05bb97, type: 2}
+  materialPrefab: {fileID: 2100000, guid: 55bbb343de6e2a44cac2f6db81ad4108, type: 2}
   meshRenderer: {fileID: 446290017254622341}
-  color: {r: 0.5058824, g: 0.52156866, b: 0.5372549, a: 1}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!54 &9015326981827935993
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   shouldUseGravity: 0
   shouldPlayAudio: 1
   source: {fileID: 1552882227625494679}
+  sound: {fileID: 0}
 --- !u!82 &1552882227625494679
 AudioSource:
   m_ObjectHideFlags: 0
