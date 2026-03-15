@@ -72,7 +72,8 @@ public class PlayerGrabber : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
 		{
-			if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
+            Debug.Log("Tag of gameobj " + hit.collider.tag);
+            if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
 			{
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat")
 				{
@@ -85,17 +86,15 @@ public class PlayerGrabber : MonoBehaviour
 				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Npc")
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(isTalking ? MouseHints.TalkMouse : MouseHints.Talk);
-					hit.collider.GetComponentInParent<NPCWaiter>().isPlayerInTrigger = true;
-
-				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag != "Npc")
-				{
-                    NPCWaiter npc = hit.collider.GetComponentInParent<NPCWaiter>();
-                    if (npc != null)
+                    if (!isTalking)
                     {
-                        npc.isPlayerInTrigger = false;
+                        var npc = hit.collider.GetComponentInParent<NPCWaiter>();
+                        if (npc != null)
+                            npc.isPlayerInTrigger = true;
                     }
+
                 }
+				
 
 				else
 				{
@@ -103,7 +102,9 @@ public class PlayerGrabber : MonoBehaviour
 					{
 						monsterStats.SetActive(false);
 					}
-					GameManager.Instance.GetCursorHint().ClearHint();
+                    foreach (var npc in FindObjectsOfType<NPCWaiter>())
+                        npc.isPlayerInTrigger = false;
+                    GameManager.Instance.GetCursorHint().ClearHint();
 					
 				}
 				return;
@@ -204,7 +205,9 @@ public class PlayerGrabber : MonoBehaviour
 			{
 				monsterStats.SetActive(false);
 			}
-		}
+            foreach (var npc in FindObjectsOfType<NPCWaiter>())
+                npc.isPlayerInTrigger = false;
+        }
 	}
 
 	private void TryGrab()

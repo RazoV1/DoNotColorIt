@@ -17,6 +17,8 @@ public class BrushSingController : MonoBehaviour
     private void LateUpdate()
     {
         pointer.transform.position = brush.position + offset;
+        float yAngle = brush.eulerAngles.y;
+        pointer.transform.rotation = Quaternion.Euler(0f, yAngle, 0f);
     }
     void Update()
     {
