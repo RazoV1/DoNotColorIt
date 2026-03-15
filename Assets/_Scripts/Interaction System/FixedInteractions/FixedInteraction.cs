@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets._Scripts.Interaction_System.Objects;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 	{
 		[SerializeField] private Transform cameraPoint;
 		[SerializeField] private float transitionTime;
+		[SerializeField] private List<ConditionalGrabbable> grabbables;
+		[SerializeField] private List<string> grabbablesToFindByName;
 
 		private Transform cameraPivot;
 		private CameraController cameraController;
@@ -29,13 +32,26 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 			playerController.SetCanWalk(!isLocked);
 			cameraController.SetShouldRotate(!isLocked);
 			Cursor.lockState = isLocked ?  CursorLockMode.None : CursorLockMode.Locked;
-			Cursor.visible = !isLocked;
-			
-			if (routine != null)  StopCoroutine(routine);
-			if (isLocked)
-			{
-				routine = StartCoroutine(MoveCameraToPoint(cameraPoint));
-			}
+			Cursor.visible = isLocked;
+			SetGrabbables(isLocked);	
+			cameraController.SetFollowBody(isLocked ? cameraPoint : null);
+
+			//if (routine != null)  StopCoroutine(routine);
+			//if (isLocked)
+			//{
+			//	routine = StartCoroutine(MoveCameraToPoint(cameraPoint));
+			//}
+		}
+
+	    private void SetGrabbables(bool shouldBeGrabbed)
+		{
+			if (grabbables.Count == 0) return;
+			grabbables.ForEach(x => x.SetCanBeGrabbed(shouldBeGrabbed));
+		}
+
+		private void FindGrabbablesByName()
+		{
+			grabbables = FindObjectsByType<ConditionalGrabbable>(FindObjectsSortMode.InstanceID).ToList().Where(x => grabbablesToFindByName.Contains(x.GetPrefabName())).ToList();
 		}
 
 		private void FindCameraComponents()
@@ -46,17 +62,22 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 			playerController = FindObjectOfType<PlayerController>();
 		}
 
-		private IEnumerator MoveCameraToPoint(Transform point)
+		private void Start()
 		{
-			float timePassed = 0;
-
-			while (timePassed < transitionTime)
-			{
-				cameraPivot.position = Vector3.Lerp(cameraPivot.position,point.position,timePassed/transitionTime);
-				cameraPivot.rotation = Quaternion.Lerp(cameraPivot.rotation, point.rotation, timePassed / transitionTime);
-				timePassed += Time.deltaTime;
-				yield return null;
-			}
+			FindGrabbablesByName();
 		}
+
+		//private IEnumerator MoveCameraToPoint(Transform point)
+		//{
+		//	float timePassed = 0;
+
+		//	while (timePassed < transitionTime)
+		//	{
+		//		cameraPivot.position = Vector3.Lerp(cameraPivot.position,point.position,timePassed/transitionTime);
+		//		cameraPivot.rotation = Quaternion.Lerp(cameraPivot.rotation, point.rotation, timePassed / transitionTime);
+		//		timePassed += Time.deltaTime;
+		//		yield return null;
+		//	}
+		//}
 	}
 }

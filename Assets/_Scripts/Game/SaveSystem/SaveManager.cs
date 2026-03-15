@@ -273,7 +273,7 @@ public class SaveManager : MonoBehaviour
 			{
 			   prefabName = "pounder",
 				dimension= 2,
-				worldPosition = Mapper.VectorToFloatData( -6.455711f, 0.4209881f, 9.447125f),
+				worldPosition = Mapper.VectorToFloatData( -6.586f, 0.796f, 8.9554f),
 				quaternionRotation = Mapper.QuaternionToFloatData(0.0f,0.0f,0.0f,1.0f)
 		   },
 			new SavablePrefab

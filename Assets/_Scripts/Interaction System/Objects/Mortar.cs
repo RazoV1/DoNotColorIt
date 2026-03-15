@@ -1,3 +1,4 @@
+using Assets._Scripts.Events;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -49,6 +50,7 @@ public class Mortar : MonoBehaviour
 
 		//GameManager.Instance.GetTutorial().ProgressTutorial(7);
 		GameManager.Instance.GetTutorial().ProgressTutorial("dusted");
+		GameplayEvents.OnDusted.Invoke();
 		pigmentInside.Clear();
 		GameObject dust = Instantiate(dustPrefab, componentsPivot.position, Quaternion.identity);
 		dust.GetComponent<DustedColorPigment>().InitializePigment(outputColor, volume);
