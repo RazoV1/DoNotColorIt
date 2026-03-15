@@ -12041,12 +12041,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 71399950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429f94cc9dbce844dbc260a33465ceb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 906e720b2f768bb4e92c73fa9bb1452e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 71399954}
   direction: 1
-  speed: 0.01
+  speed: 0.1
   infuser: {fileID: 1030550984}
   smolaFlow: {fileID: 0}
   smolaDrawback: {fileID: 0}
@@ -15611,7 +15611,7 @@ Transform:
   m_GameObject: {fileID: 215109170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.633, z: 0}
+  m_LocalPosition: {x: 0, y: 0.801, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39380,12 +39380,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 848655287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6820847c04d7e69498804ac74b38fad1, type: 3}
+  m_Script: {fileID: 11500000, guid: 43bed5ba177b3e44a82cd73dd18dc49a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smolaPivot: {fileID: 590473918}
+  smolaPivot: {fileID: 0}
   yOffset: 0.25
-  yPerVolume: 0.025
+  yPerVolume: 0.05
 --- !u!1001 &849807171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54675,6 +54675,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288e036208c392a40a9f5ba37cdf5837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Scripts.Interaction_System.FixedInteractions.FixedInteractionTrigger
+  hintName: 10
+  dropCondition: Mortar
 --- !u!114 &1518064413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70440,6 +70442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288e036208c392a40a9f5ba37cdf5837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets._Scripts.Interaction_System.FixedInteractions.FixedInteractionTrigger
+  hintName: 11
+  dropCondition: 
 --- !u!114 &2072138220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82381,19 +82385,48 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bucket
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4795033052016267804, guid: 7ef13f3d9ad3a834aae31276c397b0b4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 430582796928793465, guid: 7ef13f3d9ad3a834aae31276c397b0b4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 606106820}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 591547977648372155, guid: 7ef13f3d9ad3a834aae31276c397b0b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4313236879925780480}
   m_SourcePrefab: {fileID: 100100000, guid: 7ef13f3d9ad3a834aae31276c397b0b4, type: 3}
 --- !u!4 &4313236879925780477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 430582796928793465, guid: 7ef13f3d9ad3a834aae31276c397b0b4, type: 3}
   m_PrefabInstance: {fileID: 4313236879925780476}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4313236879925780478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 591547977648372155, guid: 7ef13f3d9ad3a834aae31276c397b0b4, type: 3}
+  m_PrefabInstance: {fileID: 4313236879925780476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4313236879925780479 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7566304979777096288, guid: 7ef13f3d9ad3a834aae31276c397b0b4, type: 3}
+  m_PrefabInstance: {fileID: 4313236879925780476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4313236879925780480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4313236879925780478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228ca55cfad737441aa1bc8910deb1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Bucket
+  materialPrefab: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  meshRenderer: {fileID: 4313236879925780479}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &4332789029609662287
 Transform:
   m_ObjectHideFlags: 0

@@ -64,21 +64,34 @@ public class PlayerGrabber : MonoBehaviour
 		{
 			itemStats.SetActive(false);
 		}
+		RaycastHit hit;
 		if (isGrabbing)
 		{
+			if (grabbedObject.tag == "Pounder" || grabbedObject.tag == "Kapot" || grabbedObject.tag == "Lever")
+			{
+				GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
+			}
+
 			//GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
 			return;
 		}
-		RaycastHit hit;
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if (Physics.Raycast(ray, out hit))
+		{
+			if (hit.collider.tag == "Pounder" || hit.collider.tag == "Kapot" || hit.collider.tag == "Lever")
+			{
+				GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
+			}
+		}
 		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
 		{
-            Debug.Log("Tag of gameobj " + hit.collider.tag);
+			Debug.Log("Tag of gameobj " + hit.collider.tag);
 			ConditionalGrabbable g = hit.collider.GetComponent<ConditionalGrabbable>();
 			if (g != null && !g.GetCanBeGrabbed())
 			{
 				return;
 			}
-            if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
+			if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
 			{
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat")
 				{
@@ -91,15 +104,15 @@ public class PlayerGrabber : MonoBehaviour
 				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Npc")
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(isTalking ? MouseHints.TalkMouse : MouseHints.Talk);
-                    if (!isTalking)
-                    {
-                        var npc = hit.collider.GetComponentInParent<NPCWaiter>();
-                        if (npc != null)
-                            npc.isPlayerInTrigger = true;
-                    }
+					if (!isTalking)
+					{
+						var npc = hit.collider.GetComponentInParent<NPCWaiter>();
+						if (npc != null)
+							npc.isPlayerInTrigger = true;
+					}
 
-                }
-				
+				}
+
 
 				else
 				{
@@ -107,10 +120,10 @@ public class PlayerGrabber : MonoBehaviour
 					{
 						monsterStats.SetActive(false);
 					}
-                    foreach (var npc in FindObjectsOfType<NPCWaiter>())
-                        npc.isPlayerInTrigger = false;
-                    GameManager.Instance.GetCursorHint().ClearHint();
-					
+					foreach (var npc in FindObjectsOfType<NPCWaiter>())
+						npc.isPlayerInTrigger = false;
+					GameManager.Instance.GetCursorHint().ClearHint();
+
 				}
 				return;
 			}
@@ -210,9 +223,9 @@ public class PlayerGrabber : MonoBehaviour
 			{
 				monsterStats.SetActive(false);
 			}
-            foreach (var npc in FindObjectsOfType<NPCWaiter>())
-                npc.isPlayerInTrigger = false;
-        }
+			foreach (var npc in FindObjectsOfType<NPCWaiter>())
+				npc.isPlayerInTrigger = false;
+		}
 	}
 
 	private void TryGrab()
@@ -437,7 +450,7 @@ public class PlayerGrabber : MonoBehaviour
 
 		PivotedItem pivoted = rb.GetComponent<PivotedItem>();
 
-		if (pivoted != null) 
+		if (pivoted != null)
 		{
 			go.transform.position = rb.transform.position;
 			go.transform.rotation = rb.transform.rotation;
@@ -495,7 +508,7 @@ public class PlayerGrabber : MonoBehaviour
 		{
 			jointTransform.position = grabPivot.position;
 		}
-		
+
 		if (grabbedObject == null) { return; }
 
 		if (!cameraController.GetShouldRotate())
@@ -506,7 +519,7 @@ public class PlayerGrabber : MonoBehaviour
 
 		Physics.IgnoreCollision(GetComponent<Collider>(), grabbedObject.GetRigidbody().GetComponent<Collider>(), true);
 		//var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
-		
+
 		var colorPig = grabbedObject.GetComponent<ColorPigment>();
 		if (colorPig != null)
 		{
