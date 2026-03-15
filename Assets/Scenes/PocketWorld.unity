@@ -82409,7 +82409,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &4313236879925780479 stripped
 MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7566304979777096288, guid: 7ef13f3d9ad3a834aae31276c397b0b4, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6317135410298611172, guid: 7ef13f3d9ad3a834aae31276c397b0b4, type: 3}
   m_PrefabInstance: {fileID: 4313236879925780476}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &4313236879925780480
@@ -82424,7 +82424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228ca55cfad737441aa1bc8910deb1dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bucket
-  materialPrefab: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  materialPrefab: {fileID: -1074690747386156095, guid: 442d5cbfad52dd149b7600c260d8f2dc, type: 3}
   meshRenderer: {fileID: 4313236879925780479}
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &4332789029609662287
