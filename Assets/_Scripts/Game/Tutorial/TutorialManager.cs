@@ -13,6 +13,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 	[SerializeField] private List<GameObject> additionalTutorials;
 	[SerializeField] private GameObject tutorialIndicator;
 	[SerializeField] private TextMeshProUGUI tutorialOutput;
+	[SerializeField] private Animator taskanim;
 
 	private bool shouldShowTutorial;
 	private int tutorialIndex;
@@ -113,7 +114,9 @@ public class TutorialManager : MonoBehaviour, ISavable
 			return;
 		}
 		tutorialIndex++;
-		if (tutorialIndex >= questLinesByIndex.Count)
+        taskanim.SetTrigger("IsNewTask");
+		Debug.Log("IsNewTask");
+        if (tutorialIndex >= questLinesByIndex.Count)
 		{
 			tutorialIndicator.SetActive(false);
 			HideAllTutorials();
@@ -131,7 +134,9 @@ public class TutorialManager : MonoBehaviour, ISavable
 			}
 		}
 		TutorialEvents.OnTutorialIndexChanged.Invoke(questLinesByIndex[tutorialIndex].tutorialName);
-	}
+        taskanim.SetTrigger("IsNewTask");
+        Debug.Log("IsNewTask");
+    }
 
 	public void SubscribeToSaveEvent()
 	{
