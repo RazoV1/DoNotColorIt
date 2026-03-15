@@ -31,6 +31,7 @@ public class PlayerGrabber : MonoBehaviour
 	[Header("Misc")]
 	[SerializeField] private CameraController cameraController;
 	[SerializeField] private Transform grabPivot;
+	private Vector3 startingGrabPivotPoint;
 	[SerializeField] private Transform fixedRotatorPivot;
 	[SerializeField] private List<string> interactableTags = new List<string>();
 	[SerializeField] private Rigidbody playerRb;
@@ -54,6 +55,7 @@ public class PlayerGrabber : MonoBehaviour
 	private void Start()
 	{
 		cameraPivotTransform = cameraController.transform;
+		startingGrabPivotPoint = grabPivot.transform.localPosition;
 	}
 
 	private void CastHint()
@@ -211,9 +213,11 @@ public class PlayerGrabber : MonoBehaviour
 		{
 			return;
 		}
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		//Debug.Log("Cast!");
-		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
+		//if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
+		if (Physics.Raycast(ray, out hit))
 		{
 			//Debug.Log("Hit!");
 			if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
@@ -319,6 +323,7 @@ public class PlayerGrabber : MonoBehaviour
 	{
 		if (grabbedObject == null)
 		{
+			grabPivot.transform.localPosition = startingGrabPivotPoint;
 			return;
 		}
 		if (!((IGrabbable)grabbedObject).GetIsGrabbed())
@@ -385,6 +390,7 @@ public class PlayerGrabber : MonoBehaviour
 
 		bool isKapot = rb.gameObject.tag == "Kapot";
 		Debug.Log(isKapot);
+
 		if (isKapot)
 		{
 			goParent.position = attachmentPosition;
@@ -478,9 +484,16 @@ public class PlayerGrabber : MonoBehaviour
 		}
 		
 		if (grabbedObject == null) { return; }
+
+		if (!cameraController.GetShouldRotate())
+		{
+			Plane grabbedPlane = new Plane(cameraController.transform.forward, grabbedObject.transform.position);
+			grabPivot.transform.position = grabbedPlane.ClosestPointOnPlane(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(Vector3.Distance(grabbedObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)))); //(Vector3.Distance(grabbedObject.transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+		}
+
 		Physics.IgnoreCollision(GetComponent<Collider>(), grabbedObject.GetRigidbody().GetComponent<Collider>(), true);
 		//var monsterObj = grabbedObject.GetComponent<PigmentMonster>();
-
+		
 		var colorPig = grabbedObject.GetComponent<ColorPigment>();
 		if (colorPig != null)
 		{

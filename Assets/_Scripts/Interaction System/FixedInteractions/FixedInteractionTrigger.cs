@@ -15,6 +15,11 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 		private void OnTriggerEnter(Collider other) { if (other.tag == "Player") hasEntered = true; }
 		private void OnTriggerExit(Collider other) { if (other.tag == "Player") hasEntered = false; }
 
+		private void Update()
+		{
+			HandleInput();
+		}
+
 		private void Awake()
 		{
 			interactionMainScript = GetComponent<FixedInteraction>();

@@ -29,6 +29,11 @@ public class CameraController : MonoBehaviour
 
 	public float GetSensitivity() => sensitivity;
 
+	public void SetFollowBody(Transform body = null)
+	{
+	   followedBody = body == null ? playerBody : body;
+	}
+
 	private void Start()
 	{
 		pivot = transform.parent;
