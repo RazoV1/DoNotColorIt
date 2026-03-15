@@ -21,6 +21,7 @@ public class CursorHint : MonoBehaviour
 	private string getOut;
 	private string getIn;
 	private string enterPocket;
+	private string toggleMode;
 
 	public void Awake()
 	{
@@ -34,6 +35,8 @@ public class CursorHint : MonoBehaviour
 		talkNext = LanguageManager.Instance.GetTranslatable("ui.hint.talk_next");
 		getIn = LanguageManager.Instance.GetTranslatable("ui.hint.get_in");
 		enterPocket = LanguageManager.Instance.GetTranslatable("ui.hint.enter_pocket");
+		toggleMode = LanguageManager.Instance.GetTranslatable("ui.hint.toggle_mode");
+		Debug.Log(toggleMode);
 	}
 
 	public void ShowHint(MouseHints hintType)
@@ -75,6 +78,10 @@ public class CursorHint : MonoBehaviour
 				hintSprite.sprite = null;
 				hintText.text = talkNext;
 				break;
+			case MouseHints.ToggleMode:
+				hintSprite.sprite = null;
+				hintText.text = toggleMode;
+				break;
 
 		}
 	}
@@ -97,5 +104,6 @@ public enum MouseHints
 	Default,
 	horizontal,
 	vertical,
-	TalkMouse
+	TalkMouse,
+	ToggleMode
 }

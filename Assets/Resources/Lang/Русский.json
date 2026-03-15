@@ -69,6 +69,7 @@
     "ui.item.Axe": "Топор",
     "ui.item.brush": "Щётка",
     "ui.pause.save": "Сохранить",
+    "ui.hint.toggle_mode": "E",
     "ui.settings.should_autosave": "Автосохранения",
     "ui.validator.info": "Возникла ошибка при чтении сохранения. Придётся удалить игру :( \nСовет: не надо трогать файлы если не знаешь что они делают",
     "ui.validator.title": "!!!ВНИМАНИЕ!!!",

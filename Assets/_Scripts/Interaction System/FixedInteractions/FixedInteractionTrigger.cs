@@ -15,7 +15,7 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 		private void OnTriggerEnter(Collider other) { if (other.tag == "Player") hasEntered = true; }
 		private void OnTriggerExit(Collider other) { if (other.tag == "Player") hasEntered = false; }
 
-		private void Update()
+		private void LateUpdate()
 		{
 			HandleInput();
 		}
@@ -28,7 +28,8 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 		private void HandleInput()
 		{
 			if (!hasEntered) return;
-
+		    GameManager.Instance.GetCursorHint().ShowHint(MouseHints.ToggleMode);
+			Debug.Log("hinr");
 			if (Input.GetKeyDown(KeyCode.E))
 			{
 				interactionMainScript.SetLocked(!interactionMainScript.GetIsLocked());
