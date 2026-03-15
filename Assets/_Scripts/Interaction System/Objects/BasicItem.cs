@@ -101,12 +101,14 @@ namespace Assets._Scripts.Interaction_System.Objects
 				if (transform.tag == "Seed")
 				{
 					PocketTicker.Instance.AddSeed();
-					Destroy(gameObject);
+                    GameObject.Find("PortalParticles").GetComponent<ParticleSystem>().Play();
+                    Destroy(gameObject);
 				}
 				if (transform.tag == "Log")
 				{
 					PocketTicker.Instance.AddLog();
-					Destroy(gameObject);
+					GameObject.Find("PortalParticles").GetComponent<ParticleSystem>().Play();
+                    Destroy(gameObject);
 				}
 				if (transform.tag == "Smola")
 				{
