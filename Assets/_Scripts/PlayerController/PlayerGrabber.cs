@@ -515,7 +515,7 @@ public class PlayerGrabber : MonoBehaviour
 
 		if (grabbedObject == null) { return; }
 
-		if (!cameraController.GetShouldRotate())
+		if (!cameraController.GetShouldRotate() && !playerRb.GetComponent<PlayerController>().GetCanWalk())
 		{
 			Plane grabbedPlane = new Plane(cameraController.transform.forward, grabbedObject.transform.position);
 			grabPivot.transform.position = grabbedPlane.ClosestPointOnPlane(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(Vector3.Distance(grabbedObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)))); //(Vector3.Distance(grabbedObject.transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition)));

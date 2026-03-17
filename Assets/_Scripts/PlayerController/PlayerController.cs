@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour, ISavable
 
 	public void SetCanWalk(bool isWalking) { this.canWalk = isWalking; }
 
+	public bool GetCanWalk() => canWalk;
+
 	private Rigidbody rb;
 
 	private Transform cameraPivotTransform;
