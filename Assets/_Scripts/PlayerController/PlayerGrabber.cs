@@ -101,7 +101,7 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.GetIn);
 				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 10)
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 5)
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.EnterPocket);
 				}
@@ -313,7 +313,7 @@ public class PlayerGrabber : MonoBehaviour
 		{
 			if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
 			{
-				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat")
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 18)
 				{
 					cameraController.MountFiat(hit.collider.GetComponentInParent<MetlaController>());
 				}
