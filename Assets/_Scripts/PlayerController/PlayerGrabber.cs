@@ -97,7 +97,7 @@ public class PlayerGrabber : MonoBehaviour
 			}
 			if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
 			{
-				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat")
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 18)
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.GetIn);
 				}
