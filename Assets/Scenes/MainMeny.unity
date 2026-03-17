@@ -6532,7 +6532,7 @@ PrefabInstance:
       objectReference: {fileID: 145944570}
     - target: {fileID: 4199383300945244810, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
       propertyPath: m_RenderMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4199383300945244810, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
       propertyPath: m_SortingOrder
@@ -17837,7 +17837,7 @@ Canvas:
   m_GameObject: {fileID: 1084572520}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 145944570}
   m_PlaneDistance: 0.1
   m_PixelPerfect: 0
