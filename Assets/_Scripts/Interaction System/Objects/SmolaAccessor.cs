@@ -41,7 +41,8 @@ public class SmolaAccessor : MonoBehaviour
 		//collector.Move(delta);
 		//infuser.ChangeSmole(delta * direction);
 
-		shader.SetFloat("_FillPercentage", PocketTicker.Instance.GetSmola() / 50f);
+		//shader.SetFloat("_FillPercentage", PocketTicker.Instance.GetSmola() / 50f);
+		shader.SetFloat("_FillPercentage", 1f);
 		if (Mathf.Abs(delta) > 0.1f && !source.isPlaying)
 		{
 			source.Play();
