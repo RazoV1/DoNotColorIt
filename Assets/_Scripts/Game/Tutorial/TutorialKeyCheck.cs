@@ -36,6 +36,10 @@ public class TutorialKeyCheck : MonoBehaviour
 				yield return new WaitForSeconds(4);
 				tutorialManager.ProgressTutorial(tutorialId);
 				key = KeyCode.None; break;
+			case "ctrl":
+
+				key = KeyCode.LeftControl; 
+				break;
 		}
 		if (key != KeyCode.None)
 		{

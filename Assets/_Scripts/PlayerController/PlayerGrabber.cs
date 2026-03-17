@@ -67,6 +67,10 @@ public class PlayerGrabber : MonoBehaviour
 		RaycastHit hit;
 		if (isGrabbing)
 		{
+			if (grabbedObject == null)
+			{
+				return;
+			}
 			if (grabbedObject.tag == "Pounder" || grabbedObject.tag == "Kapot" || grabbedObject.tag == "Lever")
 			{
 				GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
@@ -270,11 +274,11 @@ public class PlayerGrabber : MonoBehaviour
 				}
 				else if (hit.collider.tag == "Kapot")
 				{
-					GameManager.Instance.GetTutorial().ProgressTutorial("back");
+					GameManager.Instance.GetTutorial().ProgressTutorial("openTrunk");
 				}
 				else if (hit.collider.name.ToLower().Contains("axe"))
 				{
-					GameManager.Instance.GetTutorial().ProgressTutorial("axe");
+					GameManager.Instance.GetTutorial().ProgressTutorial("axePick");
 				}
 				else if (hit.collider.tag == "Sponge")
 				{
@@ -313,10 +317,10 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					cameraController.MountFiat(hit.collider.GetComponentInParent<MetlaController>());
 				}
-				if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 10)
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 5)
 				{
 					//GameManager.Instance.GetTutorial().ProgressTutorial(4);
-					GameManager.Instance.GetTutorial().ProgressTutorial("inside");
+					GameManager.Instance.GetTutorial().ProgressTutorial("jump");
 					GameManager.Instance.ChangeDimensions(2);
 				}
 				return;

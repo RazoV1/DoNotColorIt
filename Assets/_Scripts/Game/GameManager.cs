@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviour, ISavable
 			{
 				if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
 				{
-					tutorialManager.ProgressTutorial("ctrl");
+					tutorialManager.ProgressTutorial("talk");
 				}
 				if (book.GetShowTask()) { return; }
 				npc.SetGaveTask(true);

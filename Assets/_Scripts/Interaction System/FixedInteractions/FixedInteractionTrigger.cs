@@ -56,6 +56,7 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 			Debug.Log("hinr");
 			if (Input.GetKeyDown(KeyCode.E))
 			{
+				GameManager.Instance.GetTutorial().ProgressTutorial("infuserPress");
 				interactionMainScript.SetLocked(!interactionMainScript.GetIsLocked());
 			}
 		}

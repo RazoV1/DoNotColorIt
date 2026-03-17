@@ -17446,7 +17446,10 @@ MonoBehaviour:
   - tutorialName: ad
     toShow:
     - {fileID: 1814574531}
-  - tutorialName: ad
+  - tutorialName: ctrl
+    toShow:
+    - {fileID: 1814574531}
+  - tutorialName: last
     toShow:
     - {fileID: 1814574531}
   additionalTutorials:

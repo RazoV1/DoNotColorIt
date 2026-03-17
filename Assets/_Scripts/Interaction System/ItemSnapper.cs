@@ -52,6 +52,10 @@ public class ItemSnapper : MonoBehaviour
 			collision.transform.position = snapPlace.position;
 			collision.transform.rotation = snapPlace.transform.rotation;
 			waitorRoutine = StartCoroutine(Waitor());
+			if (snappedItem.name == "Axe")
+			{
+				GameManager.Instance.GetTutorial().ProgressTutorial("axeOnCar");
+			}
 		}
 	}
 
@@ -70,6 +74,10 @@ public class ItemSnapper : MonoBehaviour
             collision.transform.position = snapPlace.position;
             collision.transform.rotation = snapPlace.transform.rotation;
             waitorRoutine = StartCoroutine(Waitor());
+			if (snappedItem.name == "Axe")
+			{
+				GameManager.Instance.GetTutorial().ProgressTutorial("axeOnCar");
+			}
         }
     }
 }

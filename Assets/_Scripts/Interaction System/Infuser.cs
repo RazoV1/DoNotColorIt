@@ -121,7 +121,7 @@ public class Infuser : MonoBehaviour, ISavable
 		if (dustInside == null)
 		{
 			//GameManager.Instance.GetTutorial().ProgressTutorial(8);
-			GameManager.Instance.GetTutorial().ProgressTutorial("infuserPut");
+			GameManager.Instance.GetTutorial().ProgressTutorial("infuserDrop");
 			dustInside = dust;
 			volume = dust.GetVolume();
 			color = dust.GetColor();
