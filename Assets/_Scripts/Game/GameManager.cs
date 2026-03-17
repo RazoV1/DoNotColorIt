@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour, ISavable
 		}
 		else if (IsCorrectColor(color, bucket.GetColor()))
 		{
+			if (npc.GetIsCompleted()) return;
 			Destroy(bucket.gameObject);
 			if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
 			{
@@ -233,7 +234,7 @@ public class GameManager : MonoBehaviour, ISavable
 		SaveManager saveManager = SaveManager.Instance;
 		saveManager.SaveFloat("dimension", currentDimension);
 		saveManager.SaveFloat("currentTaskIndex", currentTaskIndex);
-		saveManager.SaveString("currentNpcTaskName",currentNpcTaskName);
+		saveManager.SaveString("currentNpcTaskName", currentNpcTaskName);
 	}
 
 	public void SyncData(SavablePrefab data)
