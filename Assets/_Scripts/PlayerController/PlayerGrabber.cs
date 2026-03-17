@@ -82,7 +82,7 @@ public class PlayerGrabber : MonoBehaviour
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(ray, out hit))
 		{
-			if (hit.collider.tag == "Pounder" || hit.collider.tag == "Kapot" || hit.collider.tag == "Lever")
+			if ((hit.collider.tag == "Pounder" || hit.collider.tag == "Kapot" || hit.collider.tag == "Lever") && Vector3.Distance(ray.origin, hit.point) < maxGrabDistance);
 			{
 				GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
 			}
@@ -101,11 +101,11 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.ToggleInfuser);
 				}
-				if (cameraController.GetShouldRotate() && hit.collider.tag == "Mortar")
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Mortar")
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.ToggleMode);
 				}
-				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 18)
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 18)
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.GetIn);
 				}

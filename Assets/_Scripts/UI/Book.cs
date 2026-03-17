@@ -23,6 +23,8 @@ public class Book : MonoBehaviour, ISavable
 
 	public bool IsBookOpen() => bookCanvas.activeSelf;
 
+	private bool stashedCursor = false;
+
 	private void Awake()
 	{
 		SubscribeToSaveEvent();
@@ -41,6 +43,7 @@ public class Book : MonoBehaviour, ISavable
 
 	public void ToggleBook()
 	{
+		if (!FindObjectOfType<PlayerController>().GetCanWalk()) return;
 		bookCanvas.SetActive(!bookCanvas.activeSelf);
 		//GameManager.Instance.GetTutorial().ProgressTutorial(6);
 		Time.timeScale = bookCanvas.activeSelf ? 0.0001f : 1f;
