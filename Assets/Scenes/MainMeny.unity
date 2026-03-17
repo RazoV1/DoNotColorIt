@@ -17377,37 +17377,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialManager
   questLinesByIndex:
-  - tutorialName: carSit
+  - tutorialName: talk
     toShow:
     - {fileID: 1814574531}
-  - tutorialName: space
+  - tutorialName: openTrunk
     toShow:
     - {fileID: 1814574531}
-  - tutorialName: w
-    toShow:
-    - {fileID: 1814574531}
-  - tutorialName: ad
-    toShow:
-    - {fileID: 1814574531}
-  - tutorialName: ctrl
-    toShow:
-    - {fileID: 1814574531}
-  - tutorialName: back
-    toShow:
-    - {fileID: 1814574531}
-  - tutorialName: axe
+  - tutorialName: axePick
     toShow:
     - {fileID: 1814574531}
   - tutorialName: treeCut
     toShow:
     - {fileID: 1814574531}
-  - tutorialName: logs
+  - tutorialName: logsPut
     toShow:
     - {fileID: 1814574531}
-  - tutorialName: resin
-    toShow:
-    - {fileID: 1814574531}
-  - tutorialName: inside
+  - tutorialName: jump
     toShow:
     - {fileID: 1814574531}
   - tutorialName: smalWalk
@@ -17428,13 +17413,16 @@ MonoBehaviour:
   - tutorialName: dusted
     toShow:
     - {fileID: 1814574531}
-  - tutorialName: infuserPut
-    toShow:
-    - {fileID: 1814574531}
-  - tutorialName: valveSpin
+  - tutorialName: infuserDrop
     toShow:
     - {fileID: 1814574531}
   - tutorialName: logsBurn
+    toShow:
+    - {fileID: 1814574531}
+  - tutorialName: infuserPress
+    toShow:
+    - {fileID: 1814574531}
+  - tutorialName: valveSpin
     toShow:
     - {fileID: 1814574531}
   - tutorialName: leverPull
@@ -17443,7 +17431,22 @@ MonoBehaviour:
   - tutorialName: leave
     toShow:
     - {fileID: 1814574531}
-  - tutorialName: last
+  - tutorialName: axeOnCar
+    toShow:
+    - {fileID: 1814574531}
+  - tutorialName: carSit
+    toShow:
+    - {fileID: 1814574531}
+  - tutorialName: space
+    toShow:
+    - {fileID: 1814574531}
+  - tutorialName: w
+    toShow:
+    - {fileID: 1814574531}
+  - tutorialName: ad
+    toShow:
+    - {fileID: 1814574531}
+  - tutorialName: ad
     toShow:
     - {fileID: 1814574531}
   additionalTutorials:
