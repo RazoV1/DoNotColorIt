@@ -1,4 +1,5 @@
 using Assets._Scripts.Interaction_System.Interfaces;
+using Assets._Scripts.Interaction_System.Objects;
 using UnityEngine;
 
 public class PlayerRotator : MonoBehaviour
@@ -39,6 +40,7 @@ public class PlayerRotator : MonoBehaviour
 			grabber.StopGrabbing();
 			return;
 		}
+		
 		//Quaternion rotation = cameraController.GetRotationFromMouseInput(false);
 
 		//rotatingTransform.rotation = Quaternion.Inverse(rotation);
@@ -59,7 +61,7 @@ public class PlayerRotator : MonoBehaviour
 	{
 		if (!grabber.GetIsGrabbing()) return;
 		InteractableObject rotatingObjectClass = grabber.GetGrabbedObject();
-		if (!(rotatingObjectClass is IRotatable))
+		if (!(rotatingObjectClass is IRotatable) || rotatingObjectClass is PivotedItem)
 		{
 			return;
 		}
