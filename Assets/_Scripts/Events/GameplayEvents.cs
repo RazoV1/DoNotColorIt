@@ -22,5 +22,7 @@ namespace Assets._Scripts.Events
 		public static UnityEvent<int> OnNpcTick = new UnityEvent<int>();
 
 		public static UnityEvent OnDusted = new UnityEvent();
+
+		public static UnityEvent OnInfused = new UnityEvent();
 	}
 }

@@ -170,7 +170,7 @@ public class Infuser : MonoBehaviour, ISavable
 			GameManager.Instance.GetTutorial().ProgressTutorial("leverPull");
 			//GameManager.Instance.GetTutorial().ProgressTutorial(10);
 			currrentTemperature = 0;
-
+			GameplayEvents.OnInfused.Invoke();
 			Debug.Log("<color=green>Cook");
 		}
 	}

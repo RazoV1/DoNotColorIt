@@ -33,6 +33,9 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 				case "Mortar":
 					GameplayEvents.OnDusted.AddListener(Drop);
 					break;
+				case "Infuser":
+					GameplayEvents.OnInfused.AddListener(Drop);
+					break;
 			}
 		}
 
@@ -42,6 +45,9 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 			{
 				case "Mortar":
 					GameplayEvents.OnDusted.RemoveListener(Drop);
+					break;
+				case "Infuser":
+					GameplayEvents.OnInfused.RemoveListener(Drop);
 					break;
 			}
 		}
