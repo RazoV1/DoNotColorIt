@@ -97,6 +97,14 @@ public class PlayerGrabber : MonoBehaviour
 			}
 			if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
 			{
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Infuser")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.ToggleInfuser);
+				}
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Mortar")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.ToggleMode);
+				}
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 18)
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.GetIn);
@@ -515,8 +523,9 @@ public class PlayerGrabber : MonoBehaviour
 
 		if (grabbedObject == null) { return; }
 
-		if (!cameraController.GetShouldRotate() && !playerRb.GetComponent<PlayerController>().GetCanWalk())
+		if (!cameraController.GetShouldRotate() && !GetComponent<PlayerController>().GetCanWalk())
 		{
+			Debug.Log("Projecting");
 			Plane grabbedPlane = new Plane(cameraController.transform.forward, grabbedObject.transform.position);
 			grabPivot.transform.position = grabbedPlane.ClosestPointOnPlane(Camera.main.ScreenPointToRay(Input.mousePosition).GetPoint(Vector3.Distance(grabbedObject.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition)))); //(Vector3.Distance(grabbedObject.transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition)));
 		}

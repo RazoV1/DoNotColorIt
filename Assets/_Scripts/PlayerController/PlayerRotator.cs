@@ -17,6 +17,7 @@ public class PlayerRotator : MonoBehaviour
 
 	private void HandleInput()
 	{
+		if (!grabber.GetComponent<PlayerController>().GetCanWalk()) return;
 		if (Input.GetMouseButtonDown(1))
 		{
 			HandleMouseButtonPressed();
