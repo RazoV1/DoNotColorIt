@@ -153,6 +153,7 @@
     "tutorial.output.w": "Now try flying <color=orange>forward with W.</color>",
     "tutorial.output.ad": "Now try <color=orange>turning with A/D.</color>",
     "tutorial.output.ctrl": "To descend, <color=orange>hold Ctrl.</color>",
-    "tutorial.output.last": "That's everything — now <color=orange>fly over to Lev</color> and give him a hand!"
+    "tutorial.output.last": "That's everything — now <color=orange>fly over to Lev</color> and give him a hand!",
+    "tutorial.output.talkLeo": "T - close"
   }
 }

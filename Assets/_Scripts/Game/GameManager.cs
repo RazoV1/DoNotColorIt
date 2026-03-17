@@ -124,10 +124,14 @@ public class GameManager : MonoBehaviour, ISavable
 		{
 			if (npc.GetIsCompleted()) return;
 			Destroy(bucket.gameObject);
-			if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
+			if (npc.GetName() == "DedMiron")
 			{
 				//GameManager.Instance.GetTutorial().ProgressTutorial(11);
 				GameManager.Instance.GetTutorial().ProgressTutorial("leave");
+			}
+			else if (npc.GetName() == "Lev")
+			{
+				GameManager.Instance.GetTutorial().ProgressTutorial("last");
 			}
 			dialogue.InvokeDialogue(npc.GetName(), $"{clusterIndex}");
 			npc.SetCompleted(true);

@@ -55,10 +55,10 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 		private void HandleInput()
 		{
 			if (!hasEntered) return;
-			if (!interactionMainScript.GetIsLocked())
-			{
-				GameManager.Instance.GetCursorHint().ShowHint(hintName);
-			}
+			//if (!interactionMainScript.GetIsLocked())
+			//{
+			//	GameManager.Instance.GetCursorHint().ShowHint(hintName);
+			//}
 			Debug.Log("hinr");
 			if (Input.GetKeyDown(KeyCode.E))
 			{

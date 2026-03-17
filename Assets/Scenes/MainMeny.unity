@@ -17448,6 +17448,9 @@ MonoBehaviour:
   - tutorialName: last
     toShow:
     - {fileID: 1814574531}
+  - tutorialName: talkLeo
+    toShow:
+    - {fileID: 1814574531}
   additionalTutorials:
   - {fileID: 1816947629}
   - {fileID: 1658088329}

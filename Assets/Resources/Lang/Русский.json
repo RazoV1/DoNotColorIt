@@ -153,6 +153,7 @@
     "tutorial.output.w": "Теперь попробуй полететь<color=orange> вперед на W</color>",
     "tutorial.output.ad": "Теперь попробуй<color=orange> повернуть машину на A/D</color>",
     "tutorial.output.ctrl": "Чтобы снизиться, <color=orange>зажми CTRL</color>",
-    "tutorial.output.last": "Ну вот и все,<color=orange> лети ко Льву</color> и помоги ему!"
+    "tutorial.output.last": "Ну вот и все,<color=orange> лети ко Льву</color> и помоги ему!",
+    "tutorial.output.talkLeo": "T - закрыть"
   }
 }
