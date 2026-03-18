@@ -1,9 +1,11 @@
 using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class MenuManager : MonoBehaviour, ISavable
 {
@@ -17,8 +19,12 @@ public class MenuManager : MonoBehaviour, ISavable
 	[SerializeField] private Slider soundEffectsSlider;
 	[Header("Префабы UI элементов")]
 	[SerializeField] private GameObject languageButtonPrefab;
+    [SerializeField] private GameObject videoPlayerPrefab;
+    [SerializeField] private GameObject buttons;
+    [SerializeField] private GameObject image;
+    private GameObject currentVideoPlayer;
 
-	private void Awake()
+    private void Awake()
 	{
 		Debug.Log("Добавили слушатель");
 		SubscribeToSaveEvent();
@@ -27,29 +33,68 @@ public class MenuManager : MonoBehaviour, ISavable
 
 	public void NewGame()
 	{
-		SaveManager saveManager = SaveManager.Instance;
-		saveManager.ClearAllCathy();
-		saveManager.LoadSave();
-		GameManager.Instance.ChangeDimensions(1);
-		gameObject.SetActive(false);
+		StartCoroutine(StartDelay());
 	}
 
-	public void Continue()
+	IEnumerator StartDelay()
 	{
-		SaveManager saveManager = SaveManager.Instance;
-		saveManager.LoadSave();
-		int dimensionind = (int)SaveManager.Instance.GetFloat("dimension");
-		GameManager.Instance.ChangeDimensions(dimensionind);
-		if (dimensionind != 0)
-		{
-			gameObject.SetActive(false);
-		}
-		else
-		{
-			gameObject.SetActive(true);
-			saveManager.ActivateValidator();
-		}
-	}
+        buttons.SetActive(false);
+        image.SetActive(false);
+
+        if (currentVideoPlayer != null)
+            Destroy(currentVideoPlayer);
+
+        currentVideoPlayer = Instantiate(videoPlayerPrefab);
+        VideoPlayer vp = currentVideoPlayer.GetComponent<VideoPlayer>();
+		vp.targetCamera = Camera.main;
+        vp.Play();
+
+        yield return new WaitForSeconds(7);
+
+        Destroy(currentVideoPlayer);
+        SaveManager saveManager = SaveManager.Instance;
+        saveManager.ClearAllCathy();
+        saveManager.LoadSave();
+        GameManager.Instance.ChangeDimensions(1);
+        buttons.SetActive(true);
+        image.SetActive(true);
+        gameObject.SetActive(false);
+    }
+
+	IEnumerator ContinueDelay()
+	{
+        SaveManager saveManager = SaveManager.Instance;
+        saveManager.LoadSave();
+        int dimensionind = (int)SaveManager.Instance.GetFloat("dimension");
+        buttons.SetActive(false);
+        image.SetActive(false);
+
+        if (currentVideoPlayer != null)
+            Destroy(currentVideoPlayer);
+
+        currentVideoPlayer = Instantiate(videoPlayerPrefab);
+        VideoPlayer vp = currentVideoPlayer.GetComponent<VideoPlayer>();
+        vp.targetCamera = Camera.main;
+        vp.Play();
+
+        yield return new WaitForSeconds(7);
+        GameManager.Instance.ChangeDimensions(dimensionind);
+        if (dimensionind != 0)
+        {
+
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            saveManager.ActivateValidator();
+        }
+    }
+
+    public void Continue()
+	{
+		StartCoroutine(ContinueDelay());
+    }
 
 	public void InitializeUI()
 	{

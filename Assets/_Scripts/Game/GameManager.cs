@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour, ISavable
 	[SerializeField] private Book book;
 	[SerializeField] private MenuManager menuManager;
 	[SerializeField] private CursorHint cursorHint;
-	[SerializeField] private VideoPlayer videoPlayer;
 
     public TutorialManager GetTutorial() => tutorialManager;
 
@@ -191,11 +190,6 @@ public class GameManager : MonoBehaviour, ISavable
 
 	private IEnumerator DimensionChangeEnum(int index)
 	{
-		if (index == 1)
-		{
-			videoPlayer.Play();
-			yield return new WaitForSeconds(6);
-		}
 		string loadingString = LanguageManager.Instance.GetTranslatable("ui.loading.text");
 		AsyncOperation operation = SceneManager.LoadSceneAsync(index);
 		while (!operation.isDone)
