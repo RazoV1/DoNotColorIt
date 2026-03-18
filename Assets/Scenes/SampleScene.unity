@@ -55730,7 +55730,7 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: c626f518ab6dce74f92bcc0929449692, type: 3}
     npcName: 
   - id: 1
-    color: {r: 0, g: 1, b: 0, a: 1}
+    color: {r: 0, g: 0.6509804, b: 0, a: 1}
     image: {fileID: 21300000, guid: c626f518ab6dce74f92bcc0929449692, type: 3}
     npcName: 
   houseToPaint:
