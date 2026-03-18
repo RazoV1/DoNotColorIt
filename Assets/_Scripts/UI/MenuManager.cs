@@ -49,15 +49,15 @@ public class MenuManager : MonoBehaviour, ISavable
 		vp.targetCamera = Camera.main;
         vp.Play();
 
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(8);
 
-        Destroy(currentVideoPlayer);
         SaveManager saveManager = SaveManager.Instance;
         saveManager.ClearAllCathy();
         saveManager.LoadSave();
         GameManager.Instance.ChangeDimensions(1);
         buttons.SetActive(true);
         image.SetActive(true);
+        //Destroy(currentVideoPlayer);
         gameObject.SetActive(false);
     }
 
@@ -77,7 +77,9 @@ public class MenuManager : MonoBehaviour, ISavable
         vp.targetCamera = Camera.main;
         vp.Play();
 
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(8);
+        buttons.SetActive(true);
+        image.SetActive(true);
         GameManager.Instance.ChangeDimensions(dimensionind);
         if (dimensionind != 0)
         {

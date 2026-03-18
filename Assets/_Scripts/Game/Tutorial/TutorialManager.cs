@@ -95,7 +95,8 @@ public class TutorialManager : MonoBehaviour, ISavable
 		{
 			SetVisibleForLine(questLinesByIndex[index],true);
 			Reload();
-		}
+            TutorialEvents.OnTutorialIndexChanged.Invoke(questLinesByIndex[index].tutorialName);
+        }
 		catch
 		{
 			tutorialIndicator.SetActive(false);
@@ -139,7 +140,8 @@ public class TutorialManager : MonoBehaviour, ISavable
 				HideAllTutorials();
 			}
 		}
-		TutorialEvents.OnTutorialIndexChanged.Invoke(questLinesByIndex[tutorialIndex].tutorialName);
+        if (tutorialIndex < questLinesByIndex.Count)
+            TutorialEvents.OnTutorialIndexChanged.Invoke(questLinesByIndex[tutorialIndex].tutorialName);
         taskanim.SetTrigger("IsNewTask");
         Debug.Log("IsNewTask");
     }
