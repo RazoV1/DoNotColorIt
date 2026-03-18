@@ -118,7 +118,7 @@ public class DialogueEvent : MonoBehaviour
         }
         if (dialogueName == "task")
         {
-            GameManager.Instance.GetBook().ToggleBook();
+            GameManager.Instance.GetBook().ToggleBook(bypassLock:true);
         }
         dialogueMenu.SetActive(false);
         dialogueText.gameObject.SetActive(false);

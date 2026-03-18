@@ -107,9 +107,13 @@ public class GameManager : MonoBehaviour, ISavable
 			}
 			if (!npc.GetGaveTask() && npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count > 0)
 			{
-				if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
+				if (npc.GetName() == "DedMiron")
 				{
 					tutorialManager.ProgressTutorial("talk");
+				}
+				else if (npc.GetName() == "Lev")
+				{
+					GameManager.Instance.GetTutorial().ProgressTutorial("last");
 				}
 				if (book.GetShowTask()) { return; }
 				npc.SetGaveTask(true);

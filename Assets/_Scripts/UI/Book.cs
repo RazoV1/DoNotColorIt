@@ -41,9 +41,9 @@ public class Book : MonoBehaviour, ISavable
 		GameplayEvents.OnPauseToggled.Invoke(bookCanvas.activeSelf);
 	}
 
-	public void ToggleBook()
+	public void ToggleBook(bool bypassLock = false)
 	{
-		if (!FindObjectOfType<PlayerController>().GetCanWalk()) return;
+		if (!FindObjectOfType<PlayerController>().GetCanWalk() && !bypassLock) return;
 		bookCanvas.SetActive(!bookCanvas.activeSelf);
 		//GameManager.Instance.GetTutorial().ProgressTutorial(6);
 		Time.timeScale = bookCanvas.activeSelf ? 0.0001f : 1f;
