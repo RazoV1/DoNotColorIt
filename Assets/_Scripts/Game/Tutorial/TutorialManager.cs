@@ -85,6 +85,12 @@ public class TutorialManager : MonoBehaviour, ISavable
 		{
 			return;
 		}
+		if (index >= questLinesByIndex.Count - 1)
+		{
+			tutorialIndicator.SetActive(false);
+			HideAllTutorials();
+			return;
+		}
 		try
 		{
 			SetVisibleForLine(questLinesByIndex[index],true);
@@ -115,8 +121,8 @@ public class TutorialManager : MonoBehaviour, ISavable
 		}
 		tutorialIndex++;
         taskanim.SetTrigger("IsNewTask");
-		Debug.Log("IsNewTask");
-        if (tutorialIndex >= questLinesByIndex.Count)
+		Debug.Log(tutorialIndex);
+        if (tutorialIndex >= questLinesByIndex.Count -1 || (questLinesByIndex[tutorialIndex].tutorialName == "talkLeo" && tutorialIndex >= questLinesByIndex.Count-1))
 		{
 			tutorialIndicator.SetActive(false);
 			HideAllTutorials();
@@ -163,8 +169,8 @@ public class TutorialManager : MonoBehaviour, ISavable
 	private void SkipTutorial(int placeholder)
 	{
 		HideAllTutorials();
-		tutorialIndex = 12;
-		ProgressTutorial("last");
+		tutorialIndex = questLinesByIndex.Count - 1;
+		ProgressTutorial("talkLeo");
 	}
 
 	private void ShowAdditionalTutorial(int id)
