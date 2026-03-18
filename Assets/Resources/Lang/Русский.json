@@ -151,7 +151,7 @@
     "tutorial.output.carSit": "А теперь<color=orange> залезай  машину на Е</color>",
     "tutorial.output.space": "Теперь зажми <color=orange>Пробел</color>, чтобы подняться в воздух. ",
     "tutorial.output.w": "Теперь попробуй полететь<color=orange> вперед на W</color>",
-    "tutorial.output.ad": "Теперь попробуй<color=orange> повернуть машину на A/D</color>",
+    "tutorial.output.ad": "Теперь попробуй<color=orange> повернуть машину на A/D</color>, <color=orange>наклон - Мышь</color>",
     "tutorial.output.ctrl": "Чтобы снизиться, <color=orange>зажми CTRL</color>",
     "tutorial.output.last": "Ну вот и все,<color=orange> лети ко Льву</color> и помоги ему!",
     "tutorial.output.talkLeo": "T - закрыть"

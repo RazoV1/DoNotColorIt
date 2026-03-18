@@ -151,7 +151,7 @@
     "tutorial.output.carSit": "Now <color=orange>get in the car with E.</color>",
     "tutorial.output.space": "Hold <color=orange>Space</color> to lift off.",
     "tutorial.output.w": "Now try flying <color=orange>forward with W.</color>",
-    "tutorial.output.ad": "Now try <color=orange>turning with A/D.</color>",
+    "tutorial.output.ad": "Try <color=orange>turning the car with A/D</color>, <color=orange>tilt — Mouse</color>",
     "tutorial.output.ctrl": "To descend, <color=orange>hold Ctrl.</color>",
     "tutorial.output.last": "That's everything — now <color=orange>fly over to Lev</color> and give him a hand!",
     "tutorial.output.talkLeo": "T - close"
