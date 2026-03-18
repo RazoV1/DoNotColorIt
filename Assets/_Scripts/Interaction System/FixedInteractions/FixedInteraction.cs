@@ -14,16 +14,24 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 		[SerializeField] private Transform cameraPoint;
 		[SerializeField] private float transitionTime;
 		[SerializeField] private List<ConditionalGrabbable> grabbables;
+		[SerializeField] private List<DefaultGrabbablePosForName> defaultPos;
 		[SerializeField] private List<string> grabbablesToFindByName;
 
 		private Transform cameraPivot;
 		private CameraController cameraController;
-	    private PlayerController playerController;
+		private PlayerController playerController;
 
 		private bool isLocked = false;
 		private Coroutine routine;
 
 		public bool GetIsLocked() => isLocked;
+
+		[Serializable]
+		public struct DefaultGrabbablePosForName
+		{
+			public string prefabName;
+			public Transform point;
+		}
 
 		public void SetLocked(bool isLocked)
 		{
@@ -31,11 +39,22 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 			FindCameraComponents();
 			playerController.SetCanWalk(!isLocked);
 			cameraController.SetShouldRotate(!isLocked);
-			Cursor.lockState = isLocked ?  CursorLockMode.None : CursorLockMode.Locked;
+			Cursor.lockState = isLocked ? CursorLockMode.None : CursorLockMode.Locked;
 			Cursor.visible = isLocked;
-			SetGrabbables(isLocked);	
+			SetGrabbables(isLocked);
 			cameraController.SetFollowBody(isLocked ? cameraPoint : null);
 
+			if (isLocked)
+			{
+				try
+				{
+					grabbables.ForEach(grabbable => grabbable.transform.position = defaultPos.First(x => x.prefabName == grabbable.GetPrefabName()).point.position);
+				}
+				catch (Exception e)
+				{
+					Debug.Log("<color=red>Ошибка FixedInteraction! " + e);
+				}
+			}
 			//if (routine != null)  StopCoroutine(routine);
 			//if (isLocked)
 			//{
@@ -43,7 +62,7 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 			//}
 		}
 
-	    private void SetGrabbables(bool shouldBeGrabbed)
+		private void SetGrabbables(bool shouldBeGrabbed)
 		{
 			if (grabbables.Count == 0) return;
 			grabbables.ForEach(x => x.SetCanBeGrabbed(shouldBeGrabbed));
