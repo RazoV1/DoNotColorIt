@@ -32,7 +32,7 @@ namespace Assets._Scripts.NPC
 					yield return null;
 				}
 				tick = tick == 120 ? 0 : tick + 1;
-				Debug.Log($"Invoking NPC tick {tick}");
+				//Debug.Log($"Invoking NPC tick {tick}");
 				GameplayEvents.OnNpcTick.Invoke(tick);
 			}
 		}

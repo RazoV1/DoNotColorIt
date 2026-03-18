@@ -17434,6 +17434,9 @@ MonoBehaviour:
   - tutorialName: leave
     toShow:
     - {fileID: 1814574531}
+  - tutorialName: wrongColor
+    toShow:
+    - {fileID: 1814574531}
   - tutorialName: carSit
     toShow:
     - {fileID: 1814574531}

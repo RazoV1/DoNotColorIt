@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Assets._Scripts.Events;
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour, ISavable
 	}
 
 	/// <summary>
-	///"Nonetheless� We must finish this. If these wrongdoings can finally cut this vicious cycle once and for all� I will gladly take this burden upon myself."
+	///"Nonetheless… We must finish this. If these wrongdoings can finally cut this vicious cycle once and for all… I will gladly take this burden upon myself."
 	/// </summary>
 	/// <param name="npc"></param>
 	/// <param name="color"></param>
@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour, ISavable
 			{
 				//GameManager.Instance.GetTutorial().ProgressTutorial(11);
 				GameManager.Instance.GetTutorial().ProgressTutorial("leave");
+				GameManager.Instance.GetTutorial().ProgressTutorial("wrongColor"); //Расходимся, это гг 🐳
 			}
 			else if (npc.GetName() == "Lev")
 			{
@@ -150,7 +151,7 @@ public class GameManager : MonoBehaviour, ISavable
 		else
 		{
 			Destroy(bucket.gameObject);
-			if (npc.GetName() == "DedMiron" || npc.GetName() == "Lev")
+			if (npc.GetName() == "DedMiron" )
 			{
 				//GameManager.Instance.GetTutorial().ProgressTutorial(11);
 				GameManager.Instance.GetTutorial().ProgressTutorial("leave");
