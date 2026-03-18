@@ -36035,7 +36035,7 @@ PrefabInstance:
       objectReference: {fileID: 1275291251}
     - target: {fileID: 1473754290234306770, guid: 9674382a912afb44bb25c66af808651c, type: 3}
       propertyPath: order.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1473754290234306770, guid: 9674382a912afb44bb25c66af808651c, type: 3}
       propertyPath: 'order.Array.data[0]'
@@ -90848,11 +90848,15 @@ PrefabInstance:
       objectReference: {fileID: 1275291251}
     - target: {fileID: 1473754290234306770, guid: 9674382a912afb44bb25c66af808651c, type: 3}
       propertyPath: order.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1473754290234306770, guid: 9674382a912afb44bb25c66af808651c, type: 3}
       propertyPath: 'order.Array.data[0]'
       value: talk
+      objectReference: {fileID: 0}
+    - target: {fileID: 1473754290234306770, guid: 9674382a912afb44bb25c66af808651c, type: 3}
+      propertyPath: 'order.Array.data[1]'
+      value: leave
       objectReference: {fileID: 0}
     - target: {fileID: 4303539589350633921, guid: 9674382a912afb44bb25c66af808651c, type: 3}
       propertyPath: m_Name

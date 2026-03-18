@@ -17389,9 +17389,6 @@ MonoBehaviour:
   - tutorialName: jump
     toShow:
     - {fileID: 1814574531}
-  - tutorialName: smalWalk
-    toShow:
-    - {fileID: 1814574531}
   - tutorialName: eggPress
     toShow:
     - {fileID: 1814574531}
