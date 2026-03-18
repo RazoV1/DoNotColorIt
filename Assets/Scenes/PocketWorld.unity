@@ -17674,7 +17674,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9.1
+  m_fontSize: 17.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -29473,7 +29473,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7.8
+  m_fontSize: 17.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -43351,8 +43351,8 @@ MonoBehaviour:
   currrentTemperature: 0
   logs: 0
   smolaVolume: 0
-  logBurnDuration: 15
-  logAdditor: 500
+  logBurnDuration: 1
+  logAdditor: 300
   smolaAddSpeed: 0
   burnsource: {fileID: 3469287836629245324}
   colorSource: {fileID: 3469287836629245324}
@@ -53988,13 +53988,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478975813}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.97570693, y: 0, z: 0, w: 0.21907996}
+  m_LocalRotation: {x: 0.9987981, y: -0.0000000018626449, z: -0.000000029802319, w: 0.049015813}
   m_LocalPosition: {x: -0.37900046, y: 0.46270138, z: 0.09719998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652711424558}
-  m_LocalEulerAnglesHint: {x: 154.69, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 174.381, y: 0, z: 0}
 --- !u!1001 &1479842793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54715,7 +54715,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7.57
+  m_fontSize: 17.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -71053,7 +71053,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8.25
+  m_fontSize: 17.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
