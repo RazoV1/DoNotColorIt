@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour, ISavable
 		if (index == 1)
 		{
 			videoPlayer.Play();
-			yield return new WaitForSeconds(9);
+			yield return new WaitForSeconds(6);
 		}
 		string loadingString = LanguageManager.Instance.GetTranslatable("ui.loading.text");
 		AsyncOperation operation = SceneManager.LoadSceneAsync(index);
