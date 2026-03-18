@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets._Scripts.Interaction_System.Objects
 {
-	public class FixedAxis : BasicItem
+	public class FixedAxis : ConditionalGrabbable
 	{
 		[SerializeField] private Vector3 rotationAxis;
 		[SerializeField] public float rotationRadius;

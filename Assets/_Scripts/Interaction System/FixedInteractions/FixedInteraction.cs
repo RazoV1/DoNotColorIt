@@ -70,6 +70,7 @@ namespace Assets._Scripts.Interaction_System.FixedInteractions
 
 		private void FindGrabbablesByName()
 		{
+			if (grabbablesToFindByName.Count == 0) return;
 			grabbables = FindObjectsByType<ConditionalGrabbable>(FindObjectsSortMode.InstanceID).ToList().Where(x => grabbablesToFindByName.Contains(x.GetPrefabName())).ToList();
 		}
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets._Scripts.Interaction_System.Objects
 {
-	internal class ConditionalGrabbable : BasicItem
+	public class ConditionalGrabbable : BasicItem
 	{
 		private bool canBeGrabbed = false;
 
