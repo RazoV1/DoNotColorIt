@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
 	[SerializeField] private float wobbleTransitionSpeed;
 	[Header("Starting Rotation")]
 	[SerializeField]private Transform pivot;
-	Vector3 rotation = Vector3.zero;
+	[SerializeField]Vector3 rotation = Vector3.zero;
 	const string xAxis = "Mouse X"; //Strings in direct code generate garbage, storing and re-using them creates no garbage
 	const string yAxis = "Mouse Y";
 	private bool shouldRotateCamera = true;
