@@ -65,27 +65,22 @@ public class PlayerGrabber : MonoBehaviour
 			itemStats.SetActive(false);
 		}
 		RaycastHit hit;
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (isGrabbing)
 		{
 			if (grabbedObject == null)
 			{
 				return;
 			}
-			if (grabbedObject.tag == "Pounder" || grabbedObject.tag == "Kapot" || grabbedObject.tag == "Lever")
+			if (Physics.Raycast(ray, out hit))
 			{
-				GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
+				if ((hit.collider.tag == "Pounder" || hit.collider.tag == "Kapot" || hit.collider.tag == "Lever") && hit.distance < maxGrabDistance)
+				{
+					//GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
+				}
 			}
-
 			//GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
 			return;
-		}
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (Physics.Raycast(ray, out hit))
-		{
-			if ((hit.collider.tag == "Pounder" || hit.collider.tag == "Kapot" || hit.collider.tag == "Lever") && Vector3.Distance(ray.origin, hit.point) < maxGrabDistance);
-			{
-				GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
-			}
 		}
 		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
 		{
@@ -150,6 +145,18 @@ public class PlayerGrabber : MonoBehaviour
 					}
 					return;
 				}
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Axe")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
+				}
+				else if (!cameraController.GetShouldRotate() && hit.collider.tag == "Pounder")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
+				}
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Kapot")
+				{
+					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
+				}
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Interactable")
 				{
 					monsterObj = hit.collider.GetComponent<PigmentMonster>();
@@ -200,18 +207,6 @@ public class PlayerGrabber : MonoBehaviour
 						itemStat.text = itemName;
 						itemStats.SetActive(true);
 					}
-				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Axe")
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
-				}
-				else if (!cameraController.GetShouldRotate() && hit.collider.tag == "Pounder")
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
-				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Kapot")
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
 				}
 				else
 				{
