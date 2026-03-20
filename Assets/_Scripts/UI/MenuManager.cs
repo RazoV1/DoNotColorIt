@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
@@ -22,6 +23,8 @@ public class MenuManager : MonoBehaviour, ISavable
     [SerializeField] private GameObject videoPlayerPrefab;
     [SerializeField] private GameObject buttons;
     [SerializeField] private GameObject image;
+	[SerializeField] private GameObject loadingImage;
+    [SerializeField] private RawImage rawImage;
     private GameObject currentVideoPlayer;
 
     private void Awake()
@@ -36,17 +39,22 @@ public class MenuManager : MonoBehaviour, ISavable
 		StartCoroutine(StartDelay());
 	}
 
-	IEnumerator StartDelay()
-	{
+    IEnumerator StartDelay()
+    {
         buttons.SetActive(false);
         image.SetActive(false);
+        loadingImage.SetActive(true);
+        rawImage.gameObject.SetActive(true);
 
         if (currentVideoPlayer != null)
             Destroy(currentVideoPlayer);
 
         currentVideoPlayer = Instantiate(videoPlayerPrefab);
         VideoPlayer vp = currentVideoPlayer.GetComponent<VideoPlayer>();
-		vp.targetCamera = Camera.main;
+        RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 0);
+        vp.renderMode = VideoRenderMode.RenderTexture;
+        vp.targetTexture = rt;
+        rawImage.texture = rt;
         vp.Play();
 
         yield return new WaitForSeconds(8);
@@ -55,35 +63,50 @@ public class MenuManager : MonoBehaviour, ISavable
         saveManager.ClearAllCathy();
         saveManager.LoadSave();
         GameManager.Instance.ChangeDimensions(1);
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 1);
+
+        rawImage.gameObject.SetActive(false);
+        rt.Release();
+        Destroy(rt);
+        loadingImage.SetActive(false);
         buttons.SetActive(true);
         image.SetActive(true);
-        //Destroy(currentVideoPlayer);
         gameObject.SetActive(false);
     }
-
-	IEnumerator ContinueDelay()
-	{
+    IEnumerator ContinueDelay()
+    {
         SaveManager saveManager = SaveManager.Instance;
         saveManager.LoadSave();
         int dimensionind = (int)SaveManager.Instance.GetFloat("dimension");
         buttons.SetActive(false);
         image.SetActive(false);
+        loadingImage.SetActive(true);
+        rawImage.gameObject.SetActive(true);
 
         if (currentVideoPlayer != null)
             Destroy(currentVideoPlayer);
 
         currentVideoPlayer = Instantiate(videoPlayerPrefab);
         VideoPlayer vp = currentVideoPlayer.GetComponent<VideoPlayer>();
-        vp.targetCamera = Camera.main;
+        RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 0);
+        vp.renderMode = VideoRenderMode.RenderTexture;
+        vp.targetTexture = rt;
+        rawImage.texture = rt;
         vp.Play();
 
         yield return new WaitForSeconds(8);
+
+        GameManager.Instance.ChangeDimensions(dimensionind);
+
+        rawImage.gameObject.SetActive(false);
+        rt.Release();
+        Destroy(rt);
+        loadingImage.SetActive(false);
         buttons.SetActive(true);
         image.SetActive(true);
-        GameManager.Instance.ChangeDimensions(dimensionind);
+
         if (dimensionind != 0)
         {
-
             gameObject.SetActive(false);
         }
         else
