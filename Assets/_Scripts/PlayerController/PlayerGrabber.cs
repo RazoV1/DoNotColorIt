@@ -104,7 +104,7 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.GetIn);
 				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 4)
+				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 5)
 				{
 					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.EnterPocket);
 				}
@@ -320,7 +320,7 @@ public class PlayerGrabber : MonoBehaviour
 				{
 					cameraController.MountFiat(hit.collider.GetComponentInParent<MetlaController>());
 				}
-				if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 4)
+				if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 5)
 				{
 					//GameManager.Instance.GetTutorial().ProgressTutorial(4);
 					GameManager.Instance.GetTutorial().ProgressTutorial("jump");
