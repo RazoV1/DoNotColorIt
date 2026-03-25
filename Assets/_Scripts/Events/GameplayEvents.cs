@@ -24,5 +24,7 @@ namespace Assets._Scripts.Events
 		public static UnityEvent OnDusted = new UnityEvent();
 
 		public static UnityEvent OnInfused = new UnityEvent();
+
+		public static UnityEvent<bool> OnEnteredFixedInteractionMode = new UnityEvent<bool>();
 	}
 }

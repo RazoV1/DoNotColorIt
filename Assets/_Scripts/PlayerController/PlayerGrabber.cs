@@ -1,4 +1,4 @@
-using Assets._Scripts.Interaction_System.Interfaces;
+﻿using Assets._Scripts.Interaction_System.Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -17,10 +17,7 @@ public class PlayerGrabber : MonoBehaviour
 	[SerializeField] private float fixedAxisStability;
 	[SerializeField] private float maxGrabDistance;
 	[SerializeField] private float minGrabDistance;
-	[Header("MonsterStats")]
-	[SerializeField] private GameObject monsterStats;
-	[SerializeField] private List<TextMeshProUGUI> monsterStatsField;
-	[SerializeField] private List<Slider> monstersStats;
+
 	[Header("PigmentStats")]
 	[SerializeField] private GameObject pigmentStats;
 	[SerializeField] private List<TextMeshProUGUI> pigmentFields;
@@ -57,184 +54,29 @@ public class PlayerGrabber : MonoBehaviour
 		cameraPivotTransform = cameraController.transform;
 		startingGrabPivotPoint = grabPivot.transform.localPosition;
 	}
-
-	private void CastHint()
+	private bool CheckNPC(RaycastHit hit)
 	{
-		if (shouldShowItemStat)
+		if (hit.collider.tag != "Npc")
 		{
-			itemStats.SetActive(false);
+			foreach (NPCWaiter n in FindObjectsOfType<NPCWaiter>())
+			{
+				n.isPlayerInTrigger = false;
+			}
+			return false;
 		}
-		RaycastHit hit;
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		if (isGrabbing)
-		{
-			if (grabbedObject == null)
-			{
-				return;
-			}
-			if (Physics.Raycast(ray, out hit))
-			{
-				if ((hit.collider.tag == "Pounder" || hit.collider.tag == "Kapot" || hit.collider.tag == "Lever") && hit.distance < maxGrabDistance)
-				{
-					//GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
-				}
-			}
-			//GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
-			return;
-		}
-		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
-		{
-			Debug.Log("Tag of gameobj " + hit.collider.tag);
-			ConditionalGrabbable g = hit.collider.GetComponent<ConditionalGrabbable>();
-			if (g != null && !g.GetCanBeGrabbed())
-			{
-				return;
-			}
-			if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
-			{
-				if (cameraController.GetShouldRotate() && hit.collider.tag == "Infuser")
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.ToggleInfuser);
-				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Mortar")
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.ToggleMode);
-				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 18)
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.GetIn);
-				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Portal" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 5)
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.EnterPocket);
-				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Npc")
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(isTalking ? MouseHints.TalkMouse : MouseHints.Talk);
-					if (!isTalking)
-					{
-						var npc = hit.collider.GetComponentInParent<NPCWaiter>();
-						if (npc != null)
-							npc.isPlayerInTrigger = true;
-					}
+		if (isTalking) return false;
 
-				}
+		NPCWaiter npc = hit.collider.GetComponentInParent<NPCWaiter>();
+
+		if (npc != null) npc.isPlayerInTrigger = true;
 
 
-				else
-				{
-					if (monsterStats != null)
-					{
-						monsterStats.SetActive(false);
-					}
-					foreach (var npc in FindObjectsOfType<NPCWaiter>())
-						npc.isPlayerInTrigger = false;
-					GameManager.Instance.GetCursorHint().ClearHint();
-
-				}
-				return;
-			}
-			else
-			{
-				if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
-				{
-					GameManager.Instance.GetCursorHint().ClearHint();
-					if (monsterStats != null)
-					{
-						monsterStats.SetActive(false);
-					}
-					return;
-				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Axe")
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.horizontal);
-				}
-				else if (!cameraController.GetShouldRotate() && hit.collider.tag == "Pounder")
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
-				}
-				else if (cameraController.GetShouldRotate() && hit.collider.tag == "Kapot")
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
-				}
-				if (cameraController.GetShouldRotate() && hit.collider.tag == "Interactable")
-				{
-					monsterObj = hit.collider.GetComponent<PigmentMonster>();
-					if (monsterObj != null)
-					{
-						monsterStats.SetActive(true);
-						TutorialEvents.OnAdditionalTutorialTriggered.Invoke(0);
-						if (monsterObj.GetMonsterStats()["hunger"] >= 0.5f)
-						{
-							TutorialEvents.OnAdditionalTutorialTriggered.Invoke(1);
-						}
-						else if (monsterObj.GetMonsterStats()["disruptance"] >= 0.5f)
-						{
-							TutorialEvents.OnAdditionalTutorialTriggered.Invoke(2);
-						}
-						return;
-					}
-					else
-					{
-						if (monsterStats != null)
-						{
-							monsterStats.SetActive(false);
-						}
-					}
-					if (hit.collider.GetComponent<FixedAxis>())
-					{
-						if (hit.collider.GetComponent<FixedAxis>().GetRotationAxis() == new Vector3(1, 0, 0))
-						{
-							GameManager.Instance.GetCursorHint().ShowHint(MouseHints.vertical);
-							return;
-						}
-						else
-						{
-							GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Circular);
-							return;
-						}
-					}
-					else
-					{
-						GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Default);
-						if (!shouldShowItemStat) return;
-						string itemNameKey = $"ui.item.{hit.collider.GetComponent<BasicItem>().GetPrefabName()}";
-						string itemName = LanguageManager.Instance.GetTranslatable(itemNameKey);
-						if (itemName == itemNameKey)
-						{
-							return;
-						}
-						itemStat.text = itemName;
-						itemStats.SetActive(true);
-					}
-				}
-				else
-				{
-					GameManager.Instance.GetCursorHint().ShowHint(MouseHints.Default);
-					if (!shouldShowItemStat) return;
-					string itemNameKey = $"ui.item.{hit.collider.GetComponent<BasicItem>().GetPrefabName()}";
-					string itemName = LanguageManager.Instance.GetTranslatable(itemNameKey);
-					if (itemName == itemNameKey)
-					{
-						return;
-					}
-					itemStat.text = itemName;
-					itemStats.SetActive(true);
-				}
-			}
-		}
-		else
-		{
-			GameManager.Instance.GetCursorHint().ClearHint();
-			if (monsterStats != null)
-			{
-				monsterStats.SetActive(false);
-			}
-			foreach (var npc in FindObjectsOfType<NPCWaiter>())
-				npc.isPlayerInTrigger = false;
-		}
+		return true;
 	}
 
+	/// <summary>
+	/// Son 😭😭😭
+	/// </summary>
 	private void TryGrab()
 	{
 		if (isGrabbing)
@@ -253,11 +95,12 @@ public class PlayerGrabber : MonoBehaviour
 			{
 				if (!conditional.GetCanBeGrabbed()) return;
 			}
+
+			CheckNPC(hit);
 			if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
 			{
 				return;
 			}
-
 			//Debug.Log("Target!");
 			InteractableObject target = hit.collider.GetComponent<InteractableObject>();
 			if (target is FixedAxis)
@@ -402,8 +245,6 @@ public class PlayerGrabber : MonoBehaviour
 	private void LateUpdate()
 	{
 		HandleInput();
-		CastHint();
-		HandleMonsterStatsUpdate();
 	}
 
 	private JointDrive CreateJoint(bool useFixed, bool isKapot = false)
@@ -481,19 +322,7 @@ public class PlayerGrabber : MonoBehaviour
 		return go.transform;
 	}
 
-	private void HandleMonsterStatsUpdate()
-	{
-		if (monsterObj != null)
-		{
-			Dictionary<string, float> stats = monsterObj.GetMonsterStats();
-			List<string> list = stats.Keys.ToList();
-			for (int i = 0; i < monsterStatsField.Count; i++)
-			{
-				monsterStatsField[i].text = LanguageManager.Instance.GetTranslatable($"ui.monster_stats.{list[i]}") + $"{Mathf.Clamp((int)(stats[list[i]] * 100), 0, 100f)}%";
-				monstersStats[i].value = Mathf.Clamp((int)(stats[list[i]] * 100), 0, 100f);
-			}
-		}
-	}
+	public float GetGrabDistance() => maxGrabDistance;
 
 	private void HandleObjectHolding()
 	{

@@ -1,6 +1,7 @@
 ﻿using Assets._Scripts.Audio;
 using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
+using Assets._Scripts.PlayerController;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,14 @@ namespace Assets._Scripts.Delivery
 
         [SerializeField] private bool isMounted = false;
 
+		[SerializeField] private PlayerHinter hinter;
+
 		public Transform GetPivot() => pivot;
+
+		private void ToggleHints()
+		{
+			hinter.SetShouldHint(!isMounted);
+		}
 
 		public void SetIsMounted(bool isMounted, CameraController rider = null)
 		{
@@ -56,6 +64,9 @@ namespace Assets._Scripts.Delivery
 			}
 			rb.useGravity = !isMounted;
 			this.isMounted = isMounted;
+
+			ToggleHints();
+
 			kapot.isKinematic = isMounted;
 			kapot.transform.localEulerAngles = Vector3.zero;
 			kapot.GetComponent<MeshCollider>().enabled = !isMounted;
@@ -217,6 +228,7 @@ namespace Assets._Scripts.Delivery
 			if (isMounted)
 			{
 				GameObject.FindObjectOfType<CameraController>().MountFiat(this);
+				ToggleHints();
 			}
 
 
