@@ -32,6 +32,8 @@ public class DialogueEvent : MonoBehaviour
     [SerializeField] private TextAnimations textAnimations;
     [SerializeField] private VoicePlayer voicePlayer;
 
+    public bool IsTalking() => dialogueRoutine != null;
+
     public void Cancel()
     {
         try
@@ -117,10 +119,15 @@ public class DialogueEvent : MonoBehaviour
             }
             yield return null;
         }
-        if (dialogueName == "task")
-        {
-            GameManager.Instance.GetBook().ToggleBook(bypassLock:true);
-        }
+        if (dialogueName == "task" && !GameManager.Instance.GetBook().GetShowTask())
+		{
+			GameManager.Instance.GetBook().TakeTask(currentEventFolder);
+			GameManager.Instance.GetBook().ToggleBook(bypassLock:true);
+			while (!Input.GetMouseButtonDown(0))
+			{
+				yield return null;
+			}
+		}
         dialogueMenu.SetActive(false);
         dialogueText.gameObject.SetActive(false);
         leftCharacterName.gameObject.SetActive(false);
@@ -134,7 +141,12 @@ public class DialogueEvent : MonoBehaviour
             Debug.Log("<color=green>Пропускаем до таска!");
             InvokeDialogue(currentEventFolder,"task");
 
-		}
+        }
+        else
+        {
+            dialogueRoutine = null;
+            yield break;
+        }
 		//cameraController.SetShouldRotate(true);
 	}
 }

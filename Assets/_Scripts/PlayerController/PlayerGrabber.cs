@@ -83,6 +83,13 @@ public class PlayerGrabber : MonoBehaviour
 		{
 			CheckNPC(hit);
 		}
+		else
+		{
+			foreach (NPCWaiter n in FindObjectsOfType<NPCWaiter>())
+			{
+				n.isPlayerInTrigger = false;
+			}
+		}
 	}
 
 	/// <summary>

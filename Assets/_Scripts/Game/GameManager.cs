@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour, ISavable
 	public void StartDialogueForCurrentIndex(NPCWaiter npc, Color color, Bucket bucket = null)
 	{
 		int clusterIndex = Mathf.CeilToInt(currentTaskIndex / 2);
+		if (dialogue.IsTalking()) {Debug.Log("<color=red>Talking!Return"); return;  }
 		if (bucket == null)
 		{
 			if (!npc.GetWasIntroduced())
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour, ISavable
 					SetCurrentTaskName(npc.GetName());
 					dialogue.InvokeDialogue(npc.GetName(), "Hello",true);
 					Debug.Log("<color=green>Invoked special");
-					book.TakeTask(npc.GetName());
+					//book.TakeTask(npc.GetName());
 					npc.SetWasIntroduced();
 					return;
 				}
@@ -133,13 +134,13 @@ public class GameManager : MonoBehaviour, ISavable
 				{
 					GameManager.Instance.GetTutorial().ProgressTutorial("last");
 				}
-				if (book.GetShowTask()) { return; }
+				//if (book.GetShowTask()) { return; }
 				npc.SetGaveTask(true);
 				SetCurrentTaskName(npc.GetName());
 
 				Debug.Log("<color=red>Invoked trash 2");
 				dialogue.InvokeDialogue(npc.GetName(), "task");
-				book.TakeTask(npc.GetName());
+				if (book.GetShowTask()) { return; }
 			}
 			else if (npc.GetIsCompleted() || npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count == 0)
 			{
