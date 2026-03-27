@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour, ISavable
 				npc.SetWasIntroduced();
 				return;
 			}
-			if (npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count > 0)
+			if (npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count > 0 && !npc.GetIsCompleted())
 			{
 				if (npc.GetName() == "DedMiron")
 				{

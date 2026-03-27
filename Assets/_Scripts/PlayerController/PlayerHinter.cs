@@ -47,6 +47,7 @@ namespace Assets._Scripts.PlayerController
 
 		private void Awake()
 		{
+			monsterStats = monsterStats == null ? new GameObject("MOnsterStatsPlaceholder") : monsterStats; //SON 💔💔💔
 			hintableTags = hints.Select(hint => hint.tag).ToList();
 
 			gameManager = GameManager.Instance;
@@ -73,6 +74,7 @@ namespace Assets._Scripts.PlayerController
 
 		private void CastHint()
 		{
+			monsterStats.SetActive(false);
 			if (!shouldHint || playerGrabber.GetIsGrabbing())
 			{
 				hintScript.ShowHint(MouseHints.None);
@@ -119,6 +121,7 @@ namespace Assets._Scripts.PlayerController
 			PigmentMonster monsterObj = hit.collider.GetComponent<PigmentMonster>();
 			if (monsterObj != null)
 			{
+				monsterStats.SetActive(true);
 				Dictionary<string, float> stats = monsterObj.GetMonsterStats();
 				List<string> list = stats.Keys.ToList();
 				for (int i = 0; i < monsterStatsField.Count; i++)
