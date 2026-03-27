@@ -74,6 +74,10 @@ public class PlayerGrabber : MonoBehaviour
 		return true;
 	}
 
+	private void CastNpc()
+	{
+	}
+
 	/// <summary>
 	/// Son 😭😭😭
 	/// </summary>
@@ -91,12 +95,12 @@ public class PlayerGrabber : MonoBehaviour
 		{
 			//Debug.Log("Hit!");
 			ConditionalGrabbable conditional = hit.collider.GetComponent<ConditionalGrabbable>();
+			CheckNPC(hit);
 			if (conditional != null)
 			{
 				if (!conditional.GetCanBeGrabbed()) return;
 			}
 
-			CheckNPC(hit);
 			if (!interactableTags.Contains(hit.collider.tag) || Vector3.Distance(cameraPivotTransform.position, hit.point) > maxGrabDistance)
 			{
 				return;

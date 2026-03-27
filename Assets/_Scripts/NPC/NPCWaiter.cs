@@ -127,7 +127,7 @@ public class NPCWaiter : MonoBehaviour, ISavable
 
 	private void HandleInput()
 	{
-        if (isPlayerInTrigger && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerInTrigger && Input.GetMouseButtonDown(0))
         {
             GameManager.Instance.StartDialogueForCurrentIndex(this, tasks[0].color, bucketInTrigger);
             DialogStateIn();
@@ -137,7 +137,7 @@ public class NPCWaiter : MonoBehaviour, ISavable
 	public void Update()
 	{
 		HandleInput();
-		Debug.Log("!!!!!!!!!!!isPlayerInTrigger" + isPlayerInTrigger);
+		//Debug.Log("!!!!!!!!!!!isPlayerInTrigger" + isPlayerInTrigger);
     }
 
 	public void SubscribeToSaveEvent()

@@ -54,21 +54,22 @@ public class DialogueEvent : MonoBehaviour
         catch { }
     }
 
-    public void InvokeDialogue(string currentEventFolder, string dialogueName)
+    public void InvokeDialogue(string currentEventFolder, string dialogueName, bool shouldGiveTask = false)
     {
         DialogueModel dialogue = JsonAccessor.GetDialogueInfo(currentEventFolder, dialogueName);
         if (dialogue == null)
         {
+            Debug.Log($"<color=red>Нет диалога по адресу {currentEventFolder}/{dialogueName}");
             return;
         }
         dialogueMenu.SetActive(true);
         dialogueText.gameObject.SetActive(true);
         leftCharacterName.gameObject.SetActive(true);
-        dialogueRoutine = StartCoroutine(DialogueCycle(dialogue, dialogueName, currentEventFolder));
+        dialogueRoutine = StartCoroutine(DialogueCycle(dialogue, dialogueName, currentEventFolder,shouldGiveTask));
         //dialogueMenu.transform.eulerAngles = Camera.main.transform.eulerAngles;
     }
 
-    private IEnumerator DialogueCycle(DialogueModel model, string dialogueName, string currentEventFolder)
+    private IEnumerator DialogueCycle(DialogueModel model, string dialogueName, string currentEventFolder, bool shouldGiveTask = false)
     {
 
 		PlayerController playerController = GameObject.FindFirstObjectByType<PlayerController>();
@@ -127,6 +128,13 @@ public class DialogueEvent : MonoBehaviour
 		npcTicker.SetShouldTick(true);
 		grabber.SetIsTalking(false);
         playerController.SetCanWalk(true);
+
+        if (shouldGiveTask)
+        {
+            Debug.Log("<color=green>Пропускаем до таска!");
+            InvokeDialogue(currentEventFolder,"task");
+
+		}
 		//cameraController.SetShouldRotate(true);
 	}
 }

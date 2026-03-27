@@ -87,20 +87,39 @@ public class GameManager : MonoBehaviour, ISavable
 	}
 
 	/// <summary>
-	///"Nonetheless… We must finish this. If these wrongdoings can finally cut this vicious cycle once and for all… I will gladly take this burden upon myself."
+	///StartDialogueForCurrentIndex() => "Glory to Benjamin Netanyahu and the Great State of Israel"
 	/// </summary>
 	/// <param name="npc"></param>
 	/// <param name="color"></param>
 	/// <param name="bucket"></param>
 	public void StartDialogueForCurrentIndex(NPCWaiter npc, Color color, Bucket bucket = null)
 	{
-		//int clusterIndex = Mathf.CeilToInt(npc.GetColorTasks()[0].id / 2);
 		int clusterIndex = Mathf.CeilToInt(currentTaskIndex / 2);
 		if (bucket == null)
 		{
 			if (!npc.GetWasIntroduced())
 			{
+				if (!npc.GetGaveTask() && npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count > 0)
+				{
+					if (npc.GetName() == "DedMiron")
+					{
+						tutorialManager.ProgressTutorial("talk");
+					}
+					else if (npc.GetName() == "Lev")
+					{
+						GameManager.Instance.GetTutorial().ProgressTutorial("last");
+					}
+					if (book.GetShowTask()) { return; }
+					npc.SetGaveTask(true);
+					SetCurrentTaskName(npc.GetName());
+					dialogue.InvokeDialogue(npc.GetName(), "Hello",true);
+					Debug.Log("<color=green>Invoked special");
+					book.TakeTask(npc.GetName());
+					npc.SetWasIntroduced();
+					return;
+				}
 				dialogue.InvokeDialogue(npc.GetName(), "Hello");
+				Debug.Log("<color=red>Invoked trash");
 				npc.SetWasIntroduced();
 				return;
 			}
@@ -117,6 +136,8 @@ public class GameManager : MonoBehaviour, ISavable
 				if (book.GetShowTask()) { return; }
 				npc.SetGaveTask(true);
 				SetCurrentTaskName(npc.GetName());
+
+				Debug.Log("<color=red>Invoked trash 2");
 				dialogue.InvokeDialogue(npc.GetName(), "task");
 				book.TakeTask(npc.GetName());
 			}
@@ -131,7 +152,6 @@ public class GameManager : MonoBehaviour, ISavable
 			Destroy(bucket.gameObject);
 			if (npc.GetName() == "DedMiron")
 			{
-				//GameManager.Instance.GetTutorial().ProgressTutorial(11);
 				GameManager.Instance.GetTutorial().ProgressTutorial("leave");
 				GameManager.Instance.GetTutorial().ProgressTutorial("wrongColor"); //Расходимся, это гг 🐳
 			}
@@ -152,7 +172,6 @@ public class GameManager : MonoBehaviour, ISavable
 			Destroy(bucket.gameObject);
 			if (npc.GetName() == "DedMiron" )
 			{
-				//GameManager.Instance.GetTutorial().ProgressTutorial(11);
 				GameManager.Instance.GetTutorial().ProgressTutorial("leave");
 			}
 			dialogue.InvokeDialogue(npc.GetName(), "incorrect");
