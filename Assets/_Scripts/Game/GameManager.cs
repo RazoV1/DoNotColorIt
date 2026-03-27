@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour, ISavable
 				npc.SetWasIntroduced();
 				return;
 			}
-			if (!npc.GetGaveTask() && npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count > 0)
+			if (npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count > 0)
 			{
 				if (npc.GetName() == "DedMiron")
 				{
