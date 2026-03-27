@@ -71,7 +71,6 @@ public class DialogueEvent : MonoBehaviour
 
     private IEnumerator DialogueCycle(DialogueModel model, string dialogueName, string currentEventFolder, bool shouldGiveTask = false)
     {
-
 		PlayerController playerController = GameObject.FindFirstObjectByType<PlayerController>();
 		CameraController cameraController = GameObject.FindFirstObjectByType<CameraController>();
 
@@ -91,7 +90,8 @@ public class DialogueEvent : MonoBehaviour
         grabber.SetIsTalking(true);
         textAnimations.StartMoveText(leftTextPos, leftCharacterName.transform, 10f);
         textAnimations.StartMoveImage(rightPivotPos, imagesPivot, 10f);
-        for (int i = 0; i < replics.Count; i++)
+		yield return null;
+		for (int i = 0; i < replics.Count; i++)
         {
             string[] fullString = replics[i].Split(":");
             dialogueText.text = fullString[1];

@@ -47628,6 +47628,9 @@ MonoBehaviour:
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+  monsterStats: {fileID: 0}
+  monsterStatsField: []
+  monstersStats: []
 --- !u!1001 &1404982635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53546,6 +53549,7 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   autocorrectAmount: 5
   isMounted: 0
+  hinter: {fileID: 1404409063}
 --- !u!65 &1653577218
 BoxCollider:
   m_ObjectHideFlags: 0

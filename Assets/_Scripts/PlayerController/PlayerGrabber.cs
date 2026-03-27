@@ -76,6 +76,13 @@ public class PlayerGrabber : MonoBehaviour
 
 	private void CastNpc()
 	{
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+
+		if (Physics.Raycast(ray, out hit) && Vector3.Distance(hit.point, ray.origin) <= maxGrabDistance)
+		{
+			CheckNPC(hit);
+		}
 	}
 
 	/// <summary>
@@ -95,7 +102,7 @@ public class PlayerGrabber : MonoBehaviour
 		{
 			//Debug.Log("Hit!");
 			ConditionalGrabbable conditional = hit.collider.GetComponent<ConditionalGrabbable>();
-			CheckNPC(hit);
+			//CheckNPC(hit);
 			if (conditional != null)
 			{
 				if (!conditional.GetCanBeGrabbed()) return;
@@ -249,6 +256,7 @@ public class PlayerGrabber : MonoBehaviour
 	private void LateUpdate()
 	{
 		HandleInput();
+		CastNpc();
 	}
 
 	private JointDrive CreateJoint(bool useFixed, bool isKapot = false)

@@ -38,7 +38,12 @@ namespace Assets._Scripts.PlayerController
 			public bool isConditional;
 		}
 
-		public void SetShouldHint(bool shouldHint) { this.shouldHint = shouldHint; }
+		public void SetShouldHint(bool shouldHint)
+		{
+			this.shouldHint = shouldHint;
+			Debug.Log($"<color=yellow>{this.shouldHint}");
+			CastHint();
+		}
 
 		private void Awake()
 		{
@@ -68,7 +73,7 @@ namespace Assets._Scripts.PlayerController
 
 		private void CastHint()
 		{
-			if (playerGrabber.GetIsGrabbing())
+			if (!shouldHint || playerGrabber.GetIsGrabbing())
 			{
 				hintScript.ShowHint(MouseHints.None);
 				return;

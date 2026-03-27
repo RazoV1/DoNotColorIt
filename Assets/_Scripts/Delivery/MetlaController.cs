@@ -52,6 +52,7 @@ namespace Assets._Scripts.Delivery
 
 		private void ToggleHints()
 		{
+			Debug.Log($"<color=yellow>{!isMounted}");
 			hinter.SetShouldHint(!isMounted);
 		}
 
