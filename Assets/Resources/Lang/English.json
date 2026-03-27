@@ -155,6 +155,7 @@
     "tutorial.output.ctrl": "To descend, <color=orange>hold Ctrl.</color>",
     "tutorial.output.last": "That's everything — now <color=orange>fly over to Lev</color> and give him a hand!",
     "tutorial.output.talkLeo": "T — close",
-    "tutorial.output.wrongColor": "Wrong color. Try different pigments or add some resin."
+    "tutorial.output.wrongColor": "Wrong color. Try different pigments or add some resin.",
+	"ui.book.pigment_t":"<gradient=\"RGBW\">PIGMENT"
   }
 }

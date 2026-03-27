@@ -155,6 +155,7 @@
     "tutorial.output.ctrl": "Чтобы снизиться, <color=orange>зажми CTRL</color>",
     "tutorial.output.last": "Ну вот и все,<color=orange> лети ко Льву</color> и помоги ему!",
     "tutorial.output.talkLeo": "T - закрыть",
-    "tutorial.output.wrongColor":"Не тот цвет. Попробуй другие пигменты или добавь смолы."
+    "tutorial.output.wrongColor":"Не тот цвет. Попробуй другие пигменты или добавь смолы.",
+	"ui.book.pigment_t":"<gradient=\"RGBW\">ПИГМЕНТ"
   }
 }
