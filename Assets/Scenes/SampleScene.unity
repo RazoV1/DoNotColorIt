@@ -37577,6 +37577,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 626879825333870598, guid: ae0c065df95157b4d8dad33cc6238cdd, type: 3}
   m_PrefabInstance: {fileID: 1123285569}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1123285571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4763794128239863253, guid: ae0c065df95157b4d8dad33cc6238cdd, type: 3}
+  m_PrefabInstance: {fileID: 1123285569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1123533726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47532,6 +47537,7 @@ MonoBehaviour:
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+  pointer: {fileID: 1123285571}
   monsterStats: {fileID: 0}
   monsterStatsField: []
   monstersStats: []

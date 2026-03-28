@@ -48982,6 +48982,7 @@ MonoBehaviour:
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+  pointer: {fileID: 2069720252}
   monsterStats: {fileID: 425683428}
   monsterStatsField:
   - {fileID: 1504770623}
@@ -69391,6 +69392,11 @@ PrefabInstance:
 --- !u!224 &2069720251 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 626879825333870598, guid: ae0c065df95157b4d8dad33cc6238cdd, type: 3}
+  m_PrefabInstance: {fileID: 2069720250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2069720252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4763794128239863253, guid: ae0c065df95157b4d8dad33cc6238cdd, type: 3}
   m_PrefabInstance: {fileID: 2069720250}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2072125472

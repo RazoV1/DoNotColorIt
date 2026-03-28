@@ -13,6 +13,7 @@ namespace Assets._Scripts.PlayerController
 	public class PlayerHinter : MonoBehaviour
 	{
 		[SerializeField] private List<HintByTag> hints;
+		[SerializeField] private GameObject pointer;
 		private List<string> hintableTags;
 		private float hintDistance;
 		private CursorHint hintScript;
@@ -49,7 +50,7 @@ namespace Assets._Scripts.PlayerController
 		{
 			monsterStats = monsterStats == null ? new GameObject("MOnsterStatsPlaceholder") : monsterStats; //SON 💔💔💔
 			hintableTags = hints.Select(hint => hint.tag).ToList();
-
+		    
 			gameManager = GameManager.Instance;
 			hintScript = gameManager.GetCursorHint();
 
@@ -70,7 +71,11 @@ namespace Assets._Scripts.PlayerController
 			CastHint();
 		}
 
-		private void SetFixedInteractionsBool(bool value) { isInFixedInteractionsMode = value; }
+		private void SetFixedInteractionsBool(bool value)
+		{
+			isInFixedInteractionsMode = value;
+			pointer.SetActive(!value);
+		}
 
 		private void CastHint()
 		{
