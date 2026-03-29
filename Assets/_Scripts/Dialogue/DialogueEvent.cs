@@ -123,6 +123,7 @@ public class DialogueEvent : MonoBehaviour
 		{
 			GameManager.Instance.GetBook().TakeTask(currentEventFolder);
 			GameManager.Instance.GetBook().ToggleBook(bypassLock:true);
+			GameManager.Instance.GetTutorial().ProgressTutorial("talk");
 			while (!Input.GetMouseButtonDown(0))
 			{
 				yield return null;

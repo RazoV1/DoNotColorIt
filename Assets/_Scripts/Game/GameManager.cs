@@ -102,11 +102,7 @@ public class GameManager : MonoBehaviour, ISavable
 			{
 				if (!npc.GetGaveTask() && npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count > 0)
 				{
-					if (npc.GetName() == "DedMiron")
-					{
-						tutorialManager.ProgressTutorial("talk");
-					}
-					else if (npc.GetName() == "Lev")
+					if (npc.GetName() == "Lev")
 					{
 						GameManager.Instance.GetTutorial().ProgressTutorial("last");
 					}
@@ -126,11 +122,7 @@ public class GameManager : MonoBehaviour, ISavable
 			}
 			if (npc.GetColorTasks().Where(x => x.id == currentTaskIndex).ToList().Count > 0 && !npc.GetIsCompleted())
 			{
-				if (npc.GetName() == "DedMiron")
-				{
-					tutorialManager.ProgressTutorial("talk");
-				}
-				else if (npc.GetName() == "Lev")
+				if (npc.GetName() == "Lev")
 				{
 					GameManager.Instance.GetTutorial().ProgressTutorial("last");
 				}
