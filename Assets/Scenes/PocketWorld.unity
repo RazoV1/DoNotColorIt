@@ -49191,6 +49191,10 @@ MonoBehaviour:
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+  - tag: Seed
+    hintType: 6
+    tutorialIndexLock: 0
+    isConditional: 0
   pointer: {fileID: 2069720252}
   monsterStats: {fileID: 425683428}
   monsterStatsField:

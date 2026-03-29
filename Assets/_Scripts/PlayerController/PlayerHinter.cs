@@ -47,7 +47,7 @@ namespace Assets._Scripts.PlayerController
 		}
 
 		private void Awake()
-		{
+		{                                                              
 			monsterStats = monsterStats == null ? new GameObject("MOnsterStatsPlaceholder") : monsterStats; //SON 💔💔💔
 			hintableTags = hints.Select(hint => hint.tag).ToList();
 		    
