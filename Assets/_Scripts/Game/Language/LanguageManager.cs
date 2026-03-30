@@ -18,7 +18,7 @@ public class LanguageManager : MonoBehaviour,ISavable
 
 	private string path = Application.isEditor ? Application.dataPath + "/Resources/Lang" : Directory.GetCurrentDirectory() + "/Lang";
 
-	[SerializeField] private string currentLanguage = "Русский.json";
+	[SerializeField] private string currentLanguage = "English.json";
 
 	public string GetPath() => path;
 
