@@ -24976,7 +24976,7 @@ MonoBehaviour:
   shouldBeWorkable: 0
   idealColor: {r: 0, g: 0, b: 1, a: 1}
   pigmentPrefab: {fileID: 1813578752216205196, guid: d64c6acf779ada94385f4437a10d784f, type: 3}
-  painSensitivity: 10
+  painSensitivity: 7
   neededWork: 1
   patCoef: 0.05
   monsterName: blue
@@ -25005,6 +25005,7 @@ MonoBehaviour:
   purr: {fileID: 8300000, guid: 4eae391d8e770da49895e3451039b686, type: 3}
   eat: {fileID: 8300000, guid: cfb0af6f6d63f9141b3ece1f37e25fa9, type: 3}
   scream: {fileID: 8300000, guid: 1d6f5e1cb156c6c49b9f1e72a32783d7, type: 3}
+  painScream: {fileID: 8300000, guid: e9ea3ce6055d4c64f81f6d648d44b107, type: 3}
 --- !u!114 &658971857919190870
 MonoBehaviour:
   m_ObjectHideFlags: 0

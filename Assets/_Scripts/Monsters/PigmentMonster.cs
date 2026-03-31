@@ -54,6 +54,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	[SerializeField] private AudioClip purr;
 	[SerializeField] private AudioClip eat;
 	[SerializeField] private AudioClip scream;
+	[SerializeField] private AudioClip painScream;
 	
 	private PigmentMonster neigbour;
 	[Header("Config Values")]
@@ -408,7 +409,8 @@ public class PigmentMonster : MonoBehaviour, ISavable
 			//health -= patCoef;
 			//health = Mathf.Clamp(health, 0, 1f);
 			Debug.Log("<color=yellow>Больна");
-		}
+			monsterSound.PlayOneShot(painScream);
+        }
 		//else
 		//{
 		Debug.Log($"<color=green>{force * Time.deltaTime}");
