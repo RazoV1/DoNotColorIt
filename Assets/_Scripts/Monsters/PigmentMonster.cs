@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.Rendering.HableCurve;
 
 public class PigmentMonster : MonoBehaviour, ISavable
@@ -26,6 +27,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	[SerializeField] private MonsterNameTag nameTag;
 	[SerializeField] private MonsterAge age;
 	[SerializeField] private GameObject eggPrefab;
+	[SerializeField] private Slider workBar;
 	private bool hasLaidEgg = false;
 	private float workProgress;
 	private bool isInTheFence;
@@ -52,6 +54,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	[SerializeField] private AudioClip purr;
 	[SerializeField] private AudioClip eat;
 	[SerializeField] private AudioClip scream;
+	[SerializeField] private AudioClip painScream;
 	
 	private PigmentMonster neigbour;
 	[Header("Config Values")]
@@ -101,7 +104,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		{
 			nameTag.SetRandomNameTag();
 		}
-	}
+    }
 
 	public void ResetLaidEgg()
 	{
@@ -288,7 +291,9 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		SubscribeToSaveEvent();
 		rb = GetComponent<Rigidbody>();
 		ticker = StartCoroutine(MonsterTicker());
-	}
+        workBar.maxValue = neededWork;
+        workBar.gameObject.SetActive(false);
+    }
 
 	private void TickStats(int ticks)
 	{
@@ -397,30 +402,34 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	private void CalculateWork(float force)
 	{
-		Debug.Log($"<color=green>Pat with force {force}");
+        workBar.gameObject.SetActive(true);
+        Debug.Log($"<color=green>Pat with force {force}");
 		if (force >= painSensitivity)
 		{
 			//health -= patCoef;
 			//health = Mathf.Clamp(health, 0, 1f);
 			Debug.Log("<color=yellow>Больна");
-		}
+			monsterSound.PlayOneShot(painScream);
+        }
 		//else
 		//{
 		Debug.Log($"<color=green>{force * Time.deltaTime}");
 		monsterSound.pitch = Random.Range(0.95f, 1.15f);
 		monsterSound.PlayOneShot(brush);
-
-		monsterSound.pitch = Random.Range(0.95f, 1.15f);
+		
+        monsterSound.pitch = Random.Range(0.95f, 1.15f);
 		monsterSound.PlayOneShot(purr);
 
 		workProgress += force;
-		surprise = 0.3f;
+		workBar.value = workProgress;
+        surprise = 0.3f;
 		//}
 		if (workProgress >= neededWork)
 		{
-			workProgress = 0;
+            workBar.gameObject.SetActive(false);
+            workProgress = 0;
 			SpawnPigment();
-		}
+        }
 	}
 
 	private void OnCollisionEnter(Collision collision)

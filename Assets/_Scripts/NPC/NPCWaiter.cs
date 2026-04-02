@@ -181,6 +181,7 @@ public class NPCWaiter : MonoBehaviour, ISavable
             agent.isStopped = true;
         }
         var anim = GetComponent<Animator>();
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
         if (anim != null)
         {
 			if(anim.GetBool("Walking"))
