@@ -166,6 +166,7 @@ public class Infuser : MonoBehaviour, ISavable
 			bucket.Fill(TryCalculateColor());
 			colorSource.PlayOneShot(AudioManager.Instance.ColorCooked);
 			dustInside = null;
+			color = new Color();
 			smolaVolume = 0f;
 			GameManager.Instance.GetTutorial().ProgressTutorial("leverPull");
 			//GameManager.Instance.GetTutorial().ProgressTutorial(10);
@@ -192,17 +193,21 @@ public class Infuser : MonoBehaviour, ISavable
 	{
 		SaveManager saveManager = SaveManager.Instance;
 
-        if (dustInside != null)
-        {
-			dustInside.SaveData();
-        }
-        SpitDust();
+        
+        //SpitDust();
 
-        //saveManager.SaveFloat("infuserR",color.r);
-		//saveManager.SaveFloat("infuserG",color.g);
-		//saveManager.SaveFloat("infuserB",color.b);
+        saveManager.SaveFloat("infuserR",color.r);
+		saveManager.SaveFloat("infuserG",color.g);
+		saveManager.SaveFloat("infuserB",color.b);
+		Debug.Log($"<color=yellow>Сохранили цвет {color.r} {color.g} {color.b}");
 
 		saveManager.SaveFloat("infuserSmola",smolaVolume);
+
+
+		if (dustInside != null)
+		{
+			Destroy(dustInside.gameObject);
+		}
 	}
 
 	private void SyncDataEmpty() { SyncData(new SavablePrefab()); }
@@ -211,15 +216,26 @@ public class Infuser : MonoBehaviour, ISavable
 	{
 		SaveManager saveManager = SaveManager.Instance;
 
-		//float infuserR = saveManager.GetFloat("infuserR");
-		//float infuserG = saveManager.GetFloat("infuserG");
-		//float infuserB = saveManager.GetFloat("infuserB");
+		float infuserR = saveManager.GetFloat("infuserR");
+		float infuserG = saveManager.GetFloat("infuserG");
+		float infuserB = saveManager.GetFloat("infuserB");
 
 		float infuserSmoal = saveManager.GetFloat("infuserSmola");
 
-		//Color newColor = new Color(infuserR,infuserG, infuserB);
+		Color newColor = new Color(infuserR,infuserG, infuserB);
+		if (newColor != Color.black)
+		{
+			var dust = Instantiate(dustPrefab, dustSpitPivot).GetComponent<DustedColorPigment>();
+			dust.InitializePigment(newColor, 1);
 
+			PutDustInside(dust);
+			Debug.Log($"<color=yellow>Загрузили цвет {newColor.r} {newColor.g} {newColor.b}");
+		}
+		else
+		{
+			Debug.Log("<color=black>Black color in ifuser");
+		}
 		this.smolaVolume = infuserSmoal;
-		//color = newColor;
+		color = newColor;
 	}
 }
