@@ -37,6 +37,7 @@ namespace Assets._Scripts.PlayerController
 			public MouseHints hintType;
 			public int tutorialIndexLock;
 			public bool isConditional;
+			public HintActivator activator;
 		}
 
 		public void SetShouldHint(bool shouldHint)
@@ -105,6 +106,7 @@ namespace Assets._Scripts.PlayerController
 		{
 			if (hint.isConditional && !isInFixedInteractionsMode) return false;
 			if (hint.tutorialIndexLock != 0 && hint.tutorialIndexLock > gameManager.GetTutorial().GetTutorialIndex()) return false;
+			if (hint.activator != null && !hint.activator.ShouldProvideHint()) return false;
 
 			hintScript.ShowHint(hint.hintType);
 			return true;

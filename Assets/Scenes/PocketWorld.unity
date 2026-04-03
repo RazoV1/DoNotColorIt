@@ -49146,58 +49146,72 @@ MonoBehaviour:
     hintType: 8
     tutorialIndexLock: 0
     isConditional: 1
+    activator: {fileID: 0}
   - tag: Kapot
     hintType: 8
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Lever
     hintType: 8
     tutorialIndexLock: 0
     isConditional: 1
+    activator: {fileID: 0}
   - tag: Infuser
     hintType: 11
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 3469287836629245326}
   - tag: Mortar
     hintType: 10
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Fiat
     hintType: 1
     tutorialIndexLock: 18
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Portal
     hintType: 4
     tutorialIndexLock: 5
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Npc
     hintType: 9
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Interactable
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Log
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Bucket
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Sponge
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Egg
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 0}
   - tag: Seed
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
+    activator: {fileID: 0}
   pointer: {fileID: 2069720252}
   monsterStats: {fileID: 425683428}
   monsterStatsField:
@@ -80859,6 +80873,7 @@ GameObject:
   - component: {fileID: 1030550985}
   - component: {fileID: 3469287836629245324}
   - component: {fileID: 3469287836629245325}
+  - component: {fileID: 3469287836629245326}
   m_Layer: 0
   m_Name: Infuser
   m_TagString: Infuser
@@ -82596,6 +82611,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &3469287836629245326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148976437396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243a98bb677643f4f8b98b5df8645459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets._Scripts.PlayerController.HintActivator
 --- !u!33 &3469287837086125706
 MeshFilter:
   m_ObjectHideFlags: 0

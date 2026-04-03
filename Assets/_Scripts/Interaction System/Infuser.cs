@@ -1,6 +1,7 @@
 using Assets._Scripts.Audio;
 using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
+using Assets._Scripts.PlayerController;
 using Assets._Scripts.Utils;
 using System.Collections;
 using UnityEngine;
@@ -32,6 +33,8 @@ public class Infuser : MonoBehaviour, ISavable
 
 	[Header("Prefabs")]
 	[SerializeField] private GameObject dustPrefab;
+
+	private HintActivator hintActivator;
 	private float timeBurning;
 
 	public void SetBucket(Bucket bucket) { this.bucket = bucket; }
@@ -57,6 +60,7 @@ public class Infuser : MonoBehaviour, ISavable
 
 	public void Start()
 	{
+		hintActivator = GetComponent<HintActivator>();
 		StartCoroutine(Burn());
 		SubscribeToSaveEvent();
 		outputMaterial = Instantiate(outputMaterial);
@@ -84,6 +88,7 @@ public class Infuser : MonoBehaviour, ISavable
 					if (currrentTemperature >= neededTemperature)
 					{
 						GameManager.Instance.GetTutorial().ProgressTutorial("logsBurn");
+						hintActivator.SetShouldProvideHint(true);
 						//GameManager.Instance.GetTutorial().ProgressTutorial(9);
 					}
 					yield return null;
@@ -168,6 +173,7 @@ public class Infuser : MonoBehaviour, ISavable
 			dustInside = null;
 			color = new Color();
 			smolaVolume = 0f;
+			hintActivator.SetShouldProvideHint(false);
 			GameManager.Instance.GetTutorial().ProgressTutorial("leverPull");
 			//GameManager.Instance.GetTutorial().ProgressTutorial(10);
 			currrentTemperature = 0;
