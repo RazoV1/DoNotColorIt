@@ -16,6 +16,9 @@ public class FixedInteraction : MonoBehaviour
 	[SerializeField] private List<DefaultGrabbablePosForName> defaultPos;
 	[SerializeField] private List<string> grabbablesToFindByName;
 
+	[Header("Tutorial Lock")]
+	[SerializeField]private int tutorialLock;
+
 	private Transform cameraPivot;
 	private CameraController cameraController;
 	private PlayerController playerController;
@@ -34,6 +37,7 @@ public class FixedInteraction : MonoBehaviour
 
 	public void SetLocked(bool isLocked)
 	{
+		if (GameManager.Instance.GetTutorial().GetTutorialIndex() < tutorialLock) return;
 		this.isLocked = isLocked;
 		GameplayEvents.OnEnteredFixedInteractionMode.Invoke(isLocked);
 		FindCameraComponents();
