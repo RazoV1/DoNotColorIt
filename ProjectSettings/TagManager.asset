@@ -22,6 +22,8 @@ TagManager:
   - Ground
   - Mortar
   - Infuser
+  - Lever
+  - Valve
   layers:
   - Default
   - TransparentFX

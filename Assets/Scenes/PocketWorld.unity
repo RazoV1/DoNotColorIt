@@ -28936,7 +28936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4179387113687654620, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: interactableTags.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4179387113687654620, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: 'monstersStats.Array.data[0]'
@@ -28989,6 +28989,14 @@ PrefabInstance:
     - target: {fileID: 4179387113687654620, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: 'interactableTags.Array.data[7]'
       value: Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179387113687654620, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
+      propertyPath: 'interactableTags.Array.data[8]'
+      value: Lever
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179387113687654620, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
+      propertyPath: 'interactableTags.Array.data[9]'
+      value: Valve
       objectReference: {fileID: 0}
     - target: {fileID: 4179387113687654620, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       propertyPath: monsterStatsSliders.Array.size
@@ -35721,7 +35729,7 @@ GameObject:
   - component: {fileID: 720777708}
   m_Layer: 0
   m_Name: Lever
-  m_TagString: Interactable
+  m_TagString: Lever
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2
@@ -39668,7 +39676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8017150951664089145, guid: 2573b57ed8247434fa7fa39c693eabe8, type: 3}
       propertyPath: m_TagString
-      value: Interactable
+      value: Valve
       objectReference: {fileID: 0}
     - target: {fileID: -8017150951664089145, guid: 2573b57ed8247434fa7fa39c693eabe8, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -49203,6 +49211,11 @@ MonoBehaviour:
     isConditional: 0
     activator: {fileID: 0}
   - tag: Egg
+    hintType: 6
+    tutorialIndexLock: 0
+    isConditional: 0
+    activator: {fileID: 0}
+  - tag: Seed
     hintType: 6
     tutorialIndexLock: 0
     isConditional: 0
