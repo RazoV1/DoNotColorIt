@@ -31,7 +31,6 @@ public class NPCRouitine : MonoBehaviour, ISavable
 	private void Awake()
 	{
 		GameplayEvents.OnNpcTick.AddListener(DecideAction);
-		Debug.Log("Added npc tick listener");
 
 		npcName = GetComponent<NPCWaiter>().GetName();
 		navigation = GetComponent<NPCNavigation>();
@@ -43,7 +42,7 @@ public class NPCRouitine : MonoBehaviour, ISavable
 		GameplayEvents.OnNpcTick.RemoveListener(DecideAction);
 		SaveEvents.OnSaveEvent.RemoveListener(SaveData);
 		SaveEvents.OnLoadEvent.RemoveListener(SyncDataPlaceholder);
-		Debug.Log("Removed npc tick listener");
+		
 	}
 
 	private void DecideAction(int time)
@@ -51,7 +50,7 @@ public class NPCRouitine : MonoBehaviour, ISavable
 		List<NpcAction> actionOnTime = availableActions.Where(x => x.time <= time && x.progressionIndexContdition <= GameManager.Instance.GetCurrentTaskIndex()).ToList();
 		if (actionOnTime.Count == 0)
 		{
-			Debug.Log("Fallback action!");
+			//Debug.Log("Fallback action!");
 			Act(fallbackAction);
 			return;
 		}
@@ -63,7 +62,7 @@ public class NPCRouitine : MonoBehaviour, ISavable
 	{
 		try
 		{
-			Debug.Log(action.point.name);
+			//Debug.Log(action.point.name);
 			if (coroutine != null)
 			{
 				StopCoroutine(coroutine);
@@ -85,7 +84,7 @@ public class NPCRouitine : MonoBehaviour, ISavable
 		}
 		else
 		{
-			Debug.Log("FallbackAnimation");
+			//Debug.Log("FallbackAnimation");
 		}
 	}
 	#region Save System

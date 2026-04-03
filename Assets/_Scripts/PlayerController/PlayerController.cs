@@ -1,8 +1,9 @@
-using Assets._Scripts.Events;
+﻿using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, ISavable
@@ -40,26 +41,46 @@ public class PlayerController : MonoBehaviour, ISavable
 		rb.inertiaTensor = Vector3.zero;
 	}
 
+	private bool WillStepOnWater(Vector3 direction)
+	{
+		Vector3 move = new Vector3(direction.x, 0, direction.y);
+		RaycastHit[] hit = Physics.RaycastAll(transform.position + move, Vector3.down, 2f, ~layerMask);
+
+		RaycastHit singleHit;
+
+		Debug.DrawRay(transform.position + move, Vector3.down*2);
+
+		List<RaycastHit> groundHits = hit.Where(x => x.collider.gameObject.tag == "Ground").ToList();
+
+		bool wasCasted = Physics.Raycast(transform.position + move, Vector3.down, out singleHit, 2f, ~layerMask);
+		if (!wasCasted ||( wasCasted && singleHit.collider.gameObject.layer == 4))
+		{
+			rb.linearVelocity = new Vector3(0,0, 0);
+			return true;
+		}
+		return false;
+	}
+
 	private void HandleMovementByInput()
 	{
 		float horizontalInput = Input.GetAxisRaw("Horizontal");
 		float verticalInput = Input.GetAxisRaw("Vertical");
 
 		Vector2 direction = new Vector2(horizontalInput, verticalInput).normalized;
+
+
 		Vector3 forward = cameraPivotTransform.forward * direction.y;
 		Vector3 right = cameraPivotTransform.right * direction.x;
 		Vector3 movement = (forward + right) * walkingSpeed;
+
+		if (WillStepOnWater(movement.normalized)) return;
+
 		movement.y = 0;
 		if (movement.magnitude != 0)
 		{
 			transform.rotation = Quaternion.LookRotation(movement, Vector3.up);
 		}
-		RaycastHit[] hit = Physics.RaycastAll(transform.position + movement / 4f, Vector3.down, 2f, ~layerMask);
-		if (hit.Where(x => x.collider.gameObject.tag == "Ground").ToList().Count == 0 || hit.Where(x => x.collider.gameObject.tag == "Water").ToList().Count >= 1)
-		{
-			rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
-			return;
-		}
+
 
 		//rb.linearVelocity = new Vector3(movement.x,rb.linearVelocity.y,movement.z);
 		rb.linearVelocity = new Vector3(movement.x, rb.linearVelocity.y, movement.z);
@@ -80,7 +101,7 @@ public class PlayerController : MonoBehaviour, ISavable
 		if (!shouldSave) return;
 		SaveManager saveManager = SaveManager.Instance;
 
-		saveManager.SaveFloat("playerX",transform.position.x);
+		saveManager.SaveFloat("playerX", transform.position.x);
 		saveManager.SaveFloat("playerY", transform.position.y);
 		saveManager.SaveFloat("playerZ", transform.position.z);
 	}
@@ -99,6 +120,6 @@ public class PlayerController : MonoBehaviour, ISavable
 			return;
 		}
 
-		rb.MovePosition(new Vector3(x,y,z));
+		rb.MovePosition(new Vector3(x, y, z));
 	}
 }
