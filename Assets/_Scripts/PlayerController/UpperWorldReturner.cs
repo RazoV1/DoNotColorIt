@@ -8,7 +8,7 @@ public class UpperWorldReturner : MonoBehaviour
 	{
 		if (collision.collider.tag == "Player")
 		{
-			player.transform.Translate(Vector3.up * 200);
+			player.transform.Translate(Vector3.up * 2);
 		}
 	}
 }
