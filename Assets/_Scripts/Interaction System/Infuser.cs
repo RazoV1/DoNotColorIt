@@ -3,6 +3,7 @@ using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
 using Assets._Scripts.PlayerController;
 using Assets._Scripts.Utils;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,11 +24,13 @@ public class Infuser : MonoBehaviour, ISavable
 	[SerializeField]private AudioSource burnsource;
 	[SerializeField] private AudioSource colorSource;
 	[Header("UI")]
-	[SerializeField] private Image smolaBar;
-	[SerializeField] private Image logsBar;
+	[SerializeField] private Slider smolaBar;
+	[SerializeField] private Slider logsBar;
 	[SerializeField] private Material outputMaterial;
 	[SerializeField] private GameObject outputl;
 	[SerializeField] private Bucket bucket;
+	[SerializeField] private ParticleSystem tempPartcles;
+	[SerializeField] private ParticleSystem smolaParticles;
 	[Header("Pivots")]
 	[SerializeField] private Transform dustSpitPivot;
 
@@ -60,6 +63,7 @@ public class Infuser : MonoBehaviour, ISavable
 
 	public void Start()
 	{
+		smolaBar = smolaBar.gameObject.GetComponent<Slider>();
 		hintActivator = GetComponent<HintActivator>();
 		StartCoroutine(Burn());
 		SubscribeToSaveEvent();
@@ -80,11 +84,12 @@ public class Infuser : MonoBehaviour, ISavable
 			while (logs > 0)
 			{
 				float timePassed = 0f;
+				tempPartcles.Play();
 				while (timePassed < logBurnDuration)
 				{
 					timePassed += Time.deltaTime;
 					currrentTemperature = Mathf.Clamp(currrentTemperature + Time.deltaTime * logAdditor, 0, neededTemperature);
-					logsBar.fillAmount = currrentTemperature / neededTemperature;
+					logsBar.value = currrentTemperature / neededTemperature;
 					if (currrentTemperature >= neededTemperature)
 					{
 						GameManager.Instance.GetTutorial().ProgressTutorial("logsBurn");
@@ -95,6 +100,7 @@ public class Infuser : MonoBehaviour, ISavable
 				}
 				logs--;
 			}
+			tempPartcles.Stop();
 			yield return null;
 		}
 	}
@@ -107,13 +113,18 @@ public class Infuser : MonoBehaviour, ISavable
 		{
 			float prev = smolaVolume;
 			smolaVolume = Mathf.Clamp(smolaVolume + turnAngle, 0f, volume);
-			smolaBar.fillAmount = smolaVolume / volume;
+			smolaBar.value = smolaVolume;
+			if (smolaVolume - prev >= 0.01f)
+			{
+				smolaParticles.Play();
+			}
 			return smolaVolume - prev;
 		}
-		catch
+		catch (Exception e)
 		{
+			Debug.Log(e);
 			smolaVolume = 0f;
-			smolaBar.fillAmount = 0f;
+			smolaBar.value = 0f;
 			return 0;
 		}
 	}
@@ -131,6 +142,7 @@ public class Infuser : MonoBehaviour, ISavable
 			volume = dust.GetVolume();
 			color = dust.GetColor();
 			dust.gameObject.SetActive(false);
+			smolaBar.maxValue = volume;
 		}
 	}
 
@@ -177,7 +189,7 @@ public class Infuser : MonoBehaviour, ISavable
 			GameManager.Instance.GetTutorial().ProgressTutorial("leverPull");
 			//GameManager.Instance.GetTutorial().ProgressTutorial(10);
 			currrentTemperature = 0;
-			logsBar.fillAmount = currrentTemperature / neededTemperature;
+			logsBar.value = currrentTemperature / neededTemperature;
 			GameplayEvents.OnInfused.Invoke();
 			Debug.Log("<color=green>Cook");
 		}
