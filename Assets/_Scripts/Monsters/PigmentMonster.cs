@@ -73,6 +73,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	private float healthRecoveryBase = 0.02f;
 	private float exitFenceHealthBonus = 0.15f;
 	private float exitFenceHappinessBonus = 0.2f;
+	private float workKoef = 0.2f;
 
 	private float hungerToStatCoef = 0.02f;
 	private float healthBonusCoef = 0.003f;
@@ -87,6 +88,8 @@ public class PigmentMonster : MonoBehaviour, ISavable
 	private float maxPigmentVolume = 5f;
 
 	private bool hasScreamed = false;
+
+
 
 	public Dictionary<string, float> GetMonsterStats() => new Dictionary<string, float> { { "happiness", happiness }, { "health", health }, { "hunger", hunger }, { "disruptance", disruptance }, { "curiosity", curiosity }, { "fear", fear }, { "strenght", strenght } };
 
@@ -420,7 +423,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
         monsterSound.pitch = Random.Range(0.95f, 1.15f);
 		monsterSound.PlayOneShot(purr);
 
-		workProgress += force;
+		workProgress += workKoef;
 		workBar.value = workProgress;
         surprise = 0.3f;
 		//}
