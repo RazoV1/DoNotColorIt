@@ -39058,6 +39058,10 @@ PrefabInstance:
       propertyPath: 'm_Cameras.Array.data[0]'
       value: 
       objectReference: {fileID: 902472825}
+    - target: {fileID: 2223787490808476568, guid: 95ec348389afa5e409db0c268b2a54df, type: 3}
+      propertyPath: m_VolumeLayerMask.m_Bits
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2851555792030827196, guid: 95ec348389afa5e409db0c268b2a54df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.31
@@ -41141,7 +41145,7 @@ GameObject:
   - component: {fileID: 902472823}
   - component: {fileID: 902472825}
   - component: {fileID: 902472824}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UI_camera
   m_TagString: UI_cam
   m_Icon: {fileID: 0}
@@ -44233,6 +44237,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_Name
       value: vodyanoi_zagon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -65900,7 +65908,7 @@ GameObject:
   - component: {fileID: 1873818771}
   - component: {fileID: 1873818770}
   - component: {fileID: 1873818769}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LavaFence (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67313,7 +67321,7 @@ GameObject:
   - component: {fileID: 1927655455}
   - component: {fileID: 1927655457}
   - component: {fileID: 1927655458}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LavaFence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76565,6 +76573,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_Name
       value: vodyanoi_zagon
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de8e2b48621d05141b0c44287b0a2134, type: 3}
       propertyPath: m_StaticEditorFlags
