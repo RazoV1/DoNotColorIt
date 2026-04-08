@@ -16238,6 +16238,55 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9999998, y: 1.8124999, z: 0.28124997}
   m_Center: {x: 0, y: -0.12867643, z: 0.016544117}
+--- !u!1 &340480861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 340480863}
+  - component: {fileID: 340480862}
+  m_Layer: 3
+  m_Name: ColorfulVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &340480862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340480861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0.24
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 977c6d92f820c6b43a57ed115a48e28a, type: 2}
+--- !u!4 &340480863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340480861}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.074394494, z: -0, w: 0.9972289}
+  m_LocalPosition: {x: 109.44, y: 10.619999, z: -323.87}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 8.533, z: 0}
 --- !u!1001 &341119580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63006,7 +63055,7 @@ GameObject:
   - component: {fileID: 2011004829}
   - component: {fileID: 2011004832}
   - component: {fileID: 2011004830}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Colorfull Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63048,10 +63097,10 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -91765,6 +91814,7 @@ SceneRoots:
   - {fileID: 5722912023337302276}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 340480863}
   - {fileID: 77245120}
   - {fileID: 1321378547}
   - {fileID: 1123285569}
