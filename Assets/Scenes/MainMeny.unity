@@ -37870,6 +37870,9 @@ MonoBehaviour:
   rightPivotPos: {x: -249.24, y: 0}
   textAnimations: {fileID: 8023849583137567196}
   voicePlayer: {fileID: 547135154}
+  uiToHide:
+  - {fileID: 1914314959}
+  - {fileID: 1543310763}
 --- !u!222 &9048071889988653065
 CanvasRenderer:
   m_ObjectHideFlags: 0

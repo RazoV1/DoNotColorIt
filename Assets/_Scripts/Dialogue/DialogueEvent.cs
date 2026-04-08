@@ -1,5 +1,6 @@
 ﻿using Assets._Scripts.Game;
 using Assets._Scripts.NPC;
+using System.Collections.Generic;
 using System.Collections;
 using System.IO;
 using TMPro;
@@ -32,6 +33,8 @@ public class DialogueEvent : MonoBehaviour
     [SerializeField] private TextAnimations textAnimations;
     [SerializeField] private VoicePlayer voicePlayer;
 
+    [SerializeField] private List<GameObject> uiToHide = new List<GameObject>();
+
     public bool IsTalking() => dialogueRoutine != null;
 
     public void Cancel()
@@ -43,7 +46,6 @@ public class DialogueEvent : MonoBehaviour
             dialogueText.gameObject.SetActive(false);
             leftCharacterName.gameObject.SetActive(false);
             rightCharacterName.gameObject.SetActive(false);
-
             NPCTicker npcTicker = PocketTicker.Instance.gameObject.GetComponent<NPCTicker>();
             npcTicker.SetShouldTick(true);
 
@@ -78,6 +80,7 @@ public class DialogueEvent : MonoBehaviour
 
         NPCTicker npcTicker = PocketTicker.Instance.gameObject.GetComponent<NPCTicker>();
 
+		uiToHide.ForEach(x => x.SetActive(false));
 		playerController.SetCanWalk(false);
 		//cameraController.SetShouldRotate(false);
         npcTicker.SetShouldTick(false);
@@ -137,7 +140,8 @@ public class DialogueEvent : MonoBehaviour
 		grabber.SetIsTalking(false);
         playerController.SetCanWalk(true);
 
-        if (shouldGiveTask)
+		uiToHide.ForEach(x => x.SetActive(true));
+		if (shouldGiveTask)
         {
             Debug.Log("<color=green>Пропускаем до таска!");
             InvokeDialogue(currentEventFolder,"task");
