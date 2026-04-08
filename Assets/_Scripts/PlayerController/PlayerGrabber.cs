@@ -8,6 +8,7 @@ using Assets._Scripts.Interaction_System.Objects;
 using TMPro;
 using System.Linq;
 using Assets._Scripts.Events;
+using Assets._Scripts.PlayerController;
 
 public class PlayerGrabber : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class PlayerGrabber : MonoBehaviour
 	private bool isGrabbing = false;
 	[SerializeField] private InteractableObject grabbedObject;
 
+	private CameraRaycaster cameraCaster;
+
 	public bool GetIsGrabbing() => isGrabbing;
 
 	public Transform getGrabPivot() => grabPivot;
@@ -53,6 +56,7 @@ public class PlayerGrabber : MonoBehaviour
 
 	private void Start()
 	{
+		cameraCaster = GetComponent<CameraRaycaster>();
 		cameraPivotTransform = cameraController.transform;
 		startingGrabPivotPoint = grabPivot.transform.localPosition;
 	}
@@ -73,18 +77,15 @@ public class PlayerGrabber : MonoBehaviour
 		lastNpcWaiter = npc;
 		if (npc != null) npc.isPlayerInTrigger = true;
 
-
 		return true;
 	}
 
 	private void CastNpc()
 	{
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
 
-		if (Physics.Raycast(ray, out hit) && Vector3.Distance(hit.point, ray.origin) <= maxGrabDistance)
+		if (cameraCaster.HasHitSomething())
 		{
-			CheckNPC(hit);
+			CheckNPC(cameraCaster.GetHit());
 		}
 		else
 		{
@@ -105,13 +106,11 @@ public class PlayerGrabber : MonoBehaviour
 		{
 			return;
 		}
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
 		//Debug.Log("Cast!");
-		//if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
-		if (Physics.Raycast(ray, out hit))
+		if (cameraCaster.HasHitSomething())
 		{
 			//Debug.Log("Hit!");
+			RaycastHit hit = cameraCaster.GetHit();
 			ConditionalGrabbable conditional = hit.collider.GetComponent<ConditionalGrabbable>();
 			//CheckNPC(hit);
 			if (conditional != null)
@@ -177,8 +176,9 @@ public class PlayerGrabber : MonoBehaviour
 			return;
 		}
 		RaycastHit hit;
-		if (Physics.Raycast(cameraPivotTransform.position, cameraPivotTransform.forward * maxGrabDistance, out hit))
+		if (cameraCaster.HasHitSomething())
 		{
+			hit = cameraCaster.GetHit();
 			if (!interactableTags.Contains(hit.collider.tag) && Vector3.Distance(cameraPivotTransform.position, hit.point) < maxGrabDistance)
 			{
 				if (cameraController.GetShouldRotate() && hit.collider.tag == "Fiat" && GameManager.Instance.GetTutorial().GetTutorialIndex() >= 18)

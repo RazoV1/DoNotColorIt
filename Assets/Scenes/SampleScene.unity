@@ -46043,6 +46043,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 367110539120798566, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1404409063}
+    - targetCorrespondingSourceObject: {fileID: 367110539120798566, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1404409064}
   m_SourcePrefab: {fileID: 100100000, guid: 23fe7adf9b4c11a4f8c514922e765c18, type: 3}
 --- !u!114 &1321378548 stripped
 MonoBehaviour:
@@ -47446,6 +47449,19 @@ MonoBehaviour:
   monsterStats: {fileID: 0}
   monsterStatsField: []
   monstersStats: []
+--- !u!114 &1404409064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321378549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b7750d97dbf8f44912905ed30e9b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets._Scripts.PlayerController.CameraRaycaster
+  maxDistance: 2
 --- !u!1001 &1404982635
 PrefabInstance:
   m_ObjectHideFlags: 0

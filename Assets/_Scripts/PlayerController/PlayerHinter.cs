@@ -30,6 +30,8 @@ namespace Assets._Scripts.PlayerController
 		[SerializeField] private List<TextMeshProUGUI> monsterStatsField;
 		[SerializeField] private List<Slider> monstersStats;
 
+		private CameraRaycaster cameraCaster;
+
 		[Serializable]
 		public struct HintByTag
 		{
@@ -48,7 +50,8 @@ namespace Assets._Scripts.PlayerController
 		}
 
 		private void Awake()
-		{                                                              
+		{
+			cameraCaster = GetComponent<CameraRaycaster>();
 			monsterStats = monsterStats == null ? new GameObject("MOnsterStatsPlaceholder") : monsterStats; //SON 💔💔💔
 			hintableTags = hints.Select(hint => hint.tag).ToList();
 		    
@@ -88,10 +91,13 @@ namespace Assets._Scripts.PlayerController
 			}
 
 			RaycastHit hit;
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			
 
-			if (Physics.Raycast(ray, out hit) && Vector3.Distance(hit.point, ray.origin) <= hintDistance && IsObjectOnTheList(hit))
+			if (cameraCaster.HasHitSomething())
 			{
+				hit = cameraCaster.GetHit();
+				if (!IsObjectOnTheList(hit)) return;
+
 				HandleMonsterStatsUpdate(hit);
 				HintByTag hintContainer = GetHintByTag(hit.collider.tag);
 
