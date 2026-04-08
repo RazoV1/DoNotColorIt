@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5607715399363889821}
   - component: {fileID: 8148086403610020225}
   - component: {fileID: -1811880900953234746}
+  - component: {fileID: 1870717082917202379}
   m_Layer: 0
   m_Name: Dust
   m_TagString: Interactable
@@ -263,6 +264,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1870717082917202379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3467857813567987544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5934a0e24f62bae45940f8fdbe3f48a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectReturner
+  rb: {fileID: 7456769825454573683}
+  minY: -200
+  mirrorPoint: {fileID: 0}
+  smokeParticle: {fileID: 0}
+  impactParticle: {fileID: 0}
+  source: {fileID: -1811880900953234746}
+  impactSfx: {fileID: 8300000, guid: 1ee258d3dc3ce7544bdf264f961f32e1, type: 3}
+  upY: 200
 --- !u!1001 &4671435058342460739
 PrefabInstance:
   m_ObjectHideFlags: 0

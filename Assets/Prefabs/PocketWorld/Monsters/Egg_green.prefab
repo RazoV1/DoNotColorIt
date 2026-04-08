@@ -830,6 +830,7 @@ GameObject:
   - component: {fileID: 4081994807281631894}
   - component: {fileID: 1761340246620394208}
   - component: {fileID: 8334986901077389822}
+  - component: {fileID: -5155489412271178588}
   m_Layer: 0
   m_Name: Egg_green
   m_TagString: Egg
@@ -883,6 +884,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -904,6 +907,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -957,10 +961,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6628445201189605019}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1006,7 +1010,7 @@ AudioSource:
   m_GameObject: {fileID: 6628445201189605019}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5852996742699003473, guid: f0ce75be7f7a97a418bd3b01c7877bd2, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 7a34512851cb93046a1ae9799f7c9772, type: 3}
   m_PlayOnAwake: 0
@@ -1103,7 +1107,7 @@ AudioSource:
   m_GameObject: {fileID: 6628445201189605019}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5852996742699003473, guid: f0ce75be7f7a97a418bd3b01c7877bd2, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 1cb1dd10c9a11d946b0555b3327af44b, type: 3}
   m_PlayOnAwake: 0
@@ -1191,6 +1195,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5155489412271178588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628445201189605019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5934a0e24f62bae45940f8fdbe3f48a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectReturner
+  rb: {fileID: 3890014367473479455}
+  minY: -200
+  mirrorPoint: {fileID: 0}
+  smokeParticle: {fileID: 0}
+  impactParticle: {fileID: 0}
+  source: {fileID: 1761340246620394208}
+  impactSfx: {fileID: 8300000, guid: 1ee258d3dc3ce7544bdf264f961f32e1, type: 3}
+  upY: 200
 --- !u!1 &7363052498243175605
 GameObject:
   m_ObjectHideFlags: 0
