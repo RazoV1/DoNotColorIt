@@ -7,6 +7,7 @@ public class BookPageTurner : MonoBehaviour
 {
 	[SerializeField] private List<Button> pageButtons;
 	private int currentButtonIndex = 0;
+	[SerializeField] private Animator animator;
 
 	private void Update()
 	{
@@ -20,12 +21,14 @@ public class BookPageTurner : MonoBehaviour
 
 			currentButtonIndex = pageButtons.IndexOf(pageButtons.First(x => !x.interactable));
 			currentButtonIndex = Mathf.Clamp(currentButtonIndex+1,0,3);
+			animator.SetTrigger("Turn");
 			PressButton();
 		}
 		else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
 		{
 			currentButtonIndex = pageButtons.IndexOf(pageButtons.First(x => !x.interactable));
 			currentButtonIndex = Mathf.Clamp(currentButtonIndex - 1, 0, 3);
+			animator.SetTrigger("Turn");
 			PressButton();
 		}
 	}
