@@ -139,10 +139,6 @@ public class PlayerGrabber : MonoBehaviour
 					hit.collider.GetComponent<MonsterEgg>().TryOpeningHatchMenu();
 					GameManager.Instance.GetTutorial().ProgressTutorial("eggPress");
 				}
-				else if (hit.collider.tag == "Kapot")
-				{
-					GameManager.Instance.GetTutorial().ProgressTutorial("openTrunk");
-				}
 				else if (hit.collider.name.ToLower().Contains("axe"))
 				{
 					GameManager.Instance.GetTutorial().ProgressTutorial("axePick");

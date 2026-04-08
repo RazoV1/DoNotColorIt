@@ -47440,7 +47440,7 @@ MonoBehaviour:
     isConditional: 1
     activator: {fileID: 0}
   - tag: Kapot
-    hintType: 8
+    hintType: 12
     tutorialIndexLock: 0
     isConditional: 0
     activator: {fileID: 0}
@@ -53435,7 +53435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lutiiDrift: 0
   shouldAutocorrect: 1
-  kapot: {fileID: 2025980997}
+  kapot: {fileID: 4711842122137840322}
   maxSpeed: 400
   acceleration: 50
   currentSpeed: 0
@@ -68111,33 +68111,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 576818903993012370, guid: 1bedd39564fce7243802b60a1567c96d, type: 3}
---- !u!54 &2025980997
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4711842122137840322}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 0, z: 0}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 0
-  m_ImplicitTensor: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 110
-  m_CollisionDetection: 1
 --- !u!64 &2025980998
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -68160,26 +68133,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3165783739154024506, guid: 5e11ad664a004194cbee046472900a0d, type: 3}
---- !u!114 &2025980999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4711842122137840322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 816ab3d9c3326ec459932cad07cd2eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mass: 0
-  rb: {fileID: 2025980997}
-  shouldBeSaved: 0
-  prefabName: 
-  shouldUseGravity: 0
-  shouldPlayAudio: 0
-  source: {fileID: 6962091721265062293}
-  sound: {fileID: 0}
 --- !u!1001 &2028215057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83990,12 +83943,12 @@ GameObject:
   - component: {fileID: 911616175720701085}
   - component: {fileID: 2733224711168169506}
   - component: {fileID: 6962091721265062292}
-  - component: {fileID: 2025980997}
   - component: {fileID: 2025980998}
-  - component: {fileID: 2025980999}
   - component: {fileID: 6962091721265062293}
+  - component: {fileID: 6962091721265062294}
+  - component: {fileID: 6962091721265062295}
   m_Layer: 3
-  m_Name: cuboid
+  m_Name: Kapot
   m_TagString: Kapot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87998,6 +87951,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &6962091721265062294
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4711842122137840322}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc9dc7f2e1c88874880d5251cadb4291, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6962091721265062295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4711842122137840322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c909122f386bea47962c5d1bcaeaddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KapotOpener
+  cameraCaster: {fileID: 1404409064}
 --- !u!23 &6962091722474951930
 MeshRenderer:
   m_ObjectHideFlags: 0

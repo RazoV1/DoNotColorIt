@@ -156,6 +156,7 @@
     "tutorial.output.last": "Ну вот и все,<color=orange> лети ко Льву</color> и помоги ему!",
     "tutorial.output.talkLeo": "T - закрыть",
     "tutorial.output.wrongColor":"Не тот цвет. Попробуй другие пигменты или добавь смолы.",
-	"ui.book.pigment_t":"ПИГМЕНТ"
+	"ui.book.pigment_t":"ПИГМЕНТ",
+    "ui.hint.toggle_kapot": "Открыть багажник: E"
   }
 }

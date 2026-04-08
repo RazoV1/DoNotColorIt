@@ -23,6 +23,7 @@ public class CursorHint : MonoBehaviour
 	private string enterPocket;
 	private string toggleMode;
 	private string toggleInfuser;
+	private string toggleKapot;
 
 	public MouseHints GetCurrentHint() => currentHint;
 
@@ -40,6 +41,7 @@ public class CursorHint : MonoBehaviour
 		enterPocket = LanguageManager.Instance.GetTranslatable("ui.hint.enter_pocket");
 		toggleMode = LanguageManager.Instance.GetTranslatable("ui.hint.toggle_mode");
 		toggleInfuser = LanguageManager.Instance.GetTranslatable("ui.hint.toggle_infuser");
+		toggleKapot = LanguageManager.Instance.GetTranslatable("ui.hint.toggle_kapot");
 		Debug.Log(toggleMode);
 	}
 
@@ -91,6 +93,10 @@ public class CursorHint : MonoBehaviour
 				hintSprite.sprite = null;
 				hintText.text = toggleInfuser;
 				break;
+			case MouseHints.EKapot:
+				hintSprite.sprite = null;
+				hintText.text = toggleKapot;
+				break;
 		}
 	}
 
@@ -115,5 +121,6 @@ public enum MouseHints
 	vertical,
 	TalkMouse,
 	ToggleMode,
-	ToggleInfuser
+	ToggleInfuser,
+	EKapot
 }

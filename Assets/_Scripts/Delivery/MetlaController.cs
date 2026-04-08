@@ -17,7 +17,7 @@ namespace Assets._Scripts.Delivery
 		[SerializeField] private bool lutiiDrift;
 		[SerializeField] private bool shouldAutocorrect;
 		[Header("Настройки")]
-		[SerializeField] private Rigidbody kapot;
+		[SerializeField] private GameObject kapot;
 		[SerializeField] private float maxSpeed;
 		[SerializeField] private float acceleration;
 		[SerializeField] private float currentSpeed;
@@ -68,7 +68,6 @@ namespace Assets._Scripts.Delivery
 
 			ToggleHints();
 
-			kapot.isKinematic = isMounted;
 			kapot.transform.localEulerAngles = Vector3.zero;
 			kapot.GetComponent<MeshCollider>().enabled = !isMounted;
 			collidersToCull.ForEach(x => x.enabled = !isMounted);
@@ -237,14 +236,12 @@ namespace Assets._Scripts.Delivery
 			{
 				collidersToCull.ForEach(x => x.enabled = false);
 				rb.interpolation = RigidbodyInterpolation.None;
-				kapot.isKinematic = true;
 				rb.MovePosition(savedPos);
 				rb.MoveRotation(savedRotation);
 				Debug.Log($"Set pos {x} {y} {z}");
 
 
 				kapot.transform.localEulerAngles = Vector3.zero;
-				kapot.isKinematic = false;
 
 				rb.interpolation = RigidbodyInterpolation.Interpolate;
 
