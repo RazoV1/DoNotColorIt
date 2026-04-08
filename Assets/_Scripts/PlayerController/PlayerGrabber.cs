@@ -38,6 +38,8 @@ public class PlayerGrabber : MonoBehaviour
 	private Transform cameraPivotTransform;
 	private PigmentMonster monsterObj;
 
+	private NPCWaiter lastNpcWaiter;
+
 	private bool isGrabbing = false;
 	[SerializeField] private InteractableObject grabbedObject;
 
@@ -58,16 +60,17 @@ public class PlayerGrabber : MonoBehaviour
 	{
 		if (hit.collider.tag != "Npc")
 		{
-			foreach (NPCWaiter n in FindObjectsOfType<NPCWaiter>())
+			if (lastNpcWaiter != null)
 			{
-				n.isPlayerInTrigger = false;
+				lastNpcWaiter.isPlayerInTrigger = false;
+				lastNpcWaiter = null;
 			}
 			return false;
 		}
 		if (isTalking) return false;
 
 		NPCWaiter npc = hit.collider.GetComponentInParent<NPCWaiter>();
-
+		lastNpcWaiter = npc;
 		if (npc != null) npc.isPlayerInTrigger = true;
 
 
@@ -85,9 +88,10 @@ public class PlayerGrabber : MonoBehaviour
 		}
 		else
 		{
-			foreach (NPCWaiter n in FindObjectsOfType<NPCWaiter>())
+			if (lastNpcWaiter != null)
 			{
-				n.isPlayerInTrigger = false;
+				lastNpcWaiter.isPlayerInTrigger = false;
+				lastNpcWaiter = null;
 			}
 		}
 	}

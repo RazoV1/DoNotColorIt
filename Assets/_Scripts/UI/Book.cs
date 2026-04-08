@@ -20,6 +20,8 @@ public class Book : MonoBehaviour, ISavable
 	[SerializeField] private List<ColorTask> orderedTasks;
 	[SerializeField] private Animator animator;
 
+	[SerializeField] private List<GameObject> uiToHide = new List<GameObject>();
+
 	public bool GetShowTask() => shouldShowTask;
 
 	public bool IsBookOpen() => bookCanvas.activeSelf;
@@ -35,6 +37,7 @@ public class Book : MonoBehaviour, ISavable
 	{
 		bookCanvas.SetActive(false);
 		animator.SetTrigger("Close");
+		uiToHide.ForEach(x => x.SetActive(true));
 		//GameManager.Instance.GetTutorial().ProgressTutorial(6);
 		Time.timeScale = bookCanvas.activeSelf ? 0.0001f : 1f;
 		Cursor.lockState = bookCanvas.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
@@ -47,6 +50,7 @@ public class Book : MonoBehaviour, ISavable
 		if (!FindObjectOfType<PlayerController>().GetCanWalk() && !bypassLock) return;
 		bookCanvas.SetActive(!bookCanvas.activeSelf);
 
+		uiToHide.ForEach(x => x.SetActive(!bookCanvas.activeSelf));
 		animator.SetTrigger(bookCanvas.activeSelf ? "Pop" : "Close");
 		//GameManager.Instance.GetTutorial().ProgressTutorial(6);
 		Time.timeScale = bookCanvas.activeSelf ? 0.0001f : 1f;
