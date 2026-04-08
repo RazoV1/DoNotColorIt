@@ -108,15 +108,15 @@
     "npc.Zahar.name": "Захар",
     "npc.Zahar.task": "Вот держи фото замка от моего кабинета, в нем я могу хоть немного сосредоточиться и избавиться от лишних эмоций, так я смогу спокойно с ней поговорить.",
     "book.button.tasks": "Заказ",
-    "book.button.cooking": "Готовка <gradient=\"RGBW\">Цвета",
+    "book.button.cooking": "Готовка Цвета",
     "book.button.monsters": "Монстры",
     "book.button.crafting": "Добыча Ресурсов",
     "book.task.header": "<b>Заказчик</b>",
     "book.task.asked": "<b>Что сказал</b>",
     "book.craft.logs": "Сбор дерева",
     "book.craft.seeds": "Сбор семян и выращивание <color=orange>морковки",
-    "book.craft.pigment": "Сбор <gradient=\"RGBW\">пигмента",
-    "book.craft.grind": "Перемалывание <gradient=\"RGBW\">пигмента",
+    "book.craft.pigment": "Сбор пигмента",
+    "book.craft.grind": "Перемалывание пигмента",
     "book.monsters.1": "Когда монстрики голодают, покорми их <color=orange>морковкой</color>. Голод влияет на <color=green>Здоровье</color>.",
     "book.monsters.2": "Поиграй с монстриком вне загона, чтобы у него упало <color=blue>Недовольство",
     "book.monsters.3": "Монстрики любят разную погоду, понаблюдай за ними.",
@@ -156,6 +156,6 @@
     "tutorial.output.last": "Ну вот и все,<color=orange> лети ко Льву</color> и помоги ему!",
     "tutorial.output.talkLeo": "T - закрыть",
     "tutorial.output.wrongColor":"Не тот цвет. Попробуй другие пигменты или добавь смолы.",
-	"ui.book.pigment_t":"<gradient=\"RGBW\">ПИГМЕНТ"
+	"ui.book.pigment_t":"ПИГМЕНТ"
   }
 }
