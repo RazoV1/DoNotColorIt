@@ -82,7 +82,7 @@ public class DialogueEvent : MonoBehaviour
 
 		uiToHide.ForEach(x => x.SetActive(false));
 		playerController.SetCanWalk(false);
-		//cameraController.SetShouldRotate(false);
+		cameraController.SetShouldRotate(false);
         npcTicker.SetShouldTick(false);
 
 		var replics = model.replics;
@@ -140,6 +140,7 @@ public class DialogueEvent : MonoBehaviour
 		grabber.SetIsTalking(false);
         playerController.SetCanWalk(true);
 
+		cameraController.SetShouldRotate(true);
 		uiToHide.ForEach(x => x.SetActive(true));
 		if (shouldGiveTask)
         {
@@ -152,6 +153,5 @@ public class DialogueEvent : MonoBehaviour
             dialogueRoutine = null;
             yield break;
         }
-		//cameraController.SetShouldRotate(true);
 	}
 }
