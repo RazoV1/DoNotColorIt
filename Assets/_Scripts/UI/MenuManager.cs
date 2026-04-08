@@ -1,5 +1,6 @@
 using Assets._Scripts.Events;
 using Assets._Scripts.Game.SaveSystem;
+using Assets._Scripts.Game.Statistycs;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,8 +26,9 @@ public class MenuManager : MonoBehaviour, ISavable
     [SerializeField] private GameObject image;
 	[SerializeField] private GameObject loadingImage;
     [SerializeField] private RawImage rawImage;
-    private GameObject currentVideoPlayer;
 
+	private StatisticsManager statisticsManager;
+    private GameObject currentVideoPlayer;
     private void Awake()
 	{
 		Debug.Log("Добавили слушатель");
@@ -34,9 +36,16 @@ public class MenuManager : MonoBehaviour, ISavable
 		SaveEvents.OnSettingsLoadEvent.AddListener(InitializeUI);
 	}
 
+	private void Start()
+	{
+
+		statisticsManager = GameManager.Instance.GetStatsManager();
+	}
+
 	public void NewGame()
 	{
 		StartCoroutine(StartDelay());
+		statisticsManager.StartSession();
 	}
 
     IEnumerator StartDelay()
@@ -119,7 +128,9 @@ public class MenuManager : MonoBehaviour, ISavable
     public void Continue()
 	{
 		StartCoroutine(ContinueDelay());
-    }
+
+		statisticsManager.StartSession();
+	}
 
 	public void InitializeUI()
 	{

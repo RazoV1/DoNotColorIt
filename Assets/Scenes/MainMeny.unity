@@ -6306,6 +6306,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1256898093}
     - target: {fileID: 1024037395219744794, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
+      propertyPath: statManager
+      value: 
+      objectReference: {fileID: 1570940932}
+    - target: {fileID: 1024037395219744794, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
       propertyPath: videoPlayer
       value: 
       objectReference: {fileID: 0}
@@ -6674,6 +6678,18 @@ PrefabInstance:
       insertIndex: 4
       addedObject: {fileID: 276401423}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 461474478178934132, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1570940934}
+    - targetCorrespondingSourceObject: {fileID: 461474478178934132, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1570940933}
+    - targetCorrespondingSourceObject: {fileID: 461474478178934132, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1570940932}
+    - targetCorrespondingSourceObject: {fileID: 461474478178934132, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1570940931}
     - targetCorrespondingSourceObject: {fileID: 8669401919608547398, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
       insertIndex: -1
       addedObject: {fileID: 547135156}
@@ -28678,7 +28694,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1024037395219744794, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
   m_PrefabInstance: {fileID: 547135151}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1570940930}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cb692132fac8a24d939cd73c1ef6ea7, type: 3}
@@ -29189,6 +29205,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561922145}
   m_CullTransparentMesh: 1
+--- !u!1 &1570940930 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 461474478178934132, guid: 6f161b536cd25864f83431deb42c7854, type: 3}
+  m_PrefabInstance: {fileID: 547135151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1570940931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570940930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321c7f1e5b6f75d4b9e8c71e420c1124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatisticsExporter
+--- !u!114 &1570940932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570940930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8954b65f72f5fbb41ac78993e735b11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets._Scripts.Game.Statistycs.StatisticsManager
+--- !u!114 &1570940933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570940930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd73c1da6f9b16549a4d0c528c5fa80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets._Scripts.Game.Statistycs.TimesDustedMetric
+--- !u!114 &1570940934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570940930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c8b6fa5b43c4744a22bed40a598f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TimePlayedMetric
 --- !u!1 &1571285960
 GameObject:
   m_ObjectHideFlags: 0

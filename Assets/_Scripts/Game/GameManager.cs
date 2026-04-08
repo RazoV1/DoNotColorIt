@@ -7,6 +7,7 @@ using Assets._Scripts.Game.SaveSystem;
 using Assets._Scripts.Audio;
 using System.Linq;
 using UnityEngine.Video;
+using Assets._Scripts.Game.Statistycs;
 
 public class GameManager : MonoBehaviour, ISavable
 {
@@ -29,6 +30,10 @@ public class GameManager : MonoBehaviour, ISavable
 	[SerializeField] private Book book;
 	[SerializeField] private MenuManager menuManager;
 	[SerializeField] private CursorHint cursorHint;
+	[Header("Stat")]
+	[SerializeField] private StatisticsManager statManager;
+
+	public StatisticsManager GetStatsManager() => statManager;
 
     public TutorialManager GetTutorial() => tutorialManager;
 
@@ -72,6 +77,7 @@ public class GameManager : MonoBehaviour, ISavable
 
 	public void ToMenu()
 	{
+		statManager.EndSession();
 		pauseScreen.SetActive(false);
 		Time.timeScale = 1f;
 		GameplayEvents.OnPauseToggled.Invoke(false);
