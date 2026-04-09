@@ -57,27 +57,27 @@ public class TutorialManager : MonoBehaviour, ISavable
 	public void HandleInput()
 	{
 
-		if (Input.GetKeyDown(KeyCode.T))
-		{
-			try
-			{
-				if (SceneManager.GetActiveScene().buildIndex == 0)
-				{
-					HideAllTutorials();
-					return;
-				}
-				if (IsVisibleLine(questLinesByIndex[0]))
-				{
-					HideAllTutorials();
-					ProgressTutorial("last");
-				}
-				else
-				{
-					ShowTutorialByIndex(tutorialIndex);
-				}
-			}
-			catch { HideAllTutorials(); }
-		}
+		//if (Input.GetKeyDown(KeyCode.T))
+		//{
+		//	try
+		//	{
+		//		if (SceneManager.GetActiveScene().buildIndex == 0)
+		//		{
+		//			HideAllTutorials();
+		//			return;
+		//		}
+		//		if (IsVisibleLine(questLinesByIndex[0]))
+		//		{
+		//			HideAllTutorials();
+		//			ProgressTutorial("last");
+		//		}
+		//		else
+		//		{
+		//			ShowTutorialByIndex(tutorialIndex);
+		//		}
+		//	}
+		//	catch { HideAllTutorials(); }
+		//}
 	}
 
 	public void ShowTutorialByIndex(int index)
