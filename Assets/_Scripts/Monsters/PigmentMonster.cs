@@ -360,16 +360,20 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		}
 		else if (hunger > 0.7f && hungry != null)
 		{
+			TutorialEvents.OnAdditionalTutorialTriggered.Invoke(1);
 			hungry.Play();
 			emojiShown = true;
 		}
 		else if (fear > 0.6f && fearful != null)
 		{
+
+			TutorialEvents.OnAdditionalTutorialTriggered.Invoke(2);
 			fearful.Play();
 			emojiShown = true;
 		}
 		else if (happiness < 0.3f && sad != null)
 		{
+			TutorialEvents.OnAdditionalTutorialTriggered.Invoke(3);
 			sad.Play();
 			emojiShown = true;
 		}

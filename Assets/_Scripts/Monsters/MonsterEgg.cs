@@ -89,6 +89,8 @@ public class MonsterEgg : MonoBehaviour, ISavable
 		GameObject.FindFirstObjectByType<CameraController>().SetShouldRotate(true);
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
+
+		TutorialEvents.OnAdditionalTutorialTriggered.Invoke(0);
 		Destroy(gameObject);
 	}
 
