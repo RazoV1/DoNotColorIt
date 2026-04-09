@@ -9,11 +9,13 @@ public class CursorHint : MonoBehaviour
 	[SerializeField] private Image hintSprite;
 	[SerializeField] private MouseHints currentHint;
 	[SerializeField] private Transform director;
+	[SerializeField] private GameObject panel;
 	[Header("Sprites")]
 	[SerializeField] private Sprite interactCircular;
 	[SerializeField] private Sprite interactSprite;
 	[SerializeField] private Sprite interactHorizontal;
 	[SerializeField] private Sprite interactVertical;
+	
 
 	private string lmb;
 	private string talk;
@@ -50,16 +52,20 @@ public class CursorHint : MonoBehaviour
 		hintText.text = "";
 		hintSprite.enabled = false;
 		currentHint = hintType;
+		panel.SetActive(false);	
 		switch (hintType)
 		{
 			case (MouseHints.Talk):
 				hintText.text = talk;
+				panel.SetActive(true);
 				break;
 			case (MouseHints.EnterPocket):
 				hintText.text = enterPocket;
+				panel.SetActive(true);
 				break;
 			case MouseHints.GetIn:
 				hintText.text = getIn;
+				panel.SetActive(true);
 				break;
 			case MouseHints.vertical:
 				hintSprite.enabled = true;
@@ -84,18 +90,22 @@ public class CursorHint : MonoBehaviour
 			case MouseHints.TalkMouse:
 				hintSprite.sprite = null;
 				hintText.text = talkNext;
+				panel.SetActive(true);
 				break;
 			case MouseHints.ToggleMode:
 				hintSprite.sprite = null;
 				hintText.text = toggleMode;
+				panel.SetActive(true);
 				break;
 			case MouseHints.ToggleInfuser:
 				hintSprite.sprite = null;
 				hintText.text = toggleInfuser;
+				panel.SetActive(true);
 				break;
 			case MouseHints.EKapot:
 				hintSprite.sprite = null;
 				hintText.text = toggleKapot;
+				panel.SetActive(true);
 				break;
 		}
 	}

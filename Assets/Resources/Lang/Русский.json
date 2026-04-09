@@ -130,7 +130,7 @@
     "monster.age.Old":"<color=red>Просроченный",
     "ui.hint.talk_next":"Говорить: ЛКМ",
     "tutorial.output.talk" : "Привет, внучок! Знаю, вы с отцом повздорили и ты пропал. Но вернуться непросто, разберись что происходит!",
-    "tutorial.output.openTrunk" : "Человек хочет цвет, приготовь его. Нужны ресурсы,<color=orange> открой багажник, нажав E и потянув вверх.</color>",
+    "tutorial.output.openTrunk" : "Человек хочет цвет, приготовь его. Нужны ресурсы,<color=orange> открой багажник, нажав E</color>",
     "tutorial.output.axePick": "Возьми<color=orange> топор с машины </color>",
     "tutorial.output.treeCut": " <color=orange>Сруби дерево. </color>",
     "tutorial.output.logsPut": "Закинь<color=orange> 3 бревна </color>в багажник.",
