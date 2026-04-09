@@ -20,7 +20,7 @@ public class Fence : MonoBehaviour
 		{
 			other.GetComponent<MonsterEgg>().SetMonsterInside(nativeMonsterPrefab);
 			//other.GetComponent<MonsterEgg>().StartTickingInFence();
-			TutorialEvents.OnAdditionalTutorialTriggered.Invoke(4);
+			//TutorialEvents.OnAdditionalTutorialTriggered.Invoke(4);
 		}
 		PigmentMonster monster = other.GetComponent<PigmentMonster>();
 		if (monster != null && monsterInside == null)

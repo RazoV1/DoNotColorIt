@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour, ISavable
 			}
 			dialogue.InvokeDialogue(npc.GetName(), "incorrect");
 
-			TutorialEvents.OnAdditionalTutorialTriggered.Invoke(5);
+			//TutorialEvents.OnAdditionalTutorialTriggered.Invoke(5);
 		}
 	}
 

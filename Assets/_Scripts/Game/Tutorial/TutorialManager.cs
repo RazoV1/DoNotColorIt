@@ -109,6 +109,20 @@ public class TutorialManager : MonoBehaviour, ISavable
 	public void HideAllTutorials()
 	{
 		questLinesByIndex.ForEach(list => SetVisibleForLine(list, false));
+		//foreach (var additionalTutorial in additionalTutorials)
+		//{
+		//	int id = additionalTutorials.IndexOf(additionalTutorial);
+		//	if (id < 4)
+		//	{
+		//		additionalTutorial.SetActive(shownMonsterIndexex.Contains(id));
+		//		continue;
+		//	}
+		//	additionalTutorial.SetActive(false);
+		//}
+	}
+
+	public void HideAllAddTutorials()
+	{
 		foreach (var additionalTutorial in additionalTutorials)
 		{
 			int id = additionalTutorials.IndexOf(additionalTutorial);
@@ -188,7 +202,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 
 	private void ShowAdditionalTutorial(int id)
 	{
-		HideAllTutorials();
+		HideAllAddTutorials();
 		if (SceneManager.GetActiveScene().buildIndex == 0)
 		{
 			return;
@@ -204,7 +218,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 		catch
 		{
 			tutorialIndicator.SetActive(false);
-			HideAllTutorials();
+			HideAllAddTutorials();
 		};
 
 	}
@@ -250,11 +264,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 			List<int> monsterCache = monsterStr.Select(x => int.Parse(x)).ToList();
 			Debug.Log(monsterCache[0]);
 			shownMonsterIndexex = monsterCache;
-			foreach (int id in shownMonsterIndexex)
-			{
-				additionalTutorials[id].SetActive(true);
-				Debug.Log(additionalTutorials[id].name);
-			}
+			HideAllAddTutorials();
 		}
 		catch (Exception e)
 		{
@@ -264,6 +274,7 @@ public class TutorialManager : MonoBehaviour, ISavable
 		if (SceneManager.GetActiveScene().buildIndex == 0)
 		{
 			HideAllTutorials();
+			HideAllAddTutorials();
 		}
 		ShowTutorialByIndex(tutorialIndex);
 	}
