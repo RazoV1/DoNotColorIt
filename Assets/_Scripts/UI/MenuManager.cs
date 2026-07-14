@@ -21,15 +21,16 @@ public class MenuManager : MonoBehaviour, ISavable
 	[SerializeField] private Slider soundEffectsSlider;
 	[Header("Префабы UI элементов")]
 	[SerializeField] private GameObject languageButtonPrefab;
-    [SerializeField] private GameObject videoPlayerPrefab;
-    [SerializeField] private GameObject buttons;
-    [SerializeField] private GameObject image;
+	[SerializeField] private GameObject videoPlayerPrefab;
+	[SerializeField] private GameObject buttons;
+	[SerializeField] private GameObject image;
 	[SerializeField] private GameObject loadingImage;
-    [SerializeField] private RawImage rawImage;
+	[SerializeField] private RawImage rawImage;
+	[SerializeField] private GameObject tabSkip;
 
 	private StatisticsManager statisticsManager;
-    private GameObject currentVideoPlayer;
-    private void Awake()
+	private GameObject currentVideoPlayer;
+	private void Awake()
 	{
 		Debug.Log("Добавили слушатель");
 		SubscribeToSaveEvent();
@@ -48,84 +49,104 @@ public class MenuManager : MonoBehaviour, ISavable
 		statisticsManager.StartSession();
 	}
 
-    IEnumerator StartDelay()
-    {
-        buttons.SetActive(false);
-        image.SetActive(false);
-        loadingImage.SetActive(true);
-        rawImage.gameObject.SetActive(true);
+	IEnumerator StartDelay()
+	{
+		buttons.SetActive(false);
+		image.SetActive(false);
+		loadingImage.SetActive(true);
+		rawImage.gameObject.SetActive(true);
 
-        if (currentVideoPlayer != null)
-            Destroy(currentVideoPlayer);
+		if (currentVideoPlayer != null)
+			Destroy(currentVideoPlayer);
+		tabSkip.SetActive(true);
+		currentVideoPlayer = Instantiate(videoPlayerPrefab);
+		VideoPlayer vp = currentVideoPlayer.GetComponent<VideoPlayer>();
+		RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 0);
+		vp.renderMode = VideoRenderMode.RenderTexture;
+		vp.targetTexture = rt;
+		rawImage.texture = rt;
+		vp.Play();
 
-        currentVideoPlayer = Instantiate(videoPlayerPrefab);
-        VideoPlayer vp = currentVideoPlayer.GetComponent<VideoPlayer>();
-        RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 0);
-        vp.renderMode = VideoRenderMode.RenderTexture;
-        vp.targetTexture = rt;
-        rawImage.texture = rt;
-        vp.Play();
+		float timeSpent = 0;
+		while (timeSpent < 39)
+		{
+			timeSpent += Time.deltaTime;
+			if (Input.GetKeyDown(KeyCode.Tab))
+			{
+				break;
+			}
+			yield return null;
+		}
 
-        yield return new WaitForSeconds(8);
+		tabSkip.SetActive(true);
+		SaveManager saveManager = SaveManager.Instance;
+		saveManager.ClearAllCathy();
+		saveManager.LoadSave();
+		GameManager.Instance.ChangeDimensions(1);
+		yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 1);
 
-        SaveManager saveManager = SaveManager.Instance;
-        saveManager.ClearAllCathy();
-        saveManager.LoadSave();
-        GameManager.Instance.ChangeDimensions(1);
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == 1);
+		rawImage.gameObject.SetActive(false);
+		rt.Release();
+		Destroy(rt);
+		loadingImage.SetActive(false);
+		buttons.SetActive(true);
+		image.SetActive(true);
+		gameObject.SetActive(false);
+	}
+	IEnumerator ContinueDelay()
+	{
+		SaveManager saveManager = SaveManager.Instance;
+		saveManager.LoadSave();
+		int dimensionind = (int)SaveManager.Instance.GetFloat("dimension");
+		buttons.SetActive(false);
+		image.SetActive(false);
+		loadingImage.SetActive(true);
+		rawImage.gameObject.SetActive(true);
+		tabSkip.SetActive(true);
 
-        rawImage.gameObject.SetActive(false);
-        rt.Release();
-        Destroy(rt);
-        loadingImage.SetActive(false);
-        buttons.SetActive(true);
-        image.SetActive(true);
-        gameObject.SetActive(false);
-    }
-    IEnumerator ContinueDelay()
-    {
-        SaveManager saveManager = SaveManager.Instance;
-        saveManager.LoadSave();
-        int dimensionind = (int)SaveManager.Instance.GetFloat("dimension");
-        buttons.SetActive(false);
-        image.SetActive(false);
-        loadingImage.SetActive(true);
-        rawImage.gameObject.SetActive(true);
+		if (currentVideoPlayer != null)
+			Destroy(currentVideoPlayer);
 
-        if (currentVideoPlayer != null)
-            Destroy(currentVideoPlayer);
+		currentVideoPlayer = Instantiate(videoPlayerPrefab);
+		VideoPlayer vp = currentVideoPlayer.GetComponent<VideoPlayer>();
+		RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 0);
+		vp.renderMode = VideoRenderMode.RenderTexture;
+		vp.targetTexture = rt;
+		rawImage.texture = rt;
+		vp.Play();
+		float timeSpent = 0;
+		while (timeSpent < 39)
+		{
+			timeSpent += Time.deltaTime;
+			if (Input.GetKeyDown(KeyCode.Tab))
+			{
+				break;
+			}
+			yield return null;
+		}
+		tabSkip.SetActive(false);
 
-        currentVideoPlayer = Instantiate(videoPlayerPrefab);
-        VideoPlayer vp = currentVideoPlayer.GetComponent<VideoPlayer>();
-        RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 0);
-        vp.renderMode = VideoRenderMode.RenderTexture;
-        vp.targetTexture = rt;
-        rawImage.texture = rt;
-        vp.Play();
+		GameManager.Instance.ChangeDimensions(dimensionind);
 
-        yield return new WaitForSeconds(8);
+		rawImage.gameObject.SetActive(false);
+		rt.Release();
+		Destroy(rt);
+		loadingImage.SetActive(false);
+		buttons.SetActive(true);
+		image.SetActive(true);
 
-        GameManager.Instance.ChangeDimensions(dimensionind);
+		if (dimensionind != 0)
+		{
+			gameObject.SetActive(false);
+		}
+		else
+		{
+			gameObject.SetActive(true);
+			saveManager.ActivateValidator();
+		}
+	}
 
-        rawImage.gameObject.SetActive(false);
-        rt.Release();
-        Destroy(rt);
-        loadingImage.SetActive(false);
-        buttons.SetActive(true);
-        image.SetActive(true);
-
-        if (dimensionind != 0)
-        {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(true);
-            saveManager.ActivateValidator();
-        }
-    }
-
-    public void Continue()
+	public void Continue()
 	{
 		StartCoroutine(ContinueDelay());
 

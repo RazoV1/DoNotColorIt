@@ -82,16 +82,16 @@ public class PocketTicker : MonoBehaviour, ISavable
 
 	public float GetSmola() => smolaVolume;
 
-	public float ChangeSmola(float angle,Infuser infuser)
+	public float ChangeSmola(float angle, Infuser infuser)
 	{
 		//float newSmola = Mathf.Clamp(smolaVolume + angle, 0, 1000000000f);
 		float delta = angle;
-        if (infuser.IsEmpty())
-        {
+		if (infuser.IsEmpty())
+		{
 			return 0;
-        }
-        //Debug.Log(delta);    
-        if (delta != Mathf.NegativeInfinity && delta != Mathf.Infinity)
+		}
+		//Debug.Log(delta);    
+		if (delta != Mathf.NegativeInfinity && delta != Mathf.Infinity)
 		{
 			smolaVolume += delta;
 			smolaVolume = Mathf.Clamp(smolaVolume, 0, 1000);
@@ -127,7 +127,7 @@ public class PocketTicker : MonoBehaviour, ISavable
 			{
 				GameObject lowPolyBucket = Instantiate(bucketPrefab, transform.position, Quaternion.identity);
 				SaveManager saveManager = SaveManager.Instance;
-				Vector3 playerPos = new Vector3(saveManager.GetFloat("playerX"), saveManager.GetFloat("playerY") + 2f, saveManager.GetFloat("playerZ"));
+				Vector3 playerPos = new Vector3(saveManager.GetFloat("playerX") + 1, saveManager.GetFloat("playerY") + 2f, saveManager.GetFloat("playerZ") + 1);
 				lowPolyBucket.GetComponent<Rigidbody>().MovePosition(playerPos);
 				lowPolyBucket.GetComponent<Bucket>().Fill(bucket);
 				bucket = Color.black;

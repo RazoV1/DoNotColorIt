@@ -51019,7 +51019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 32.007683, y: 26.996002}
+  m_AnchoredPosition: {x: 32.00769, y: 26.995972}
   m_SizeDelta: {x: 66.449005, y: 57.206802}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1562329817
@@ -58573,7 +58573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.12359256, y: 0.11083271}
-  m_AnchoredPosition: {x: 3.549408, y: 2.8623047}
+  m_AnchoredPosition: {x: 3.5494385, y: 2.8623047}
   m_SizeDelta: {x: 9.532608, y: 5.724701}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773823962
@@ -86016,11 +86016,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 0.5, y: 0.5, z: 1.05}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.29}
   m_TimeToStationary: 0.5
 --- !u!4 &5722912023380445712
 Transform:

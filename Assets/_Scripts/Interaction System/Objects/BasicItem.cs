@@ -115,12 +115,12 @@ namespace Assets._Scripts.Interaction_System.Objects
 					PocketTicker.Instance.AddSmola();
 					Destroy(gameObject);
 				}
-				if (transform.tag == "Bucket")
-				{
-					if (!GetComponent<Bucket>().IsFilled()) { return; }
-					PocketTicker.Instance.PutBucket(GetComponent<Bucket>().GetColor());
-					Destroy(gameObject);
-				}
+				//if (transform.tag == "Bucket")
+				//{
+				//	if (!GetComponent<Bucket>().IsFilled()) { return; }
+				//	PocketTicker.Instance.PutBucket(GetComponent<Bucket>().GetColor());
+				//	Destroy(gameObject);
+				//}
 				if (transform.tag == "Egg")
 				{
 					PocketTicker.Instance.AddEgg(name);
