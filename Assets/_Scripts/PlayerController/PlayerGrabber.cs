@@ -9,6 +9,7 @@ using TMPro;
 using System.Linq;
 using Assets._Scripts.Events;
 using Assets._Scripts.PlayerController;
+using System;
 
 public class PlayerGrabber : MonoBehaviour
 {
@@ -379,8 +380,8 @@ public class PlayerGrabber : MonoBehaviour
 		var colorPig = grabbedObject.GetComponent<ColorPigment>();
 		if (colorPig != null)
 		{
-			pigmentFields[0].text = LanguageManager.Instance.GetTranslatable("ui.pigment_stats.color") + $"{colorPig.GetColor().maxColorComponent}";
-			pigmentFields[1].text = LanguageManager.Instance.GetTranslatable("ui.pigment_stats.volume") + $"{colorPig.GetVolume()}";
+			pigmentFields[0].text = LanguageManager.Instance.GetTranslatable("ui.pigment_stats.color") + $"{Math.Round( colorPig.GetColor().maxColorComponent,1)}";
+			pigmentFields[1].text = LanguageManager.Instance.GetTranslatable("ui.pigment_stats.volume") + $"{Math.Round(colorPig.GetVolume(),1)}";
 		}
 	}
 
