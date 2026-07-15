@@ -22,6 +22,8 @@ public class Book : MonoBehaviour, ISavable
 
 	[SerializeField] private List<GameObject> uiToHide = new List<GameObject>();
 
+	[SerializeField] private Button taskPageButton;
+
 	public bool GetShowTask() => shouldShowTask;
 
 	public bool IsBookOpen() => bookCanvas.activeSelf;
@@ -57,6 +59,14 @@ public class Book : MonoBehaviour, ISavable
 		Cursor.lockState = bookCanvas.activeSelf ? CursorLockMode.None : CursorLockMode.Locked;
 		Cursor.visible = bookCanvas.activeSelf;
 		GameplayEvents.OnPauseToggled.Invoke(bookCanvas.activeSelf);
+	}
+
+	/// <summary>
+	/// Sonion
+	/// </summary>
+	public void OpenTaskPage()
+	{
+		taskPageButton.onClick.Invoke();
 	}
 
 	public void TakeTask(string npcName)

@@ -125,6 +125,7 @@ public class DialogueEvent : MonoBehaviour
         if (dialogueName == "task" && !GameManager.Instance.GetBook().GetShowTask())
 		{
 			GameManager.Instance.GetBook().TakeTask(currentEventFolder);
+            GameManager.Instance.GetBook().OpenTaskPage();
 			GameManager.Instance.GetBook().ToggleBook(bypassLock:true);
 			GameManager.Instance.GetTutorial().ProgressTutorial("talk");
 			while (!Input.GetMouseButtonDown(0))
