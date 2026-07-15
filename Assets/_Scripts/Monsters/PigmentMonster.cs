@@ -89,7 +89,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 
 	private bool hasScreamed = false;
 
-
+	private bool isFirstPet = true;
 
 	public Dictionary<string, float> GetMonsterStats() => new Dictionary<string, float> { { "happiness", happiness }, { "health", health }, { "hunger", hunger }, { "disruptance", disruptance }, { "curiosity", curiosity }, { "fear", fear }, { "strenght", strenght } };
 
@@ -320,7 +320,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 		switch (age.GetCurrentAge())
 		{
 			case MonsterAgePhases.Young:
-				if (Random.Range(0, 100) <= 40)
+				if (Random.Range(0, 100) <= 40 && !isFirstPet)
 				{
 					LayEgg();
 					return;
@@ -341,6 +341,7 @@ public class PigmentMonster : MonoBehaviour, ISavable
 				}
 				break;
 		}
+		isFirstPet = false;
 		float r = Mathf.Clamp(Mathf.Clamp(idealColor.r + ((10 * (1 - happiness)) / 255f), 0, 1f) - (fadeFactor * hunger), 0.1f, 1f);
 		float g = Mathf.Clamp(Mathf.Clamp(idealColor.g + ((10 * (1 - happiness)) / 255f), 0, 1f) - (fadeFactor * hunger), 0.1f, 1f);
 		float b = Mathf.Clamp(Mathf.Clamp(idealColor.b + ((10 * (1 - happiness)) / 255f), 0, 1f) - (fadeFactor * hunger), 0.1f, 1f);
