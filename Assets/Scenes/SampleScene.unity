@@ -49627,7 +49627,7 @@ MonoBehaviour:
   - {fileID: 619518625}
   - {fileID: 619518625}
   - {fileID: 619518625}
-  waterSpeed: 10
+  waterSpeed: 2
 --- !u!4 &1499677437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 896010379377203437, guid: 36875fd1d993f1846bcb9230e9824afe, type: 3}
