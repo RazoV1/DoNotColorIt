@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,7 +55,7 @@ namespace Assets._Scripts.PlayerController
 			cameraCaster = GetComponent<CameraRaycaster>();
 			monsterStats = monsterStats == null ? new GameObject("MOnsterStatsPlaceholder") : monsterStats; //SON 💔💔💔
 			hintableTags = hints.Select(hint => hint.tag).ToList();
-		    
+
 			gameManager = GameManager.Instance;
 			hintScript = gameManager.GetCursorHint();
 
@@ -91,7 +92,7 @@ namespace Assets._Scripts.PlayerController
 			}
 
 			RaycastHit hit;
-			
+
 
 			if (cameraCaster.HasHitSomething())
 			{
@@ -101,15 +102,25 @@ namespace Assets._Scripts.PlayerController
 				HandleMonsterStatsUpdate(hit);
 				HintByTag hintContainer = GetHintByTag(hit.collider.tag);
 
-				if (!TryProcessHintContainer(hintContainer)) hintScript.ShowHint(MouseHints.None);
-
+				if (!TryProcessHintContainer(hintContainer))
+				{
+					if (hintContainer.tag == "Infuser" && hintContainer.activator != null && !hintContainer.activator.ShouldProvideHint())
+					{
+						hintScript.ShowHint(MouseHints.NoLogs);
+					}
+					else
+					{
+						hintScript.ShowHint(MouseHints.None);
+					}
+				}
 				return;
 			}
 			hintScript.ShowHint(MouseHints.None);
 		}
-
 		private bool TryProcessHintContainer(HintByTag hint)
 		{
+
+
 			if (hint.isConditional && !isInFixedInteractionsMode) return false;
 			if (hint.tutorialIndexLock != 0 && hint.tutorialIndexLock > gameManager.GetTutorial().GetTutorialIndex()) return false;
 			if (hint.activator != null && !hint.activator.ShouldProvideHint()) return false;

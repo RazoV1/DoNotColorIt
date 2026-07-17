@@ -157,6 +157,7 @@
     "tutorial.output.talkLeo": "T — close",
     "tutorial.output.wrongColor": "Wrong color. Try different pigments or add some resin.",
 	"ui.book.pigment_t":"<gradient=\"RGBW\">PIGMENT",
-    "ui.hint.toggle_kapot": "Open trunk: E"
+    "ui.hint.toggle_kapot": "Open trunk: E",
+    "ui.hint.no_logs":"Insuficient logs!"
   }
 }
